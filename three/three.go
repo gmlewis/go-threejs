@@ -6,6 +6,8 @@
 // three.js library. See http://threejs.org/ for more information.
 package three
 
+import "github.com/gopherjs/gopherjs/js"
+
 const (
 	// GL STATE CONSTANTS
 
@@ -222,3 +224,10 @@ const (
 	RGBM16Encoding = 3005
 	RGBDEncoding   = 3006 // MaxRange is 256.
 )
+
+type Three struct {
+	ctx *js.Object
+}
+
+// New returns a new Three object that binds to three.js.
+func New() *Three { return &Three{ctx: js.Global.Get("THREE")} }
