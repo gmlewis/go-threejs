@@ -38,17 +38,23 @@ import "github.com/gopherjs/gopherjs/js"
 
 // CurveUtils.js
 
+type BoxGeometryOpts struct {
+	widthSegments  int // Number of segmented faces along the width of the sides. Default is 1.
+	heightSegments int // Number of segmented faces along the height of the sides. Default is 1.
+	depthSegments  int // Number of segmented faces along the depth of the sides. Default is 1.
+}
+
 // BoxGeometry creates a quadrilateral geometry primitive.
 //     width — Width of the sides on the X axis.
 //     height — Height of the sides on the Y axis.
 //     depth — Depth of the sides on the Z axis.
-//     widthSegments — Optional. Number of segmented faces along the width of the sides. Default is 1.
-//     heightSegments — Optional. Number of segmented faces along the height of the sides. Default is 1.
-//     depthSegments — Optional. Number of segmented faces along the depth of the sides. Default is 1.
 //
 // http://threejs.org/docs/index.html#Reference/Extras.Geometries/BoxGeometry
-func (t *Three) BoxGeometry(width, height, depth float64, widthSegments, heightSegments, depthSegments int) *js.Object {
-	return t.ctx.Get("BoxGeometry").New(width, height, depth, widthSegments, heightSegments, depthSegments)
+func (t *Three) BoxGeometry(width, height, depth float64, opts *BoxGeometryOpts) *js.Object {
+	if opts != nil {
+		return t.ctx.Get("BoxGeometry").New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
+	}
+	return t.ctx.Get("BoxGeometry").New(width, height, depth)
 }
 
 // CircleGeometry creates a simple circular shape.
