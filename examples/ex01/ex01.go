@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	scene, camera, renderer, mesh *js.Object
+	scene                  *three.Scene
+	camera, renderer, mesh *js.Object
 )
 
 func main() {
@@ -23,7 +24,7 @@ func main() {
 	material := t.MeshBasicMaterial(map[string]interface{}{"color": 0xff0000, "wireframe": true})
 
 	mesh = t.Mesh(geometry, material)
-	scene.Call("add", mesh)
+	scene.Add(mesh)
 
 	renderer = t.WebGLRenderer(nil)
 	renderer.Call("setSize", window.Get("innerWidth").Int(), window.Get("innerHeight").Int())
