@@ -11,6 +11,11 @@ type Vector2 struct {
 	X, Y float64
 }
 
+// NewVector2 returns a new Vector2.
+func NewVector2(x, y float64) *Vector2 {
+	return &Vector2{X: x, Y: y}
+}
+
 // Width returns the x component of v.
 func (v *Vector2) Width() float64 {
 	return v.X
@@ -27,7 +32,7 @@ func (v *Vector2) Set(x, y float64) *Vector2 {
 	return v
 }
 
-// SetScalar sets both the X and Y dimensions of the vector.
+// SetScalar sets all components of v to scalar.
 func (v *Vector2) SetScalar(scalar float64) *Vector2 {
 	v.X, v.Y = scalar, scalar
 	return v
@@ -72,7 +77,7 @@ func (v *Vector2) GetComponent(index int) (float64, error) {
 
 // Copy copies the src vector to v.
 func (v *Vector2) Copy(src *Vector2) *Vector2 {
-	v.X, v.Y = src.X, src.Y
+	*v = *src
 	return v
 }
 
