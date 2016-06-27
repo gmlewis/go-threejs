@@ -2,6 +2,10 @@ package three
 
 // Box2.js
 
+type Box2 struct {
+	Min, Max *Vector2
+}
+
 // Box3.js
 
 // Color.js
@@ -41,8 +45,6 @@ package three
 // Spline.js
 
 // Triangle.js
-
-// Vector2.js
 
 // Vector3.js
 
