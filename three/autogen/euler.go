@@ -7,13 +7,13 @@ import (
 // Euler represents an euler.
 type Euler struct{ p *js.Object }
 
-// Euler returns an euler object.
+// Euler returns an Euler object.
 func (t *Three) Euler() *Euler {
 	p := t.ctx.Get("Euler")
 	return &Euler{p: p}
 }
 
-// NewEuler returns a new euler object.
+// New returns a new Euler object.
 func (t *Euler) New(x, y, z, order float64) *Euler {
 	p := t.p.New(x, y, z, order)
 	return &Euler{p: p}

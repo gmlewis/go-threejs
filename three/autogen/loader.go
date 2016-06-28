@@ -7,13 +7,13 @@ import (
 // Loader represents a loader.
 type Loader struct{ p *js.Object }
 
-// Loader returns a loader object.
+// Loader returns a Loader object.
 func (t *Three) Loader() *Loader {
 	p := t.ctx.Get("Loader")
 	return &Loader{p: p}
 }
 
-// NewLoader returns a new loader object.
+// New returns a new Loader object.
 func (t *Loader) New() *Loader {
 	p := t.p.New()
 	return &Loader{p: p}
@@ -42,3 +42,4 @@ func (l *Loader) Get(file float64) *Loader {
 	l.p.Call("get", file)
 	return l
 }
+

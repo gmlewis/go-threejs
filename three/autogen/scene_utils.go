@@ -7,13 +7,13 @@ import (
 // SceneUtils represents a sceneutils.
 type SceneUtils struct{ p *js.Object }
 
-// SceneUtils returns a sceneutils object.
+// SceneUtils returns a SceneUtils object.
 func (t *Three) SceneUtils() *SceneUtils {
 	p := t.ctx.Get("SceneUtils")
 	return &SceneUtils{p: p}
 }
 
-// NewSceneUtils returns a new sceneutils object.
+// New returns a new SceneUtils object.
 func (t *SceneUtils) New() *SceneUtils {
 	p := t.p.New()
 	return &SceneUtils{p: p}

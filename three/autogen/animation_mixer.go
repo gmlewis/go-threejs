@@ -7,16 +7,26 @@ import (
 // AnimationMixer represents an animationmixer.
 type AnimationMixer struct{ p *js.Object }
 
-// AnimationMixer returns an animationmixer object.
+// AnimationMixer returns an AnimationMixer object.
 func (t *Three) AnimationMixer() *AnimationMixer {
 	p := t.ctx.Get("AnimationMixer")
 	return &AnimationMixer{p: p}
 }
 
-// NewAnimationMixer returns a new animationmixer object.
+// New returns a new AnimationMixer object.
 func (t *AnimationMixer) New(root float64) *AnimationMixer {
 	p := t.p.New(root)
 	return &AnimationMixer{p: p}
+}
+
+// Total returns the total-component of the AnimationMixer.
+func (a *AnimationMixer) Total() float64 {
+	return a.p.Get("total").Float()
+}
+
+// InUse returns the inUse-component of the AnimationMixer.
+func (a *AnimationMixer) InUse() float64 {
+	return a.p.Get("inUse").Float()
 }
 
 // ClipAction TODO description.

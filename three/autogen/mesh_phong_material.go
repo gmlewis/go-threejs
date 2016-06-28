@@ -7,13 +7,13 @@ import (
 // MeshPhongMaterial represents a meshphongmaterial.
 type MeshPhongMaterial struct{ p *js.Object }
 
-// MeshPhongMaterial returns a meshphongmaterial object.
+// MeshPhongMaterial returns a MeshPhongMaterial object.
 func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 	p := t.ctx.Get("MeshPhongMaterial")
 	return &MeshPhongMaterial{p: p}
 }
 
-// NewMeshPhongMaterial returns a new meshphongmaterial object.
+// New returns a new MeshPhongMaterial object.
 func (t *MeshPhongMaterial) New(parameters float64) *MeshPhongMaterial {
 	p := t.p.New(parameters)
 	return &MeshPhongMaterial{p: p}

@@ -7,13 +7,13 @@ import (
 // WebGLRenderer represents a webglrenderer.
 type WebGLRenderer struct{ p *js.Object }
 
-// WebGLRenderer returns a webglrenderer object.
+// WebGLRenderer returns a WebGLRenderer object.
 func (t *Three) WebGLRenderer() *WebGLRenderer {
 	p := t.ctx.Get("WebGLRenderer")
 	return &WebGLRenderer{p: p}
 }
 
-// NewWebGLRenderer returns a new webglrenderer object.
+// New returns a new WebGLRenderer object.
 func (t *WebGLRenderer) New(parameters float64) *WebGLRenderer {
 	p := t.p.New(parameters)
 	return &WebGLRenderer{p: p}

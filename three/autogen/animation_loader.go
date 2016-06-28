@@ -7,13 +7,13 @@ import (
 // AnimationLoader represents an animationloader.
 type AnimationLoader struct{ p *js.Object }
 
-// AnimationLoader returns an animationloader object.
+// AnimationLoader returns an AnimationLoader object.
 func (t *Three) AnimationLoader() *AnimationLoader {
 	p := t.ctx.Get("AnimationLoader")
 	return &AnimationLoader{p: p}
 }
 
-// NewAnimationLoader returns a new animationloader object.
+// New returns a new AnimationLoader object.
 func (t *AnimationLoader) New(manager float64) *AnimationLoader {
 	p := t.p.New(manager)
 	return &AnimationLoader{p: p}

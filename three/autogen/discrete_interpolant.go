@@ -7,13 +7,13 @@ import (
 // DiscreteInterpolant represents a discreteinterpolant.
 type DiscreteInterpolant struct{ p *js.Object }
 
-// DiscreteInterpolant returns a discreteinterpolant object.
+// DiscreteInterpolant returns a DiscreteInterpolant object.
 func (t *Three) DiscreteInterpolant() *DiscreteInterpolant {
 	p := t.ctx.Get("DiscreteInterpolant")
 	return &DiscreteInterpolant{p: p}
 }
 
-// NewDiscreteInterpolant returns a new discreteinterpolant object.
+// New returns a new DiscreteInterpolant object.
 func (t *DiscreteInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *DiscreteInterpolant {
 	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &DiscreteInterpolant{p: p}

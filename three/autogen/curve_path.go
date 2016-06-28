@@ -7,13 +7,13 @@ import (
 // CurvePath represents a curvepath.
 type CurvePath struct{ p *js.Object }
 
-// CurvePath returns a curvepath object.
+// CurvePath returns a CurvePath object.
 func (t *Three) CurvePath() *CurvePath {
 	p := t.ctx.Get("CurvePath")
 	return &CurvePath{p: p}
 }
 
-// NewCurvePath returns a new curvepath object.
+// New returns a new CurvePath object.
 func (t *CurvePath) New() *CurvePath {
 	p := t.p.New()
 	return &CurvePath{p: p}

@@ -7,13 +7,13 @@ import (
 // Scene represents a scene.
 type Scene struct{ p *js.Object }
 
-// Scene returns a scene object.
+// Scene returns a Scene object.
 func (t *Three) Scene() *Scene {
 	p := t.ctx.Get("Scene")
 	return &Scene{p: p}
 }
 
-// NewScene returns a new scene object.
+// New returns a new Scene object.
 func (t *Scene) New() *Scene {
 	p := t.p.New()
 	return &Scene{p: p}

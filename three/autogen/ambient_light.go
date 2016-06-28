@@ -7,13 +7,13 @@ import (
 // AmbientLight represents an ambientlight.
 type AmbientLight struct{ p *js.Object }
 
-// AmbientLight returns an ambientlight object.
+// AmbientLight returns an AmbientLight object.
 func (t *Three) AmbientLight() *AmbientLight {
 	p := t.ctx.Get("AmbientLight")
 	return &AmbientLight{p: p}
 }
 
-// NewAmbientLight returns a new ambientlight object.
+// New returns a new AmbientLight object.
 func (t *AmbientLight) New(color, intensity float64) *AmbientLight {
 	p := t.p.New(color, intensity)
 	return &AmbientLight{p: p}

@@ -7,13 +7,13 @@ import (
 // Plane represents a plane.
 type Plane struct{ p *js.Object }
 
-// Plane returns a plane object.
+// Plane returns a Plane object.
 func (t *Three) Plane() *Plane {
 	p := t.ctx.Get("Plane")
 	return &Plane{p: p}
 }
 
-// NewPlane returns a new plane object.
+// New returns a new Plane object.
 func (t *Plane) New(normal, constant float64) *Plane {
 	p := t.p.New(normal, constant)
 	return &Plane{p: p}

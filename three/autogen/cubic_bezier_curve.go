@@ -7,13 +7,13 @@ import (
 // CubicBezierCurve represents a cubicbeziercurve.
 type CubicBezierCurve struct{ p *js.Object }
 
-// CubicBezierCurve returns a cubicbeziercurve object.
+// CubicBezierCurve returns a CubicBezierCurve object.
 func (t *Three) CubicBezierCurve() *CubicBezierCurve {
 	p := t.ctx.Get("CubicBezierCurve")
 	return &CubicBezierCurve{p: p}
 }
 
-// NewCubicBezierCurve returns a new cubicbeziercurve object.
+// New returns a new CubicBezierCurve object.
 func (t *CubicBezierCurve) New(v0, v1, v2, v3 float64) *CubicBezierCurve {
 	p := t.p.New(v0, v1, v2, v3)
 	return &CubicBezierCurve{p: p}

@@ -7,13 +7,13 @@ import (
 // QuaternionLinearInterpolant represents a quaternionlinearinterpolant.
 type QuaternionLinearInterpolant struct{ p *js.Object }
 
-// QuaternionLinearInterpolant returns a quaternionlinearinterpolant object.
+// QuaternionLinearInterpolant returns a QuaternionLinearInterpolant object.
 func (t *Three) QuaternionLinearInterpolant() *QuaternionLinearInterpolant {
 	p := t.ctx.Get("QuaternionLinearInterpolant")
 	return &QuaternionLinearInterpolant{p: p}
 }
 
-// NewQuaternionLinearInterpolant returns a new quaternionlinearinterpolant object.
+// New returns a new QuaternionLinearInterpolant object.
 func (t *QuaternionLinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *QuaternionLinearInterpolant {
 	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &QuaternionLinearInterpolant{p: p}

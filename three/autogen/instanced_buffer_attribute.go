@@ -7,13 +7,13 @@ import (
 // InstancedBufferAttribute represents an instancedbufferattribute.
 type InstancedBufferAttribute struct{ p *js.Object }
 
-// InstancedBufferAttribute returns an instancedbufferattribute object.
+// InstancedBufferAttribute returns an InstancedBufferAttribute object.
 func (t *Three) InstancedBufferAttribute() *InstancedBufferAttribute {
 	p := t.ctx.Get("InstancedBufferAttribute")
 	return &InstancedBufferAttribute{p: p}
 }
 
-// NewInstancedBufferAttribute returns a new instancedbufferattribute object.
+// New returns a new InstancedBufferAttribute object.
 func (t *InstancedBufferAttribute) New(array, itemSize, meshPerAttribute float64) *InstancedBufferAttribute {
 	p := t.p.New(array, itemSize, meshPerAttribute)
 	return &InstancedBufferAttribute{p: p}

@@ -7,13 +7,13 @@ import (
 // BinaryTextureLoader represents a binarytextureloader.
 type BinaryTextureLoader struct{ p *js.Object }
 
-// BinaryTextureLoader returns a binarytextureloader object.
+// BinaryTextureLoader returns a BinaryTextureLoader object.
 func (t *Three) BinaryTextureLoader() *BinaryTextureLoader {
 	p := t.ctx.Get("BinaryTextureLoader")
 	return &BinaryTextureLoader{p: p}
 }
 
-// NewBinaryTextureLoader returns a new binarytextureloader object.
+// New returns a new BinaryTextureLoader object.
 func (t *BinaryTextureLoader) New() *BinaryTextureLoader {
 	p := t.p.New()
 	return &BinaryTextureLoader{p: p}
@@ -24,3 +24,4 @@ func (b *BinaryTextureLoader) Load(url, onLoad, onProgress, onError float64) *Bi
 	b.p.Call("load", url, onLoad, onProgress, onError)
 	return b
 }
+

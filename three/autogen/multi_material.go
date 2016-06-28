@@ -7,13 +7,13 @@ import (
 // MultiMaterial represents a multimaterial.
 type MultiMaterial struct{ p *js.Object }
 
-// MultiMaterial returns a multimaterial object.
+// MultiMaterial returns a MultiMaterial object.
 func (t *Three) MultiMaterial() *MultiMaterial {
 	p := t.ctx.Get("MultiMaterial")
 	return &MultiMaterial{p: p}
 }
 
-// NewMultiMaterial returns a new multimaterial object.
+// New returns a new MultiMaterial object.
 func (t *MultiMaterial) New(materials float64) *MultiMaterial {
 	p := t.p.New(materials)
 	return &MultiMaterial{p: p}

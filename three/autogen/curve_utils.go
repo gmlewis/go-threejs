@@ -7,13 +7,13 @@ import (
 // CurveUtils represents a curveutils.
 type CurveUtils struct{ p *js.Object }
 
-// CurveUtils returns a curveutils object.
+// CurveUtils returns a CurveUtils object.
 func (t *Three) CurveUtils() *CurveUtils {
 	p := t.ctx.Get("CurveUtils")
 	return &CurveUtils{p: p}
 }
 
-// NewCurveUtils returns a new curveutils object.
+// New returns a new CurveUtils object.
 func (t *CurveUtils) New() *CurveUtils {
 	p := t.p.New()
 	return &CurveUtils{p: p}

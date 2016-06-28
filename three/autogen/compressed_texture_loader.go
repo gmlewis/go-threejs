@@ -7,13 +7,13 @@ import (
 // CompressedTextureLoader represents a compressedtextureloader.
 type CompressedTextureLoader struct{ p *js.Object }
 
-// CompressedTextureLoader returns a compressedtextureloader object.
+// CompressedTextureLoader returns a CompressedTextureLoader object.
 func (t *Three) CompressedTextureLoader() *CompressedTextureLoader {
 	p := t.ctx.Get("CompressedTextureLoader")
 	return &CompressedTextureLoader{p: p}
 }
 
-// NewCompressedTextureLoader returns a new compressedtextureloader object.
+// New returns a new CompressedTextureLoader object.
 func (t *CompressedTextureLoader) New(manager float64) *CompressedTextureLoader {
 	p := t.p.New(manager)
 	return &CompressedTextureLoader{p: p}

@@ -7,13 +7,13 @@ import (
 // QuaternionKeyframeTrack represents a quaternionkeyframetrack.
 type QuaternionKeyframeTrack struct{ p *js.Object }
 
-// QuaternionKeyframeTrack returns a quaternionkeyframetrack object.
+// QuaternionKeyframeTrack returns a QuaternionKeyframeTrack object.
 func (t *Three) QuaternionKeyframeTrack() *QuaternionKeyframeTrack {
 	p := t.ctx.Get("QuaternionKeyframeTrack")
 	return &QuaternionKeyframeTrack{p: p}
 }
 
-// NewQuaternionKeyframeTrack returns a new quaternionkeyframetrack object.
+// New returns a new QuaternionKeyframeTrack object.
 func (t *QuaternionKeyframeTrack) New(name, times, values, interpolation float64) *QuaternionKeyframeTrack {
 	p := t.p.New(name, times, values, interpolation)
 	return &QuaternionKeyframeTrack{p: p}

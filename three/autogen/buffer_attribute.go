@@ -7,13 +7,13 @@ import (
 // BufferAttribute represents a bufferattribute.
 type BufferAttribute struct{ p *js.Object }
 
-// BufferAttribute returns a bufferattribute object.
+// BufferAttribute returns a BufferAttribute object.
 func (t *Three) BufferAttribute() *BufferAttribute {
 	p := t.ctx.Get("BufferAttribute")
 	return &BufferAttribute{p: p}
 }
 
-// NewBufferAttribute returns a new bufferattribute object.
+// New returns a new BufferAttribute object.
 func (t *BufferAttribute) New(array, itemSize float64) *BufferAttribute {
 	p := t.p.New(array, itemSize)
 	return &BufferAttribute{p: p}
@@ -22,13 +22,13 @@ func (t *BufferAttribute) New(array, itemSize float64) *BufferAttribute {
 // Int8Attribute represents an int8attribute.
 type Int8Attribute struct{ p *js.Object }
 
-// Int8Attribute returns an int8attribute object.
+// Int8Attribute returns an Int8Attribute object.
 func (t *Three) Int8Attribute() *Int8Attribute {
 	p := t.ctx.Get("Int8Attribute")
 	return &Int8Attribute{p: p}
 }
 
-// NewInt8Attribute returns a new int8attribute object.
+// New returns a new Int8Attribute object.
 func (t *Int8Attribute) New(array, itemSize float64) *Int8Attribute {
 	p := t.p.New(array, itemSize)
 	return &Int8Attribute{p: p}
@@ -37,13 +37,13 @@ func (t *Int8Attribute) New(array, itemSize float64) *Int8Attribute {
 // Uint8Attribute represents an uint8attribute.
 type Uint8Attribute struct{ p *js.Object }
 
-// Uint8Attribute returns an uint8attribute object.
+// Uint8Attribute returns an Uint8Attribute object.
 func (t *Three) Uint8Attribute() *Uint8Attribute {
 	p := t.ctx.Get("Uint8Attribute")
 	return &Uint8Attribute{p: p}
 }
 
-// NewUint8Attribute returns a new uint8attribute object.
+// New returns a new Uint8Attribute object.
 func (t *Uint8Attribute) New(array, itemSize float64) *Uint8Attribute {
 	p := t.p.New(array, itemSize)
 	return &Uint8Attribute{p: p}
@@ -52,13 +52,13 @@ func (t *Uint8Attribute) New(array, itemSize float64) *Uint8Attribute {
 // Uint8ClampedAttribute represents an uint8clampedattribute.
 type Uint8ClampedAttribute struct{ p *js.Object }
 
-// Uint8ClampedAttribute returns an uint8clampedattribute object.
+// Uint8ClampedAttribute returns an Uint8ClampedAttribute object.
 func (t *Three) Uint8ClampedAttribute() *Uint8ClampedAttribute {
 	p := t.ctx.Get("Uint8ClampedAttribute")
 	return &Uint8ClampedAttribute{p: p}
 }
 
-// NewUint8ClampedAttribute returns a new uint8clampedattribute object.
+// New returns a new Uint8ClampedAttribute object.
 func (t *Uint8ClampedAttribute) New(array, itemSize float64) *Uint8ClampedAttribute {
 	p := t.p.New(array, itemSize)
 	return &Uint8ClampedAttribute{p: p}
@@ -67,13 +67,13 @@ func (t *Uint8ClampedAttribute) New(array, itemSize float64) *Uint8ClampedAttrib
 // Int16Attribute represents an int16attribute.
 type Int16Attribute struct{ p *js.Object }
 
-// Int16Attribute returns an int16attribute object.
+// Int16Attribute returns an Int16Attribute object.
 func (t *Three) Int16Attribute() *Int16Attribute {
 	p := t.ctx.Get("Int16Attribute")
 	return &Int16Attribute{p: p}
 }
 
-// NewInt16Attribute returns a new int16attribute object.
+// New returns a new Int16Attribute object.
 func (t *Int16Attribute) New(array, itemSize float64) *Int16Attribute {
 	p := t.p.New(array, itemSize)
 	return &Int16Attribute{p: p}
@@ -82,13 +82,13 @@ func (t *Int16Attribute) New(array, itemSize float64) *Int16Attribute {
 // Uint16Attribute represents an uint16attribute.
 type Uint16Attribute struct{ p *js.Object }
 
-// Uint16Attribute returns an uint16attribute object.
+// Uint16Attribute returns an Uint16Attribute object.
 func (t *Three) Uint16Attribute() *Uint16Attribute {
 	p := t.ctx.Get("Uint16Attribute")
 	return &Uint16Attribute{p: p}
 }
 
-// NewUint16Attribute returns a new uint16attribute object.
+// New returns a new Uint16Attribute object.
 func (t *Uint16Attribute) New(array, itemSize float64) *Uint16Attribute {
 	p := t.p.New(array, itemSize)
 	return &Uint16Attribute{p: p}
@@ -97,13 +97,13 @@ func (t *Uint16Attribute) New(array, itemSize float64) *Uint16Attribute {
 // Int32Attribute represents an int32attribute.
 type Int32Attribute struct{ p *js.Object }
 
-// Int32Attribute returns an int32attribute object.
+// Int32Attribute returns an Int32Attribute object.
 func (t *Three) Int32Attribute() *Int32Attribute {
 	p := t.ctx.Get("Int32Attribute")
 	return &Int32Attribute{p: p}
 }
 
-// NewInt32Attribute returns a new int32attribute object.
+// New returns a new Int32Attribute object.
 func (t *Int32Attribute) New(array, itemSize float64) *Int32Attribute {
 	p := t.p.New(array, itemSize)
 	return &Int32Attribute{p: p}
@@ -112,13 +112,13 @@ func (t *Int32Attribute) New(array, itemSize float64) *Int32Attribute {
 // Uint32Attribute represents an uint32attribute.
 type Uint32Attribute struct{ p *js.Object }
 
-// Uint32Attribute returns an uint32attribute object.
+// Uint32Attribute returns an Uint32Attribute object.
 func (t *Three) Uint32Attribute() *Uint32Attribute {
 	p := t.ctx.Get("Uint32Attribute")
 	return &Uint32Attribute{p: p}
 }
 
-// NewUint32Attribute returns a new uint32attribute object.
+// New returns a new Uint32Attribute object.
 func (t *Uint32Attribute) New(array, itemSize float64) *Uint32Attribute {
 	p := t.p.New(array, itemSize)
 	return &Uint32Attribute{p: p}
@@ -127,13 +127,13 @@ func (t *Uint32Attribute) New(array, itemSize float64) *Uint32Attribute {
 // Float32Attribute represents a float32attribute.
 type Float32Attribute struct{ p *js.Object }
 
-// Float32Attribute returns a float32attribute object.
+// Float32Attribute returns a Float32Attribute object.
 func (t *Three) Float32Attribute() *Float32Attribute {
 	p := t.ctx.Get("Float32Attribute")
 	return &Float32Attribute{p: p}
 }
 
-// NewFloat32Attribute returns a new float32attribute object.
+// New returns a new Float32Attribute object.
 func (t *Float32Attribute) New(array, itemSize float64) *Float32Attribute {
 	p := t.p.New(array, itemSize)
 	return &Float32Attribute{p: p}
@@ -142,13 +142,13 @@ func (t *Float32Attribute) New(array, itemSize float64) *Float32Attribute {
 // Float64Attribute represents a float64attribute.
 type Float64Attribute struct{ p *js.Object }
 
-// Float64Attribute returns a float64attribute object.
+// Float64Attribute returns a Float64Attribute object.
 func (t *Three) Float64Attribute() *Float64Attribute {
 	p := t.ctx.Get("Float64Attribute")
 	return &Float64Attribute{p: p}
 }
 
-// NewFloat64Attribute returns a new float64attribute object.
+// New returns a new Float64Attribute object.
 func (t *Float64Attribute) New(array, itemSize float64) *Float64Attribute {
 	p := t.p.New(array, itemSize)
 	return &Float64Attribute{p: p}
@@ -157,13 +157,13 @@ func (t *Float64Attribute) New(array, itemSize float64) *Float64Attribute {
 // DynamicBufferAttribute represents a dynamicbufferattribute.
 type DynamicBufferAttribute struct{ p *js.Object }
 
-// DynamicBufferAttribute returns a dynamicbufferattribute object.
+// DynamicBufferAttribute returns a DynamicBufferAttribute object.
 func (t *Three) DynamicBufferAttribute() *DynamicBufferAttribute {
 	p := t.ctx.Get("DynamicBufferAttribute")
 	return &DynamicBufferAttribute{p: p}
 }
 
-// NewDynamicBufferAttribute returns a new dynamicbufferattribute object.
+// New returns a new DynamicBufferAttribute object.
 func (t *DynamicBufferAttribute) New(array, itemSize float64) *DynamicBufferAttribute {
 	p := t.p.New(array, itemSize)
 	return &DynamicBufferAttribute{p: p}

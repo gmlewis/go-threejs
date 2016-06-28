@@ -7,13 +7,13 @@ import (
 // PerspectiveCamera represents a perspectivecamera.
 type PerspectiveCamera struct{ p *js.Object }
 
-// PerspectiveCamera returns a perspectivecamera object.
+// PerspectiveCamera returns a PerspectiveCamera object.
 func (t *Three) PerspectiveCamera() *PerspectiveCamera {
 	p := t.ctx.Get("PerspectiveCamera")
 	return &PerspectiveCamera{p: p}
 }
 
-// NewPerspectiveCamera returns a new perspectivecamera object.
+// New returns a new PerspectiveCamera object.
 func (t *PerspectiveCamera) New(fov, aspect, near, far float64) *PerspectiveCamera {
 	p := t.p.New(fov, aspect, near, far)
 	return &PerspectiveCamera{p: p}

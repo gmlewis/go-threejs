@@ -7,13 +7,13 @@ import (
 // LineCurve represents a linecurve.
 type LineCurve struct{ p *js.Object }
 
-// LineCurve returns a linecurve object.
+// LineCurve returns a LineCurve object.
 func (t *Three) LineCurve() *LineCurve {
 	p := t.ctx.Get("LineCurve")
 	return &LineCurve{p: p}
 }
 
-// NewLineCurve returns a new linecurve object.
+// New returns a new LineCurve object.
 func (t *LineCurve) New(v1, v2 float64) *LineCurve {
 	p := t.p.New(v1, v2)
 	return &LineCurve{p: p}

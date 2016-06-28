@@ -7,13 +7,13 @@ import (
 // JSONLoader represents a jsonloader.
 type JSONLoader struct{ p *js.Object }
 
-// JSONLoader returns a jsonloader object.
+// JSONLoader returns a JSONLoader object.
 func (t *Three) JSONLoader() *JSONLoader {
 	p := t.ctx.Get("JSONLoader")
 	return &JSONLoader{p: p}
 }
 
-// NewJSONLoader returns a new jsonloader object.
+// New returns a new JSONLoader object.
 func (t *JSONLoader) New(manager float64) *JSONLoader {
 	p := t.p.New(manager)
 	return &JSONLoader{p: p}

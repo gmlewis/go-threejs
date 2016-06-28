@@ -7,13 +7,13 @@ import (
 // WebGLProperties represents a webglproperties.
 type WebGLProperties struct{ p *js.Object }
 
-// WebGLProperties returns a webglproperties object.
+// WebGLProperties returns a WebGLProperties object.
 func (t *Three) WebGLProperties() *WebGLProperties {
 	p := t.ctx.Get("WebGLProperties")
 	return &WebGLProperties{p: p}
 }
 
-// NewWebGLProperties returns a new webglproperties object.
+// New returns a new WebGLProperties object.
 func (t *WebGLProperties) New() *WebGLProperties {
 	p := t.p.New()
 	return &WebGLProperties{p: p}

@@ -7,13 +7,13 @@ import (
 // WebGLShader represents a webglshader.
 type WebGLShader struct{ p *js.Object }
 
-// WebGLShader returns a webglshader object.
+// WebGLShader returns a WebGLShader object.
 func (t *Three) WebGLShader() *WebGLShader {
 	p := t.ctx.Get("WebGLShader")
 	return &WebGLShader{p: p}
 }
 
-// NewWebGLShader returns a new webglshader object.
+// New returns a new WebGLShader object.
 func (t *WebGLShader) New() *WebGLShader {
 	p := t.p.New()
 	return &WebGLShader{p: p}

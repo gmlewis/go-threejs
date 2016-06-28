@@ -7,13 +7,13 @@ import (
 // Shape represents a shape.
 type Shape struct{ p *js.Object }
 
-// Shape returns a shape object.
+// Shape returns a Shape object.
 func (t *Three) Shape() *Shape {
 	p := t.ctx.Get("Shape")
 	return &Shape{p: p}
 }
 
-// NewShape returns a new shape object.
+// New returns a new Shape object.
 func (t *Shape) New() *Shape {
 	p := t.p.New()
 	return &Shape{p: p}

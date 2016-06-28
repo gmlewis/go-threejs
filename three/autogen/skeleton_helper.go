@@ -7,13 +7,13 @@ import (
 // SkeletonHelper represents a skeletonhelper.
 type SkeletonHelper struct{ p *js.Object }
 
-// SkeletonHelper returns a skeletonhelper object.
+// SkeletonHelper returns a SkeletonHelper object.
 func (t *Three) SkeletonHelper() *SkeletonHelper {
 	p := t.ctx.Get("SkeletonHelper")
 	return &SkeletonHelper{p: p}
 }
 
-// NewSkeletonHelper returns a new skeletonhelper object.
+// New returns a new SkeletonHelper object.
 func (t *SkeletonHelper) New(object float64) *SkeletonHelper {
 	p := t.p.New(object)
 	return &SkeletonHelper{p: p}

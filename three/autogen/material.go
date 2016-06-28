@@ -7,13 +7,13 @@ import (
 // Material represents a material.
 type Material struct{ p *js.Object }
 
-// Material returns a material object.
+// Material returns a Material object.
 func (t *Three) Material() *Material {
 	p := t.ctx.Get("Material")
 	return &Material{p: p}
 }
 
-// NewMaterial returns a new material object.
+// New returns a new Material object.
 func (t *Material) New() *Material {
 	p := t.p.New()
 	return &Material{p: p}
@@ -65,3 +65,4 @@ func (m *Material) Dispose() *Material {
 	m.p.Call("dispose")
 	return m
 }
+

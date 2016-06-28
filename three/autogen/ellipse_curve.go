@@ -7,13 +7,13 @@ import (
 // EllipseCurve represents an ellipsecurve.
 type EllipseCurve struct{ p *js.Object }
 
-// EllipseCurve returns an ellipsecurve object.
+// EllipseCurve returns an EllipseCurve object.
 func (t *Three) EllipseCurve() *EllipseCurve {
 	p := t.ctx.Get("EllipseCurve")
 	return &EllipseCurve{p: p}
 }
 
-// NewEllipseCurve returns a new ellipsecurve object.
+// New returns a new EllipseCurve object.
 func (t *EllipseCurve) New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
 	p := t.p.New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
 	return &EllipseCurve{p: p}

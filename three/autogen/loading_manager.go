@@ -7,13 +7,13 @@ import (
 // LoadingManager represents a loadingmanager.
 type LoadingManager struct{ p *js.Object }
 
-// LoadingManager returns a loadingmanager object.
+// LoadingManager returns a LoadingManager object.
 func (t *Three) LoadingManager() *LoadingManager {
 	p := t.ctx.Get("LoadingManager")
 	return &LoadingManager{p: p}
 }
 
-// NewLoadingManager returns a new loadingmanager object.
+// New returns a new LoadingManager object.
 func (t *LoadingManager) New(onLoad, onProgress, onError float64) *LoadingManager {
 	p := t.p.New(onLoad, onProgress, onError)
 	return &LoadingManager{p: p}

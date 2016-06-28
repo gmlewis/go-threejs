@@ -7,13 +7,13 @@ import (
 // PropertyBinding represents a propertybinding.
 type PropertyBinding struct{ p *js.Object }
 
-// PropertyBinding returns a propertybinding object.
+// PropertyBinding returns a PropertyBinding object.
 func (t *Three) PropertyBinding() *PropertyBinding {
 	p := t.ctx.Get("PropertyBinding")
 	return &PropertyBinding{p: p}
 }
 
-// NewPropertyBinding returns a new propertybinding object.
+// New returns a new PropertyBinding object.
 func (t *PropertyBinding) New(rootNode, path, parsedPath float64) *PropertyBinding {
 	p := t.p.New(rootNode, path, parsedPath)
 	return &PropertyBinding{p: p}

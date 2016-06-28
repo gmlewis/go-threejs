@@ -7,13 +7,13 @@ import (
 // Line3 represents a line3.
 type Line3 struct{ p *js.Object }
 
-// Line3 returns a line3 object.
+// Line3 returns a Line3 object.
 func (t *Three) Line3() *Line3 {
 	p := t.ctx.Get("Line3")
 	return &Line3{p: p}
 }
 
-// NewLine3 returns a new line3 object.
+// New returns a new Line3 object.
 func (t *Line3) New(start, end float64) *Line3 {
 	p := t.p.New(start, end)
 	return &Line3{p: p}

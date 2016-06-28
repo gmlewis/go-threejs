@@ -7,13 +7,13 @@ import (
 // LineDashedMaterial represents a linedashedmaterial.
 type LineDashedMaterial struct{ p *js.Object }
 
-// LineDashedMaterial returns a linedashedmaterial object.
+// LineDashedMaterial returns a LineDashedMaterial object.
 func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 	p := t.ctx.Get("LineDashedMaterial")
 	return &LineDashedMaterial{p: p}
 }
 
-// NewLineDashedMaterial returns a new linedashedmaterial object.
+// New returns a new LineDashedMaterial object.
 func (t *LineDashedMaterial) New(parameters float64) *LineDashedMaterial {
 	p := t.p.New(parameters)
 	return &LineDashedMaterial{p: p}

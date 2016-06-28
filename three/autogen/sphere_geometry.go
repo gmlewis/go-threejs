@@ -7,13 +7,13 @@ import (
 // SphereGeometry represents a spheregeometry.
 type SphereGeometry struct{ p *js.Object }
 
-// SphereGeometry returns a spheregeometry object.
+// SphereGeometry returns a SphereGeometry object.
 func (t *Three) SphereGeometry() *SphereGeometry {
 	p := t.ctx.Get("SphereGeometry")
 	return &SphereGeometry{p: p}
 }
 
-// NewSphereGeometry returns a new spheregeometry object.
+// New returns a new SphereGeometry object.
 func (t *SphereGeometry) New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength float64) *SphereGeometry {
 	p := t.p.New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
 	return &SphereGeometry{p: p}

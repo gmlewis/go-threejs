@@ -7,13 +7,13 @@ import (
 // Curve represents a curve.
 type Curve struct{ p *js.Object }
 
-// Curve returns a curve object.
+// Curve returns a Curve object.
 func (t *Three) Curve() *Curve {
 	p := t.ctx.Get("Curve")
 	return &Curve{p: p}
 }
 
-// NewCurve returns a new curve object.
+// New returns a new Curve object.
 func (t *Curve) New() *Curve {
 	p := t.p.New()
 	return &Curve{p: p}
@@ -78,3 +78,4 @@ func (c *Curve) GetTangentAt(u float64) *Curve {
 	c.p.Call("getTangentAt", u)
 	return c
 }
+

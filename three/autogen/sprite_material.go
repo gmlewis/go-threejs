@@ -7,13 +7,13 @@ import (
 // SpriteMaterial represents a spritematerial.
 type SpriteMaterial struct{ p *js.Object }
 
-// SpriteMaterial returns a spritematerial object.
+// SpriteMaterial returns a SpriteMaterial object.
 func (t *Three) SpriteMaterial() *SpriteMaterial {
 	p := t.ctx.Get("SpriteMaterial")
 	return &SpriteMaterial{p: p}
 }
 
-// NewSpriteMaterial returns a new spritematerial object.
+// New returns a new SpriteMaterial object.
 func (t *SpriteMaterial) New(parameters float64) *SpriteMaterial {
 	p := t.p.New(parameters)
 	return &SpriteMaterial{p: p}

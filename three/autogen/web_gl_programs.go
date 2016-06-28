@@ -7,13 +7,13 @@ import (
 // WebGLPrograms represents a webglprograms.
 type WebGLPrograms struct{ p *js.Object }
 
-// WebGLPrograms returns a webglprograms object.
+// WebGLPrograms returns a WebGLPrograms object.
 func (t *Three) WebGLPrograms() *WebGLPrograms {
 	p := t.ctx.Get("WebGLPrograms")
 	return &WebGLPrograms{p: p}
 }
 
-// NewWebGLPrograms returns a new webglprograms object.
+// New returns a new WebGLPrograms object.
 func (t *WebGLPrograms) New(renderer, capabilities float64) *WebGLPrograms {
 	p := t.p.New(renderer, capabilities)
 	return &WebGLPrograms{p: p}

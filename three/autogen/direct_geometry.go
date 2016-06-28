@@ -7,13 +7,13 @@ import (
 // DirectGeometry represents a directgeometry.
 type DirectGeometry struct{ p *js.Object }
 
-// DirectGeometry returns a directgeometry object.
+// DirectGeometry returns a DirectGeometry object.
 func (t *Three) DirectGeometry() *DirectGeometry {
 	p := t.ctx.Get("DirectGeometry")
 	return &DirectGeometry{p: p}
 }
 
-// NewDirectGeometry returns a new directgeometry object.
+// New returns a new DirectGeometry object.
 func (t *DirectGeometry) New() *DirectGeometry {
 	p := t.p.New()
 	return &DirectGeometry{p: p}
@@ -48,3 +48,4 @@ func (d *DirectGeometry) Dispose() *DirectGeometry {
 	d.p.Call("dispose")
 	return d
 }
+

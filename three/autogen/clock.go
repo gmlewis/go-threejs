@@ -7,13 +7,13 @@ import (
 // Clock represents a clock.
 type Clock struct{ p *js.Object }
 
-// Clock returns a clock object.
+// Clock returns a Clock object.
 func (t *Three) Clock() *Clock {
 	p := t.ctx.Get("Clock")
 	return &Clock{p: p}
 }
 
-// NewClock returns a new clock object.
+// New returns a new Clock object.
 func (t *Clock) New(autoStart float64) *Clock {
 	p := t.p.New(autoStart)
 	return &Clock{p: p}

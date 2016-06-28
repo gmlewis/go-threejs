@@ -7,13 +7,13 @@ import (
 // Path represents a path.
 type Path struct{ p *js.Object }
 
-// Path returns a path object.
+// Path returns a Path object.
 func (t *Three) Path() *Path {
 	p := t.ctx.Get("Path")
 	return &Path{p: p}
 }
 
-// NewPath returns a new path object.
+// New returns a new Path object.
 func (t *Path) New(points float64) *Path {
 	p := t.p.New(points)
 	return &Path{p: p}

@@ -7,13 +7,13 @@ import (
 // KeyframeTrack represents a keyframetrack.
 type KeyframeTrack struct{ p *js.Object }
 
-// KeyframeTrack returns a keyframetrack object.
+// KeyframeTrack returns a KeyframeTrack object.
 func (t *Three) KeyframeTrack() *KeyframeTrack {
 	p := t.ctx.Get("KeyframeTrack")
 	return &KeyframeTrack{p: p}
 }
 
-// NewKeyframeTrack returns a new keyframetrack object.
+// New returns a new KeyframeTrack object.
 func (t *KeyframeTrack) New(name, times, values, interpolation float64) *KeyframeTrack {
 	p := t.p.New(name, times, values, interpolation)
 	return &KeyframeTrack{p: p}

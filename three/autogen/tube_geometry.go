@@ -7,13 +7,13 @@ import (
 // TubeGeometry represents a tubegeometry.
 type TubeGeometry struct{ p *js.Object }
 
-// TubeGeometry returns a tubegeometry object.
+// TubeGeometry returns a TubeGeometry object.
 func (t *Three) TubeGeometry() *TubeGeometry {
 	p := t.ctx.Get("TubeGeometry")
 	return &TubeGeometry{p: p}
 }
 
-// NewTubeGeometry returns a new tubegeometry object.
+// New returns a new TubeGeometry object.
 func (t *TubeGeometry) New(path, segments, radius, radialSegments, closed, taper float64) *TubeGeometry {
 	p := t.p.New(path, segments, radius, radialSegments, closed, taper)
 	return &TubeGeometry{p: p}

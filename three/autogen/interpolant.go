@@ -7,13 +7,13 @@ import (
 // Interpolant represents an interpolant.
 type Interpolant struct{ p *js.Object }
 
-// Interpolant returns an interpolant object.
+// Interpolant returns an Interpolant object.
 func (t *Three) Interpolant() *Interpolant {
 	p := t.ctx.Get("Interpolant")
 	return &Interpolant{p: p}
 }
 
-// NewInterpolant returns a new interpolant object.
+// New returns a new Interpolant object.
 func (t *Interpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *Interpolant {
 	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &Interpolant{p: p}

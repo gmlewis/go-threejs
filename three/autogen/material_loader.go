@@ -7,13 +7,13 @@ import (
 // MaterialLoader represents a materialloader.
 type MaterialLoader struct{ p *js.Object }
 
-// MaterialLoader returns a materialloader object.
+// MaterialLoader returns a MaterialLoader object.
 func (t *Three) MaterialLoader() *MaterialLoader {
 	p := t.ctx.Get("MaterialLoader")
 	return &MaterialLoader{p: p}
 }
 
-// NewMaterialLoader returns a new materialloader object.
+// New returns a new MaterialLoader object.
 func (t *MaterialLoader) New(manager float64) *MaterialLoader {
 	p := t.p.New(manager)
 	return &MaterialLoader{p: p}

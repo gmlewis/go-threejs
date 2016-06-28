@@ -7,13 +7,13 @@ import (
 // AudioListener represents an audiolistener.
 type AudioListener struct{ p *js.Object }
 
-// AudioListener returns an audiolistener object.
+// AudioListener returns an AudioListener object.
 func (t *Three) AudioListener() *AudioListener {
 	p := t.ctx.Get("AudioListener")
 	return &AudioListener{p: p}
 }
 
-// NewAudioListener returns a new audiolistener object.
+// New returns a new AudioListener object.
 func (t *AudioListener) New() *AudioListener {
 	p := t.p.New()
 	return &AudioListener{p: p}

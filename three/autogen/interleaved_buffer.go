@@ -7,13 +7,13 @@ import (
 // InterleavedBuffer represents an interleavedbuffer.
 type InterleavedBuffer struct{ p *js.Object }
 
-// InterleavedBuffer returns an interleavedbuffer object.
+// InterleavedBuffer returns an InterleavedBuffer object.
 func (t *Three) InterleavedBuffer() *InterleavedBuffer {
 	p := t.ctx.Get("InterleavedBuffer")
 	return &InterleavedBuffer{p: p}
 }
 
-// NewInterleavedBuffer returns a new interleavedbuffer object.
+// New returns a new InterleavedBuffer object.
 func (t *InterleavedBuffer) New(array, stride float64) *InterleavedBuffer {
 	p := t.p.New(array, stride)
 	return &InterleavedBuffer{p: p}

@@ -7,13 +7,13 @@ import (
 // UniformsLib represents an uniformslib.
 type UniformsLib struct{ p *js.Object }
 
-// UniformsLib returns an uniformslib object.
+// UniformsLib returns an UniformsLib object.
 func (t *Three) UniformsLib() *UniformsLib {
 	p := t.ctx.Get("UniformsLib")
 	return &UniformsLib{p: p}
 }
 
-// NewUniformsLib returns a new uniformslib object.
+// New returns a new UniformsLib object.
 func (t *UniformsLib) New() *UniformsLib {
 	p := t.p.New()
 	return &UniformsLib{p: p}

@@ -7,13 +7,13 @@ import (
 // GridHelper represents a gridhelper.
 type GridHelper struct{ p *js.Object }
 
-// GridHelper returns a gridhelper object.
+// GridHelper returns a GridHelper object.
 func (t *Three) GridHelper() *GridHelper {
 	p := t.ctx.Get("GridHelper")
 	return &GridHelper{p: p}
 }
 
-// NewGridHelper returns a new gridhelper object.
+// New returns a new GridHelper object.
 func (t *GridHelper) New(size, step float64) *GridHelper {
 	p := t.p.New(size, step)
 	return &GridHelper{p: p}

@@ -7,13 +7,13 @@ import (
 // ObjectLoader represents an objectloader.
 type ObjectLoader struct{ p *js.Object }
 
-// ObjectLoader returns an objectloader object.
+// ObjectLoader returns an ObjectLoader object.
 func (t *Three) ObjectLoader() *ObjectLoader {
 	p := t.ctx.Get("ObjectLoader")
 	return &ObjectLoader{p: p}
 }
 
-// NewObjectLoader returns a new objectloader object.
+// New returns a new ObjectLoader object.
 func (t *ObjectLoader) New(manager float64) *ObjectLoader {
 	p := t.p.New(manager)
 	return &ObjectLoader{p: p}

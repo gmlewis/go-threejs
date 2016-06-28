@@ -7,13 +7,13 @@ import (
 // CubeTextureLoader represents a cubetextureloader.
 type CubeTextureLoader struct{ p *js.Object }
 
-// CubeTextureLoader returns a cubetextureloader object.
+// CubeTextureLoader returns a CubeTextureLoader object.
 func (t *Three) CubeTextureLoader() *CubeTextureLoader {
 	p := t.ctx.Get("CubeTextureLoader")
 	return &CubeTextureLoader{p: p}
 }
 
-// NewCubeTextureLoader returns a new cubetextureloader object.
+// New returns a new CubeTextureLoader object.
 func (t *CubeTextureLoader) New(manager float64) *CubeTextureLoader {
 	p := t.p.New(manager)
 	return &CubeTextureLoader{p: p}

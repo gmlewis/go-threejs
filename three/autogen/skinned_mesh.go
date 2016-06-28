@@ -7,13 +7,13 @@ import (
 // SkinnedMesh represents a skinnedmesh.
 type SkinnedMesh struct{ p *js.Object }
 
-// SkinnedMesh returns a skinnedmesh object.
+// SkinnedMesh returns a SkinnedMesh object.
 func (t *Three) SkinnedMesh() *SkinnedMesh {
 	p := t.ctx.Get("SkinnedMesh")
 	return &SkinnedMesh{p: p}
 }
 
-// NewSkinnedMesh returns a new skinnedmesh object.
+// New returns a new SkinnedMesh object.
 func (t *SkinnedMesh) New(geometry, material, useVertexTexture float64) *SkinnedMesh {
 	p := t.p.New(geometry, material, useVertexTexture)
 	return &SkinnedMesh{p: p}

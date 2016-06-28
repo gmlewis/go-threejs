@@ -7,13 +7,13 @@ import (
 // Color represents a color.
 type Color struct{ p *js.Object }
 
-// Color returns a color object.
+// Color returns a Color object.
 func (t *Three) Color() *Color {
 	p := t.ctx.Get("Color")
 	return &Color{p: p}
 }
 
-// NewColor returns a new color object.
+// New returns a new Color object.
 func (t *Color) New(color float64) *Color {
 	p := t.p.New(color)
 	return &Color{p: p}

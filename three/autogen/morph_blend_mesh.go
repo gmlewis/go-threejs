@@ -7,13 +7,13 @@ import (
 // MorphBlendMesh represents a morphblendmesh.
 type MorphBlendMesh struct{ p *js.Object }
 
-// MorphBlendMesh returns a morphblendmesh object.
+// MorphBlendMesh returns a MorphBlendMesh object.
 func (t *Three) MorphBlendMesh() *MorphBlendMesh {
 	p := t.ctx.Get("MorphBlendMesh")
 	return &MorphBlendMesh{p: p}
 }
 
-// NewMorphBlendMesh returns a new morphblendmesh object.
+// New returns a new MorphBlendMesh object.
 func (t *MorphBlendMesh) New(geometry, material float64) *MorphBlendMesh {
 	p := t.p.New(geometry, material)
 	return &MorphBlendMesh{p: p}

@@ -7,13 +7,13 @@ import (
 // CubicInterpolant represents a cubicinterpolant.
 type CubicInterpolant struct{ p *js.Object }
 
-// CubicInterpolant returns a cubicinterpolant object.
+// CubicInterpolant returns a CubicInterpolant object.
 func (t *Three) CubicInterpolant() *CubicInterpolant {
 	p := t.ctx.Get("CubicInterpolant")
 	return &CubicInterpolant{p: p}
 }
 
-// NewCubicInterpolant returns a new cubicinterpolant object.
+// New returns a new CubicInterpolant object.
 func (t *CubicInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *CubicInterpolant {
 	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &CubicInterpolant{p: p}

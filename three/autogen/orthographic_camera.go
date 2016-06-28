@@ -7,13 +7,13 @@ import (
 // OrthographicCamera represents an orthographiccamera.
 type OrthographicCamera struct{ p *js.Object }
 
-// OrthographicCamera returns an orthographiccamera object.
+// OrthographicCamera returns an OrthographicCamera object.
 func (t *Three) OrthographicCamera() *OrthographicCamera {
 	p := t.ctx.Get("OrthographicCamera")
 	return &OrthographicCamera{p: p}
 }
 
-// NewOrthographicCamera returns a new orthographiccamera object.
+// New returns a new OrthographicCamera object.
 func (t *OrthographicCamera) New(left, right, top, bottom, near, far float64) *OrthographicCamera {
 	p := t.p.New(left, right, top, bottom, near, far)
 	return &OrthographicCamera{p: p}

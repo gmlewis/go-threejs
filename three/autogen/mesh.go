@@ -7,13 +7,13 @@ import (
 // Mesh represents a mesh.
 type Mesh struct{ p *js.Object }
 
-// Mesh returns a mesh object.
+// Mesh returns a Mesh object.
 func (t *Three) Mesh() *Mesh {
 	p := t.ctx.Get("Mesh")
 	return &Mesh{p: p}
 }
 
-// NewMesh returns a new mesh object.
+// New returns a new Mesh object.
 func (t *Mesh) New(geometry, material float64) *Mesh {
 	p := t.p.New(geometry, material)
 	return &Mesh{p: p}

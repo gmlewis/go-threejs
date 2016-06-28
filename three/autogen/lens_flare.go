@@ -7,13 +7,13 @@ import (
 // LensFlare represents a lensflare.
 type LensFlare struct{ p *js.Object }
 
-// LensFlare returns a lensflare object.
+// LensFlare returns a LensFlare object.
 func (t *Three) LensFlare() *LensFlare {
 	p := t.ctx.Get("LensFlare")
 	return &LensFlare{p: p}
 }
 
-// NewLensFlare returns a new lensflare object.
+// New returns a new LensFlare object.
 func (t *LensFlare) New(texture, size, distance, blending, color float64) *LensFlare {
 	p := t.p.New(texture, size, distance, blending, color)
 	return &LensFlare{p: p}

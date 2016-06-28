@@ -7,13 +7,13 @@ import (
 // WebGLState represents a webglstate.
 type WebGLState struct{ p *js.Object }
 
-// WebGLState returns a webglstate object.
+// WebGLState returns a WebGLState object.
 func (t *Three) WebGLState() *WebGLState {
 	p := t.ctx.Get("WebGLState")
 	return &WebGLState{p: p}
 }
 
-// NewWebGLState returns a new webglstate object.
+// New returns a new WebGLState object.
 func (t *WebGLState) New(gl, extensions, paramThreeToGL float64) *WebGLState {
 	p := t.p.New(gl, extensions, paramThreeToGL)
 	return &WebGLState{p: p}

@@ -7,13 +7,13 @@ import (
 // ShapeGeometry represents a shapegeometry.
 type ShapeGeometry struct{ p *js.Object }
 
-// ShapeGeometry returns a shapegeometry object.
+// ShapeGeometry returns a ShapeGeometry object.
 func (t *Three) ShapeGeometry() *ShapeGeometry {
 	p := t.ctx.Get("ShapeGeometry")
 	return &ShapeGeometry{p: p}
 }
 
-// NewShapeGeometry returns a new shapegeometry object.
+// New returns a new ShapeGeometry object.
 func (t *ShapeGeometry) New(shapes, options float64) *ShapeGeometry {
 	p := t.p.New(shapes, options)
 	return &ShapeGeometry{p: p}

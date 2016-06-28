@@ -7,13 +7,13 @@ import (
 // XHRLoader represents a xhrloader.
 type XHRLoader struct{ p *js.Object }
 
-// XHRLoader returns a xhrloader object.
+// XHRLoader returns a XHRLoader object.
 func (t *Three) XHRLoader() *XHRLoader {
 	p := t.ctx.Get("XHRLoader")
 	return &XHRLoader{p: p}
 }
 
-// NewXHRLoader returns a new xhrloader object.
+// New returns a new XHRLoader object.
 func (t *XHRLoader) New(manager float64) *XHRLoader {
 	p := t.p.New(manager)
 	return &XHRLoader{p: p}

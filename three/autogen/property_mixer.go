@@ -7,15 +7,15 @@ import (
 // PropertyMixer represents a propertymixer.
 type PropertyMixer struct{ p *js.Object }
 
-// PropertyMixer returns a propertymixer object.
+// PropertyMixer returns a PropertyMixer object.
 func (t *Three) PropertyMixer() *PropertyMixer {
 	p := t.ctx.Get("PropertyMixer")
 	return &PropertyMixer{p: p}
 }
 
-// NewPropertyMixer returns a new propertymixer object.
-func (t *PropertyMixer) New(binding, typeName, valueSize float64) *PropertyMixer {
-	p := t.p.New(binding, typeName, valueSize)
+// New returns a new PropertyMixer object.
+func (t *PropertyMixer) New(binding, typName, valueSize float64) *PropertyMixer {
+	p := t.p.New(binding, typName, valueSize)
 	return &PropertyMixer{p: p}
 }
 

@@ -7,13 +7,13 @@ import (
 // Box2 represents a box2.
 type Box2 struct{ p *js.Object }
 
-// Box2 returns a box2 object.
+// Box2 returns a Box2 object.
 func (t *Three) Box2() *Box2 {
 	p := t.ctx.Get("Box2")
 	return &Box2{p: p}
 }
 
-// NewBox2 returns a new box2 object.
+// New returns a new Box2 object.
 func (t *Box2) New(min, max float64) *Box2 {
 	p := t.p.New(min, max)
 	return &Box2{p: p}

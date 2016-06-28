@@ -7,13 +7,13 @@ import (
 // WebGLProgram represents a webglprogram.
 type WebGLProgram struct{ p *js.Object }
 
-// WebGLProgram returns a webglprogram object.
+// WebGLProgram returns a WebGLProgram object.
 func (t *Three) WebGLProgram() *WebGLProgram {
 	p := t.ctx.Get("WebGLProgram")
 	return &WebGLProgram{p: p}
 }
 
-// NewWebGLProgram returns a new webglprogram object.
+// New returns a new WebGLProgram object.
 func (t *WebGLProgram) New() *WebGLProgram {
 	p := t.p.New()
 	return &WebGLProgram{p: p}
@@ -24,10 +24,3 @@ func (w *WebGLProgram) Get() *WebGLProgram {
 	w.p.Call("get")
 	return w
 }
-
-// Get TODO description.
-func (w *WebGLProgram) Get() *WebGLProgram {
-	w.p.Call("get")
-	return w
-}
-

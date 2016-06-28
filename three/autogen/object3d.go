@@ -7,13 +7,13 @@ import (
 // Object3D represents an object3d.
 type Object3D struct{ p *js.Object }
 
-// Object3D returns an object3d object.
+// Object3D returns an Object3D object.
 func (t *Three) Object3D() *Object3D {
 	p := t.ctx.Get("Object3D")
 	return &Object3D{p: p}
 }
 
-// NewObject3D returns a new object3d object.
+// New returns a new Object3D object.
 func (t *Object3D) New() *Object3D {
 	p := t.p.New()
 	return &Object3D{p: p}

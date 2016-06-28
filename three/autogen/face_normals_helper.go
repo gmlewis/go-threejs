@@ -7,13 +7,13 @@ import (
 // FaceNormalsHelper represents a facenormalshelper.
 type FaceNormalsHelper struct{ p *js.Object }
 
-// FaceNormalsHelper returns a facenormalshelper object.
+// FaceNormalsHelper returns a FaceNormalsHelper object.
 func (t *Three) FaceNormalsHelper() *FaceNormalsHelper {
 	p := t.ctx.Get("FaceNormalsHelper")
 	return &FaceNormalsHelper{p: p}
 }
 
-// NewFaceNormalsHelper returns a new facenormalshelper object.
+// New returns a new FaceNormalsHelper object.
 func (t *FaceNormalsHelper) New(object, size, hex, linewidth float64) *FaceNormalsHelper {
 	p := t.p.New(object, size, hex, linewidth)
 	return &FaceNormalsHelper{p: p}

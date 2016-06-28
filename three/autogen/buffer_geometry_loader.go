@@ -7,13 +7,13 @@ import (
 // BufferGeometryLoader represents a buffergeometryloader.
 type BufferGeometryLoader struct{ p *js.Object }
 
-// BufferGeometryLoader returns a buffergeometryloader object.
+// BufferGeometryLoader returns a BufferGeometryLoader object.
 func (t *Three) BufferGeometryLoader() *BufferGeometryLoader {
 	p := t.ctx.Get("BufferGeometryLoader")
 	return &BufferGeometryLoader{p: p}
 }
 
-// NewBufferGeometryLoader returns a new buffergeometryloader object.
+// New returns a new BufferGeometryLoader object.
 func (t *BufferGeometryLoader) New(manager float64) *BufferGeometryLoader {
 	p := t.p.New(manager)
 	return &BufferGeometryLoader{p: p}

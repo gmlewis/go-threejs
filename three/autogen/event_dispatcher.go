@@ -7,13 +7,13 @@ import (
 // EventDispatcher represents an eventdispatcher.
 type EventDispatcher struct{ p *js.Object }
 
-// EventDispatcher returns an eventdispatcher object.
+// EventDispatcher returns an EventDispatcher object.
 func (t *Three) EventDispatcher() *EventDispatcher {
 	p := t.ctx.Get("EventDispatcher")
 	return &EventDispatcher{p: p}
 }
 
-// NewEventDispatcher returns a new eventdispatcher object.
+// New returns a new EventDispatcher object.
 func (t *EventDispatcher) New() *EventDispatcher {
 	p := t.p.New()
 	return &EventDispatcher{p: p}
@@ -48,3 +48,4 @@ func (e *EventDispatcher) DispatchEvent(event float64) *EventDispatcher {
 	e.p.Call("dispatchEvent", event)
 	return e
 }
+

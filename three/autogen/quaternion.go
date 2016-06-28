@@ -7,13 +7,13 @@ import (
 // Quaternion represents a quaternion.
 type Quaternion struct{ p *js.Object }
 
-// Quaternion returns a quaternion object.
+// Quaternion returns a Quaternion object.
 func (t *Three) Quaternion() *Quaternion {
 	p := t.ctx.Get("Quaternion")
 	return &Quaternion{p: p}
 }
 
-// NewQuaternion returns a new quaternion object.
+// New returns a new Quaternion object.
 func (t *Quaternion) New(x, y, z, w float64) *Quaternion {
 	p := t.p.New(x, y, z, w)
 	return &Quaternion{p: p}

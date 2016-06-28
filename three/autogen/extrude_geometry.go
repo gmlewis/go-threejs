@@ -7,13 +7,13 @@ import (
 // ExtrudeGeometry represents an extrudegeometry.
 type ExtrudeGeometry struct{ p *js.Object }
 
-// ExtrudeGeometry returns an extrudegeometry object.
+// ExtrudeGeometry returns an ExtrudeGeometry object.
 func (t *Three) ExtrudeGeometry() *ExtrudeGeometry {
 	p := t.ctx.Get("ExtrudeGeometry")
 	return &ExtrudeGeometry{p: p}
 }
 
-// NewExtrudeGeometry returns a new extrudegeometry object.
+// New returns a new ExtrudeGeometry object.
 func (t *ExtrudeGeometry) New(shapes, options float64) *ExtrudeGeometry {
 	p := t.p.New(shapes, options)
 	return &ExtrudeGeometry{p: p}

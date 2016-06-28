@@ -7,13 +7,13 @@ import (
 // IcosahedronGeometry represents an icosahedrongeometry.
 type IcosahedronGeometry struct{ p *js.Object }
 
-// IcosahedronGeometry returns an icosahedrongeometry object.
+// IcosahedronGeometry returns an IcosahedronGeometry object.
 func (t *Three) IcosahedronGeometry() *IcosahedronGeometry {
 	p := t.ctx.Get("IcosahedronGeometry")
 	return &IcosahedronGeometry{p: p}
 }
 
-// NewIcosahedronGeometry returns a new icosahedrongeometry object.
+// New returns a new IcosahedronGeometry object.
 func (t *IcosahedronGeometry) New(radius, detail float64) *IcosahedronGeometry {
 	p := t.p.New(radius, detail)
 	return &IcosahedronGeometry{p: p}

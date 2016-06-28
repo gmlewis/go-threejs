@@ -7,13 +7,13 @@ import (
 // QuadraticBezierCurve represents a quadraticbeziercurve.
 type QuadraticBezierCurve struct{ p *js.Object }
 
-// QuadraticBezierCurve returns a quadraticbeziercurve object.
+// QuadraticBezierCurve returns a QuadraticBezierCurve object.
 func (t *Three) QuadraticBezierCurve() *QuadraticBezierCurve {
 	p := t.ctx.Get("QuadraticBezierCurve")
 	return &QuadraticBezierCurve{p: p}
 }
 
-// NewQuadraticBezierCurve returns a new quadraticbeziercurve object.
+// New returns a new QuadraticBezierCurve object.
 func (t *QuadraticBezierCurve) New(v0, v1, v2 float64) *QuadraticBezierCurve {
 	p := t.p.New(v0, v1, v2)
 	return &QuadraticBezierCurve{p: p}

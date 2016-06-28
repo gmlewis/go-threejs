@@ -7,13 +7,13 @@ import (
 // PointLight represents a pointlight.
 type PointLight struct{ p *js.Object }
 
-// PointLight returns a pointlight object.
+// PointLight returns a PointLight object.
 func (t *Three) PointLight() *PointLight {
 	p := t.ctx.Get("PointLight")
 	return &PointLight{p: p}
 }
 
-// NewPointLight returns a new pointlight object.
+// New returns a new PointLight object.
 func (t *PointLight) New(color, intensity, distance, decay float64) *PointLight {
 	p := t.p.New(color, intensity, distance, decay)
 	return &PointLight{p: p}

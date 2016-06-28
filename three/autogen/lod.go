@@ -7,13 +7,13 @@ import (
 // LOD represents a lod.
 type LOD struct{ p *js.Object }
 
-// LOD returns a lod object.
+// LOD returns a LOD object.
 func (t *Three) LOD() *LOD {
 	p := t.ctx.Get("LOD")
 	return &LOD{p: p}
 }
 
-// NewLOD returns a new lod object.
+// New returns a new LOD object.
 func (t *LOD) New() *LOD {
 	p := t.p.New()
 	return &LOD{p: p}

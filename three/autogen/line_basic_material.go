@@ -7,13 +7,13 @@ import (
 // LineBasicMaterial represents a linebasicmaterial.
 type LineBasicMaterial struct{ p *js.Object }
 
-// LineBasicMaterial returns a linebasicmaterial object.
+// LineBasicMaterial returns a LineBasicMaterial object.
 func (t *Three) LineBasicMaterial() *LineBasicMaterial {
 	p := t.ctx.Get("LineBasicMaterial")
 	return &LineBasicMaterial{p: p}
 }
 
-// NewLineBasicMaterial returns a new linebasicmaterial object.
+// New returns a new LineBasicMaterial object.
 func (t *LineBasicMaterial) New(parameters float64) *LineBasicMaterial {
 	p := t.p.New(parameters)
 	return &LineBasicMaterial{p: p}

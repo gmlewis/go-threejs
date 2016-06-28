@@ -7,13 +7,13 @@ import (
 // TextureLoader represents a textureloader.
 type TextureLoader struct{ p *js.Object }
 
-// TextureLoader returns a textureloader object.
+// TextureLoader returns a TextureLoader object.
 func (t *Three) TextureLoader() *TextureLoader {
 	p := t.ctx.Get("TextureLoader")
 	return &TextureLoader{p: p}
 }
 
-// NewTextureLoader returns a new textureloader object.
+// New returns a new TextureLoader object.
 func (t *TextureLoader) New(manager float64) *TextureLoader {
 	p := t.p.New(manager)
 	return &TextureLoader{p: p}

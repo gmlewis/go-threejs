@@ -7,13 +7,13 @@ import (
 // Triangle represents a triangle.
 type Triangle struct{ p *js.Object }
 
-// Triangle returns a triangle object.
+// Triangle returns a Triangle object.
 func (t *Three) Triangle() *Triangle {
 	p := t.ctx.Get("Triangle")
 	return &Triangle{p: p}
 }
 
-// NewTriangle returns a new triangle object.
+// New returns a new Triangle object.
 func (t *Triangle) New(a, b, c float64) *Triangle {
 	p := t.p.New(a, b, c)
 	return &Triangle{p: p}

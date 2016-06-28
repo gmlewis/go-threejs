@@ -7,13 +7,13 @@ import (
 // LinearInterpolant represents a linearinterpolant.
 type LinearInterpolant struct{ p *js.Object }
 
-// LinearInterpolant returns a linearinterpolant object.
+// LinearInterpolant returns a LinearInterpolant object.
 func (t *Three) LinearInterpolant() *LinearInterpolant {
 	p := t.ctx.Get("LinearInterpolant")
 	return &LinearInterpolant{p: p}
 }
 
-// NewLinearInterpolant returns a new linearinterpolant object.
+// New returns a new LinearInterpolant object.
 func (t *LinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *LinearInterpolant {
 	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &LinearInterpolant{p: p}

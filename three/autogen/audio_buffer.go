@@ -7,13 +7,13 @@ import (
 // AudioBuffer represents an audiobuffer.
 type AudioBuffer struct{ p *js.Object }
 
-// AudioBuffer returns an audiobuffer object.
+// AudioBuffer returns an AudioBuffer object.
 func (t *Three) AudioBuffer() *AudioBuffer {
 	p := t.ctx.Get("AudioBuffer")
 	return &AudioBuffer{p: p}
 }
 
-// NewAudioBuffer returns a new audiobuffer object.
+// New returns a new AudioBuffer object.
 func (t *AudioBuffer) New(context float64) *AudioBuffer {
 	p := t.p.New(context)
 	return &AudioBuffer{p: p}

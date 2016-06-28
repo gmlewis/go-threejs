@@ -7,13 +7,13 @@ import (
 // Geometry represents a geometry.
 type Geometry struct{ p *js.Object }
 
-// Geometry returns a geometry object.
+// Geometry returns a Geometry object.
 func (t *Three) Geometry() *Geometry {
 	p := t.ctx.Get("Geometry")
 	return &Geometry{p: p}
 }
 
-// NewGeometry returns a new geometry object.
+// New returns a new Geometry object.
 func (t *Geometry) New() *Geometry {
 	p := t.p.New()
 	return &Geometry{p: p}
@@ -168,3 +168,4 @@ func (g *Geometry) Dispose() *Geometry {
 	g.p.Call("dispose")
 	return g
 }
+

@@ -7,13 +7,13 @@ import (
 // TetrahedronGeometry represents a tetrahedrongeometry.
 type TetrahedronGeometry struct{ p *js.Object }
 
-// TetrahedronGeometry returns a tetrahedrongeometry object.
+// TetrahedronGeometry returns a TetrahedronGeometry object.
 func (t *Three) TetrahedronGeometry() *TetrahedronGeometry {
 	p := t.ctx.Get("TetrahedronGeometry")
 	return &TetrahedronGeometry{p: p}
 }
 
-// NewTetrahedronGeometry returns a new tetrahedrongeometry object.
+// New returns a new TetrahedronGeometry object.
 func (t *TetrahedronGeometry) New(radius, detail float64) *TetrahedronGeometry {
 	p := t.p.New(radius, detail)
 	return &TetrahedronGeometry{p: p}

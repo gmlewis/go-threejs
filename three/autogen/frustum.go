@@ -7,13 +7,13 @@ import (
 // Frustum represents a frustum.
 type Frustum struct{ p *js.Object }
 
-// Frustum returns a frustum object.
+// Frustum returns a Frustum object.
 func (t *Three) Frustum() *Frustum {
 	p := t.ctx.Get("Frustum")
 	return &Frustum{p: p}
 }
 
-// NewFrustum returns a new frustum object.
+// New returns a new Frustum object.
 func (t *Frustum) New(p0, p1, p2, p3, p4, p5 float64) *Frustum {
 	p := t.p.New(p0, p1, p2, p3, p4, p5)
 	return &Frustum{p: p}

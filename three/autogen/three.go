@@ -7,13 +7,13 @@ import (
 // MOUSE represents a mouse.
 type MOUSE struct{ p *js.Object }
 
-// MOUSE returns a mouse object.
+// MOUSE returns a MOUSE object.
 func (t *Three) MOUSE() *MOUSE {
 	p := t.ctx.Get("MOUSE")
 	return &MOUSE{p: p}
 }
 
-// NewMOUSE returns a new mouse object.
+// New returns a new MOUSE object.
 func (t *MOUSE) New() *MOUSE {
 	p := t.p.New()
 	return &MOUSE{p: p}

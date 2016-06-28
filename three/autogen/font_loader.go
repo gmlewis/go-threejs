@@ -7,13 +7,13 @@ import (
 // FontLoader represents a fontloader.
 type FontLoader struct{ p *js.Object }
 
-// FontLoader returns a fontloader object.
+// FontLoader returns a FontLoader object.
 func (t *Three) FontLoader() *FontLoader {
 	p := t.ctx.Get("FontLoader")
 	return &FontLoader{p: p}
 }
 
-// NewFontLoader returns a new fontloader object.
+// New returns a new FontLoader object.
 func (t *FontLoader) New(manager float64) *FontLoader {
 	p := t.p.New(manager)
 	return &FontLoader{p: p}

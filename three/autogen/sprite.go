@@ -7,13 +7,13 @@ import (
 // Sprite represents a sprite.
 type Sprite struct{ p *js.Object }
 
-// Sprite returns a sprite object.
+// Sprite returns a Sprite object.
 func (t *Three) Sprite() *Sprite {
 	p := t.ctx.Get("Sprite")
 	return &Sprite{p: p}
 }
 
-// NewSprite returns a new sprite object.
+// New returns a new Sprite object.
 func (t *Sprite) New() *Sprite {
 	p := t.p.New()
 	return &Sprite{p: p}

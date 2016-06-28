@@ -7,13 +7,13 @@ import (
 // CircleGeometry represents a circlegeometry.
 type CircleGeometry struct{ p *js.Object }
 
-// CircleGeometry returns a circlegeometry object.
+// CircleGeometry returns a CircleGeometry object.
 func (t *Three) CircleGeometry() *CircleGeometry {
 	p := t.ctx.Get("CircleGeometry")
 	return &CircleGeometry{p: p}
 }
 
-// NewCircleGeometry returns a new circlegeometry object.
+// New returns a new CircleGeometry object.
 func (t *CircleGeometry) New(radius, segments, thetaStart, thetaLength float64) *CircleGeometry {
 	p := t.p.New(radius, segments, thetaStart, thetaLength)
 	return &CircleGeometry{p: p}

@@ -7,13 +7,13 @@ import (
 // Face3 represents a face3.
 type Face3 struct{ p *js.Object }
 
-// Face3 returns a face3 object.
+// Face3 returns a Face3 object.
 func (t *Three) Face3() *Face3 {
 	p := t.ctx.Get("Face3")
 	return &Face3{p: p}
 }
 
-// NewFace3 returns a new face3 object.
+// New returns a new Face3 object.
 func (t *Face3) New(a, b, c, normal, color, materialIndex float64) *Face3 {
 	p := t.p.New(a, b, c, normal, color, materialIndex)
 	return &Face3{p: p}

@@ -7,13 +7,13 @@ import (
 // ShapeUtils represents a shapeutils.
 type ShapeUtils struct{ p *js.Object }
 
-// ShapeUtils returns a shapeutils object.
+// ShapeUtils returns a ShapeUtils object.
 func (t *Three) ShapeUtils() *ShapeUtils {
 	p := t.ctx.Get("ShapeUtils")
 	return &ShapeUtils{p: p}
 }
 
-// NewShapeUtils returns a new shapeutils object.
+// New returns a new ShapeUtils object.
 func (t *ShapeUtils) New() *ShapeUtils {
 	p := t.p.New()
 	return &ShapeUtils{p: p}

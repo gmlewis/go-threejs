@@ -7,13 +7,13 @@ import (
 // WebGLIndexedBufferRenderer represents a webglindexedbufferrenderer.
 type WebGLIndexedBufferRenderer struct{ p *js.Object }
 
-// WebGLIndexedBufferRenderer returns a webglindexedbufferrenderer object.
+// WebGLIndexedBufferRenderer returns a WebGLIndexedBufferRenderer object.
 func (t *Three) WebGLIndexedBufferRenderer() *WebGLIndexedBufferRenderer {
 	p := t.ctx.Get("WebGLIndexedBufferRenderer")
 	return &WebGLIndexedBufferRenderer{p: p}
 }
 
-// NewWebGLIndexedBufferRenderer returns a new webglindexedbufferrenderer object.
+// New returns a new WebGLIndexedBufferRenderer object.
 func (t *WebGLIndexedBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLIndexedBufferRenderer {
 	p := t.p.New(_gl, extensions, _infoRender)
 	return &WebGLIndexedBufferRenderer{p: p}

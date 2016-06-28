@@ -7,13 +7,13 @@ import (
 // MeshBasicMaterial represents a meshbasicmaterial.
 type MeshBasicMaterial struct{ p *js.Object }
 
-// MeshBasicMaterial returns a meshbasicmaterial object.
+// MeshBasicMaterial returns a MeshBasicMaterial object.
 func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
 	p := t.ctx.Get("MeshBasicMaterial")
 	return &MeshBasicMaterial{p: p}
 }
 
-// NewMeshBasicMaterial returns a new meshbasicmaterial object.
+// New returns a new MeshBasicMaterial object.
 func (t *MeshBasicMaterial) New(parameters float64) *MeshBasicMaterial {
 	p := t.p.New(parameters)
 	return &MeshBasicMaterial{p: p}

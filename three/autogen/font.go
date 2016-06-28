@@ -7,13 +7,13 @@ import (
 // Font represents a font.
 type Font struct{ p *js.Object }
 
-// Font returns a font object.
+// Font returns a Font object.
 func (t *Three) Font() *Font {
 	p := t.ctx.Get("Font")
 	return &Font{p: p}
 }
 
-// NewFont returns a new font object.
+// New returns a new Font object.
 func (t *Font) New(data float64) *Font {
 	p := t.p.New(data)
 	return &Font{p: p}

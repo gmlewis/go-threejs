@@ -7,13 +7,13 @@ import (
 // MeshDepthMaterial represents a meshdepthmaterial.
 type MeshDepthMaterial struct{ p *js.Object }
 
-// MeshDepthMaterial returns a meshdepthmaterial object.
+// MeshDepthMaterial returns a MeshDepthMaterial object.
 func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
 	p := t.ctx.Get("MeshDepthMaterial")
 	return &MeshDepthMaterial{p: p}
 }
 
-// NewMeshDepthMaterial returns a new meshdepthmaterial object.
+// New returns a new MeshDepthMaterial object.
 func (t *MeshDepthMaterial) New(parameters float64) *MeshDepthMaterial {
 	p := t.p.New(parameters)
 	return &MeshDepthMaterial{p: p}

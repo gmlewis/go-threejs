@@ -7,13 +7,13 @@ import (
 // Raycaster represents a raycaster.
 type Raycaster struct{ p *js.Object }
 
-// Raycaster returns a raycaster object.
+// Raycaster returns a Raycaster object.
 func (t *Three) Raycaster() *Raycaster {
 	p := t.ctx.Get("Raycaster")
 	return &Raycaster{p: p}
 }
 
-// NewRaycaster returns a new raycaster object.
+// New returns a new Raycaster object.
 func (t *Raycaster) New(origin, direction, near, far float64) *Raycaster {
 	p := t.p.New(origin, direction, near, far)
 	return &Raycaster{p: p}

@@ -7,9 +7,15 @@ import (
 // Math represents a math.
 type Math struct{ p *js.Object }
 
-// Math returns a math object.
+// Math returns a Math object.
 func (t *Three) Math() *Math {
 	p := t.ctx.Get("Math")
+	return &Math{p: p}
+}
+
+// New returns a new Math object.
+func (t *Math) New() *Math {
+	p := t.p.New()
 	return &Math{p: p}
 }
 
@@ -102,3 +108,4 @@ func (m *Math) NextPowerOfTwo(value float64) *Math {
 	m.p.Call("nextPowerOfTwo", value)
 	return m
 }
+

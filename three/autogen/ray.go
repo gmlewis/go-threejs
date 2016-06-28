@@ -7,13 +7,13 @@ import (
 // Ray represents a ray.
 type Ray struct{ p *js.Object }
 
-// Ray returns a ray object.
+// Ray returns a Ray object.
 func (t *Three) Ray() *Ray {
 	p := t.ctx.Get("Ray")
 	return &Ray{p: p}
 }
 
-// NewRay returns a new ray object.
+// New returns a new Ray object.
 func (t *Ray) New(origin, direction float64) *Ray {
 	p := t.p.New(origin, direction)
 	return &Ray{p: p}

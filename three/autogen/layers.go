@@ -7,13 +7,13 @@ import (
 // Layers represents a layers.
 type Layers struct{ p *js.Object }
 
-// Layers returns a layers object.
+// Layers returns a Layers object.
 func (t *Three) Layers() *Layers {
 	p := t.ctx.Get("Layers")
 	return &Layers{p: p}
 }
 
-// NewLayers returns a new layers object.
+// New returns a new Layers object.
 func (t *Layers) New() *Layers {
 	p := t.p.New()
 	return &Layers{p: p}
@@ -48,3 +48,4 @@ func (l *Layers) Test(layers float64) *Layers {
 	l.p.Call("test", layers)
 	return l
 }
+

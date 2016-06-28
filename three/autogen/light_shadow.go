@@ -7,13 +7,13 @@ import (
 // LightShadow represents a lightshadow.
 type LightShadow struct{ p *js.Object }
 
-// LightShadow returns a lightshadow object.
+// LightShadow returns a LightShadow object.
 func (t *Three) LightShadow() *LightShadow {
 	p := t.ctx.Get("LightShadow")
 	return &LightShadow{p: p}
 }
 
-// NewLightShadow returns a new lightshadow object.
+// New returns a new LightShadow object.
 func (t *LightShadow) New(camera float64) *LightShadow {
 	p := t.p.New(camera)
 	return &LightShadow{p: p}

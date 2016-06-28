@@ -7,13 +7,13 @@ import (
 // MeshLambertMaterial represents a meshlambertmaterial.
 type MeshLambertMaterial struct{ p *js.Object }
 
-// MeshLambertMaterial returns a meshlambertmaterial object.
+// MeshLambertMaterial returns a MeshLambertMaterial object.
 func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 	p := t.ctx.Get("MeshLambertMaterial")
 	return &MeshLambertMaterial{p: p}
 }
 
-// NewMeshLambertMaterial returns a new meshlambertmaterial object.
+// New returns a new MeshLambertMaterial object.
 func (t *MeshLambertMaterial) New(parameters float64) *MeshLambertMaterial {
 	p := t.p.New(parameters)
 	return &MeshLambertMaterial{p: p}

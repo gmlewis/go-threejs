@@ -7,13 +7,13 @@ import (
 // CubeTexture represents a cubetexture.
 type CubeTexture struct{ p *js.Object }
 
-// CubeTexture returns a cubetexture object.
+// CubeTexture returns a CubeTexture object.
 func (t *Three) CubeTexture() *CubeTexture {
 	p := t.ctx.Get("CubeTexture")
 	return &CubeTexture{p: p}
 }
 
-// NewCubeTexture returns a new cubetexture object.
+// New returns a new CubeTexture object.
 func (t *CubeTexture) New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CubeTexture {
 	p := t.p.New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
 	return &CubeTexture{p: p}
@@ -30,3 +30,4 @@ func (c *CubeTexture) Set(value float64) *CubeTexture {
 	c.p.Call("set", value)
 	return c
 }
+

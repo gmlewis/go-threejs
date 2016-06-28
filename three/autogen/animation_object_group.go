@@ -7,13 +7,13 @@ import (
 // AnimationObjectGroup represents an animationobjectgroup.
 type AnimationObjectGroup struct{ p *js.Object }
 
-// AnimationObjectGroup returns an animationobjectgroup object.
+// AnimationObjectGroup returns an AnimationObjectGroup object.
 func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
 	p := t.ctx.Get("AnimationObjectGroup")
 	return &AnimationObjectGroup{p: p}
 }
 
-// NewAnimationObjectGroup returns a new animationobjectgroup object.
+// New returns a new AnimationObjectGroup object.
 func (t *AnimationObjectGroup) New(var_args float64) *AnimationObjectGroup {
 	p := t.p.New(var_args)
 	return &AnimationObjectGroup{p: p}

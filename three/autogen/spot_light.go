@@ -7,13 +7,13 @@ import (
 // SpotLight represents a spotlight.
 type SpotLight struct{ p *js.Object }
 
-// SpotLight returns a spotlight object.
+// SpotLight returns a SpotLight object.
 func (t *Three) SpotLight() *SpotLight {
 	p := t.ctx.Get("SpotLight")
 	return &SpotLight{p: p}
 }
 
-// NewSpotLight returns a new spotlight object.
+// New returns a new SpotLight object.
 func (t *SpotLight) New(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
 	p := t.p.New(color, intensity, distance, angle, penumbra, decay)
 	return &SpotLight{p: p}

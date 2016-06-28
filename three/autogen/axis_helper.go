@@ -7,13 +7,13 @@ import (
 // AxisHelper represents an axishelper.
 type AxisHelper struct{ p *js.Object }
 
-// AxisHelper returns an axishelper object.
+// AxisHelper returns an AxisHelper object.
 func (t *Three) AxisHelper() *AxisHelper {
 	p := t.ctx.Get("AxisHelper")
 	return &AxisHelper{p: p}
 }
 
-// NewAxisHelper returns a new axishelper object.
+// New returns a new AxisHelper object.
 func (t *AxisHelper) New(size float64) *AxisHelper {
 	p := t.p.New(size)
 	return &AxisHelper{p: p}

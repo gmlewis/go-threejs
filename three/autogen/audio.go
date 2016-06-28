@@ -7,13 +7,13 @@ import (
 // Audio represents an audio.
 type Audio struct{ p *js.Object }
 
-// Audio returns an audio object.
+// Audio returns an Audio object.
 func (t *Three) Audio() *Audio {
 	p := t.ctx.Get("Audio")
 	return &Audio{p: p}
 }
 
-// NewAudio returns a new audio object.
+// New returns a new Audio object.
 func (t *Audio) New(listener float64) *Audio {
 	p := t.p.New(listener)
 	return &Audio{p: p}

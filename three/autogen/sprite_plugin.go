@@ -7,13 +7,13 @@ import (
 // SpritePlugin represents a spriteplugin.
 type SpritePlugin struct{ p *js.Object }
 
-// SpritePlugin returns a spriteplugin object.
+// SpritePlugin returns a SpritePlugin object.
 func (t *Three) SpritePlugin() *SpritePlugin {
 	p := t.ctx.Get("SpritePlugin")
 	return &SpritePlugin{p: p}
 }
 
-// NewSpritePlugin returns a new spriteplugin object.
+// New returns a new SpritePlugin object.
 func (t *SpritePlugin) New(renderer, sprites float64) *SpritePlugin {
 	p := t.p.New(renderer, sprites)
 	return &SpritePlugin{p: p}

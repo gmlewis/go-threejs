@@ -7,13 +7,13 @@ import (
 // ImageLoader represents an imageloader.
 type ImageLoader struct{ p *js.Object }
 
-// ImageLoader returns an imageloader object.
+// ImageLoader returns an ImageLoader object.
 func (t *Three) ImageLoader() *ImageLoader {
 	p := t.ctx.Get("ImageLoader")
 	return &ImageLoader{p: p}
 }
 
-// NewImageLoader returns a new imageloader object.
+// New returns a new ImageLoader object.
 func (t *ImageLoader) New(manager float64) *ImageLoader {
 	p := t.p.New(manager)
 	return &ImageLoader{p: p}

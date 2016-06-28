@@ -7,13 +7,13 @@ import (
 // WebGLLights represents a webgllights.
 type WebGLLights struct{ p *js.Object }
 
-// WebGLLights returns a webgllights object.
+// WebGLLights returns a WebGLLights object.
 func (t *Three) WebGLLights() *WebGLLights {
 	p := t.ctx.Get("WebGLLights")
 	return &WebGLLights{p: p}
 }
 
-// NewWebGLLights returns a new webgllights object.
+// New returns a new WebGLLights object.
 func (t *WebGLLights) New() *WebGLLights {
 	p := t.p.New()
 	return &WebGLLights{p: p}

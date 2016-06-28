@@ -7,13 +7,13 @@ import (
 // Matrix3 represents a matrix3.
 type Matrix3 struct{ p *js.Object }
 
-// Matrix3 returns a matrix3 object.
+// Matrix3 returns a Matrix3 object.
 func (t *Three) Matrix3() *Matrix3 {
 	p := t.ctx.Get("Matrix3")
 	return &Matrix3{p: p}
 }
 
-// NewMatrix3 returns a new matrix3 object.
+// New returns a new Matrix3 object.
 func (t *Matrix3) New() *Matrix3 {
 	p := t.p.New()
 	return &Matrix3{p: p}
@@ -114,3 +114,4 @@ func (m *Matrix3) ToArray() *Matrix3 {
 	m.p.Call("toArray")
 	return m
 }
+

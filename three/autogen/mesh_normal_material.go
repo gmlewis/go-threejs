@@ -7,13 +7,13 @@ import (
 // MeshNormalMaterial represents a meshnormalmaterial.
 type MeshNormalMaterial struct{ p *js.Object }
 
-// MeshNormalMaterial returns a meshnormalmaterial object.
+// MeshNormalMaterial returns a MeshNormalMaterial object.
 func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
 	p := t.ctx.Get("MeshNormalMaterial")
 	return &MeshNormalMaterial{p: p}
 }
 
-// NewMeshNormalMaterial returns a new meshnormalmaterial object.
+// New returns a new MeshNormalMaterial object.
 func (t *MeshNormalMaterial) New(parameters float64) *MeshNormalMaterial {
 	p := t.p.New(parameters)
 	return &MeshNormalMaterial{p: p}

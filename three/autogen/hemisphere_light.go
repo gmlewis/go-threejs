@@ -7,13 +7,13 @@ import (
 // HemisphereLight represents a hemispherelight.
 type HemisphereLight struct{ p *js.Object }
 
-// HemisphereLight returns a hemispherelight object.
+// HemisphereLight returns a HemisphereLight object.
 func (t *Three) HemisphereLight() *HemisphereLight {
 	p := t.ctx.Get("HemisphereLight")
 	return &HemisphereLight{p: p}
 }
 
-// NewHemisphereLight returns a new hemispherelight object.
+// New returns a new HemisphereLight object.
 func (t *HemisphereLight) New(skyColor, groundColor, intensity float64) *HemisphereLight {
 	p := t.p.New(skyColor, groundColor, intensity)
 	return &HemisphereLight{p: p}

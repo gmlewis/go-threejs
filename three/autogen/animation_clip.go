@@ -7,13 +7,13 @@ import (
 // AnimationClip represents an animationclip.
 type AnimationClip struct{ p *js.Object }
 
-// AnimationClip returns an animationclip object.
+// AnimationClip returns an AnimationClip object.
 func (t *Three) AnimationClip() *AnimationClip {
 	p := t.ctx.Get("AnimationClip")
 	return &AnimationClip{p: p}
 }
 
-// NewAnimationClip returns a new animationclip object.
+// New returns a new AnimationClip object.
 func (t *AnimationClip) New(name, duration, tracks float64) *AnimationClip {
 	p := t.p.New(name, duration, tracks)
 	return &AnimationClip{p: p}

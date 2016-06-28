@@ -7,13 +7,13 @@ import (
 // Vector4 represents a vector4.
 type Vector4 struct{ p *js.Object }
 
-// Vector4 returns a vector4 object.
+// Vector4 returns a Vector4 object.
 func (t *Three) Vector4() *Vector4 {
 	p := t.ctx.Get("Vector4")
 	return &Vector4{p: p}
 }
 
-// NewVector4 returns a new vector4 object.
+// New returns a new Vector4 object.
 func (t *Vector4) New(x, y, z, w float64) *Vector4 {
 	p := t.p.New(x, y, z, w)
 	return &Vector4{p: p}

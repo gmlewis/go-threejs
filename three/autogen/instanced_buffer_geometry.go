@@ -7,13 +7,13 @@ import (
 // InstancedBufferGeometry represents an instancedbuffergeometry.
 type InstancedBufferGeometry struct{ p *js.Object }
 
-// InstancedBufferGeometry returns an instancedbuffergeometry object.
+// InstancedBufferGeometry returns an InstancedBufferGeometry object.
 func (t *Three) InstancedBufferGeometry() *InstancedBufferGeometry {
 	p := t.ctx.Get("InstancedBufferGeometry")
 	return &InstancedBufferGeometry{p: p}
 }
 
-// NewInstancedBufferGeometry returns a new instancedbuffergeometry object.
+// New returns a new InstancedBufferGeometry object.
 func (t *InstancedBufferGeometry) New() *InstancedBufferGeometry {
 	p := t.p.New()
 	return &InstancedBufferGeometry{p: p}

@@ -7,13 +7,13 @@ import (
 // Sphere represents a sphere.
 type Sphere struct{ p *js.Object }
 
-// Sphere returns a sphere object.
+// Sphere returns a Sphere object.
 func (t *Three) Sphere() *Sphere {
 	p := t.ctx.Get("Sphere")
 	return &Sphere{p: p}
 }
 
-// NewSphere returns a new sphere object.
+// New returns a new Sphere object.
 func (t *Sphere) New(center, radius float64) *Sphere {
 	p := t.p.New(center, radius)
 	return &Sphere{p: p}

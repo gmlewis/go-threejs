@@ -7,13 +7,13 @@ import (
 // AnimationUtils represents an animationutils.
 type AnimationUtils struct{ p *js.Object }
 
-// AnimationUtils returns an animationutils object.
+// AnimationUtils returns an AnimationUtils object.
 func (t *Three) AnimationUtils() *AnimationUtils {
 	p := t.ctx.Get("AnimationUtils")
 	return &AnimationUtils{p: p}
 }
 
-// NewAnimationUtils returns a new animationutils object.
+// New returns a new AnimationUtils object.
 func (t *AnimationUtils) New() *AnimationUtils {
 	p := t.p.New()
 	return &AnimationUtils{p: p}
@@ -54,3 +54,4 @@ func (a *AnimationUtils) FlattenJSON(jsonKeys, times, values, valuePropertyName 
 	a.p.Call("flattenJSON", jsonKeys, times, values, valuePropertyName)
 	return a
 }
+

@@ -7,13 +7,13 @@ import (
 // BufferGeometry represents a buffergeometry.
 type BufferGeometry struct{ p *js.Object }
 
-// BufferGeometry returns a buffergeometry object.
+// BufferGeometry returns a BufferGeometry object.
 func (t *Three) BufferGeometry() *BufferGeometry {
 	p := t.ctx.Get("BufferGeometry")
 	return &BufferGeometry{p: p}
 }
 
-// NewBufferGeometry returns a new buffergeometry object.
+// New returns a new BufferGeometry object.
 func (t *BufferGeometry) New() *BufferGeometry {
 	p := t.p.New()
 	return &BufferGeometry{p: p}
@@ -204,3 +204,4 @@ func (b *BufferGeometry) Dispose() *BufferGeometry {
 	b.p.Call("dispose")
 	return b
 }
+

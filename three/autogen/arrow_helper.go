@@ -7,15 +7,15 @@ import (
 // ArrowHelper represents an arrowhelper.
 type ArrowHelper struct{ p *js.Object }
 
-// ArrowHelper returns an arrowhelper object.
+// ArrowHelper returns an ArrowHelper object.
 func (t *Three) ArrowHelper() *ArrowHelper {
 	p := t.ctx.Get("ArrowHelper")
 	return &ArrowHelper{p: p}
 }
 
-// NewArrowHelper returns a new arrowhelper object.
-func (t *ArrowHelper) New(dir, origin, length, color, headLength, headWidth float64) *ArrowHelper {
-	p := t.p.New(dir, origin, length, color, headLength, headWidth)
+// New returns a new ArrowHelper object.
+func (t *ArrowHelper) New() *ArrowHelper {
+	p := t.p.New()
 	return &ArrowHelper{p: p}
 }
 
@@ -30,3 +30,4 @@ func (a *ArrowHelper) SetColor(color float64) *ArrowHelper {
 	a.p.Call("setColor", color)
 	return a
 }
+

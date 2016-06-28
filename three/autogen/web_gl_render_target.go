@@ -7,13 +7,13 @@ import (
 // WebGLRenderTarget represents a webglrendertarget.
 type WebGLRenderTarget struct{ p *js.Object }
 
-// WebGLRenderTarget returns a webglrendertarget object.
+// WebGLRenderTarget returns a WebGLRenderTarget object.
 func (t *Three) WebGLRenderTarget() *WebGLRenderTarget {
 	p := t.ctx.Get("WebGLRenderTarget")
 	return &WebGLRenderTarget{p: p}
 }
 
-// NewWebGLRenderTarget returns a new webglrendertarget object.
+// New returns a new WebGLRenderTarget object.
 func (t *WebGLRenderTarget) New(width, height, options float64) *WebGLRenderTarget {
 	p := t.p.New(width, height, options)
 	return &WebGLRenderTarget{p: p}

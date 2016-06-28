@@ -7,13 +7,13 @@ import (
 // Spherical represents a spherical.
 type Spherical struct{ p *js.Object }
 
-// Spherical returns a spherical object.
+// Spherical returns a Spherical object.
 func (t *Three) Spherical() *Spherical {
 	p := t.ctx.Get("Spherical")
 	return &Spherical{p: p}
 }
 
-// NewSpherical returns a new spherical object.
+// New returns a new Spherical object.
 func (t *Spherical) New(radius, phi, theta float64) *Spherical {
 	p := t.p.New(radius, phi, theta)
 	return &Spherical{p: p}

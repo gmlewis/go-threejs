@@ -7,13 +7,13 @@ import (
 // Texture represents a texture.
 type Texture struct{ p *js.Object }
 
-// Texture returns a texture object.
+// Texture returns a Texture object.
 func (t *Three) Texture() *Texture {
 	p := t.ctx.Get("Texture")
 	return &Texture{p: p}
 }
 
-// NewTexture returns a new texture object.
+// New returns a new Texture object.
 func (t *Texture) New(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *Texture {
 	p := t.p.New(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
 	return &Texture{p: p}
@@ -54,3 +54,4 @@ func (t *Texture) TransformUv(uv float64) *Texture {
 	t.p.Call("transformUv", uv)
 	return t
 }
+

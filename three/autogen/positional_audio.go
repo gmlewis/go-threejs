@@ -7,13 +7,13 @@ import (
 // PositionalAudio represents a positionalaudio.
 type PositionalAudio struct{ p *js.Object }
 
-// PositionalAudio returns a positionalaudio object.
+// PositionalAudio returns a PositionalAudio object.
 func (t *Three) PositionalAudio() *PositionalAudio {
 	p := t.ctx.Get("PositionalAudio")
 	return &PositionalAudio{p: p}
 }
 
-// NewPositionalAudio returns a new positionalaudio object.
+// New returns a new PositionalAudio object.
 func (t *PositionalAudio) New(listener float64) *PositionalAudio {
 	p := t.p.New(listener)
 	return &PositionalAudio{p: p}

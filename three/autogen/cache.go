@@ -7,13 +7,13 @@ import (
 // Cache represents a cache.
 type Cache struct{ p *js.Object }
 
-// Cache returns a cache object.
+// Cache returns a Cache object.
 func (t *Three) Cache() *Cache {
 	p := t.ctx.Get("Cache")
 	return &Cache{p: p}
 }
 
-// NewCache returns a new cache object.
+// New returns a new Cache object.
 func (t *Cache) New() *Cache {
 	p := t.p.New()
 	return &Cache{p: p}
