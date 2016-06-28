@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// PerspectiveCamera represents a perspectivecamera.
+// PerspectiveCamera is a camera with perspective projection.
+//
+// http://threejs.org/docs/index.html#Reference/Cameras/PerspectiveCamera
 type PerspectiveCamera struct{ p *js.Object }
 
 // PerspectiveCamera returns a PerspectiveCamera object.
@@ -42,4 +44,3 @@ func (p *PerspectiveCamera) ToJSON(meta float64) *PerspectiveCamera {
 	p.p.Call("toJSON", meta)
 	return p
 }
-

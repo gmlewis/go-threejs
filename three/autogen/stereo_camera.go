@@ -4,7 +4,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// StereoCamera represents a stereocamera.
+// StereoCamera is a stereo projection camera with left and right eyes.
 type StereoCamera struct{ p *js.Object }
 
 // StereoCamera returns a StereoCamera object.
@@ -18,4 +18,3 @@ func (t *StereoCamera) New() *StereoCamera {
 	p := t.p.New()
 	return &StereoCamera{p: p}
 }
-

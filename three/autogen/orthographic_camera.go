@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// OrthographicCamera represents an orthographiccamera.
+// OrthographicCamera is a camera with orthographic projection.
+//
+// http://threejs.org/docs/index.html#Reference/Cameras/OrthographicCamera
 type OrthographicCamera struct{ p *js.Object }
 
 // OrthographicCamera returns an OrthographicCamera object.
@@ -30,4 +32,3 @@ func (o *OrthographicCamera) ToJSON(meta float64) *OrthographicCamera {
 	o.p.Call("toJSON", meta)
 	return o
 }
-
