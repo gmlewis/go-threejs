@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Fog represents a fog.
+// Fog represents linear fog.
+//
+// http://threejs.org/docs/index.html#Reference/Scenes/Fog
 type Fog struct{ p *js.Object }
 
 // Fog returns a Fog object.
@@ -18,4 +20,3 @@ func (t *Fog) New(color, near, far float64) *Fog {
 	p := t.p.New(color, near, far)
 	return &Fog{p: p}
 }
-

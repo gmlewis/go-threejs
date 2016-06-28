@@ -4,7 +4,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Scene represents a scene.
+// Scene represents a three.js scene.
 type Scene struct{ p *js.Object }
 
 // Scene returns a Scene object.
@@ -14,6 +14,8 @@ func (t *Three) Scene() *Scene {
 }
 
 // New returns a new Scene object.
+//
+// http://threejs.org/docs/index.html#Reference/Scenes/Scene
 func (t *Scene) New() *Scene {
 	p := t.p.New()
 	return &Scene{p: p}
@@ -25,3 +27,8 @@ func (s *Scene) Copy(source, recursive float64) *Scene {
 	return s
 }
 
+// Add adds an object to a scene.
+func (s *Scene) Add(obj *js.Object) *Scene {
+	s.p.Call("add", obj)
+	return s
+}
