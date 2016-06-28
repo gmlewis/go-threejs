@@ -197,7 +197,7 @@ func (v *Vector3) ApplyProjection(m *Matrix4) *Vector3 {
 // and stores the result in v.
 func (v *Vector3) ApplyQuaternion(q *Quaternion) *Vector3 {
 	x, y, z := v.X, v.Y, v.Z
-	qx, qy, qz, qw := q.X, q.Y, q.Z, q.W
+	qx, qy, qz, qw := q.X(), q.Y(), q.Z(), q.W()
 	ix := qw*x + qy*z - qz*y
 	iy := qw*y + qz*x - qx*z
 	iz := qw*z + qx*y - qy*x
