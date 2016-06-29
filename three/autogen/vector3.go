@@ -4,7 +4,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Vector3 represents a vector3.
+// Vector3 represents a three-dimensional vector.
 type Vector3 struct{ p *js.Object }
 
 // Vector3 returns a Vector3 object.
@@ -19,44 +19,44 @@ func (t *Vector3) New(x, y, z float64) *Vector3 {
 	return &Vector3{p: p}
 }
 
-// Set TODO description.
+// Set sets the vector values.
 func (v *Vector3) Set(x, y, z float64) *Vector3 {
 	v.p.Call("set", x, y, z)
 	return v
 }
 
-// SetScalar TODO description.
+// SetScalar sets all components of v to scalar.
 func (v *Vector3) SetScalar(scalar float64) *Vector3 {
 	v.p.Call("setScalar", scalar)
 	return v
 }
 
-// SetX TODO description.
+// SetX sets the X component of the vector.
 func (v *Vector3) SetX(x float64) *Vector3 {
 	v.p.Call("setX", x)
 	return v
 }
 
-// SetY TODO description.
+// SetY sets the Y component of the vector.
 func (v *Vector3) SetY(y float64) *Vector3 {
 	v.p.Call("setY", y)
 	return v
 }
 
-// SetZ TODO description.
+// SetZ sets the Z component of the vector.
 func (v *Vector3) SetZ(z float64) *Vector3 {
 	v.p.Call("setZ", z)
 	return v
 }
 
-// SetComponent TODO description.
-func (v *Vector3) SetComponent(index, value float64) *Vector3 {
+// SetComponent sets the indexed component of the vector.
+func (v *Vector3) SetComponent(index int, value float64) *Vector3 {
 	v.p.Call("setComponent", index, value)
 	return v
 }
 
-// GetComponent TODO description.
-func (v *Vector3) GetComponent(index float64) *Vector3 {
+// GetComponent returns the indexed component of the vector.
+func (v *Vector3) GetComponent(index int) *Vector3 {
 	v.p.Call("getComponent", index)
 	return v
 }
@@ -67,69 +67,69 @@ func (v *Vector3) Clone() *Vector3 {
 	return v
 }
 
-// Copy TODO description.
-func (v *Vector3) Copy(v float64) *Vector3 {
-	v.p.Call("copy", v)
+// Copy copies the src vector to v.
+func (v *Vector3) Copy(src *Vector3) *Vector3 {
+	v.p.Call("copy", src.p)
 	return v
 }
 
-// Add TODO description.
-func (v *Vector3) Add(v, w float64) *Vector3 {
-	v.p.Call("add", v, w)
+// Add adds the src vector to v.
+func (v *Vector3) Add(src *Vector3) *Vector3 {
+	v.p.Call("add", src.p)
 	return v
 }
 
-// AddScalar TODO description.
+// AddScalar adds scalar to the components of v.
 func (v *Vector3) AddScalar(s float64) *Vector3 {
 	v.p.Call("addScalar", s)
 	return v
 }
 
-// AddVectors TODO description.
-func (v *Vector3) AddVectors(a, b float64) *Vector3 {
-	v.p.Call("addVectors", a, b)
+// AddVectors adds the two vectors and stores the result in v.
+func (v *Vector3) AddVectors(a, b *Vector3) *Vector3 {
+	v.p.Call("addVectors", a.p, b.p)
 	return v
 }
 
-// AddScaledVector TODO description.
-func (v *Vector3) AddScaledVector(v, s float64) *Vector3 {
-	v.p.Call("addScaledVector", v, s)
+// AddScaledVector adds scaled vector src to v.
+func (v *Vector3) AddScaledVector(src *Vector3, s float64) *Vector3 {
+	v.p.Call("addScaledVector", src.p, s)
 	return v
 }
 
-// Sub TODO description.
-func (v *Vector3) Sub(v, w float64) *Vector3 {
-	v.p.Call("sub", v, w)
+// Sub subtracts src from v and stores the result in v.
+func (v *Vector3) Sub(src *Vector3) *Vector3 {
+	v.p.Call("sub", src.p)
 	return v
 }
 
-// SubScalar TODO description.
+// SubScalar subtracts scalar from the components of v.
 func (v *Vector3) SubScalar(s float64) *Vector3 {
 	v.p.Call("subScalar", s)
 	return v
 }
 
-// SubVectors TODO description.
-func (v *Vector3) SubVectors(a, b float64) *Vector3 {
-	v.p.Call("subVectors", a, b)
+// SubVectors subtracts the two vectors and stores the result in v.
+func (v *Vector3) SubVectors(a, b *Vector3) *Vector3 {
+	v.p.Call("subVectors", a.p, b.p)
 	return v
 }
 
-// Multiply TODO description.
-func (v *Vector3) Multiply(v, w float64) *Vector3 {
-	v.p.Call("multiply", v, w)
+// Multiply multiplies vector v by the src vector.
+func (v *Vector3) Multiply(src *Vector3) *Vector3 {
+	v.p.Call("multiply", src.p)
 	return v
 }
 
-// MultiplyScalar TODO description.
+// MultiplyScalar multiplies the components of v by scalar.
 func (v *Vector3) MultiplyScalar(scalar float64) *Vector3 {
 	v.p.Call("multiplyScalar", scalar)
 	return v
 }
 
-// MultiplyVectors TODO description.
-func (v *Vector3) MultiplyVectors(a, b float64) *Vector3 {
-	v.p.Call("multiplyVectors", a, b)
+// MultiplyVectors multiplies a by b and stores the result in v.
+func (v *Vector3) MultiplyVectors(a, b *Vector3) *Vector3 {
+	v.p.Call("multiplyVectors", a.p, b.p)
 	return v
 }
 
@@ -145,27 +145,29 @@ func (v *Vector3) ApplyAxisAngle() *Vector3 {
 	return v
 }
 
-// ApplyMatrix3 TODO description.
-func (v *Vector3) ApplyMatrix3(m float64) *Vector3 {
-	v.p.Call("applyMatrix3", m)
+// ApplyMatrix3 multiplies m by v and stores the result in v.
+func (v *Vector3) ApplyMatrix3(m *Matrix3) *Vector3 {
+	v.p.Call("applyMatrix3", m.p)
 	return v
 }
 
-// ApplyMatrix4 TODO description.
-func (v *Vector3) ApplyMatrix4(m float64) *Vector3 {
-	v.p.Call("applyMatrix4", m)
+// ApplyMatrix4 multiplies m by v and stores the result in v.
+func (v *Vector3) ApplyMatrix4(m *Matrix4) *Vector3 {
+	v.p.Call("applyMatrix4", m.p)
 	return v
 }
 
-// ApplyProjection TODO description.
-func (v *Vector3) ApplyProjection(m float64) *Vector3 {
-	v.p.Call("applyProjection", m)
+// ApplyProjection applies the projection matrix m to v
+// and stores the result in v.
+func (v *Vector3) ApplyProjection(m *Matrix4) *Vector3 {
+	v.p.Call("applyProjection", m.p)
 	return v
 }
 
-// ApplyQuaternion TODO description.
-func (v *Vector3) ApplyQuaternion(q float64) *Vector3 {
-	v.p.Call("applyQuaternion", q)
+// ApplyQuaternion applies the quaternion q to v
+// and stores the result in v.
+func (v *Vector3) ApplyQuaternion(q *Quaternion) *Vector3 {
+	v.p.Call("applyQuaternion", q.p)
 	return v
 }
 
@@ -181,39 +183,43 @@ func (v *Vector3) Unproject() *Vector3 {
 	return v
 }
 
-// TransformDirection TODO description.
-func (v *Vector3) TransformDirection(m float64) *Vector3 {
-	v.p.Call("transformDirection", m)
+// TransformDirection transforms v by affine matrix m
+// and stores the results in v.
+func (v *Vector3) TransformDirection(m *Matrix4) *Vector3 {
+	v.p.Call("transformDirection", m.p)
 	return v
 }
 
-// Divide TODO description.
-func (v *Vector3) Divide(v float64) *Vector3 {
-	v.p.Call("divide", v)
+// Divide divides vector v by the src vector.
+func (v *Vector3) Divide(src *Vector3) *Vector3 {
+	v.p.Call("divide", src.p)
 	return v
 }
 
-// DivideScalar TODO description.
+// DivideScalar divides the components of v by scalar.
 func (v *Vector3) DivideScalar(scalar float64) *Vector3 {
 	v.p.Call("divideScalar", scalar)
 	return v
 }
 
-// Min TODO description.
-func (v *Vector3) Min(v float64) *Vector3 {
-	v.p.Call("min", v)
+// Min sets the components of v to the min of v and src.
+func (v *Vector3) Min(src *Vector3) *Vector3 {
+	v.p.Call("min", src.p)
 	return v
 }
 
-// Max TODO description.
-func (v *Vector3) Max(v float64) *Vector3 {
-	v.p.Call("max", v)
+// Max sets the components of v to the max of v and src.
+func (v *Vector3) Max(src *Vector3) *Vector3 {
+	v.p.Call("max", src.p)
 	return v
 }
 
-// Clamp TODO description.
-func (v *Vector3) Clamp(min, max float64) *Vector3 {
-	v.p.Call("clamp", min, max)
+// Clamp clamps the components of v between min and max.
+//
+// Note that the min components must be less than the max components
+// or this function will not operate correctly.
+func (v *Vector3) Clamp(min, max *Vector3) *Vector3 {
+	v.p.Call("clamp", min.p, max.p)
 	return v
 }
 
@@ -223,99 +229,102 @@ func (v *Vector3) ClampScalar() *Vector3 {
 	return v
 }
 
-// ClampLength TODO description.
+// ClampLength clamps length of v between min and max.
 func (v *Vector3) ClampLength(min, max float64) *Vector3 {
 	v.p.Call("clampLength", min, max)
 	return v
 }
 
-// Floor TODO description.
+// Floor calls floor on the components of v.
 func (v *Vector3) Floor() *Vector3 {
 	v.p.Call("floor")
 	return v
 }
 
-// Ceil TODO description.
+// Ceil calls ceil on the components of v.
 func (v *Vector3) Ceil() *Vector3 {
 	v.p.Call("ceil")
 	return v
 }
 
-// Round TODO description.
+// Round rounds the components of v.
 func (v *Vector3) Round() *Vector3 {
 	v.p.Call("round")
 	return v
 }
 
-// RoundToZero TODO description.
+// RoundToZero rounds the components of v to zero.
 func (v *Vector3) RoundToZero() *Vector3 {
 	v.p.Call("roundToZero")
 	return v
 }
 
-// Negate TODO description.
+// Negate negates the components of v.
 func (v *Vector3) Negate() *Vector3 {
 	v.p.Call("negate")
 	return v
 }
 
-// Dot TODO description.
-func (v *Vector3) Dot(v float64) *Vector3 {
-	v.p.Call("dot", v)
-	return v
+// Dot returns the dot product of (v*src)
+func (v *Vector3) Dot(src *Vector3) float64 {
+	return v.p.Call("dot", src.p).Float()
 }
 
-// LengthSq TODO description.
-func (v *Vector3) LengthSq() *Vector3 {
-	v.p.Call("lengthSq")
-	return v
+// LengthSq returns the length of v squared.
+func (v *Vector3) LengthSq() float64 {
+	return v.p.Call("lengthSq").Float()
 }
 
-// Length TODO description.
-func (v *Vector3) Length() *Vector3 {
-	v.p.Call("length")
-	return v
+// Length returns the length of v.
+func (v *Vector3) Length() float64 {
+	return v.p.Call("length").Float()
 }
 
-// LengthManhattan TODO description.
-func (v *Vector3) LengthManhattan() *Vector3 {
+// LengthManhattan returns the manhattan length of v.
+func (v *Vector3) LengthManhattan() float64 {
 	v.p.Call("lengthManhattan")
 	return v
 }
 
-// Normalize TODO description.
+// Normalize normalizes v to unit length.
 func (v *Vector3) Normalize() *Vector3 {
 	v.p.Call("normalize")
 	return v
 }
 
-// SetLength TODO description.
+// SetLength sets the length of v.
 func (v *Vector3) SetLength(length float64) *Vector3 {
 	v.p.Call("setLength", length)
 	return v
 }
 
-// Lerp TODO description.
-func (v *Vector3) Lerp(v, alpha float64) *Vector3 {
-	v.p.Call("lerp", v, alpha)
+// Lerp linearly interpolates between v and src by alpha.
+//
+// alpha = 0 returns v unmodified.
+// alpha = 1 returns v set to src.
+func (v *Vector3) Lerp(src *Vector3, alpha float64) *Vector3 {
+	v.p.Call("lerp", src.p, alpha)
 	return v
 }
 
-// LerpVectors TODO description.
-func (v *Vector3) LerpVectors(v1, v2, alpha float64) *Vector3 {
-	v.p.Call("lerpVectors", v1, v2, alpha)
+// LerpVectors linearly interpolates between v1 and v2 by alpha.
+//
+// alpha = 0 sets v to v1.
+// alpha = 1 sets v to v2.
+func (v *Vector3) LerpVectors(v1, v2 *Vector3, alpha float64) *Vector3 {
+	v.p.Call("lerpVectors", v1.p, v2.p, alpha)
 	return v
 }
 
 // Cross TODO description.
-func (v *Vector3) Cross(v, w float64) *Vector3 {
-	v.p.Call("cross", v, w)
+func (v *Vector3) Cross(src *Vector3) *Vector3 {
+	v.p.Call("cross", src.p)
 	return v
 }
 
 // CrossVectors TODO description.
-func (v *Vector3) CrossVectors(a, b float64) *Vector3 {
-	v.p.Call("crossVectors", a, b)
+func (v *Vector3) CrossVectors(a, b *Vector3) *Vector3 {
+	v.p.Call("crossVectors", a.p, b.p)
 	return v
 }
 
@@ -338,20 +347,19 @@ func (v *Vector3) Reflect() *Vector3 {
 }
 
 // AngleTo TODO description.
-func (v *Vector3) AngleTo(v float64) *Vector3 {
-	v.p.Call("angleTo", v)
-	return v
+func (v *Vector3) AngleTo(src *Vector3) float64 {
+	return v.p.Call("angleTo", src.p).Float()
 }
 
 // DistanceTo TODO description.
-func (v *Vector3) DistanceTo(v float64) *Vector3 {
-	v.p.Call("distanceTo", v)
+func (v *Vector3) DistanceTo(src *Vector3) float64 {
+	v.p.Call("distanceTo", src.p)
 	return v
 }
 
 // DistanceToSquared TODO description.
-func (v *Vector3) DistanceToSquared(v float64) *Vector3 {
-	v.p.Call("distanceToSquared", v)
+func (v *Vector3) DistanceToSquared(src *Vector3) float64 {
+	v.p.Call("distanceToSquared", src.p)
 	return v
 }
 
@@ -362,37 +370,36 @@ func (v *Vector3) SetFromSpherical(s float64) *Vector3 {
 }
 
 // SetFromMatrixPosition TODO description.
-func (v *Vector3) SetFromMatrixPosition(m float64) *Vector3 {
-	v.p.Call("setFromMatrixPosition", m)
+func (v *Vector3) SetFromMatrixPosition(m *Matrix3) *Vector3 {
+	v.p.Call("setFromMatrixPosition", m.p)
 	return v
 }
 
 // SetFromMatrixScale TODO description.
-func (v *Vector3) SetFromMatrixScale(m float64) *Vector3 {
-	v.p.Call("setFromMatrixScale", m)
+func (v *Vector3) SetFromMatrixScale(m *Matrix3) *Vector3 {
+	v.p.Call("setFromMatrixScale", m.p)
 	return v
 }
 
 // SetFromMatrixColumn TODO description.
-func (v *Vector3) SetFromMatrixColumn(m, index float64) *Vector3 {
-	v.p.Call("setFromMatrixColumn", m, index)
+func (v *Vector3) SetFromMatrixColumn(m *Matrix3, index int) *Vector3 {
+	v.p.Call("setFromMatrixColumn", m.p, index)
 	return v
 }
 
-// Equals TODO description.
-func (v *Vector3) Equals(v float64) *Vector3 {
-	v.p.Call("equals", v)
-	return v
+// Equals compares v to src and returns true if equal.
+func (v *Vector3) Equals(src *Vector3) bool {
+	return v.p.Call("equals", v).Bool()
 }
 
-// FromArray TODO description.
-func (v *Vector3) FromArray(array, offset float64) *Vector3 {
+// FromArray sets v to the offset component of array.
+func (v *Vector3) FromArray(array []float64, offset int) *Vector3 {
 	v.p.Call("fromArray", array, offset)
 	return v
 }
 
-// ToArray TODO description.
-func (v *Vector3) ToArray(array, offset float64) *Vector3 {
+// ToArray sets the offset components of array from v.
+func (v *Vector3) ToArray(array []float64, offset int) *Vector3 {
 	v.p.Call("toArray", array, offset)
 	return v
 }
@@ -402,4 +409,3 @@ func (v *Vector3) FromAttribute(attribute, index, offset float64) *Vector3 {
 	v.p.Call("fromAttribute", attribute, index, offset)
 	return v
 }
-
