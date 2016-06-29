@@ -63,21 +63,21 @@ func (q *Quaternion) SetW(value float64) *Quaternion {
 	return q
 }
 
-// Set TODO description.
+// Set sets the components of the quaternion.
 func (q *Quaternion) Set(x, y, z, w float64) *Quaternion {
 	q.p.Call("set", x, y, z, w)
 	return q
 }
 
-// Clone TODO description.
+// Clone returns a clone of this quaternion.
 func (q *Quaternion) Clone() *Quaternion {
 	q.p.Call("clone")
 	return q
 }
 
-// Copy TODO description.
-func (q *Quaternion) Copy(quaternion float64) *Quaternion {
-	q.p.Call("copy", quaternion)
+// Copy copies the values from quaternion into q.
+func (q *Quaternion) Copy(quaternion *Quaternion) *Quaternion {
+	q.p.Call("copy", quaternion.p)
 	return q
 }
 
@@ -94,8 +94,8 @@ func (q *Quaternion) SetFromAxisAngle(axis, angle float64) *Quaternion {
 }
 
 // SetFromRotationMatrix TODO description.
-func (q *Quaternion) SetFromRotationMatrix(m float64) *Quaternion {
-	q.p.Call("setFromRotationMatrix", m)
+func (q *Quaternion) SetFromRotationMatrix(m *Matrix3) *Quaternion {
+	q.p.Call("setFromRotationMatrix", m.p)
 	return q
 }
 
@@ -118,8 +118,8 @@ func (q *Quaternion) Conjugate() *Quaternion {
 }
 
 // Dot TODO description.
-func (q *Quaternion) Dot(v float64) *Quaternion {
-	q.p.Call("dot", v)
+func (q *Quaternion) Dot(src *Quaternion) *Quaternion {
+	q.p.Call("dot", src.p)
 	return q
 }
 
@@ -142,37 +142,36 @@ func (q *Quaternion) Normalize() *Quaternion {
 }
 
 // Multiply TODO description.
-func (q *Quaternion) Multiply(q, p float64) *Quaternion {
-	q.p.Call("multiply", q, p)
+func (q *Quaternion) Multiply(src *Quaternion) *Quaternion {
+	q.p.Call("multiply", src.p)
 	return q
 }
 
 // MultiplyQuaternions TODO description.
-func (q *Quaternion) MultiplyQuaternions(a, b float64) *Quaternion {
-	q.p.Call("multiplyQuaternions", a, b)
+func (q *Quaternion) MultiplyQuaternions(a, b *Quaternion) *Quaternion {
+	q.p.Call("multiplyQuaternions", a.p, b.p)
 	return q
 }
 
 // Slerp TODO description.
-func (q *Quaternion) Slerp(qb, t float64) *Quaternion {
-	q.p.Call("slerp", qb, t)
+func (q *Quaternion) Slerp(qb *Quaternion, t float64) *Quaternion {
+	q.p.Call("slerp", qb.p, t)
 	return q
 }
 
 // Equals TODO description.
-func (q *Quaternion) Equals(quaternion float64) *Quaternion {
-	q.p.Call("equals", quaternion)
-	return q
+func (q *Quaternion) Equals(quaternion *Quaternion) bool {
+	return q.p.Call("equals", quaternion.p).Bool()
 }
 
 // FromArray TODO description.
-func (q *Quaternion) FromArray(array, offset float64) *Quaternion {
+func (q *Quaternion) FromArray(array []float64, offset int) *Quaternion {
 	q.p.Call("fromArray", array, offset)
 	return q
 }
 
 // ToArray TODO description.
-func (q *Quaternion) ToArray(array, offset float64) *Quaternion {
+func (q *Quaternion) ToArray(array []float64, offset int) *Quaternion {
 	q.p.Call("toArray", array, offset)
 	return q
 }
@@ -190,7 +189,7 @@ func (q *Quaternion) OnChangeCallback() *Quaternion {
 }
 
 // SlerpFlat TODO description.
-func (q *Quaternion) SlerpFlat(dst, dstOffset, src0, srcOffset0, src1, srcOffset1, t float64) *Quaternion {
-	q.p.Call("slerpFlat", dst, dstOffset, src0, srcOffset0, src1, srcOffset1, t)
+func (q *Quaternion) SlerpFlat(dst *Quaternion, dstOffset int, src0 *Quaternion, srcOffset0 int, src1 *Quaternion, srcOffset1 int, t float64) *Quaternion {
+	q.p.Call("slerpFlat", dst.p, dstOffset, src0.p, srcOffset0, src1.p, srcOffset1, t)
 	return q
 }
