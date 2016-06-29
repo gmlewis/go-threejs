@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// LineDashedMaterial represents a linedashedmaterial.
+// LineDashedMaterial represents a material for drawing wireframe-style geometries with dashed lines.
+//
+// http://threejs.org/docs/index.html#Reference/Materials/LineDashedMaterial
 type LineDashedMaterial struct{ p *js.Object }
 
 // LineDashedMaterial returns a LineDashedMaterial object.
@@ -14,14 +16,22 @@ func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 }
 
 // New returns a new LineDashedMaterial object.
-func (t *LineDashedMaterial) New(parameters float64) *LineDashedMaterial {
+//
+// parameters is an object with one or more properties defining the material's appearance:
+//     color — Line color in hexadecimal. Default is 0xffffff.
+//     linewidth — Line thickness. Default is 1.
+//     scale — The scale of the dashed part of a line. Default is 1.
+//     dashSize — The size of the dash. Default is 3.
+//     gapSize - The size of the gap. Default is 1.
+//     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
+//     fog — Define whether the material color is affected by global fog settings. Default is false.
+func (t *LineDashedMaterial) New(parameters map[string]interface{}) *LineDashedMaterial {
 	p := t.p.New(parameters)
 	return &LineDashedMaterial{p: p}
 }
 
 // Copy TODO description.
-func (l *LineDashedMaterial) Copy(source float64) *LineDashedMaterial {
-	l.p.Call("copy", source)
+func (l *LineDashedMaterial) Copy(source *LineDashedMaterial) *LineDashedMaterial {
+	l.p.Call("copy", source.p)
 	return l
 }
-

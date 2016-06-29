@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// PointsMaterial represents a pointsmaterial.
+// PointsMaterial represents a material used by particle systems.
+//
+// http://threejs.org/docs/index.html#Reference/Materials/PointsMaterial
 type PointsMaterial struct{ p *js.Object }
 
 // PointsMaterial returns a PointsMaterial object.
@@ -14,14 +16,21 @@ func (t *Three) PointsMaterial() *PointsMaterial {
 }
 
 // New returns a new PointsMaterial object.
-func (t *PointsMaterial) New(parameters float64) *PointsMaterial {
+//
+// parameters is an object with one or more properties defining the material's appearance:
+//     color — Particle color in hexadecimal. Default is 0xffffff.
+//     map — a texture.If defined, then a point has the data from texture as colors. Default is null.
+//     size — Define size of particles. Default is 1.0.
+//     sizeAttenuation — Enable/disable size attenuation with distance.
+//     vertexColors — Define whether the material uses vertex colors, or not. Default is false.
+//     fog — Define whether the material color is affected by global fog settings. Default is true.
+func (t *PointsMaterial) New(parameters map[string]interface{}) *PointsMaterial {
 	p := t.p.New(parameters)
 	return &PointsMaterial{p: p}
 }
 
 // Copy TODO description.
-func (p *PointsMaterial) Copy(source float64) *PointsMaterial {
-	p.p.Call("copy", source)
+func (p *PointsMaterial) Copy(source *PointsMaterial) *PointsMaterial {
+	p.p.Call("copy", source.p)
 	return p
 }
-

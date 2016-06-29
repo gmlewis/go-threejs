@@ -4,7 +4,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Material represents a material.
+// Material represents a generic material.
 type Material struct{ p *js.Object }
 
 // Material returns a Material object.
@@ -65,4 +65,3 @@ func (m *Material) Dispose() *Material {
 	m.p.Call("dispose")
 	return m
 }
-
