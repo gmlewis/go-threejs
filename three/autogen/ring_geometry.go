@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// RingGeometry represents a ringgeometry.
+// RingGeometry represents two-dimensional ring geometry.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Geometries/RingGeometry
 type RingGeometry struct{ p *js.Object }
 
 // RingGeometry returns a RingGeometry object.
@@ -14,8 +16,14 @@ func (t *Three) RingGeometry() *RingGeometry {
 }
 
 // New returns a new RingGeometry object.
-func (t *RingGeometry) New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength float64) *RingGeometry {
+//
+//     innerRadius — Default is 0, but it doesn't work right when innerRadius is set to 0.
+//     outerRadius — Default is 50.
+//     thetaSegments — Number of segments. A higher number means the ring will be more round. Minimum is 3. Default is 8.
+//     phiSegments — Minimum is 1. Default is 8.
+//     thetaStart — Starting angle. Default is 0.
+//     thetaLength — Central angle. Default is Math.PI * 2.
+func (t *RingGeometry) New(innerRadius, outerRadius float64, thetaSegments, phiSegments int, thetaStart, thetaLength float64) *RingGeometry {
 	p := t.p.New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
 	return &RingGeometry{p: p}
 }
-
