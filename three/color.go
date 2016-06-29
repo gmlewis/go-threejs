@@ -158,9 +158,8 @@ func (c *Color) Lerp(color, alpha float64) *Color {
 }
 
 // Equals TODO description.
-func (c *Color) Equals(c float64) *Color {
-	c.p.Call("equals", c)
-	return c
+func (c *Color) Equals(color *Color) bool {
+	return c.p.Call("equals", color).Bool()
 }
 
 // FromArray TODO description.
@@ -174,4 +173,3 @@ func (c *Color) ToArray(array, offset float64) *Color {
 	c.p.Call("toArray", array, offset)
 	return c
 }
-

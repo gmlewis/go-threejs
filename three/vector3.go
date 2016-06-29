@@ -282,8 +282,7 @@ func (v *Vector3) Length() float64 {
 
 // LengthManhattan returns the manhattan length of v.
 func (v *Vector3) LengthManhattan() float64 {
-	v.p.Call("lengthManhattan")
-	return v
+	return v.p.Call("lengthManhattan").Float()
 }
 
 // Normalize normalizes v to unit length.
@@ -353,14 +352,12 @@ func (v *Vector3) AngleTo(src *Vector3) float64 {
 
 // DistanceTo TODO description.
 func (v *Vector3) DistanceTo(src *Vector3) float64 {
-	v.p.Call("distanceTo", src.p)
-	return v
+	return v.p.Call("distanceTo", src.p).Float()
 }
 
 // DistanceToSquared TODO description.
 func (v *Vector3) DistanceToSquared(src *Vector3) float64 {
-	v.p.Call("distanceToSquared", src.p)
-	return v
+	return v.p.Call("distanceToSquared", src.p).Float()
 }
 
 // SetFromSpherical TODO description.

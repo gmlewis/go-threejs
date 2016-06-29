@@ -15,6 +15,6 @@ func (t *Three) TorusKnotBufferGeometry() *TorusKnotBufferGeometry {
 
 // New returns a new TorusKnotBufferGeometry object.
 func (t *TorusKnotBufferGeometry) New(radius, tube, tubularSegments, radialSegments, p, q float64) *TorusKnotBufferGeometry {
-	t = t.p.New(radius, tube, tubularSegments, radialSegments, p, q)
-	return &TorusKnotBufferGeometry{p: t}
+	s := t.p.New(radius, tube, tubularSegments, radialSegments, p, q)
+	return &TorusKnotBufferGeometry{p: s}
 }

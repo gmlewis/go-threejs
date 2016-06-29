@@ -38,14 +38,14 @@ func (m *Matrix4) Clone() *Matrix4 {
 }
 
 // Copy TODO description.
-func (m *Matrix4) Copy(m float64) *Matrix4 {
-	m.p.Call("copy", m)
+func (m *Matrix4) Copy(src *Matrix4) *Matrix4 {
+	m.p.Call("copy", src.p)
 	return m
 }
 
 // CopyPosition TODO description.
-func (m *Matrix4) CopyPosition(m float64) *Matrix4 {
-	m.p.Call("copyPosition", m)
+func (m *Matrix4) CopyPosition(src *Matrix4) *Matrix4 {
+	m.p.Call("copyPosition", src.p)
 	return m
 }
 
@@ -86,14 +86,14 @@ func (m *Matrix4) LookAt() *Matrix4 {
 }
 
 // Multiply TODO description.
-func (m *Matrix4) Multiply(m, n float64) *Matrix4 {
-	m.p.Call("multiply", m, n)
+func (m *Matrix4) Multiply(src *Matrix4) *Matrix4 {
+	m.p.Call("multiply", src.p)
 	return m
 }
 
 // MultiplyMatrices TODO description.
-func (m *Matrix4) MultiplyMatrices(a, b float64) *Matrix4 {
-	m.p.Call("multiplyMatrices", a, b)
+func (m *Matrix4) MultiplyMatrices(a, b *Matrix4) *Matrix4 {
+	m.p.Call("multiplyMatrices", a.p, b.p)
 	return m
 }
 
@@ -152,8 +152,8 @@ func (m *Matrix4) SetPosition(v float64) *Matrix4 {
 }
 
 // GetInverse TODO description.
-func (m *Matrix4) GetInverse(m, throwOnDegenerate float64) *Matrix4 {
-	m.p.Call("getInverse", m, throwOnDegenerate)
+func (m *Matrix4) GetInverse(src *Matrix4, throwOnDegenerate bool) *Matrix4 {
+	m.p.Call("getInverse", src.p, throwOnDegenerate)
 	return m
 }
 
@@ -252,4 +252,3 @@ func (m *Matrix4) ToArray() *Matrix4 {
 	m.p.Call("toArray")
 	return m
 }
-

@@ -38,14 +38,14 @@ func (m *Matrix3) Clone() *Matrix3 {
 }
 
 // Copy TODO description.
-func (m *Matrix3) Copy(m float64) *Matrix3 {
-	m.p.Call("copy", m)
+func (m *Matrix3) Copy(src *Matrix3) *Matrix3 {
+	m.p.Call("copy", src.p)
 	return m
 }
 
 // SetFromMatrix4 TODO description.
-func (m *Matrix3) SetFromMatrix4(m float64) *Matrix3 {
-	m.p.Call("setFromMatrix4", m)
+func (m *Matrix3) SetFromMatrix4(src *Matrix4) *Matrix3 {
+	m.p.Call("setFromMatrix4", src.p)
 	return m
 }
 
@@ -114,4 +114,3 @@ func (m *Matrix3) ToArray() *Matrix3 {
 	m.p.Call("toArray")
 	return m
 }
-

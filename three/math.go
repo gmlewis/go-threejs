@@ -32,8 +32,8 @@ func (m *Math) Clamp(value, min, max float64) *Math {
 }
 
 // EuclideanModulo TODO description.
-func (m *Math) EuclideanModulo(n, m float64) *Math {
-	m.p.Call("euclideanModulo", n, m)
+func (m *Math) EuclideanModulo(n, mod float64) *Math {
+	m.p.Call("euclideanModulo", n, mod)
 	return m
 }
 
@@ -108,4 +108,3 @@ func (m *Math) NextPowerOfTwo(value float64) *Math {
 	m.p.Call("nextPowerOfTwo", value)
 	return m
 }
-

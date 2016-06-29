@@ -25,6 +25,6 @@ func (t *Three) TorusKnotGeometry() *TorusKnotGeometry {
 //     q — Default is 3.
 //     heightScale — Default is 1.
 func (t *TorusKnotGeometry) New(radius, tube float64, tubularSegments, radialSegments int, p, q, heightScale float64) *TorusKnotGeometry {
-	t = t.p.New(radius, tube, tubularSegments, radialSegments, p, q, heightScale)
-	return &TorusKnotGeometry{p: t}
+	s := t.p.New(radius, tube, tubularSegments, radialSegments, p, q, heightScale)
+	return &TorusKnotGeometry{p: s}
 }

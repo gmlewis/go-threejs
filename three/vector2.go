@@ -296,10 +296,12 @@ func (v *Vector2) FromArray(array []float64, offset float64) *Vector2 {
 	return v
 }
 
+/* TODO
 // ToArray sets the offset components of array from v.
 func (v *Vector2) ToArray(array []float64, offset float64) []float64 {
 	return v.p.Call("toArray", array, offset)
 }
+*/
 
 // FromAttribute TODO description.
 func (v *Vector2) FromAttribute(attribute, index, offset float64) *Vector2 {

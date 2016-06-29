@@ -74,14 +74,14 @@ func (v *Vector4) Clone() *Vector4 {
 }
 
 // Copy TODO description.
-func (v *Vector4) Copy(v float64) *Vector4 {
-	v.p.Call("copy", v)
+func (v *Vector4) Copy(src *Vector4) *Vector4 {
+	v.p.Call("copy", src.p)
 	return v
 }
 
 // Add TODO description.
-func (v *Vector4) Add(v, w float64) *Vector4 {
-	v.p.Call("add", v, w)
+func (v *Vector4) Add(src *Vector4) *Vector4 {
+	v.p.Call("add", src.p)
 	return v
 }
 
@@ -92,20 +92,20 @@ func (v *Vector4) AddScalar(s float64) *Vector4 {
 }
 
 // AddVectors TODO description.
-func (v *Vector4) AddVectors(a, b float64) *Vector4 {
-	v.p.Call("addVectors", a, b)
+func (v *Vector4) AddVectors(a, b *Vector4) *Vector4 {
+	v.p.Call("addVectors", a.p, b.p)
 	return v
 }
 
 // AddScaledVector TODO description.
-func (v *Vector4) AddScaledVector(v, s float64) *Vector4 {
-	v.p.Call("addScaledVector", v, s)
+func (v *Vector4) AddScaledVector(src *Vector4, s float64) *Vector4 {
+	v.p.Call("addScaledVector", src.p, s)
 	return v
 }
 
 // Sub TODO description.
-func (v *Vector4) Sub(v, w float64) *Vector4 {
-	v.p.Call("sub", v, w)
+func (v *Vector4) Sub(src *Vector4) *Vector4 {
+	v.p.Call("sub", src.p)
 	return v
 }
 
@@ -116,8 +116,8 @@ func (v *Vector4) SubScalar(s float64) *Vector4 {
 }
 
 // SubVectors TODO description.
-func (v *Vector4) SubVectors(a, b float64) *Vector4 {
-	v.p.Call("subVectors", a, b)
+func (v *Vector4) SubVectors(a, b *Vector4) *Vector4 {
+	v.p.Call("subVectors", a.p, b.p)
 	return v
 }
 
@@ -128,8 +128,8 @@ func (v *Vector4) MultiplyScalar(scalar float64) *Vector4 {
 }
 
 // ApplyMatrix4 TODO description.
-func (v *Vector4) ApplyMatrix4(m float64) *Vector4 {
-	v.p.Call("applyMatrix4", m)
+func (v *Vector4) ApplyMatrix4(m *Matrix4) *Vector4 {
+	v.p.Call("applyMatrix4", m.p)
 	return v
 }
 
@@ -140,32 +140,32 @@ func (v *Vector4) DivideScalar(scalar float64) *Vector4 {
 }
 
 // SetAxisAngleFromQuaternion TODO description.
-func (v *Vector4) SetAxisAngleFromQuaternion(q float64) *Vector4 {
-	v.p.Call("setAxisAngleFromQuaternion", q)
+func (v *Vector4) SetAxisAngleFromQuaternion(q *Quaternion) *Vector4 {
+	v.p.Call("setAxisAngleFromQuaternion", q.p)
 	return v
 }
 
 // SetAxisAngleFromRotationMatrix TODO description.
-func (v *Vector4) SetAxisAngleFromRotationMatrix(m float64) *Vector4 {
-	v.p.Call("setAxisAngleFromRotationMatrix", m)
+func (v *Vector4) SetAxisAngleFromRotationMatrix(m *Matrix4) *Vector4 {
+	v.p.Call("setAxisAngleFromRotationMatrix", m.p)
 	return v
 }
 
 // Min TODO description.
-func (v *Vector4) Min(v float64) *Vector4 {
-	v.p.Call("min", v)
+func (v *Vector4) Min(src *Vector4) *Vector4 {
+	v.p.Call("min", src.p)
 	return v
 }
 
 // Max TODO description.
-func (v *Vector4) Max(v float64) *Vector4 {
-	v.p.Call("max", v)
+func (v *Vector4) Max(src *Vector4) *Vector4 {
+	v.p.Call("max", src.p)
 	return v
 }
 
 // Clamp TODO description.
-func (v *Vector4) Clamp(min, max float64) *Vector4 {
-	v.p.Call("clamp", min, max)
+func (v *Vector4) Clamp(min, max *Vector4) *Vector4 {
+	v.p.Call("clamp", min.p, max.p)
 	return v
 }
 
@@ -206,8 +206,8 @@ func (v *Vector4) Negate() *Vector4 {
 }
 
 // Dot TODO description.
-func (v *Vector4) Dot(v float64) *Vector4 {
-	v.p.Call("dot", v)
+func (v *Vector4) Dot(src *Vector4) *Vector4 {
+	v.p.Call("dot", src.p)
 	return v
 }
 
@@ -242,38 +242,38 @@ func (v *Vector4) SetLength(length float64) *Vector4 {
 }
 
 // Lerp TODO description.
-func (v *Vector4) Lerp(v, alpha float64) *Vector4 {
-	v.p.Call("lerp", v, alpha)
+func (v *Vector4) Lerp(src *Vector4, alpha float64) *Vector4 {
+	v.p.Call("lerp", src.p, alpha)
 	return v
 }
 
 // LerpVectors TODO description.
-func (v *Vector4) LerpVectors(v1, v2, alpha float64) *Vector4 {
-	v.p.Call("lerpVectors", v1, v2, alpha)
+func (v *Vector4) LerpVectors(v1, v2 *Vector4, alpha float64) *Vector4 {
+	v.p.Call("lerpVectors", v1.p, v2.p, alpha)
 	return v
 }
 
 // Equals TODO description.
-func (v *Vector4) Equals(v float64) *Vector4 {
-	v.p.Call("equals", v)
-	return v
+func (v *Vector4) Equals(src *Vector4) bool {
+	return v.p.Call("equals", src.p).Bool()
 }
 
 // FromArray TODO description.
-func (v *Vector4) FromArray(array, offset float64) *Vector4 {
+func (v *Vector4) FromArray(array []float64, offset int) *Vector4 {
 	v.p.Call("fromArray", array, offset)
 	return v
 }
 
+/* TODO
 // ToArray TODO description.
 func (v *Vector4) ToArray(array, offset float64) *Vector4 {
 	v.p.Call("toArray", array, offset)
 	return v
 }
+*/
 
 // FromAttribute TODO description.
 func (v *Vector4) FromAttribute(attribute, index, offset float64) *Vector4 {
 	v.p.Call("fromAttribute", attribute, index, offset)
 	return v
 }
-
