@@ -41,40 +41,39 @@ func (v *Vector2) SetHeight(value float64) *Vector2 {
 	return v
 }
 
-// Set TODO description.
+// Set sets the vector values.
 func (v *Vector2) Set(x, y float64) *Vector2 {
 	v.p.Call("set", x, y)
 	return v
 }
 
-// SetScalar TODO description.
+// SetScalar sets all components of v to scalar.
 func (v *Vector2) SetScalar(scalar float64) *Vector2 {
 	v.p.Call("setScalar", scalar)
 	return v
 }
 
-// SetX TODO description.
+// SetX sets the X component of the vector.
 func (v *Vector2) SetX(x float64) *Vector2 {
 	v.p.Call("setX", x)
 	return v
 }
 
-// SetY TODO description.
+// SetY sets the Y component of the vector.
 func (v *Vector2) SetY(y float64) *Vector2 {
 	v.p.Call("setY", y)
 	return v
 }
 
-// SetComponent TODO description.
-func (v *Vector2) SetComponent(index, value float64) *Vector2 {
+// SetComponent sets the indexed component of the vector.
+func (v *Vector2) SetComponent(index int, value float64) *Vector2 {
 	v.p.Call("setComponent", index, value)
 	return v
 }
 
-// GetComponent TODO description.
-func (v *Vector2) GetComponent(index float64) *Vector2 {
-	v.p.Call("getComponent", index)
-	return v
+// GetComponent returns the indexed component of the vector.
+func (v *Vector2) GetComponent(index int) float64 {
+	return v.p.Call("getComponent", index).Float()
 }
 
 // Clone TODO description.
@@ -83,93 +82,96 @@ func (v *Vector2) Clone() *Vector2 {
 	return v
 }
 
-// Copy TODO description.
-func (v *Vector2) Copy(v float64) *Vector2 {
-	v.p.Call("copy", v)
+// Copy copies the src vector to v.
+func (v *Vector2) Copy(src *Vector2) *Vector2 {
+	v.p.Call("copy", src.p)
 	return v
 }
 
-// Add TODO description.
-func (v *Vector2) Add(v, w float64) *Vector2 {
-	v.p.Call("add", v, w)
+// Add adds the src vector to v.
+func (v *Vector2) Add(src *Vector2) *Vector2 {
+	v.p.Call("add", src.p)
 	return v
 }
 
-// AddScalar TODO description.
+// AddScalar adds s to the components of v.
 func (v *Vector2) AddScalar(s float64) *Vector2 {
 	v.p.Call("addScalar", s)
 	return v
 }
 
-// AddVectors TODO description.
-func (v *Vector2) AddVectors(a, b float64) *Vector2 {
-	v.p.Call("addVectors", a, b)
+// AddVectors adds vectors a and b and stores the result in v.
+func (v *Vector2) AddVectors(a, b *Vector2) *Vector2 {
+	v.p.Call("addVectors", a.p, b.p)
 	return v
 }
 
-// AddScaledVector TODO description.
-func (v *Vector2) AddScaledVector(v, s float64) *Vector2 {
-	v.p.Call("addScaledVector", v, s)
+// AddScaledVector adds scaled vector src to v.
+func (v *Vector2) AddScaledVector(src *Vector2, s float64) *Vector2 {
+	v.p.Call("addScaledVector", src.p, s)
 	return v
 }
 
-// Sub TODO description.
-func (v *Vector2) Sub(v, w float64) *Vector2 {
-	v.p.Call("sub", v, w)
+// Sub subtracts src from v and stores the result in v.
+func (v *Vector2) Sub(src *Vector2) *Vector2 {
+	v.p.Call("sub", src.p)
 	return v
 }
 
-// SubScalar TODO description.
+// SubScalar subtracts s from the components of v.
 func (v *Vector2) SubScalar(s float64) *Vector2 {
 	v.p.Call("subScalar", s)
 	return v
 }
 
-// SubVectors TODO description.
-func (v *Vector2) SubVectors(a, b float64) *Vector2 {
-	v.p.Call("subVectors", a, b)
+// SubVectors subtracts b from a and stores the result in v.
+func (v *Vector2) SubVectors(a, b *Vector2) *Vector2 {
+	v.p.Call("subVectors", a.p, b.p)
 	return v
 }
 
-// Multiply TODO description.
-func (v *Vector2) Multiply(v float64) *Vector2 {
-	v.p.Call("multiply", v)
+// Multiply multiplies vector v by the src vector.
+func (v *Vector2) Multiply(src *Vector2) *Vector2 {
+	v.p.Call("multiply", src.p)
 	return v
 }
 
-// MultiplyScalar TODO description.
+// MultiplyScalar multiplies the components of v by scalar.
 func (v *Vector2) MultiplyScalar(scalar float64) *Vector2 {
 	v.p.Call("multiplyScalar", scalar)
 	return v
 }
 
-// Divide TODO description.
-func (v *Vector2) Divide(v float64) *Vector2 {
-	v.p.Call("divide", v)
+// Divide divides vector v by the src vector.
+func (v *Vector2) Divide(src *Vector2) *Vector2 {
+	v.p.Call("divide", src.p)
 	return v
 }
 
-// DivideScalar TODO description.
+// DivideScalar divides the components of v by scalar.
 func (v *Vector2) DivideScalar(scalar float64) *Vector2 {
 	v.p.Call("divideScalar", scalar)
 	return v
 }
 
-// Min TODO description.
-func (v *Vector2) Min(v float64) *Vector2 {
-	v.p.Call("min", v)
+// Min sets the components of v to the min of v and src.
+func (v *Vector2) Min(src *Vector2) *Vector2 {
+	v.p.Call("min", src.p)
 	return v
 }
 
-// Max TODO description.
-func (v *Vector2) Max(v float64) *Vector2 {
-	v.p.Call("max", v)
+// Max sets the components of v to the max of v and src.
+func (v *Vector2) Max(src *Vector2) *Vector2 {
+	v.p.Call("max", src.p)
 	return v
 }
 
-// Clamp TODO description.
-func (v *Vector2) Clamp(min, max float64) *Vector2 {
-	v.p.Call("clamp", min, max)
+// Clamp clamps the components of v between min and max.
+//
+// Note that the min components must be less than the max components
+// or this function will not operate correctly.
+func (v *Vector2) Clamp(min, max *Vector2) *Vector2 {
+	v.p.Call("clamp", min.p, max.p)
 	return v
 }
 
@@ -179,124 +181,124 @@ func (v *Vector2) ClampScalar() *Vector2 {
 	return v
 }
 
-// ClampLength TODO description.
+// ClampLength clamps length of v between min and max.
 func (v *Vector2) ClampLength(min, max float64) *Vector2 {
 	v.p.Call("clampLength", min, max)
 	return v
 }
 
-// Floor TODO description.
+// Floor calls floor on the components of v.
 func (v *Vector2) Floor() *Vector2 {
 	v.p.Call("floor")
 	return v
 }
 
-// Ceil TODO description.
+// Ceil calls ceil on the components of v.
 func (v *Vector2) Ceil() *Vector2 {
 	v.p.Call("ceil")
 	return v
 }
 
-// Round TODO description.
+// Round rounds the components of v.
 func (v *Vector2) Round() *Vector2 {
 	v.p.Call("round")
 	return v
 }
 
-// RoundToZero TODO description.
+// RoundToZero rounds the components of v to zero.
 func (v *Vector2) RoundToZero() *Vector2 {
 	v.p.Call("roundToZero")
 	return v
 }
 
-// Negate TODO description.
+// Negate negates the components of v.
 func (v *Vector2) Negate() *Vector2 {
 	v.p.Call("negate")
 	return v
 }
 
-// Dot TODO description.
-func (v *Vector2) Dot(v float64) *Vector2 {
-	v.p.Call("dot", v)
-	return v
+// Dot returns the dot product of (v*src)
+func (v *Vector2) Dot(src *Vector2) float64 {
+	return v.p.Call("dot", src.p).Float()
 }
 
-// LengthSq TODO description.
+// LengthSq returns the length of v squared.
 func (v *Vector2) LengthSq() *Vector2 {
 	v.p.Call("lengthSq")
 	return v
 }
 
-// Length TODO description.
+// Length returns the length of v.
 func (v *Vector2) Length() *Vector2 {
 	v.p.Call("length")
 	return v
 }
 
-// LengthManhattan TODO description.
+// LengthManhattan returns the manhattan length of v.
 func (v *Vector2) LengthManhattan() *Vector2 {
 	v.p.Call("lengthManhattan")
 	return v
 }
 
-// Normalize TODO description.
+// Normalize normalizes v to unit length.
 func (v *Vector2) Normalize() *Vector2 {
 	v.p.Call("normalize")
 	return v
 }
 
-// Angle TODO description.
-func (v *Vector2) Angle() *Vector2 {
-	v.p.Call("angle")
-	return v
+// Angle returns the angle in radians with respect to the positive X-axis.
+func (v *Vector2) Angle() float64 {
+	return v.p.Call("angle").Float()
 }
 
-// DistanceTo TODO description.
-func (v *Vector2) DistanceTo(v float64) *Vector2 {
-	v.p.Call("distanceTo", v)
-	return v
+// DistanceTo returns the distance from v to src.
+func (v *Vector2) DistanceTo(src *Vector2) float64 {
+	return v.p.Call("distanceTo", src.p).Float()
 }
 
-// DistanceToSquared TODO description.
-func (v *Vector2) DistanceToSquared(v float64) *Vector2 {
-	v.p.Call("distanceToSquared", v)
-	return v
+// DistanceToSquared returns the squared distance from v to src.
+func (v *Vector2) DistanceToSquared(src *Vector2) float64 {
+	return v.p.Call("distanceToSquared", src.p).Float()
 }
 
-// SetLength TODO description.
+// SetLength sets the length of v.
 func (v *Vector2) SetLength(length float64) *Vector2 {
 	v.p.Call("setLength", length)
 	return v
 }
 
-// Lerp TODO description.
-func (v *Vector2) Lerp(v, alpha float64) *Vector2 {
-	v.p.Call("lerp", v, alpha)
+// Lerp linearly interpolates between v and src by alpha.
+//
+// alpha = 0 returns v unmodified.
+// alpha = 1 returns v set to src.
+func (v *Vector2) Lerp(src *Vector2, alpha float64) *Vector2 {
+	v.p.Call("lerp", src.p, alpha)
 	return v
 }
 
-// LerpVectors TODO description.
-func (v *Vector2) LerpVectors(v1, v2, alpha float64) *Vector2 {
-	v.p.Call("lerpVectors", v1, v2, alpha)
+// LerpVectors linearly interpolates between v1 and v2 by alpha.
+//
+// alpha = 0 sets v to v1.
+// alpha = 1 sets v to v2.
+func (v *Vector2) LerpVectors(v1, v2 *Vector2, alpha float64) *Vector2 {
+	v.p.Call("lerpVectors", v1.p, v2.p, alpha)
 	return v
 }
 
-// Equals TODO description.
-func (v *Vector2) Equals(v float64) *Vector2 {
-	v.p.Call("equals", v)
-	return v
+// Equals compares v to src and returns true if equal.
+func (v *Vector2) Equals(src *Vector2) bool {
+	return v.p.Call("equals", src.p).Bool()
 }
 
-// FromArray TODO description.
-func (v *Vector2) FromArray(array, offset float64) *Vector2 {
+// FromArray sets v to the offset component of array.
+func (v *Vector2) FromArray(array []float64, offset float64) *Vector2 {
 	v.p.Call("fromArray", array, offset)
 	return v
 }
 
-// ToArray TODO description.
-func (v *Vector2) ToArray(array, offset float64) *Vector2 {
-	v.p.Call("toArray", array, offset)
-	return v
+// ToArray sets the offset components of array from v.
+func (v *Vector2) ToArray(array []float64, offset float64) []float64 {
+	return v.p.Call("toArray", array, offset)
 }
 
 // FromAttribute TODO description.
@@ -305,9 +307,8 @@ func (v *Vector2) FromAttribute(attribute, index, offset float64) *Vector2 {
 	return v
 }
 
-// RotateAround TODO description.
-func (v *Vector2) RotateAround(center, angle float64) *Vector2 {
-	v.p.Call("rotateAround", center, angle)
+// RotateAround rotates v around center by angle radians.
+func (v *Vector2) RotateAround(center *Vector2, angle float64) *Vector2 {
+	v.p.Call("rotateAround", center.p, angle)
 	return v
 }
-
