@@ -4,7 +4,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Group represents a group.
+// Group represents a group of objects.
 type Group struct{ p *js.Object }
 
 // Group returns a Group object.
@@ -18,4 +18,3 @@ func (t *Group) New() *Group {
 	p := t.p.New()
 	return &Group{p: p}
 }
-

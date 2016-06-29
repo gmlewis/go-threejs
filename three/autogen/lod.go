@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// LOD represents a lod.
+// LOD shows meshes with more or less geometry based on distance.
+//
+// http://threejs.org/docs/index.html#Reference/Objects/LOD
 type LOD struct{ p *js.Object }
 
 // LOD returns a LOD object.
@@ -48,4 +50,3 @@ func (l *LOD) ToJSON(meta float64) *LOD {
 	l.p.Call("toJSON", meta)
 	return l
 }
-

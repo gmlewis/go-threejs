@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Sprite represents a sprite.
+// Sprite represents a plane in an 3d scene which faces always towards the camera.
+//
+// http://threejs.org/docs/index.html#Reference/Objects/Sprite
 type Sprite struct{ p *js.Object }
 
 // Sprite returns a Sprite object.
@@ -14,8 +16,9 @@ func (t *Three) Sprite() *Sprite {
 }
 
 // New returns a new Sprite object.
-func (t *Sprite) New() *Sprite {
-	p := t.p.New()
+//
+//     material — An instance of Material (optional).
+func (t *Sprite) New(material *js.Object) *Sprite {
+	p := t.p.New(material)
 	return &Sprite{p: p}
 }
-

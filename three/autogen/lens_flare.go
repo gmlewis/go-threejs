@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// LensFlare represents a lensflare.
+// LensFlare represents a simulated lens flare that tracks a light.
+//
+// http://threejs.org/docs/index.html#Reference/Objects/LensFlare
 type LensFlare struct{ p *js.Object }
 
 // LensFlare returns a LensFlare object.
@@ -14,20 +16,25 @@ func (t *Three) LensFlare() *LensFlare {
 }
 
 // New returns a new LensFlare object.
-func (t *LensFlare) New(texture, size, distance, blending, color float64) *LensFlare {
+//
+//     texture -- THREE.Texture (optional)
+//     size -- size in pixels (-1 = use texture.width)
+//     distance -- (0-1) from light source (0 = at light source)
+//     blending -- Blending Mode - Defaults to THREE.NormalBlending
+//     color -- The color of the lens flare
+func (t *LensFlare) New(texture *js.Object, size, distance float64, blending, color int) *LensFlare {
 	p := t.p.New(texture, size, distance, blending, color)
 	return &LensFlare{p: p}
 }
 
 // Add TODO description.
-func (l *LensFlare) Add(texture, size, distance, blending, color, opacity float64) *LensFlare {
+func (l *LensFlare) Add(texture *js.Object, size, distance float64, blending, color, opacity int) *LensFlare {
 	l.p.Call("add", texture, size, distance, blending, color, opacity)
 	return l
 }
 
 // Copy TODO description.
-func (l *LensFlare) Copy(source float64) *LensFlare {
-	l.p.Call("copy", source)
+func (l *LensFlare) Copy(source *LensFlare) *LensFlare {
+	l.p.Call("copy", source.p)
 	return l
 }
-

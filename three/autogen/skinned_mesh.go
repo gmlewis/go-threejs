@@ -4,7 +4,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// SkinnedMesh represents a skinnedmesh.
+// SkinnedMesh represents a mesh that has a Skeleton with bones that can then be used
+// to animate the vertices of the geometry.
+//
+// http://threejs.org/docs/index.html#Reference/Objects/SkinnedMesh
 type SkinnedMesh struct{ p *js.Object }
 
 // SkinnedMesh returns a SkinnedMesh object.
@@ -14,7 +17,11 @@ func (t *Three) SkinnedMesh() *SkinnedMesh {
 }
 
 // New returns a new SkinnedMesh object.
-func (t *SkinnedMesh) New(geometry, material, useVertexTexture float64) *SkinnedMesh {
+//
+//     geometry — An instance of Geometry. Geometry.skinIndices and Geometry.skinWeights should be set.
+//     material — An instance of Material (optional).
+//     useVertexTexture -- Defines whether a vertex texture can be used (optional).
+func (t *SkinnedMesh) New(geometry, material *js.Object, useVertexTexture bool) *SkinnedMesh {
 	p := t.p.New(geometry, material, useVertexTexture)
 	return &SkinnedMesh{p: p}
 }
@@ -30,4 +37,3 @@ func (s *SkinnedMesh) UpdateMatrixWorld(force float64) *SkinnedMesh {
 	s.p.Call("updateMatrixWorld", force)
 	return s
 }
-

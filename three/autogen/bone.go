@@ -4,7 +4,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Bone represents a bone.
+// Bone represents a bone which is part of a skeleton.
+//
+// http://threejs.org/docs/index.html#Reference/Objects/Bone
 type Bone struct{ p *js.Object }
 
 // Bone returns a Bone object.
@@ -24,4 +26,3 @@ func (b *Bone) Copy(source float64) *Bone {
 	b.p.Call("copy", source)
 	return b
 }
-
