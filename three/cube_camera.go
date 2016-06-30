@@ -14,7 +14,7 @@ import (
 type CubeCamera struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
-func (t *CubeCamera) JSObject() *js.Object { return t.p }
+func (c *CubeCamera) JSObject() *js.Object { return c.p }
 
 // CubeCamera returns a CubeCamera object.
 func (t *Three) CubeCamera() *CubeCamera {
@@ -23,7 +23,23 @@ func (t *Three) CubeCamera() *CubeCamera {
 }
 
 // New returns a new CubeCamera object.
-func (t *CubeCamera) New(near, far, cubeResolution float64) *CubeCamera {
-	p := t.p.New(near, far, cubeResolution)
+func (c *CubeCamera) New(near, far, cubeResolution float64) *CubeCamera {
+	p := c.p.New(near, far, cubeResolution)
 	return &CubeCamera{&Object3D{p: p}}
+}
+
+// Type returns the property of the same name.
+func (c *CubeCamera) Type() string {
+	return c.p.Get("type").String()
+}
+
+// RenderTarget returns the property of the same name.
+func (c *CubeCamera) RenderTarget() *WebGLRenderTargetCube {
+	return &WebGLRenderTargetCube{p: c.p.Get("renderTarget")}
+}
+
+// UpdateCubeMap TODO description.
+func (c *CubeCamera) UpdateCubeMap(renderer, scene JSObject) *CubeCamera {
+	c.p.Call("updateCubeMap", renderer.JSObject(), scene.JSObject())
+	return c
 }

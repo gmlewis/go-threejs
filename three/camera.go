@@ -31,3 +31,18 @@ func (c *Camera) Copy(source float64) *Camera {
 	c.p.Call("copy", source)
 	return c
 }
+
+// Type returns the property of the same name.
+func (t *Camera) Type() string {
+	return t.p.Get("type").String()
+}
+
+// MatrixWorldInverse returns the property of the same name.
+func (t *Camera) MatrixWorldInverse() *Matrix4 {
+	return &Matrix4{p: t.p.Get("matrixWorldInverse")}
+}
+
+// ProjectionMatrix returns the property of the same name.
+func (t *Camera) ProjectionMatrix() *Matrix4 {
+	return &Matrix4{p: t.p.Get("projectionMatrix")}
+}
