@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Box3 represents a box3.
 type Box3 struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Box3) JSObject() *js.Object { return t.p }
 
 // Box3 returns a Box3 object.
 func (t *Three) Box3() *Box3 {
@@ -180,4 +187,3 @@ func (b *Box3) Equals(box float64) *Box3 {
 	b.p.Call("equals", box)
 	return b
 }
-

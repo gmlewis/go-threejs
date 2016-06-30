@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // AnimationObjectGroup represents an animationobjectgroup.
 type AnimationObjectGroup struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *AnimationObjectGroup) JSObject() *js.Object { return t.p }
 
 // AnimationObjectGroup returns an AnimationObjectGroup object.
 func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
@@ -63,4 +70,3 @@ func (a *AnimationObjectGroup) Unsubscribe_(path float64) *AnimationObjectGroup 
 	a.p.Call("unsubscribe_", path)
 	return a
 }
-

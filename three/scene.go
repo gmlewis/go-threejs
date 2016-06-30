@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Scene represents a three.js scene.
 type Scene struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Scene) JSObject() *js.Object { return t.p }
 
 // Scene returns a Scene object.
 func (t *Three) Scene() *Scene {
@@ -28,7 +35,7 @@ func (s *Scene) Copy(source, recursive float64) *Scene {
 }
 
 // Add adds an object to a scene.
-func (s *Scene) Add(obj *js.Object) *Scene {
-	s.p.Call("add", obj)
+func (s *Scene) Add(obj JSObject) *Scene {
+	s.p.Call("add", obj.JSObject())
 	return s
 }

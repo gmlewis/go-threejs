@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // QuaternionLinearInterpolant represents a quaternionlinearinterpolant.
 type QuaternionLinearInterpolant struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *QuaternionLinearInterpolant) JSObject() *js.Object { return t.p }
 
 // QuaternionLinearInterpolant returns a QuaternionLinearInterpolant object.
 func (t *Three) QuaternionLinearInterpolant() *QuaternionLinearInterpolant {
@@ -24,4 +31,3 @@ func (q *QuaternionLinearInterpolant) Interpolate_(i1, t0, t, t1 float64) *Quate
 	q.p.Call("interpolate_", i1, t0, t, t1)
 	return q
 }
-

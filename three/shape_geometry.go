@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // ShapeGeometry represents a shapegeometry.
 type ShapeGeometry struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *ShapeGeometry) JSObject() *js.Object { return t.p }
 
 // ShapeGeometry returns a ShapeGeometry object.
 func (t *Three) ShapeGeometry() *ShapeGeometry {
@@ -30,4 +37,3 @@ func (s *ShapeGeometry) AddShape(shape, options float64) *ShapeGeometry {
 	s.p.Call("addShape", shape, options)
 	return s
 }
-

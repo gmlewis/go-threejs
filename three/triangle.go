@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Triangle represents a triangle.
 type Triangle struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Triangle) JSObject() *js.Object { return t.p }
 
 // Triangle returns a Triangle object.
 func (t *Three) Triangle() *Triangle {
@@ -84,4 +91,3 @@ func (t *Triangle) Equals(triangle float64) *Triangle {
 	t.p.Call("equals", triangle)
 	return t
 }
-

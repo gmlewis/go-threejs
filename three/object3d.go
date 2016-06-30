@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Object3D represents an object3d.
 type Object3D struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Object3D) JSObject() *js.Object { return t.p }
 
 // Object3D returns an Object3D object.
 func (t *Three) Object3D() *Object3D {
@@ -228,4 +235,3 @@ func (o *Object3D) Copy(source, recursive float64) *Object3D {
 	o.p.Call("copy", source, recursive)
 	return o
 }
-

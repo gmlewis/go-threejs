@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // CubeTextureLoader represents a cubetextureloader.
 type CubeTextureLoader struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *CubeTextureLoader) JSObject() *js.Object { return t.p }
 
 // CubeTextureLoader returns a CubeTextureLoader object.
 func (t *Three) CubeTextureLoader() *CubeTextureLoader {
@@ -36,4 +43,3 @@ func (c *CubeTextureLoader) SetPath(value float64) *CubeTextureLoader {
 	c.p.Call("setPath", value)
 	return c
 }
-

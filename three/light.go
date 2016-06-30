@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Light represents a light.
 type Light struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Light) JSObject() *js.Object { return t.p }
 
 // Light returns a Light object.
 func (t *Three) Light() *Light {
@@ -30,4 +37,3 @@ func (l *Light) ToJSON(meta float64) *Light {
 	l.p.Call("toJSON", meta)
 	return l
 }
-

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 // See: https://github.com/mrdoob/three.js
 package main
 
@@ -7,8 +11,10 @@ import (
 )
 
 var (
-	scene                  *three.Scene
-	camera, renderer, mesh *js.Object
+	scene    *three.Scene
+	camera   *three.PerspectiveCamera
+	renderer *three.WebGLRenderer
+	mesh     *three.Mesh
 )
 
 func main() {
@@ -17,19 +23,19 @@ func main() {
 	scene = t.Scene()
 
 	window := js.Global.Get("window")
-	camera = t.PerspectiveCamera(75, float64(window.Get("innerWidth").Int())/float64(window.Get("innerHeight").Int()), 1, 10000)
-	camera.Get("position").Set("z", 1000)
+	camera = t.PerspectiveCamera().New(75, float64(window.Get("innerWidth").Int())/float64(window.Get("innerHeight").Int()), 1, 10000)
+	camera.Position().SetZ(1000)
 
-	geometry := t.BoxGeometry(200, 200, 200, nil)
-	material := t.MeshBasicMaterial(map[string]interface{}{"color": 0xff0000, "wireframe": true})
+	geometry := t.BoxGeometry().New(200, 200, 200, nil)
+	material := t.MeshBasicMaterial().New(map[string]interface{}{"color": 0xff0000, "wireframe": true})
 
-	mesh = t.Mesh(geometry, material)
+	mesh = t.Mesh().New(geometry, material)
 	scene.Add(mesh)
 
-	renderer = t.WebGLRenderer(nil)
-	renderer.Call("setSize", window.Get("innerWidth").Int(), window.Get("innerHeight").Int())
+	renderer = t.WebGLRenderer().New(nil)
+	renderer.SetSize(window.Get("innerWidth").Float(), window.Get("innerHeight").Float(), false)
 
-	js.Global.Get("document").Get("body").Call("appendChild", renderer.Get("domElement"))
+	js.Global.Get("document").Get("body").Call("appendChild", renderer.DOMElement())
 
 	animate()
 }
@@ -37,8 +43,8 @@ func main() {
 func animate() {
 	js.Global.Call("requestAnimationFrame", animate)
 
-	mesh.Get("rotation").Set("x", mesh.Get("rotation").Get("x").Float()+0.01)
-	mesh.Get("rotation").Set("y", mesh.Get("rotation").Get("y").Float()+0.02)
+	mesh.Rotation().SetX(mesh.Rotation().X() + 0.01)
+	mesh.Rotation().SetY(mesh.Rotation().Y() + 0.02)
 
-	renderer.Call("render", scene, camera)
+	renderer.Render(scene, camera, nil)
 }

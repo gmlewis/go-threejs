@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Path represents a path.
 type Path struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Path) JSObject() *js.Object { return t.p }
 
 // Path returns a Path object.
 func (t *Three) Path() *Path {
@@ -96,4 +103,3 @@ func (p *Path) ToShapes(isCCW, noHoles float64) *Path {
 	p.p.Call("toShapes", isCCW, noHoles)
 	return p
 }
-

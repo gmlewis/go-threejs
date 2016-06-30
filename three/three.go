@@ -2,7 +2,7 @@
 // Use of this source code is governed by the Apache 2.0
 // license that can be found in the LICENSE file.
 
-// Package three provides a gopherjs building to the JavaScript
+// Package three provides a gopherjs binding to the JavaScript
 // three.js library. See http://threejs.org/ for more information.
 package three
 
@@ -10,12 +10,21 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
+// JSObject can return its underlying *js.Object.
+type JSObject interface {
+	JSObject() *js.Object
+}
+
+// Three represents the three.js API.
 type Three struct {
 	ctx *js.Object
 }
 
 // New returns a new Three object that binds to three.js.
 func New() *Three { return &Three{ctx: js.Global.Get("THREE")} }
+
+// JSObject returns the underlying *js.Object.
+func (t *Three) JSObject() *js.Object { return t.ctx }
 
 const (
 	// GL STATE CONSTANTS

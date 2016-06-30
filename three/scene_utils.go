@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // SceneUtils represents a sceneutils.
 type SceneUtils struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *SceneUtils) JSObject() *js.Object { return t.p }
 
 // SceneUtils returns a SceneUtils object.
 func (t *Three) SceneUtils() *SceneUtils {
@@ -36,4 +43,3 @@ func (s *SceneUtils) Attach(child, scene, parent float64) *SceneUtils {
 	s.p.Call("attach", child, scene, parent)
 	return s
 }
-

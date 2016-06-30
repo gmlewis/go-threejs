@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // InterleavedBufferAttribute represents an interleavedbufferattribute.
 type InterleavedBufferAttribute struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *InterleavedBufferAttribute) JSObject() *js.Object { return t.p }
 
 // InterleavedBufferAttribute returns an InterleavedBufferAttribute object.
 func (t *Three) InterleavedBufferAttribute() *InterleavedBufferAttribute {
@@ -94,4 +101,3 @@ func (i *InterleavedBufferAttribute) SetXYZW(index, x, y, z, w float64) *Interle
 	i.p.Call("setXYZW", index, x, y, z, w)
 	return i
 }
-

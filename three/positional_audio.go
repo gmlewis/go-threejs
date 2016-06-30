@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // PositionalAudio represents a positionalaudio.
 type PositionalAudio struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *PositionalAudio) JSObject() *js.Object { return t.p }
 
 // PositionalAudio returns a PositionalAudio object.
 func (t *Three) PositionalAudio() *PositionalAudio {
@@ -42,4 +49,3 @@ func (p *PositionalAudio) SetMaxDistance(value float64) *PositionalAudio {
 	p.p.Call("setMaxDistance", value)
 	return p
 }
-

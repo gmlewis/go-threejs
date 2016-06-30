@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // InstancedBufferAttribute represents an instancedbufferattribute.
 type InstancedBufferAttribute struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *InstancedBufferAttribute) JSObject() *js.Object { return t.p }
 
 // InstancedBufferAttribute returns an InstancedBufferAttribute object.
 func (t *Three) InstancedBufferAttribute() *InstancedBufferAttribute {
@@ -24,4 +31,3 @@ func (i *InstancedBufferAttribute) Copy(source float64) *InstancedBufferAttribut
 	i.p.Call("copy", source)
 	return i
 }
-

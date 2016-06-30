@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // ArrowHelper represents an arrowhelper.
 type ArrowHelper struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *ArrowHelper) JSObject() *js.Object { return t.p }
 
 // ArrowHelper returns an ArrowHelper object.
 func (t *Three) ArrowHelper() *ArrowHelper {
@@ -30,4 +37,3 @@ func (a *ArrowHelper) SetColor(color float64) *ArrowHelper {
 	a.p.Call("setColor", color)
 	return a
 }
-

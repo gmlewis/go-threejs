@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // UniformsUtils represents an uniformsutils.
 type UniformsUtils struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *UniformsUtils) JSObject() *js.Object { return t.p }
 
 // UniformsUtils returns an UniformsUtils object.
 func (t *Three) UniformsUtils() *UniformsUtils {
@@ -30,4 +37,3 @@ func (u *UniformsUtils) Clone(uniforms_src float64) *UniformsUtils {
 	u.p.Call("clone", uniforms_src)
 	return u
 }
-

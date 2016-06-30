@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // PropertyMixer represents a propertymixer.
 type PropertyMixer struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *PropertyMixer) JSObject() *js.Object { return t.p }
 
 // PropertyMixer returns a PropertyMixer object.
 func (t *Three) PropertyMixer() *PropertyMixer {
@@ -60,4 +67,3 @@ func (p *PropertyMixer) _lerp(buffer, dstOffset, srcOffset, t, stride float64) *
 	p.p.Call("_lerp", buffer, dstOffset, srcOffset, t, stride)
 	return p
 }
-

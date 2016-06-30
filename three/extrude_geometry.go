@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // ExtrudeGeometry represents an extrudegeometry.
 type ExtrudeGeometry struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *ExtrudeGeometry) JSObject() *js.Object { return t.p }
 
 // ExtrudeGeometry returns an ExtrudeGeometry object.
 func (t *Three) ExtrudeGeometry() *ExtrudeGeometry {
@@ -42,4 +49,3 @@ func (e *ExtrudeGeometry) AddShape(shape, options float64) *ExtrudeGeometry {
 	e.p.Call("addShape", shape, options)
 	return e
 }
-

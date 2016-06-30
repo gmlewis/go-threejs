@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Curve represents a curve.
 type Curve struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Curve) JSObject() *js.Object { return t.p }
 
 // Curve returns a Curve object.
 func (t *Three) Curve() *Curve {
@@ -78,4 +85,3 @@ func (c *Curve) GetTangentAt(u float64) *Curve {
 	c.p.Call("getTangentAt", u)
 	return c
 }
-

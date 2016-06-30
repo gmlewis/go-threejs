@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // XHRLoader represents a xhrloader.
 type XHRLoader struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *XHRLoader) JSObject() *js.Object { return t.p }
 
 // XHRLoader returns a XHRLoader object.
 func (t *Three) XHRLoader() *XHRLoader {
@@ -42,4 +49,3 @@ func (x *XHRLoader) SetWithCredentials(value float64) *XHRLoader {
 	x.p.Call("setWithCredentials", value)
 	return x
 }
-

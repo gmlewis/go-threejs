@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Sphere represents a sphere.
 type Sphere struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Sphere) JSObject() *js.Object { return t.p }
 
 // Sphere returns a Sphere object.
 func (t *Three) Sphere() *Sphere {
@@ -108,4 +115,3 @@ func (s *Sphere) Equals(sphere float64) *Sphere {
 	s.p.Call("equals", sphere)
 	return s
 }
-

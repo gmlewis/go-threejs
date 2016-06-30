@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // EventDispatcher represents an eventdispatcher.
 type EventDispatcher struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *EventDispatcher) JSObject() *js.Object { return t.p }
 
 // EventDispatcher returns an EventDispatcher object.
 func (t *Three) EventDispatcher() *EventDispatcher {
@@ -48,4 +55,3 @@ func (e *EventDispatcher) DispatchEvent(event float64) *EventDispatcher {
 	e.p.Call("dispatchEvent", event)
 	return e
 }
-

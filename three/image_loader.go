@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // ImageLoader represents an imageloader.
 type ImageLoader struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *ImageLoader) JSObject() *js.Object { return t.p }
 
 // ImageLoader returns an ImageLoader object.
 func (t *Three) ImageLoader() *ImageLoader {
@@ -36,4 +43,3 @@ func (i *ImageLoader) SetPath(value float64) *ImageLoader {
 	i.p.Call("setPath", value)
 	return i
 }
-

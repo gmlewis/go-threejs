@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -8,6 +12,9 @@ import (
 //
 // http://threejs.org/docs/index.html#Reference/Materials/SpriteMaterial
 type SpriteMaterial struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *SpriteMaterial) JSObject() *js.Object { return t.p }
 
 // SpriteMaterial returns a SpriteMaterial object.
 func (t *Three) SpriteMaterial() *SpriteMaterial {

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -8,6 +12,9 @@ import (
 //
 // http://threejs.org/docs/index.html#Reference/Cameras/PerspectiveCamera
 type PerspectiveCamera struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *PerspectiveCamera) JSObject() *js.Object { return t.p }
 
 // PerspectiveCamera returns a PerspectiveCamera object.
 func (t *Three) PerspectiveCamera() *PerspectiveCamera {
@@ -43,4 +50,24 @@ func (p *PerspectiveCamera) Copy(source float64) *PerspectiveCamera {
 func (p *PerspectiveCamera) ToJSON(meta float64) *PerspectiveCamera {
 	p.p.Call("toJSON", meta)
 	return p
+}
+
+// Position returns the Object3D base class member of the same name.
+func (p *PerspectiveCamera) Position() *Vector3 {
+	return &Vector3{p: p.p.Get("position")}
+}
+
+// Rotation returns the Object3D base class member of the same name.
+func (p *PerspectiveCamera) Rotation() *Euler {
+	return &Euler{p: p.p.Get("rotation")}
+}
+
+// Quaternion returns the Object3D base class member of the same name.
+func (p *PerspectiveCamera) Quaternion() *Quaternion {
+	return &Quaternion{p: p.p.Get("quaternion")}
+}
+
+// Scale returns the Object3D base class member of the same name.
+func (p *PerspectiveCamera) Scale() *Vector3 {
+	return &Vector3{p: p.p.Get("scale")}
 }

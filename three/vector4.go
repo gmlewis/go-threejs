@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Vector4 represents a vector4.
 type Vector4 struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Vector4) JSObject() *js.Object { return t.p }
 
 // Vector4 returns a Vector4 object.
 func (t *Three) Vector4() *Vector4 {

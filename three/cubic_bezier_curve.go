@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // CubicBezierCurve represents a cubicbeziercurve.
 type CubicBezierCurve struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *CubicBezierCurve) JSObject() *js.Object { return t.p }
 
 // CubicBezierCurve returns a CubicBezierCurve object.
 func (t *Three) CubicBezierCurve() *CubicBezierCurve {
@@ -30,4 +37,3 @@ func (c *CubicBezierCurve) GetTangent(t float64) *CubicBezierCurve {
 	c.p.Call("getTangent", t)
 	return c
 }
-

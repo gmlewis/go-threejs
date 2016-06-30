@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // KeyframeTrack represents a keyframetrack.
 type KeyframeTrack struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *KeyframeTrack) JSObject() *js.Object { return t.p }
 
 // KeyframeTrack returns a KeyframeTrack object.
 func (t *Three) KeyframeTrack() *KeyframeTrack {
@@ -102,4 +109,3 @@ func (k *KeyframeTrack) _getTrackTypeForValueTypeName(typName float64) *Keyframe
 	k.p.Call("_getTrackTypeForValueTypeName", typName)
 	return k
 }
-

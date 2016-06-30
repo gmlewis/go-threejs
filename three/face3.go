@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Face3 represents a face3.
 type Face3 struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Face3) JSObject() *js.Object { return t.p }
 
 // Face3 returns a Face3 object.
 func (t *Three) Face3() *Face3 {
@@ -30,4 +37,3 @@ func (f *Face3) Copy(source float64) *Face3 {
 	f.p.Call("copy", source)
 	return f
 }
-

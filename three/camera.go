@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Camera represents a camera.
 type Camera struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Camera) JSObject() *js.Object { return t.p }
 
 // Camera returns a Camera object.
 func (t *Three) Camera() *Camera {
@@ -24,4 +31,3 @@ func (c *Camera) Copy(source float64) *Camera {
 	c.p.Call("copy", source)
 	return c
 }
-

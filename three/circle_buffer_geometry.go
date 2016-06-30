@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // CircleBufferGeometry represents a circlebuffergeometry.
 type CircleBufferGeometry struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *CircleBufferGeometry) JSObject() *js.Object { return t.p }
 
 // CircleBufferGeometry returns a CircleBufferGeometry object.
 func (t *Three) CircleBufferGeometry() *CircleBufferGeometry {
@@ -18,4 +25,3 @@ func (t *CircleBufferGeometry) New(radius, segments, thetaStart, thetaLength flo
 	p := t.p.New(radius, segments, thetaStart, thetaLength)
 	return &CircleBufferGeometry{p: p}
 }
-

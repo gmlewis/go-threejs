@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Spherical represents a spherical.
 type Spherical struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Spherical) JSObject() *js.Object { return t.p }
 
 // Spherical returns a Spherical object.
 func (t *Three) Spherical() *Spherical {
@@ -48,4 +55,3 @@ func (s *Spherical) SetFromVector3(vec3 float64) *Spherical {
 	s.p.Call("setFromVector3", vec3)
 	return s
 }
-

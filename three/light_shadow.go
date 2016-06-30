@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // LightShadow represents a lightshadow.
 type LightShadow struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *LightShadow) JSObject() *js.Object { return t.p }
 
 // LightShadow returns a LightShadow object.
 func (t *Three) LightShadow() *LightShadow {
@@ -30,4 +37,3 @@ func (l *LightShadow) Clone() *LightShadow {
 	l.p.Call("clone")
 	return l
 }
-

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Texture represents a texture.
 type Texture struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Texture) JSObject() *js.Object { return t.p }
 
 // Texture returns a Texture object.
 func (t *Three) Texture() *Texture {
@@ -54,4 +61,3 @@ func (t *Texture) TransformUv(uv float64) *Texture {
 	t.p.Call("transformUv", uv)
 	return t
 }
-

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // BufferGeometry represents a buffergeometry.
 type BufferGeometry struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *BufferGeometry) JSObject() *js.Object { return t.p }
 
 // BufferGeometry returns a BufferGeometry object.
 func (t *Three) BufferGeometry() *BufferGeometry {
@@ -204,4 +211,3 @@ func (b *BufferGeometry) Dispose() *BufferGeometry {
 	b.p.Call("dispose")
 	return b
 }
-

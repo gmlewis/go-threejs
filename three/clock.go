@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Clock represents a clock.
 type Clock struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Clock) JSObject() *js.Object { return t.p }
 
 // Clock returns a Clock object.
 func (t *Three) Clock() *Clock {
@@ -42,4 +49,3 @@ func (c *Clock) GetDelta() *Clock {
 	c.p.Call("getDelta")
 	return c
 }
-

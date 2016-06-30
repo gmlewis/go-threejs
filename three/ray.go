@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Ray represents a ray.
 type Ray struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Ray) JSObject() *js.Object { return t.p }
 
 // Ray returns a Ray object.
 func (t *Three) Ray() *Ray {
@@ -132,4 +139,3 @@ func (r *Ray) Equals(ray float64) *Ray {
 	r.p.Call("equals", ray)
 	return r
 }
-

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // MaterialLoader represents a materialloader.
 type MaterialLoader struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *MaterialLoader) JSObject() *js.Object { return t.p }
 
 // MaterialLoader returns a MaterialLoader object.
 func (t *Three) MaterialLoader() *MaterialLoader {
@@ -42,4 +49,3 @@ func (m *MaterialLoader) Parse(json float64) *MaterialLoader {
 	m.p.Call("parse", json)
 	return m
 }
-

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // Interpolant represents an interpolant.
 type Interpolant struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *Interpolant) JSObject() *js.Object { return t.p }
 
 // Interpolant returns an Interpolant object.
 func (t *Three) Interpolant() *Interpolant {
@@ -48,4 +55,3 @@ func (i *Interpolant) IntervalChanged_(i1, t0, t1 float64) *Interpolant {
 	i.p.Call("intervalChanged_", i1, t0, t1)
 	return i
 }
-

@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // DirectGeometry represents a directgeometry.
 type DirectGeometry struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *DirectGeometry) JSObject() *js.Object { return t.p }
 
 // DirectGeometry returns a DirectGeometry object.
 func (t *Three) DirectGeometry() *DirectGeometry {
@@ -48,4 +55,3 @@ func (d *DirectGeometry) Dispose() *DirectGeometry {
 	d.p.Call("dispose")
 	return d
 }
-

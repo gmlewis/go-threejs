@@ -1,3 +1,7 @@
+// Copyright 2016 Google Inc. All rights reserved.
+// Use of this source code is governed by the Apache 2.0
+// license that can be found in the LICENSE file.
+
 package three
 
 import (
@@ -6,6 +10,9 @@ import (
 
 // BinaryTextureLoader represents a binarytextureloader.
 type BinaryTextureLoader struct{ p *js.Object }
+
+// JSObject returns the underlying *js.Object.
+func (t *BinaryTextureLoader) JSObject() *js.Object { return t.p }
 
 // BinaryTextureLoader returns a BinaryTextureLoader object.
 func (t *Three) BinaryTextureLoader() *BinaryTextureLoader {
@@ -24,4 +31,3 @@ func (b *BinaryTextureLoader) Load(url, onLoad, onProgress, onError float64) *Bi
 	b.p.Call("load", url, onLoad, onProgress, onError)
 	return b
 }
-
