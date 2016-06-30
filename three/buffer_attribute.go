@@ -21,7 +21,7 @@ func (t *Three) BufferAttribute() *BufferAttribute {
 }
 
 // New returns a new BufferAttribute object.
-func (b *BufferAttribute) New(array, itemSize float64) *BufferAttribute {
+func (b *BufferAttribute) New(array []float64, itemSize int) *BufferAttribute {
 	p := b.p.New(array, itemSize)
 	return &BufferAttribute{p: p}
 }
@@ -36,7 +36,7 @@ func (t *Three) Int8Attribute() *Int8Attribute {
 }
 
 // New returns a new Int8Attribute object.
-func (i *Int8Attribute) New(array, itemSize float64) *Int8Attribute {
+func (i *Int8Attribute) New(array []int8, itemSize int) *Int8Attribute {
 	p := i.p.New(array, itemSize)
 	return &Int8Attribute{p: p}
 }
@@ -51,7 +51,7 @@ func (t *Three) Uint8Attribute() *Uint8Attribute {
 }
 
 // New returns a new Uint8Attribute object.
-func (u *Uint8Attribute) New(array, itemSize float64) *Uint8Attribute {
+func (u *Uint8Attribute) New(array []uint8, itemSize int) *Uint8Attribute {
 	p := u.p.New(array, itemSize)
 	return &Uint8Attribute{p: p}
 }
@@ -66,7 +66,7 @@ func (t *Three) Uint8ClampedAttribute() *Uint8ClampedAttribute {
 }
 
 // New returns a new Uint8ClampedAttribute object.
-func (u *Uint8ClampedAttribute) New(array, itemSize float64) *Uint8ClampedAttribute {
+func (u *Uint8ClampedAttribute) New(array []uint8, itemSize int) *Uint8ClampedAttribute {
 	p := u.p.New(array, itemSize)
 	return &Uint8ClampedAttribute{p: p}
 }
@@ -81,7 +81,7 @@ func (t *Three) Int16Attribute() *Int16Attribute {
 }
 
 // New returns a new Int16Attribute object.
-func (i *Int16Attribute) New(array, itemSize float64) *Int16Attribute {
+func (i *Int16Attribute) New(array []int16, itemSize int) *Int16Attribute {
 	p := i.p.New(array, itemSize)
 	return &Int16Attribute{p: p}
 }
@@ -96,7 +96,7 @@ func (t *Three) Uint16Attribute() *Uint16Attribute {
 }
 
 // New returns a new Uint16Attribute object.
-func (u *Uint16Attribute) New(array, itemSize float64) *Uint16Attribute {
+func (u *Uint16Attribute) New(array []uint16, itemSize int) *Uint16Attribute {
 	p := u.p.New(array, itemSize)
 	return &Uint16Attribute{p: p}
 }
@@ -111,7 +111,7 @@ func (t *Three) Int32Attribute() *Int32Attribute {
 }
 
 // New returns a new Int32Attribute object.
-func (i *Int32Attribute) New(array, itemSize float64) *Int32Attribute {
+func (i *Int32Attribute) New(array []int32, itemSize int) *Int32Attribute {
 	p := i.p.New(array, itemSize)
 	return &Int32Attribute{p: p}
 }
@@ -126,7 +126,7 @@ func (t *Three) Uint32Attribute() *Uint32Attribute {
 }
 
 // New returns a new Uint32Attribute object.
-func (u *Uint32Attribute) New(array, itemSize float64) *Uint32Attribute {
+func (u *Uint32Attribute) New(array []uint32, itemSize int) *Uint32Attribute {
 	p := u.p.New(array, itemSize)
 	return &Uint32Attribute{p: p}
 }
@@ -141,7 +141,7 @@ func (t *Three) Float32Attribute() *Float32Attribute {
 }
 
 // New returns a new Float32Attribute object.
-func (f *Float32Attribute) New(array, itemSize float64) *Float32Attribute {
+func (f *Float32Attribute) New(array []float32, itemSize int) *Float32Attribute {
 	p := f.p.New(array, itemSize)
 	return &Float32Attribute{p: p}
 }
@@ -156,7 +156,7 @@ func (t *Three) Float64Attribute() *Float64Attribute {
 }
 
 // New returns a new Float64Attribute object.
-func (f *Float64Attribute) New(array, itemSize float64) *Float64Attribute {
+func (f *Float64Attribute) New(array []float64, itemSize int) *Float64Attribute {
 	p := f.p.New(array, itemSize)
 	return &Float64Attribute{p: p}
 }
@@ -191,109 +191,109 @@ func (d *BufferAttribute) CopyAt(index1, attribute, index2 float64) *BufferAttri
 }
 
 // CopyArray TODO description.
-func (d *BufferAttribute) CopyArray(array float64) *BufferAttribute {
+func (d *BufferAttribute) CopyArray(array []float64) *BufferAttribute {
 	d.p.Call("copyArray", array)
 	return d
 }
 
 // CopyColorsArray TODO description.
-func (d *BufferAttribute) CopyColorsArray(colors float64) *BufferAttribute {
+func (d *BufferAttribute) CopyColorsArray(colors []float64) *BufferAttribute {
 	d.p.Call("copyColorsArray", colors)
 	return d
 }
 
 // CopyIndicesArray TODO description.
-func (d *BufferAttribute) CopyIndicesArray(indices float64) *BufferAttribute {
+func (d *BufferAttribute) CopyIndicesArray(indices []int) *BufferAttribute {
 	d.p.Call("copyIndicesArray", indices)
 	return d
 }
 
 // CopyVector2sArray TODO description.
-func (d *BufferAttribute) CopyVector2sArray(vectors float64) *BufferAttribute {
+func (d *BufferAttribute) CopyVector2sArray(vectors []*Vector2) *BufferAttribute {
 	d.p.Call("copyVector2sArray", vectors)
 	return d
 }
 
 // CopyVector3sArray TODO description.
-func (d *BufferAttribute) CopyVector3sArray(vectors float64) *BufferAttribute {
+func (d *BufferAttribute) CopyVector3sArray(vectors []*Vector3) *BufferAttribute {
 	d.p.Call("copyVector3sArray", vectors)
 	return d
 }
 
 // CopyVector4sArray TODO description.
-func (d *BufferAttribute) CopyVector4sArray(vectors float64) *BufferAttribute {
+func (d *BufferAttribute) CopyVector4sArray(vectors []*Vector4) *BufferAttribute {
 	d.p.Call("copyVector4sArray", vectors)
 	return d
 }
 
 // Set TODO description.
-func (d *BufferAttribute) Set(value, offset float64) *BufferAttribute {
+func (d *BufferAttribute) Set(value float64, offset int) *BufferAttribute {
 	d.p.Call("set", value, offset)
 	return d
 }
 
 // GetX TODO description.
-func (d *BufferAttribute) GetX(index float64) *BufferAttribute {
+func (d *BufferAttribute) GetX(index int) *BufferAttribute {
 	d.p.Call("getX", index)
 	return d
 }
 
 // SetX TODO description.
-func (d *BufferAttribute) SetX(index, x float64) *BufferAttribute {
+func (d *BufferAttribute) SetX(index int, x float64) *BufferAttribute {
 	d.p.Call("setX", index, x)
 	return d
 }
 
 // GetY TODO description.
-func (d *BufferAttribute) GetY(index float64) *BufferAttribute {
+func (d *BufferAttribute) GetY(index int) *BufferAttribute {
 	d.p.Call("getY", index)
 	return d
 }
 
 // SetY TODO description.
-func (d *BufferAttribute) SetY(index, y float64) *BufferAttribute {
+func (d *BufferAttribute) SetY(index int, y float64) *BufferAttribute {
 	d.p.Call("setY", index, y)
 	return d
 }
 
 // GetZ TODO description.
-func (d *BufferAttribute) GetZ(index float64) *BufferAttribute {
+func (d *BufferAttribute) GetZ(index int) *BufferAttribute {
 	d.p.Call("getZ", index)
 	return d
 }
 
 // SetZ TODO description.
-func (d *BufferAttribute) SetZ(index, z float64) *BufferAttribute {
+func (d *BufferAttribute) SetZ(index int, z float64) *BufferAttribute {
 	d.p.Call("setZ", index, z)
 	return d
 }
 
 // GetW TODO description.
-func (d *BufferAttribute) GetW(index float64) *BufferAttribute {
+func (d *BufferAttribute) GetW(index int) *BufferAttribute {
 	d.p.Call("getW", index)
 	return d
 }
 
 // SetW TODO description.
-func (d *BufferAttribute) SetW(index, w float64) *BufferAttribute {
+func (d *BufferAttribute) SetW(index int, w float64) *BufferAttribute {
 	d.p.Call("setW", index, w)
 	return d
 }
 
 // SetXY TODO description.
-func (d *BufferAttribute) SetXY(index, x, y float64) *BufferAttribute {
+func (d *BufferAttribute) SetXY(index int, x, y float64) *BufferAttribute {
 	d.p.Call("setXY", index, x, y)
 	return d
 }
 
 // SetXYZ TODO description.
-func (d *BufferAttribute) SetXYZ(index, x, y, z float64) *BufferAttribute {
+func (d *BufferAttribute) SetXYZ(index int, x, y, z float64) *BufferAttribute {
 	d.p.Call("setXYZ", index, x, y, z)
 	return d
 }
 
 // SetXYZW TODO description.
-func (d *BufferAttribute) SetXYZW(index, x, y, z, w float64) *BufferAttribute {
+func (d *BufferAttribute) SetXYZW(index int, x, y, z, w float64) *BufferAttribute {
 	d.p.Call("setXYZW", index, x, y, z, w)
 	return d
 }
@@ -302,4 +302,35 @@ func (d *BufferAttribute) SetXYZW(index, x, y, z, w float64) *BufferAttribute {
 func (d *BufferAttribute) Clone() *BufferAttribute {
 	d.p.Call("clone")
 	return d
+}
+
+// UUID returns the property of the same name.
+func (b *BufferAttribute) UUID() int {
+	return b.p.Get("uuid").Int()
+}
+
+// Array returns the property of the same name.
+func (b *BufferAttribute) Array() *js.Object {
+	return b.p.Get("array")
+}
+
+// ItemSize returns the property of the same name.
+func (b *BufferAttribute) ItemSize() int {
+	return b.p.Get("itemSize").Int()
+}
+
+// Dynamic returns the property of the same name.
+func (b *BufferAttribute) Dynamic() bool {
+	return b.p.Get("dynamic").Bool()
+}
+
+// UpdateRange returns the property of the same name.
+func (b *BufferAttribute) UpdateRange() (offset, count int) {
+	t := b.p.Get("updateRange")
+	return t.Get("offset").Int(), t.Get("count").Int()
+}
+
+// Version returns the property of the same name.
+func (b *BufferAttribute) Version() int {
+	return b.p.Get("version").Int()
 }
