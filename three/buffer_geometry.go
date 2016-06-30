@@ -211,3 +211,54 @@ func (b *BufferGeometry) Dispose() *BufferGeometry {
 	b.p.Call("dispose")
 	return b
 }
+
+// UUID returns the property of the same name.
+func (b *BufferGeometry) UUID() int {
+	return b.p.Get("uuid").Int()
+}
+
+// Name returns the property of the same name.
+func (b *BufferGeometry) Name() string {
+	return b.p.Get("name").String()
+}
+
+// Type returns the property of the same name.
+func (b *BufferGeometry) Type() string {
+	return b.p.Get("type").String()
+}
+
+// Index returns the property of the same name.
+func (b *BufferGeometry) Index() int {
+	return b.p.Get("index").Int()
+}
+
+// Attributes returns the property of the same name.
+func (b *BufferGeometry) Attributes() *js.Object {
+	return b.p.Get("attributes")
+}
+
+// MortphAttributes returns the property of the same name.
+func (b *BufferGeometry) MortphAttributes() *js.Object {
+	return b.p.Get("morphAttributes")
+}
+
+// Groups returns the property of the same name.
+func (b *BufferGeometry) Groups() *js.Object {
+	return b.p.Get("groups")
+}
+
+// BoundingBox returns the property of the same name.
+func (b *BufferGeometry) BoundingBox() *js.Object {
+	return b.p.Get("boundingBox")
+}
+
+// BoundingSphere returns the property of the same name.
+func (b *BufferGeometry) BoundingSphere() *js.Object {
+	return b.p.Get("boundingSphere")
+}
+
+// DrawRange returns the property of the same name.
+func (b *BufferGeometry) DrawRange() (start, count int) {
+	t := b.p.Get("drawRange")
+	return t.Get("start").Int(), t.Get("count").Int()
+}
