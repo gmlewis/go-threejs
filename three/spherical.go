@@ -12,7 +12,7 @@ import (
 type Spherical struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Spherical) JSObject() *js.Object { return t.p }
+func (s *Spherical) JSObject() *js.Object { return s.p }
 
 // Spherical returns a Spherical object.
 func (t *Three) Spherical() *Spherical {
@@ -21,8 +21,8 @@ func (t *Three) Spherical() *Spherical {
 }
 
 // New returns a new Spherical object.
-func (t *Spherical) New(radius, phi, theta float64) *Spherical {
-	p := t.p.New(radius, phi, theta)
+func (s *Spherical) New(radius, phi, theta float64) *Spherical {
+	p := s.p.New(radius, phi, theta)
 	return &Spherical{p: p}
 }
 

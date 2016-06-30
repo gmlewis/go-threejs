@@ -14,7 +14,7 @@ import (
 type LOD struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LOD) JSObject() *js.Object { return t.p }
+func (l *LOD) JSObject() *js.Object { return l.p }
 
 // LOD returns a LOD object.
 func (t *Three) LOD() *LOD {
@@ -23,8 +23,8 @@ func (t *Three) LOD() *LOD {
 }
 
 // New returns a new LOD object.
-func (t *LOD) New() *LOD {
-	p := t.p.New()
+func (l *LOD) New() *LOD {
+	p := l.p.New()
 	return &LOD{p: p}
 }
 

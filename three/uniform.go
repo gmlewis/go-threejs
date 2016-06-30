@@ -12,7 +12,7 @@ import (
 type Uniform struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Uniform) JSObject() *js.Object { return t.p }
+func (u *Uniform) JSObject() *js.Object { return u.p }
 
 // Uniform returns an Uniform object.
 func (t *Three) Uniform() *Uniform {
@@ -21,8 +21,8 @@ func (t *Three) Uniform() *Uniform {
 }
 
 // New returns a new Uniform object.
-func (t *Uniform) New(typ, value float64) *Uniform {
-	p := t.p.New(typ, value)
+func (u *Uniform) New(typ, value float64) *Uniform {
+	p := u.p.New(typ, value)
 	return &Uniform{p: p}
 }
 

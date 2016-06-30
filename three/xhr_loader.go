@@ -12,7 +12,7 @@ import (
 type XHRLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *XHRLoader) JSObject() *js.Object { return t.p }
+func (x *XHRLoader) JSObject() *js.Object { return x.p }
 
 // XHRLoader returns a XHRLoader object.
 func (t *Three) XHRLoader() *XHRLoader {
@@ -21,8 +21,8 @@ func (t *Three) XHRLoader() *XHRLoader {
 }
 
 // New returns a new XHRLoader object.
-func (t *XHRLoader) New(manager float64) *XHRLoader {
-	p := t.p.New(manager)
+func (x *XHRLoader) New(manager float64) *XHRLoader {
+	p := x.p.New(manager)
 	return &XHRLoader{p: p}
 }
 

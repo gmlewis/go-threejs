@@ -12,7 +12,7 @@ import (
 type WebGLProgram struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLProgram) JSObject() *js.Object { return t.p }
+func (w *WebGLProgram) JSObject() *js.Object { return w.p }
 
 // WebGLProgram returns a WebGLProgram object.
 func (t *Three) WebGLProgram() *WebGLProgram {
@@ -21,8 +21,8 @@ func (t *Three) WebGLProgram() *WebGLProgram {
 }
 
 // New returns a new WebGLProgram object.
-func (t *WebGLProgram) New() *WebGLProgram {
-	p := t.p.New()
+func (w *WebGLProgram) New() *WebGLProgram {
+	p := w.p.New()
 	return &WebGLProgram{p: p}
 }
 

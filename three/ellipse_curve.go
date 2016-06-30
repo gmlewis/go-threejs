@@ -12,7 +12,7 @@ import (
 type EllipseCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *EllipseCurve) JSObject() *js.Object { return t.p }
+func (e *EllipseCurve) JSObject() *js.Object { return e.p }
 
 // EllipseCurve returns an EllipseCurve object.
 func (t *Three) EllipseCurve() *EllipseCurve {
@@ -21,8 +21,8 @@ func (t *Three) EllipseCurve() *EllipseCurve {
 }
 
 // New returns a new EllipseCurve object.
-func (t *EllipseCurve) New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
-	p := t.p.New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
+func (e *EllipseCurve) New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
+	p := e.p.New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
 	return &EllipseCurve{p: p}
 }
 

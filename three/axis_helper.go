@@ -12,7 +12,7 @@ import (
 type AxisHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AxisHelper) JSObject() *js.Object { return t.p }
+func (a *AxisHelper) JSObject() *js.Object { return a.p }
 
 // AxisHelper returns an AxisHelper object.
 func (t *Three) AxisHelper() *AxisHelper {
@@ -21,7 +21,7 @@ func (t *Three) AxisHelper() *AxisHelper {
 }
 
 // New returns a new AxisHelper object.
-func (t *AxisHelper) New(size float64) *AxisHelper {
-	p := t.p.New(size)
+func (a *AxisHelper) New(size float64) *AxisHelper {
+	p := a.p.New(size)
 	return &AxisHelper{p: p}
 }

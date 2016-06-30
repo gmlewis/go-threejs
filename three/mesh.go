@@ -14,7 +14,7 @@ import (
 type Mesh struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
-func (t *Mesh) JSObject() *js.Object { return t.p }
+func (m *Mesh) JSObject() *js.Object { return m.p }
 
 // Mesh returns a Mesh object.
 func (t *Three) Mesh() *Mesh {
@@ -26,8 +26,8 @@ func (t *Three) Mesh() *Mesh {
 //
 //     geometry — an instance of geometry.
 //     material — an instance of material (optional).
-func (t *Mesh) New(geometry, material JSObject) *Mesh {
-	p := t.p.New(geometry.JSObject(), material.JSObject())
+func (m *Mesh) New(geometry, material JSObject) *Mesh {
+	p := m.p.New(geometry.JSObject(), material.JSObject())
 	return &Mesh{&Object3D{p: p}}
 }
 

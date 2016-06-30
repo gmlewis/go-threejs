@@ -12,7 +12,7 @@ import (
 type Color struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Color) JSObject() *js.Object { return t.p }
+func (c *Color) JSObject() *js.Object { return c.p }
 
 // Color returns a Color object.
 func (t *Three) Color() *Color {
@@ -21,8 +21,8 @@ func (t *Three) Color() *Color {
 }
 
 // New returns a new Color object.
-func (t *Color) New(color float64) *Color {
-	p := t.p.New(color)
+func (c *Color) New(color float64) *Color {
+	p := c.p.New(color)
 	return &Color{p: p}
 }
 

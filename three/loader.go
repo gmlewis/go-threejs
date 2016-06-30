@@ -12,7 +12,7 @@ import (
 type Loader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Loader) JSObject() *js.Object { return t.p }
+func (l *Loader) JSObject() *js.Object { return l.p }
 
 // Loader returns a Loader object.
 func (t *Three) Loader() *Loader {
@@ -21,8 +21,8 @@ func (t *Three) Loader() *Loader {
 }
 
 // New returns a new Loader object.
-func (t *Loader) New() *Loader {
-	p := t.p.New()
+func (l *Loader) New() *Loader {
+	p := l.p.New()
 	return &Loader{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type LinearInterpolant struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LinearInterpolant) JSObject() *js.Object { return t.p }
+func (l *LinearInterpolant) JSObject() *js.Object { return l.p }
 
 // LinearInterpolant returns a LinearInterpolant object.
 func (t *Three) LinearInterpolant() *LinearInterpolant {
@@ -21,8 +21,8 @@ func (t *Three) LinearInterpolant() *LinearInterpolant {
 }
 
 // New returns a new LinearInterpolant object.
-func (t *LinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *LinearInterpolant {
-	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+func (l *LinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *LinearInterpolant {
+	p := l.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &LinearInterpolant{p: p}
 }
 

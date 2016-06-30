@@ -12,7 +12,7 @@ import (
 type WebGLRenderTarget struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLRenderTarget) JSObject() *js.Object { return t.p }
+func (w *WebGLRenderTarget) JSObject() *js.Object { return w.p }
 
 // WebGLRenderTarget returns a WebGLRenderTarget object.
 func (t *Three) WebGLRenderTarget() *WebGLRenderTarget {
@@ -21,8 +21,8 @@ func (t *Three) WebGLRenderTarget() *WebGLRenderTarget {
 }
 
 // New returns a new WebGLRenderTarget object.
-func (t *WebGLRenderTarget) New(width, height, options float64) *WebGLRenderTarget {
-	p := t.p.New(width, height, options)
+func (w *WebGLRenderTarget) New(width, height, options float64) *WebGLRenderTarget {
+	p := w.p.New(width, height, options)
 	return &WebGLRenderTarget{p: p}
 }
 

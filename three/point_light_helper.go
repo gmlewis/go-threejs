@@ -12,7 +12,7 @@ import (
 type PointLightHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PointLightHelper) JSObject() *js.Object { return t.p }
+func (p *PointLightHelper) JSObject() *js.Object { return p.p }
 
 // PointLightHelper returns a PointLightHelper object.
 func (t *Three) PointLightHelper() *PointLightHelper {
@@ -21,7 +21,7 @@ func (t *Three) PointLightHelper() *PointLightHelper {
 }
 
 // New returns a new PointLightHelper object.
-func (t *PointLightHelper) New(light, sphereSize float64) *PointLightHelper {
-	p := t.p.New(light, sphereSize)
-	return &PointLightHelper{p: p}
+func (p *PointLightHelper) New(light, sphereSize float64) *PointLightHelper {
+	t := p.p.New(light, sphereSize)
+	return &PointLightHelper{p: t}
 }

@@ -12,7 +12,7 @@ import (
 type MaterialLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MaterialLoader) JSObject() *js.Object { return t.p }
+func (m *MaterialLoader) JSObject() *js.Object { return m.p }
 
 // MaterialLoader returns a MaterialLoader object.
 func (t *Three) MaterialLoader() *MaterialLoader {
@@ -21,8 +21,8 @@ func (t *Three) MaterialLoader() *MaterialLoader {
 }
 
 // New returns a new MaterialLoader object.
-func (t *MaterialLoader) New(manager float64) *MaterialLoader {
-	p := t.p.New(manager)
+func (m *MaterialLoader) New(manager float64) *MaterialLoader {
+	p := m.p.New(manager)
 	return &MaterialLoader{p: p}
 }
 

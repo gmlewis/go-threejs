@@ -12,7 +12,7 @@ import (
 type Box2 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Box2) JSObject() *js.Object { return t.p }
+func (b *Box2) JSObject() *js.Object { return b.p }
 
 // Box2 returns a Box2 object.
 func (t *Three) Box2() *Box2 {
@@ -21,8 +21,8 @@ func (t *Three) Box2() *Box2 {
 }
 
 // New returns a new Box2 object.
-func (t *Box2) New(min, max float64) *Box2 {
-	p := t.p.New(min, max)
+func (b *Box2) New(min, max float64) *Box2 {
+	p := b.p.New(min, max)
 	return &Box2{p: p}
 }
 

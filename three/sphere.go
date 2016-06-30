@@ -12,7 +12,7 @@ import (
 type Sphere struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Sphere) JSObject() *js.Object { return t.p }
+func (s *Sphere) JSObject() *js.Object { return s.p }
 
 // Sphere returns a Sphere object.
 func (t *Three) Sphere() *Sphere {
@@ -21,8 +21,8 @@ func (t *Three) Sphere() *Sphere {
 }
 
 // New returns a new Sphere object.
-func (t *Sphere) New(center, radius float64) *Sphere {
-	p := t.p.New(center, radius)
+func (s *Sphere) New(center, radius float64) *Sphere {
+	p := s.p.New(center, radius)
 	return &Sphere{p: p}
 }
 

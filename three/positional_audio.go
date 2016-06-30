@@ -12,7 +12,7 @@ import (
 type PositionalAudio struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PositionalAudio) JSObject() *js.Object { return t.p }
+func (p *PositionalAudio) JSObject() *js.Object { return p.p }
 
 // PositionalAudio returns a PositionalAudio object.
 func (t *Three) PositionalAudio() *PositionalAudio {
@@ -21,9 +21,9 @@ func (t *Three) PositionalAudio() *PositionalAudio {
 }
 
 // New returns a new PositionalAudio object.
-func (t *PositionalAudio) New(listener float64) *PositionalAudio {
-	p := t.p.New(listener)
-	return &PositionalAudio{p: p}
+func (p *PositionalAudio) New(listener float64) *PositionalAudio {
+	t := p.p.New(listener)
+	return &PositionalAudio{p: t}
 }
 
 // SetRefDistance TODO description.

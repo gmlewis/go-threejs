@@ -12,7 +12,7 @@ import (
 type FontLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *FontLoader) JSObject() *js.Object { return t.p }
+func (f *FontLoader) JSObject() *js.Object { return f.p }
 
 // FontLoader returns a FontLoader object.
 func (t *Three) FontLoader() *FontLoader {
@@ -21,8 +21,8 @@ func (t *Three) FontLoader() *FontLoader {
 }
 
 // New returns a new FontLoader object.
-func (t *FontLoader) New(manager float64) *FontLoader {
-	p := t.p.New(manager)
+func (f *FontLoader) New(manager float64) *FontLoader {
+	p := f.p.New(manager)
 	return &FontLoader{p: p}
 }
 

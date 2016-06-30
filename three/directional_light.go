@@ -12,7 +12,7 @@ import (
 type DirectionalLight struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *DirectionalLight) JSObject() *js.Object { return t.p }
+func (d *DirectionalLight) JSObject() *js.Object { return d.p }
 
 // DirectionalLight returns a DirectionalLight object.
 func (t *Three) DirectionalLight() *DirectionalLight {
@@ -21,8 +21,8 @@ func (t *Three) DirectionalLight() *DirectionalLight {
 }
 
 // New returns a new DirectionalLight object.
-func (t *DirectionalLight) New(color, intensity float64) *DirectionalLight {
-	p := t.p.New(color, intensity)
+func (d *DirectionalLight) New(color, intensity float64) *DirectionalLight {
+	p := d.p.New(color, intensity)
 	return &DirectionalLight{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type Math struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Math) JSObject() *js.Object { return t.p }
+func (m *Math) JSObject() *js.Object { return m.p }
 
 // Math returns a Math object.
 func (t *Three) Math() *Math {
@@ -21,8 +21,8 @@ func (t *Three) Math() *Math {
 }
 
 // New returns a new Math object.
-func (t *Math) New() *Math {
-	p := t.p.New()
+func (m *Math) New() *Math {
+	p := m.p.New()
 	return &Math{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type ArcCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ArcCurve) JSObject() *js.Object { return t.p }
+func (a *ArcCurve) JSObject() *js.Object { return a.p }
 
 // ArcCurve returns an ArcCurve object.
 func (t *Three) ArcCurve() *ArcCurve {
@@ -21,7 +21,7 @@ func (t *Three) ArcCurve() *ArcCurve {
 }
 
 // New returns a new ArcCurve object.
-func (t *ArcCurve) New(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise float64) *ArcCurve {
-	p := t.p.New(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise)
+func (a *ArcCurve) New(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise float64) *ArcCurve {
+	p := a.p.New(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise)
 	return &ArcCurve{p: p}
 }

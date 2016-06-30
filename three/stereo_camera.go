@@ -12,7 +12,7 @@ import (
 type StereoCamera struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *StereoCamera) JSObject() *js.Object { return t.p }
+func (s *StereoCamera) JSObject() *js.Object { return s.p }
 
 // StereoCamera returns a StereoCamera object.
 func (t *Three) StereoCamera() *StereoCamera {
@@ -21,27 +21,27 @@ func (t *Three) StereoCamera() *StereoCamera {
 }
 
 // New returns a new StereoCamera object.
-func (t *StereoCamera) New() *StereoCamera {
-	p := t.p.New()
+func (s *StereoCamera) New() *StereoCamera {
+	p := s.p.New()
 	return &StereoCamera{p: p}
 }
 
 // Type returns the property of the same name.
-func (t *StereoCamera) Type() string {
-	return t.p.Get("type").String()
+func (s *StereoCamera) Type() string {
+	return s.p.Get("type").String()
 }
 
 // Aspect returns the property of the same name.
-func (t *StereoCamera) Aspect() float64 {
-	return t.p.Get("aspect").Float()
+func (s *StereoCamera) Aspect() float64 {
+	return s.p.Get("aspect").Float()
 }
 
 // CameraL returns the property of the same name.
-func (t *StereoCamera) CameraL() *PerspectiveCamera {
-	return &PerspectiveCamera{&Camera{&Object3D{p: t.p.Get("cameraL")}}}
+func (s *StereoCamera) CameraL() *PerspectiveCamera {
+	return &PerspectiveCamera{&Camera{&Object3D{p: s.p.Get("cameraL")}}}
 }
 
 // CameraR returns the property of the same name.
-func (t *StereoCamera) CameraR() *PerspectiveCamera {
-	return &PerspectiveCamera{&Camera{&Object3D{p: t.p.Get("cameraR")}}}
+func (s *StereoCamera) CameraR() *PerspectiveCamera {
+	return &PerspectiveCamera{&Camera{&Object3D{p: s.p.Get("cameraR")}}}
 }

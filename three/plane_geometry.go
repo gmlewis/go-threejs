@@ -14,7 +14,7 @@ import (
 type PlaneGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PlaneGeometry) JSObject() *js.Object { return t.p }
+func (p *PlaneGeometry) JSObject() *js.Object { return p.p }
 
 // PlaneGeometry returns a PlaneGeometry object.
 func (t *Three) PlaneGeometry() *PlaneGeometry {
@@ -28,7 +28,7 @@ func (t *Three) PlaneGeometry() *PlaneGeometry {
 //     height — Height along the Y axis.
 //     widthSegments — Optional. Default is 1.
 //     heightSegments — Optional. Default is 1.
-func (t *PlaneGeometry) New(width, height float64, widthSegments, heightSegments int) *PlaneGeometry {
-	p := t.p.New(width, height, widthSegments, heightSegments)
-	return &PlaneGeometry{p: p}
+func (p *PlaneGeometry) New(width, height float64, widthSegments, heightSegments int) *PlaneGeometry {
+	t := p.p.New(width, height, widthSegments, heightSegments)
+	return &PlaneGeometry{p: t}
 }

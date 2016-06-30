@@ -12,7 +12,7 @@ import (
 type CompressedTexture struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CompressedTexture) JSObject() *js.Object { return t.p }
+func (c *CompressedTexture) JSObject() *js.Object { return c.p }
 
 // CompressedTexture returns a CompressedTexture object.
 func (t *Three) CompressedTexture() *CompressedTexture {
@@ -21,7 +21,7 @@ func (t *Three) CompressedTexture() *CompressedTexture {
 }
 
 // New returns a new CompressedTexture object.
-func (t *CompressedTexture) New(mipmaps, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *CompressedTexture {
-	p := t.p.New(mipmaps, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
+func (c *CompressedTexture) New(mipmaps, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *CompressedTexture {
+	p := c.p.New(mipmaps, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
 	return &CompressedTexture{p: p}
 }

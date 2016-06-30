@@ -12,7 +12,7 @@ import (
 type PropertyBinding struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PropertyBinding) JSObject() *js.Object { return t.p }
+func (p *PropertyBinding) JSObject() *js.Object { return p.p }
 
 // PropertyBinding returns a PropertyBinding object.
 func (t *Three) PropertyBinding() *PropertyBinding {
@@ -21,9 +21,9 @@ func (t *Three) PropertyBinding() *PropertyBinding {
 }
 
 // New returns a new PropertyBinding object.
-func (t *PropertyBinding) New(rootNode, path, parsedPath float64) *PropertyBinding {
-	p := t.p.New(rootNode, path, parsedPath)
-	return &PropertyBinding{p: p}
+func (p *PropertyBinding) New(rootNode, path, parsedPath float64) *PropertyBinding {
+	t := p.p.New(rootNode, path, parsedPath)
+	return &PropertyBinding{p: t}
 }
 
 // Bind TODO description.

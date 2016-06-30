@@ -12,7 +12,7 @@ import (
 type BooleanKeyframeTrack struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BooleanKeyframeTrack) JSObject() *js.Object { return t.p }
+func (b *BooleanKeyframeTrack) JSObject() *js.Object { return b.p }
 
 // BooleanKeyframeTrack returns a BooleanKeyframeTrack object.
 func (t *Three) BooleanKeyframeTrack() *BooleanKeyframeTrack {
@@ -21,7 +21,7 @@ func (t *Three) BooleanKeyframeTrack() *BooleanKeyframeTrack {
 }
 
 // New returns a new BooleanKeyframeTrack object.
-func (t *BooleanKeyframeTrack) New(name, times, values float64) *BooleanKeyframeTrack {
-	p := t.p.New(name, times, values)
+func (b *BooleanKeyframeTrack) New(name, times, values float64) *BooleanKeyframeTrack {
+	p := b.p.New(name, times, values)
 	return &BooleanKeyframeTrack{p: p}
 }

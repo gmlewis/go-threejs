@@ -14,7 +14,7 @@ import (
 type Points struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Points) JSObject() *js.Object { return t.p }
+func (p *Points) JSObject() *js.Object { return p.p }
 
 // Points returns a Points object.
 func (t *Three) Points() *Points {
@@ -26,7 +26,7 @@ func (t *Three) Points() *Points {
 //
 //     geometry — an instance of geometry.
 //     material — an instance of material (optional).
-func (t *Points) New(geometry, material *js.Object) *Points {
-	p := t.p.New(geometry, material)
-	return &Points{p: p}
+func (p *Points) New(geometry, material *js.Object) *Points {
+	t := p.p.New(geometry, material)
+	return &Points{p: t}
 }

@@ -12,7 +12,7 @@ import (
 type ExtrudeGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ExtrudeGeometry) JSObject() *js.Object { return t.p }
+func (e *ExtrudeGeometry) JSObject() *js.Object { return e.p }
 
 // ExtrudeGeometry returns an ExtrudeGeometry object.
 func (t *Three) ExtrudeGeometry() *ExtrudeGeometry {
@@ -21,8 +21,8 @@ func (t *Three) ExtrudeGeometry() *ExtrudeGeometry {
 }
 
 // New returns a new ExtrudeGeometry object.
-func (t *ExtrudeGeometry) New(shapes, options float64) *ExtrudeGeometry {
-	p := t.p.New(shapes, options)
+func (e *ExtrudeGeometry) New(shapes, options float64) *ExtrudeGeometry {
+	p := e.p.New(shapes, options)
 	return &ExtrudeGeometry{p: p}
 }
 

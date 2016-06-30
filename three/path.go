@@ -12,7 +12,7 @@ import (
 type Path struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Path) JSObject() *js.Object { return t.p }
+func (p *Path) JSObject() *js.Object { return p.p }
 
 // Path returns a Path object.
 func (t *Three) Path() *Path {
@@ -21,9 +21,8 @@ func (t *Three) Path() *Path {
 }
 
 // New returns a new Path object.
-func (t *Path) New(points float64) *Path {
-	p := t.p.New(points)
-	return &Path{p: p}
+func (p *Path) New(points float64) *Path {
+	return &Path{p: p.p.New(points)}
 }
 
 // FromPoints TODO description.

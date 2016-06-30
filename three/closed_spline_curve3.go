@@ -12,7 +12,7 @@ import (
 type ClosedSplineCurve3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ClosedSplineCurve3) JSObject() *js.Object { return t.p }
+func (c *ClosedSplineCurve3) JSObject() *js.Object { return c.p }
 
 // ClosedSplineCurve3 returns a ClosedSplineCurve3 object.
 func (t *Three) ClosedSplineCurve3() *ClosedSplineCurve3 {
@@ -21,7 +21,7 @@ func (t *Three) ClosedSplineCurve3() *ClosedSplineCurve3 {
 }
 
 // New returns a new ClosedSplineCurve3 object.
-func (t *ClosedSplineCurve3) New(points float64) *ClosedSplineCurve3 {
-	p := t.p.New(points)
+func (c *ClosedSplineCurve3) New(points float64) *ClosedSplineCurve3 {
+	p := c.p.New(points)
 	return &ClosedSplineCurve3{p: p}
 }

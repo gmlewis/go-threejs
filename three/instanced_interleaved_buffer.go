@@ -12,7 +12,7 @@ import (
 type InstancedInterleavedBuffer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *InstancedInterleavedBuffer) JSObject() *js.Object { return t.p }
+func (i *InstancedInterleavedBuffer) JSObject() *js.Object { return i.p }
 
 // InstancedInterleavedBuffer returns an InstancedInterleavedBuffer object.
 func (t *Three) InstancedInterleavedBuffer() *InstancedInterleavedBuffer {
@@ -21,8 +21,8 @@ func (t *Three) InstancedInterleavedBuffer() *InstancedInterleavedBuffer {
 }
 
 // New returns a new InstancedInterleavedBuffer object.
-func (t *InstancedInterleavedBuffer) New(array, stride, meshPerAttribute float64) *InstancedInterleavedBuffer {
-	p := t.p.New(array, stride, meshPerAttribute)
+func (i *InstancedInterleavedBuffer) New(array, stride, meshPerAttribute float64) *InstancedInterleavedBuffer {
+	p := i.p.New(array, stride, meshPerAttribute)
 	return &InstancedInterleavedBuffer{p: p}
 }
 

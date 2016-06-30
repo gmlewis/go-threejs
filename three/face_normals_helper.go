@@ -12,7 +12,7 @@ import (
 type FaceNormalsHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *FaceNormalsHelper) JSObject() *js.Object { return t.p }
+func (f *FaceNormalsHelper) JSObject() *js.Object { return f.p }
 
 // FaceNormalsHelper returns a FaceNormalsHelper object.
 func (t *Three) FaceNormalsHelper() *FaceNormalsHelper {
@@ -21,7 +21,7 @@ func (t *Three) FaceNormalsHelper() *FaceNormalsHelper {
 }
 
 // New returns a new FaceNormalsHelper object.
-func (t *FaceNormalsHelper) New(object, size, hex, linewidth float64) *FaceNormalsHelper {
-	p := t.p.New(object, size, hex, linewidth)
+func (f *FaceNormalsHelper) New(object, size, hex, linewidth float64) *FaceNormalsHelper {
+	p := f.p.New(object, size, hex, linewidth)
 	return &FaceNormalsHelper{p: p}
 }

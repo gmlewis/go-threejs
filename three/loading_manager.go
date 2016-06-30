@@ -12,7 +12,7 @@ import (
 type LoadingManager struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LoadingManager) JSObject() *js.Object { return t.p }
+func (l *LoadingManager) JSObject() *js.Object { return l.p }
 
 // LoadingManager returns a LoadingManager object.
 func (t *Three) LoadingManager() *LoadingManager {
@@ -21,7 +21,7 @@ func (t *Three) LoadingManager() *LoadingManager {
 }
 
 // New returns a new LoadingManager object.
-func (t *LoadingManager) New(onLoad, onProgress, onError float64) *LoadingManager {
-	p := t.p.New(onLoad, onProgress, onError)
+func (l *LoadingManager) New(onLoad, onProgress, onError float64) *LoadingManager {
+	p := l.p.New(onLoad, onProgress, onError)
 	return &LoadingManager{p: p}
 }

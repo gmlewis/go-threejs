@@ -14,7 +14,7 @@ import (
 type Skeleton struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Skeleton) JSObject() *js.Object { return t.p }
+func (s *Skeleton) JSObject() *js.Object { return s.p }
 
 // Skeleton returns a Skeleton object.
 func (t *Three) Skeleton() *Skeleton {
@@ -27,7 +27,7 @@ func (t *Three) Skeleton() *Skeleton {
 //     bones — The array of bones
 //     boneInverses — (optional) An array of Matrix4s
 //     useVertexTexture — (optional) Whether or not to use a vertex texture in the shader.
-func (t *Skeleton) New(bones, boneInverses []*js.Object, useVertexTexture bool) *Skeleton {
-	p := t.p.New(bones, boneInverses, useVertexTexture)
+func (s *Skeleton) New(bones, boneInverses []*js.Object, useVertexTexture bool) *Skeleton {
+	p := s.p.New(bones, boneInverses, useVertexTexture)
 	return &Skeleton{p: p}
 }

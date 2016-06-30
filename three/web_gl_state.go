@@ -12,7 +12,7 @@ import (
 type WebGLState struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLState) JSObject() *js.Object { return t.p }
+func (w *WebGLState) JSObject() *js.Object { return w.p }
 
 // WebGLState returns a WebGLState object.
 func (t *Three) WebGLState() *WebGLState {
@@ -21,7 +21,7 @@ func (t *Three) WebGLState() *WebGLState {
 }
 
 // New returns a new WebGLState object.
-func (t *WebGLState) New(gl, extensions, paramThreeToGL float64) *WebGLState {
-	p := t.p.New(gl, extensions, paramThreeToGL)
+func (w *WebGLState) New(gl, extensions, paramThreeToGL float64) *WebGLState {
+	p := w.p.New(gl, extensions, paramThreeToGL)
 	return &WebGLState{p: p}
 }

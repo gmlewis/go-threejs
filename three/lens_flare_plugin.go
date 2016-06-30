@@ -12,7 +12,7 @@ import (
 type LensFlarePlugin struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LensFlarePlugin) JSObject() *js.Object { return t.p }
+func (l *LensFlarePlugin) JSObject() *js.Object { return l.p }
 
 // LensFlarePlugin returns a LensFlarePlugin object.
 func (t *Three) LensFlarePlugin() *LensFlarePlugin {
@@ -21,7 +21,7 @@ func (t *Three) LensFlarePlugin() *LensFlarePlugin {
 }
 
 // New returns a new LensFlarePlugin object.
-func (t *LensFlarePlugin) New(renderer, flares float64) *LensFlarePlugin {
-	p := t.p.New(renderer, flares)
+func (l *LensFlarePlugin) New(renderer, flares float64) *LensFlarePlugin {
+	p := l.p.New(renderer, flares)
 	return &LensFlarePlugin{p: p}
 }

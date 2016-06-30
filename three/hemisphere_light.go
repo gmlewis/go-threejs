@@ -12,7 +12,7 @@ import (
 type HemisphereLight struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *HemisphereLight) JSObject() *js.Object { return t.p }
+func (h *HemisphereLight) JSObject() *js.Object { return h.p }
 
 // HemisphereLight returns a HemisphereLight object.
 func (t *Three) HemisphereLight() *HemisphereLight {
@@ -21,8 +21,8 @@ func (t *Three) HemisphereLight() *HemisphereLight {
 }
 
 // New returns a new HemisphereLight object.
-func (t *HemisphereLight) New(skyColor, groundColor, intensity float64) *HemisphereLight {
-	p := t.p.New(skyColor, groundColor, intensity)
+func (h *HemisphereLight) New(skyColor, groundColor, intensity float64) *HemisphereLight {
+	p := h.p.New(skyColor, groundColor, intensity)
 	return &HemisphereLight{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type CircleBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CircleBufferGeometry) JSObject() *js.Object { return t.p }
+func (c *CircleBufferGeometry) JSObject() *js.Object { return c.p }
 
 // CircleBufferGeometry returns a CircleBufferGeometry object.
 func (t *Three) CircleBufferGeometry() *CircleBufferGeometry {
@@ -21,7 +21,7 @@ func (t *Three) CircleBufferGeometry() *CircleBufferGeometry {
 }
 
 // New returns a new CircleBufferGeometry object.
-func (t *CircleBufferGeometry) New(radius, segments, thetaStart, thetaLength float64) *CircleBufferGeometry {
-	p := t.p.New(radius, segments, thetaStart, thetaLength)
+func (c *CircleBufferGeometry) New(radius, segments, thetaStart, thetaLength float64) *CircleBufferGeometry {
+	p := c.p.New(radius, segments, thetaStart, thetaLength)
 	return &CircleBufferGeometry{p: p}
 }

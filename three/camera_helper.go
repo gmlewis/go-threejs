@@ -12,7 +12,7 @@ import (
 type CameraHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CameraHelper) JSObject() *js.Object { return t.p }
+func (c *CameraHelper) JSObject() *js.Object { return c.p }
 
 // CameraHelper returns a CameraHelper object.
 func (t *Three) CameraHelper() *CameraHelper {
@@ -21,7 +21,7 @@ func (t *Three) CameraHelper() *CameraHelper {
 }
 
 // New returns a new CameraHelper object.
-func (t *CameraHelper) New(camera float64) *CameraHelper {
-	p := t.p.New(camera)
+func (c *CameraHelper) New(camera float64) *CameraHelper {
+	p := c.p.New(camera)
 	return &CameraHelper{p: p}
 }

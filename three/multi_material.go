@@ -12,7 +12,7 @@ import (
 type MultiMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MultiMaterial) JSObject() *js.Object { return t.p }
+func (m *MultiMaterial) JSObject() *js.Object { return m.p }
 
 // MultiMaterial returns a MultiMaterial object.
 func (t *Three) MultiMaterial() *MultiMaterial {
@@ -21,8 +21,8 @@ func (t *Three) MultiMaterial() *MultiMaterial {
 }
 
 // New returns a new MultiMaterial object.
-func (t *MultiMaterial) New(materials float64) *MultiMaterial {
-	p := t.p.New(materials)
+func (m *MultiMaterial) New(materials float64) *MultiMaterial {
+	p := m.p.New(materials)
 	return &MultiMaterial{p: p}
 }
 

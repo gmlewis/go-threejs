@@ -12,7 +12,7 @@ import (
 type Vector4 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Vector4) JSObject() *js.Object { return t.p }
+func (v *Vector4) JSObject() *js.Object { return v.p }
 
 // Vector4 returns a Vector4 object.
 func (t *Three) Vector4() *Vector4 {
@@ -21,8 +21,8 @@ func (t *Three) Vector4() *Vector4 {
 }
 
 // New returns a new Vector4 object.
-func (t *Vector4) New(x, y, z, w float64) *Vector4 {
-	p := t.p.New(x, y, z, w)
+func (v *Vector4) New(x, y, z, w float64) *Vector4 {
+	p := v.p.New(x, y, z, w)
 	return &Vector4{p: p}
 }
 

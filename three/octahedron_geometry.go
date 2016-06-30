@@ -14,7 +14,7 @@ import (
 type OctahedronGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *OctahedronGeometry) JSObject() *js.Object { return t.p }
+func (o *OctahedronGeometry) JSObject() *js.Object { return o.p }
 
 // OctahedronGeometry returns an OctahedronGeometry object.
 func (t *Three) OctahedronGeometry() *OctahedronGeometry {
@@ -26,7 +26,7 @@ func (t *Three) OctahedronGeometry() *OctahedronGeometry {
 //
 //     radius — Default is 1.
 //     detail — Default is 0. Setting this to a value greater than 0 adds more vertices making it no longer an icosahedron. When detail is greater than 1, it's effectively a sphere.
-func (t *OctahedronGeometry) New(radius, detail float64) *OctahedronGeometry {
-	p := t.p.New(radius, detail)
+func (o *OctahedronGeometry) New(radius, detail float64) *OctahedronGeometry {
+	p := o.p.New(radius, detail)
 	return &OctahedronGeometry{p: p}
 }

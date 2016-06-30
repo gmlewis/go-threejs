@@ -12,7 +12,7 @@ import (
 type ShaderMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ShaderMaterial) JSObject() *js.Object { return t.p }
+func (s *ShaderMaterial) JSObject() *js.Object { return s.p }
 
 // ShaderMaterial returns a ShaderMaterial object.
 func (t *Three) ShaderMaterial() *ShaderMaterial {
@@ -21,8 +21,8 @@ func (t *Three) ShaderMaterial() *ShaderMaterial {
 }
 
 // New returns a new ShaderMaterial object.
-func (t *ShaderMaterial) New(parameters float64) *ShaderMaterial {
-	p := t.p.New(parameters)
+func (s *ShaderMaterial) New(parameters float64) *ShaderMaterial {
+	p := s.p.New(parameters)
 	return &ShaderMaterial{p: p}
 }
 

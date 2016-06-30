@@ -12,7 +12,7 @@ import (
 type CurveUtils struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CurveUtils) JSObject() *js.Object { return t.p }
+func (c *CurveUtils) JSObject() *js.Object { return c.p }
 
 // CurveUtils returns a CurveUtils object.
 func (t *Three) CurveUtils() *CurveUtils {
@@ -21,8 +21,8 @@ func (t *Three) CurveUtils() *CurveUtils {
 }
 
 // New returns a new CurveUtils object.
-func (t *CurveUtils) New() *CurveUtils {
-	p := t.p.New()
+func (c *CurveUtils) New() *CurveUtils {
+	p := c.p.New()
 	return &CurveUtils{p: p}
 }
 

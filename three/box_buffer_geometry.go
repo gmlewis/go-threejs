@@ -12,7 +12,7 @@ import (
 type BoxBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BoxBufferGeometry) JSObject() *js.Object { return t.p }
+func (b *BoxBufferGeometry) JSObject() *js.Object { return b.p }
 
 // BoxBufferGeometry returns a BoxBufferGeometry object.
 func (t *Three) BoxBufferGeometry() *BoxBufferGeometry {
@@ -21,7 +21,7 @@ func (t *Three) BoxBufferGeometry() *BoxBufferGeometry {
 }
 
 // New returns a new BoxBufferGeometry object.
-func (t *BoxBufferGeometry) New(width, height, depth, widthSegments, heightSegments, depthSegments float64) *BoxBufferGeometry {
-	p := t.p.New(width, height, depth, widthSegments, heightSegments, depthSegments)
+func (b *BoxBufferGeometry) New(width, height, depth, widthSegments, heightSegments, depthSegments float64) *BoxBufferGeometry {
+	p := b.p.New(width, height, depth, widthSegments, heightSegments, depthSegments)
 	return &BoxBufferGeometry{p: p}
 }

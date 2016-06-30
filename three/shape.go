@@ -12,7 +12,7 @@ import (
 type Shape struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Shape) JSObject() *js.Object { return t.p }
+func (s *Shape) JSObject() *js.Object { return s.p }
 
 // Shape returns a Shape object.
 func (t *Three) Shape() *Shape {
@@ -21,8 +21,8 @@ func (t *Three) Shape() *Shape {
 }
 
 // New returns a new Shape object.
-func (t *Shape) New() *Shape {
-	p := t.p.New()
+func (s *Shape) New() *Shape {
+	p := s.p.New()
 	return &Shape{p: p}
 }
 

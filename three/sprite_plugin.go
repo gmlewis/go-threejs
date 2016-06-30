@@ -12,7 +12,7 @@ import (
 type SpritePlugin struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SpritePlugin) JSObject() *js.Object { return t.p }
+func (s *SpritePlugin) JSObject() *js.Object { return s.p }
 
 // SpritePlugin returns a SpritePlugin object.
 func (t *Three) SpritePlugin() *SpritePlugin {
@@ -21,7 +21,7 @@ func (t *Three) SpritePlugin() *SpritePlugin {
 }
 
 // New returns a new SpritePlugin object.
-func (t *SpritePlugin) New(renderer, sprites float64) *SpritePlugin {
-	p := t.p.New(renderer, sprites)
+func (s *SpritePlugin) New(renderer, sprites float64) *SpritePlugin {
+	p := s.p.New(renderer, sprites)
 	return &SpritePlugin{p: p}
 }

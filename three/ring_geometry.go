@@ -14,7 +14,7 @@ import (
 type RingGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *RingGeometry) JSObject() *js.Object { return t.p }
+func (r *RingGeometry) JSObject() *js.Object { return r.p }
 
 // RingGeometry returns a RingGeometry object.
 func (t *Three) RingGeometry() *RingGeometry {
@@ -30,7 +30,7 @@ func (t *Three) RingGeometry() *RingGeometry {
 //     phiSegments — Minimum is 1. Default is 8.
 //     thetaStart — Starting angle. Default is 0.
 //     thetaLength — Central angle. Default is Math.PI * 2.
-func (t *RingGeometry) New(innerRadius, outerRadius float64, thetaSegments, phiSegments int, thetaStart, thetaLength float64) *RingGeometry {
-	p := t.p.New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
+func (r *RingGeometry) New(innerRadius, outerRadius float64, thetaSegments, phiSegments int, thetaStart, thetaLength float64) *RingGeometry {
+	p := r.p.New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
 	return &RingGeometry{p: p}
 }

@@ -12,7 +12,7 @@ import (
 type Ray struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Ray) JSObject() *js.Object { return t.p }
+func (r *Ray) JSObject() *js.Object { return r.p }
 
 // Ray returns a Ray object.
 func (t *Three) Ray() *Ray {
@@ -21,8 +21,8 @@ func (t *Three) Ray() *Ray {
 }
 
 // New returns a new Ray object.
-func (t *Ray) New(origin, direction float64) *Ray {
-	p := t.p.New(origin, direction)
+func (r *Ray) New(origin, direction float64) *Ray {
+	p := r.p.New(origin, direction)
 	return &Ray{p: p}
 }
 

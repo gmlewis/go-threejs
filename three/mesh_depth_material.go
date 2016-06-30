@@ -15,7 +15,7 @@ import (
 type MeshDepthMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MeshDepthMaterial) JSObject() *js.Object { return t.p }
+func (m *MeshDepthMaterial) JSObject() *js.Object { return m.p }
 
 // MeshDepthMaterial returns a MeshDepthMaterial object.
 func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
@@ -29,8 +29,8 @@ func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
 //     wireframe -- Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
-func (t *MeshDepthMaterial) New(parameters map[string]interface{}) *MeshDepthMaterial {
-	p := t.p.New(parameters)
+func (m *MeshDepthMaterial) New(parameters map[string]interface{}) *MeshDepthMaterial {
+	p := m.p.New(parameters)
 	return &MeshDepthMaterial{p: p}
 }
 

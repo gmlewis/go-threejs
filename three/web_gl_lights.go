@@ -12,7 +12,7 @@ import (
 type WebGLLights struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLLights) JSObject() *js.Object { return t.p }
+func (w *WebGLLights) JSObject() *js.Object { return w.p }
 
 // WebGLLights returns a WebGLLights object.
 func (t *Three) WebGLLights() *WebGLLights {
@@ -21,7 +21,7 @@ func (t *Three) WebGLLights() *WebGLLights {
 }
 
 // New returns a new WebGLLights object.
-func (t *WebGLLights) New() *WebGLLights {
-	p := t.p.New()
+func (w *WebGLLights) New() *WebGLLights {
+	p := w.p.New()
 	return &WebGLLights{p: p}
 }

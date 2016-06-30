@@ -12,7 +12,7 @@ import (
 type ShaderChunk struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ShaderChunk) JSObject() *js.Object { return t.p }
+func (s *ShaderChunk) JSObject() *js.Object { return s.p }
 
 // ShaderChunk returns a ShaderChunk object.
 func (t *Three) ShaderChunk() *ShaderChunk {
@@ -21,7 +21,7 @@ func (t *Three) ShaderChunk() *ShaderChunk {
 }
 
 // New returns a new ShaderChunk object.
-func (t *ShaderChunk) New() *ShaderChunk {
-	p := t.p.New()
+func (s *ShaderChunk) New() *ShaderChunk {
+	p := s.p.New()
 	return &ShaderChunk{p: p}
 }

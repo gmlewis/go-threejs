@@ -12,7 +12,7 @@ import (
 type Layers struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Layers) JSObject() *js.Object { return t.p }
+func (l *Layers) JSObject() *js.Object { return l.p }
 
 // Layers returns a Layers object.
 func (t *Three) Layers() *Layers {
@@ -21,8 +21,8 @@ func (t *Three) Layers() *Layers {
 }
 
 // New returns a new Layers object.
-func (t *Layers) New() *Layers {
-	p := t.p.New()
+func (l *Layers) New() *Layers {
+	p := l.p.New()
 	return &Layers{p: p}
 }
 

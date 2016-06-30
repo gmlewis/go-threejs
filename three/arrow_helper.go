@@ -12,7 +12,7 @@ import (
 type ArrowHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ArrowHelper) JSObject() *js.Object { return t.p }
+func (a *ArrowHelper) JSObject() *js.Object { return a.p }
 
 // ArrowHelper returns an ArrowHelper object.
 func (t *Three) ArrowHelper() *ArrowHelper {
@@ -21,8 +21,8 @@ func (t *Three) ArrowHelper() *ArrowHelper {
 }
 
 // New returns a new ArrowHelper object.
-func (t *ArrowHelper) New() *ArrowHelper {
-	p := t.p.New()
+func (a *ArrowHelper) New() *ArrowHelper {
+	p := a.p.New()
 	return &ArrowHelper{p: p}
 }
 

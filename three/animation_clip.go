@@ -12,7 +12,7 @@ import (
 type AnimationClip struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AnimationClip) JSObject() *js.Object { return t.p }
+func (a *AnimationClip) JSObject() *js.Object { return a.p }
 
 // AnimationClip returns an AnimationClip object.
 func (t *Three) AnimationClip() *AnimationClip {
@@ -21,8 +21,8 @@ func (t *Three) AnimationClip() *AnimationClip {
 }
 
 // New returns a new AnimationClip object.
-func (t *AnimationClip) New(name, duration, tracks float64) *AnimationClip {
-	p := t.p.New(name, duration, tracks)
+func (a *AnimationClip) New(name, duration, tracks float64) *AnimationClip {
+	p := a.p.New(name, duration, tracks)
 	return &AnimationClip{p: p}
 }
 

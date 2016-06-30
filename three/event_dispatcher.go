@@ -12,7 +12,7 @@ import (
 type EventDispatcher struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *EventDispatcher) JSObject() *js.Object { return t.p }
+func (e *EventDispatcher) JSObject() *js.Object { return e.p }
 
 // EventDispatcher returns an EventDispatcher object.
 func (t *Three) EventDispatcher() *EventDispatcher {
@@ -21,8 +21,8 @@ func (t *Three) EventDispatcher() *EventDispatcher {
 }
 
 // New returns a new EventDispatcher object.
-func (t *EventDispatcher) New() *EventDispatcher {
-	p := t.p.New()
+func (e *EventDispatcher) New() *EventDispatcher {
+	p := e.p.New()
 	return &EventDispatcher{p: p}
 }
 

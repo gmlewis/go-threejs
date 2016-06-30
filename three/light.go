@@ -12,7 +12,7 @@ import (
 type Light struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Light) JSObject() *js.Object { return t.p }
+func (l *Light) JSObject() *js.Object { return l.p }
 
 // Light returns a Light object.
 func (t *Three) Light() *Light {
@@ -21,8 +21,8 @@ func (t *Three) Light() *Light {
 }
 
 // New returns a new Light object.
-func (t *Light) New(color, intensity float64) *Light {
-	p := t.p.New(color, intensity)
+func (l *Light) New(color, intensity float64) *Light {
+	p := l.p.New(color, intensity)
 	return &Light{p: p}
 }
 

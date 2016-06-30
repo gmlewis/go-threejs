@@ -12,7 +12,7 @@ import (
 type GridHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *GridHelper) JSObject() *js.Object { return t.p }
+func (g *GridHelper) JSObject() *js.Object { return g.p }
 
 // GridHelper returns a GridHelper object.
 func (t *Three) GridHelper() *GridHelper {
@@ -21,8 +21,8 @@ func (t *Three) GridHelper() *GridHelper {
 }
 
 // New returns a new GridHelper object.
-func (t *GridHelper) New(size, step float64) *GridHelper {
-	p := t.p.New(size, step)
+func (g *GridHelper) New(size, step float64) *GridHelper {
+	p := g.p.New(size, step)
 	return &GridHelper{p: p}
 }
 

@@ -14,7 +14,7 @@ import (
 type BoxGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BoxGeometry) JSObject() *js.Object { return t.p }
+func (b *BoxGeometry) JSObject() *js.Object { return b.p }
 
 // BoxGeometry returns a BoxGeometry object.
 func (t *Three) BoxGeometry() *BoxGeometry {
@@ -34,12 +34,12 @@ type BoxGeometryOpts struct {
 //     width — Width of the sides on the X axis.
 //     height — Height of the sides on the Y axis.
 //     depth — Depth of the sides on the Z axis.
-func (t *BoxGeometry) New(width, height, depth float64, opts *BoxGeometryOpts) *BoxGeometry {
+func (b *BoxGeometry) New(width, height, depth float64, opts *BoxGeometryOpts) *BoxGeometry {
 	var p *js.Object
 	if opts != nil {
-		p = t.p.New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
+		p = b.p.New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
 	} else {
-		p = t.p.New(width, height, depth)
+		p = b.p.New(width, height, depth)
 	}
 	return &BoxGeometry{p: p}
 }

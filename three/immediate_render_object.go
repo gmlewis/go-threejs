@@ -12,7 +12,7 @@ import (
 type ImmediateRenderObject struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ImmediateRenderObject) JSObject() *js.Object { return t.p }
+func (i *ImmediateRenderObject) JSObject() *js.Object { return i.p }
 
 // ImmediateRenderObject returns an ImmediateRenderObject object.
 func (t *Three) ImmediateRenderObject() *ImmediateRenderObject {
@@ -21,7 +21,7 @@ func (t *Three) ImmediateRenderObject() *ImmediateRenderObject {
 }
 
 // New returns a new ImmediateRenderObject object.
-func (t *ImmediateRenderObject) New(material float64) *ImmediateRenderObject {
-	p := t.p.New(material)
+func (i *ImmediateRenderObject) New(material float64) *ImmediateRenderObject {
+	p := i.p.New(material)
 	return &ImmediateRenderObject{p: p}
 }

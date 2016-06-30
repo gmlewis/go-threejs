@@ -12,7 +12,7 @@ import (
 type Material struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Material) JSObject() *js.Object { return t.p }
+func (m *Material) JSObject() *js.Object { return m.p }
 
 // Material returns a Material object.
 func (t *Three) Material() *Material {
@@ -21,8 +21,8 @@ func (t *Three) Material() *Material {
 }
 
 // New returns a new Material object.
-func (t *Material) New() *Material {
-	p := t.p.New()
+func (m *Material) New() *Material {
+	p := m.p.New()
 	return &Material{p: p}
 }
 

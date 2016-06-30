@@ -12,7 +12,7 @@ import (
 type AnimationUtils struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AnimationUtils) JSObject() *js.Object { return t.p }
+func (a *AnimationUtils) JSObject() *js.Object { return a.p }
 
 // AnimationUtils returns an AnimationUtils object.
 func (t *Three) AnimationUtils() *AnimationUtils {
@@ -21,8 +21,8 @@ func (t *Three) AnimationUtils() *AnimationUtils {
 }
 
 // New returns a new AnimationUtils object.
-func (t *AnimationUtils) New() *AnimationUtils {
-	p := t.p.New()
+func (a *AnimationUtils) New() *AnimationUtils {
+	p := a.p.New()
 	return &AnimationUtils{p: p}
 }
 

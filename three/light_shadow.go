@@ -12,7 +12,7 @@ import (
 type LightShadow struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LightShadow) JSObject() *js.Object { return t.p }
+func (l *LightShadow) JSObject() *js.Object { return l.p }
 
 // LightShadow returns a LightShadow object.
 func (t *Three) LightShadow() *LightShadow {
@@ -21,8 +21,8 @@ func (t *Three) LightShadow() *LightShadow {
 }
 
 // New returns a new LightShadow object.
-func (t *LightShadow) New(camera float64) *LightShadow {
-	p := t.p.New(camera)
+func (l *LightShadow) New(camera float64) *LightShadow {
+	p := l.p.New(camera)
 	return &LightShadow{p: p}
 }
 

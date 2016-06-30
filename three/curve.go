@@ -12,7 +12,7 @@ import (
 type Curve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Curve) JSObject() *js.Object { return t.p }
+func (c *Curve) JSObject() *js.Object { return c.p }
 
 // Curve returns a Curve object.
 func (t *Three) Curve() *Curve {
@@ -21,8 +21,8 @@ func (t *Three) Curve() *Curve {
 }
 
 // New returns a new Curve object.
-func (t *Curve) New() *Curve {
-	p := t.p.New()
+func (c *Curve) New() *Curve {
+	p := c.p.New()
 	return &Curve{p: p}
 }
 

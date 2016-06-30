@@ -12,7 +12,7 @@ import (
 type ImageLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ImageLoader) JSObject() *js.Object { return t.p }
+func (i *ImageLoader) JSObject() *js.Object { return i.p }
 
 // ImageLoader returns an ImageLoader object.
 func (t *Three) ImageLoader() *ImageLoader {
@@ -21,8 +21,8 @@ func (t *Three) ImageLoader() *ImageLoader {
 }
 
 // New returns a new ImageLoader object.
-func (t *ImageLoader) New(manager float64) *ImageLoader {
-	p := t.p.New(manager)
+func (i *ImageLoader) New(manager float64) *ImageLoader {
+	p := i.p.New(manager)
 	return &ImageLoader{p: p}
 }
 

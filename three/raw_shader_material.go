@@ -12,7 +12,7 @@ import (
 type RawShaderMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *RawShaderMaterial) JSObject() *js.Object { return t.p }
+func (r *RawShaderMaterial) JSObject() *js.Object { return r.p }
 
 // RawShaderMaterial returns a RawShaderMaterial object.
 func (t *Three) RawShaderMaterial() *RawShaderMaterial {
@@ -21,7 +21,7 @@ func (t *Three) RawShaderMaterial() *RawShaderMaterial {
 }
 
 // New returns a new RawShaderMaterial object.
-func (t *RawShaderMaterial) New(parameters float64) *RawShaderMaterial {
-	p := t.p.New(parameters)
+func (r *RawShaderMaterial) New(parameters float64) *RawShaderMaterial {
+	p := r.p.New(parameters)
 	return &RawShaderMaterial{p: p}
 }

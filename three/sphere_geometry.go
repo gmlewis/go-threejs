@@ -14,7 +14,7 @@ import (
 type SphereGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SphereGeometry) JSObject() *js.Object { return t.p }
+func (s *SphereGeometry) JSObject() *js.Object { return s.p }
 
 // SphereGeometry returns a SphereGeometry object.
 func (t *Three) SphereGeometry() *SphereGeometry {
@@ -31,7 +31,7 @@ func (t *Three) SphereGeometry() *SphereGeometry {
 //     phiLength — specify horizontal sweep angle size. Default is Math.PI * 2.
 //     thetaStart — specify vertical starting angle. Default is 0.
 //     thetaLength — specify vertical sweep angle size. Default is Math.PI.
-func (t *SphereGeometry) New(radius float64, widthSegments, heightSegments int, phiStart, phiLength, thetaStart, thetaLength float64) *SphereGeometry {
-	p := t.p.New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
+func (s *SphereGeometry) New(radius float64, widthSegments, heightSegments int, phiStart, phiLength, thetaStart, thetaLength float64) *SphereGeometry {
+	p := s.p.New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
 	return &SphereGeometry{p: p}
 }

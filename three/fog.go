@@ -14,7 +14,7 @@ import (
 type Fog struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Fog) JSObject() *js.Object { return t.p }
+func (f *Fog) JSObject() *js.Object { return f.p }
 
 // Fog returns a Fog object.
 func (t *Three) Fog() *Fog {
@@ -23,7 +23,7 @@ func (t *Three) Fog() *Fog {
 }
 
 // New returns a new Fog object.
-func (t *Fog) New(color, near, far float64) *Fog {
-	p := t.p.New(color, near, far)
+func (f *Fog) New(color, near, far float64) *Fog {
+	p := f.p.New(color, near, far)
 	return &Fog{p: p}
 }

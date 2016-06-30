@@ -12,7 +12,7 @@ import (
 type EdgesHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *EdgesHelper) JSObject() *js.Object { return t.p }
+func (e *EdgesHelper) JSObject() *js.Object { return e.p }
 
 // EdgesHelper returns an EdgesHelper object.
 func (t *Three) EdgesHelper() *EdgesHelper {
@@ -21,7 +21,7 @@ func (t *Three) EdgesHelper() *EdgesHelper {
 }
 
 // New returns a new EdgesHelper object.
-func (t *EdgesHelper) New(object, hex, thresholdAngle float64) *EdgesHelper {
-	p := t.p.New(object, hex, thresholdAngle)
+func (e *EdgesHelper) New(object, hex, thresholdAngle float64) *EdgesHelper {
+	p := e.p.New(object, hex, thresholdAngle)
 	return &EdgesHelper{p: p}
 }

@@ -12,7 +12,7 @@ import (
 type CompressedTextureLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CompressedTextureLoader) JSObject() *js.Object { return t.p }
+func (c *CompressedTextureLoader) JSObject() *js.Object { return c.p }
 
 // CompressedTextureLoader returns a CompressedTextureLoader object.
 func (t *Three) CompressedTextureLoader() *CompressedTextureLoader {
@@ -21,8 +21,8 @@ func (t *Three) CompressedTextureLoader() *CompressedTextureLoader {
 }
 
 // New returns a new CompressedTextureLoader object.
-func (t *CompressedTextureLoader) New(manager float64) *CompressedTextureLoader {
-	p := t.p.New(manager)
+func (c *CompressedTextureLoader) New(manager float64) *CompressedTextureLoader {
+	p := c.p.New(manager)
 	return &CompressedTextureLoader{p: p}
 }
 

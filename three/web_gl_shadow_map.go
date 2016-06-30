@@ -12,7 +12,7 @@ import (
 type WebGLShadowMap struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLShadowMap) JSObject() *js.Object { return t.p }
+func (w *WebGLShadowMap) JSObject() *js.Object { return w.p }
 
 // WebGLShadowMap returns a WebGLShadowMap object.
 func (t *Three) WebGLShadowMap() *WebGLShadowMap {
@@ -21,7 +21,7 @@ func (t *Three) WebGLShadowMap() *WebGLShadowMap {
 }
 
 // New returns a new WebGLShadowMap object.
-func (t *WebGLShadowMap) New(_renderer, _lights, _objects float64) *WebGLShadowMap {
-	p := t.p.New(_renderer, _lights, _objects)
+func (w *WebGLShadowMap) New(_renderer, _lights, _objects float64) *WebGLShadowMap {
+	p := w.p.New(_renderer, _lights, _objects)
 	return &WebGLShadowMap{p: p}
 }

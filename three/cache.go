@@ -12,7 +12,7 @@ import (
 type Cache struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Cache) JSObject() *js.Object { return t.p }
+func (c *Cache) JSObject() *js.Object { return c.p }
 
 // Cache returns a Cache object.
 func (t *Three) Cache() *Cache {
@@ -21,8 +21,8 @@ func (t *Three) Cache() *Cache {
 }
 
 // New returns a new Cache object.
-func (t *Cache) New() *Cache {
-	p := t.p.New()
+func (c *Cache) New() *Cache {
+	p := c.p.New()
 	return &Cache{p: p}
 }
 

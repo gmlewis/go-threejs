@@ -12,7 +12,7 @@ import (
 type VectorKeyframeTrack struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *VectorKeyframeTrack) JSObject() *js.Object { return t.p }
+func (v *VectorKeyframeTrack) JSObject() *js.Object { return v.p }
 
 // VectorKeyframeTrack returns a VectorKeyframeTrack object.
 func (t *Three) VectorKeyframeTrack() *VectorKeyframeTrack {
@@ -21,7 +21,7 @@ func (t *Three) VectorKeyframeTrack() *VectorKeyframeTrack {
 }
 
 // New returns a new VectorKeyframeTrack object.
-func (t *VectorKeyframeTrack) New(name, times, values, interpolation float64) *VectorKeyframeTrack {
-	p := t.p.New(name, times, values, interpolation)
+func (v *VectorKeyframeTrack) New(name, times, values, interpolation float64) *VectorKeyframeTrack {
+	p := v.p.New(name, times, values, interpolation)
 	return &VectorKeyframeTrack{p: p}
 }

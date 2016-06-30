@@ -14,7 +14,7 @@ import (
 type Sprite struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Sprite) JSObject() *js.Object { return t.p }
+func (s *Sprite) JSObject() *js.Object { return s.p }
 
 // Sprite returns a Sprite object.
 func (t *Three) Sprite() *Sprite {
@@ -25,7 +25,7 @@ func (t *Three) Sprite() *Sprite {
 // New returns a new Sprite object.
 //
 //     material — An instance of Material (optional).
-func (t *Sprite) New(material *js.Object) *Sprite {
-	p := t.p.New(material)
+func (s *Sprite) New(material *js.Object) *Sprite {
+	p := s.p.New(material)
 	return &Sprite{p: p}
 }

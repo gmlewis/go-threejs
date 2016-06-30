@@ -12,7 +12,7 @@ import (
 type BinaryTextureLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BinaryTextureLoader) JSObject() *js.Object { return t.p }
+func (b *BinaryTextureLoader) JSObject() *js.Object { return b.p }
 
 // BinaryTextureLoader returns a BinaryTextureLoader object.
 func (t *Three) BinaryTextureLoader() *BinaryTextureLoader {
@@ -21,8 +21,8 @@ func (t *Three) BinaryTextureLoader() *BinaryTextureLoader {
 }
 
 // New returns a new BinaryTextureLoader object.
-func (t *BinaryTextureLoader) New() *BinaryTextureLoader {
-	p := t.p.New()
+func (b *BinaryTextureLoader) New() *BinaryTextureLoader {
+	p := b.p.New()
 	return &BinaryTextureLoader{p: p}
 }
 

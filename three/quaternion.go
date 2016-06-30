@@ -12,7 +12,7 @@ import (
 type Quaternion struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Quaternion) JSObject() *js.Object { return t.p }
+func (q *Quaternion) JSObject() *js.Object { return q.p }
 
 // Quaternion returns a Quaternion object.
 func (t *Three) Quaternion() *Quaternion {
@@ -21,8 +21,8 @@ func (t *Three) Quaternion() *Quaternion {
 }
 
 // New returns a new Quaternion object.
-func (t *Quaternion) New(x, y, z, w float64) *Quaternion {
-	p := t.p.New(x, y, z, w)
+func (q *Quaternion) New(x, y, z, w float64) *Quaternion {
+	p := q.p.New(x, y, z, w)
 	return &Quaternion{p: p}
 }
 
@@ -196,7 +196,7 @@ func (q *Quaternion) OnChangeCallback() *Quaternion {
 }
 
 // SlerpFlat TODO description.
-func (q *Quaternion) SlerpFlat(dst *Quaternion, dstOffset int, src0 *Quaternion, srcOffset0 int, src1 *Quaternion, srcOffset1 int, t float64) *Quaternion {
-	q.p.Call("slerpFlat", dst.p, dstOffset, src0.p, srcOffset0, src1.p, srcOffset1, t)
+func (q *Quaternion) SlerpFlat(dsq *Quaternion, dstOffset int, src0 *Quaternion, srcOffset0 int, src1 *Quaternion, srcOffset1 int, t float64) *Quaternion {
+	q.p.Call("slerpFlat", dsq.p, dstOffset, src0.p, srcOffset0, src1.p, srcOffset1, t)
 	return q
 }

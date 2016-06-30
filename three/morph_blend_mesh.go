@@ -12,7 +12,7 @@ import (
 type MorphBlendMesh struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MorphBlendMesh) JSObject() *js.Object { return t.p }
+func (m *MorphBlendMesh) JSObject() *js.Object { return m.p }
 
 // MorphBlendMesh returns a MorphBlendMesh object.
 func (t *Three) MorphBlendMesh() *MorphBlendMesh {
@@ -21,8 +21,8 @@ func (t *Three) MorphBlendMesh() *MorphBlendMesh {
 }
 
 // New returns a new MorphBlendMesh object.
-func (t *MorphBlendMesh) New(geometry, material float64) *MorphBlendMesh {
-	p := t.p.New(geometry, material)
+func (m *MorphBlendMesh) New(geometry, material float64) *MorphBlendMesh {
+	p := m.p.New(geometry, material)
 	return &MorphBlendMesh{p: p}
 }
 

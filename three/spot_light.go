@@ -12,7 +12,7 @@ import (
 type SpotLight struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SpotLight) JSObject() *js.Object { return t.p }
+func (s *SpotLight) JSObject() *js.Object { return s.p }
 
 // SpotLight returns a SpotLight object.
 func (t *Three) SpotLight() *SpotLight {
@@ -21,8 +21,8 @@ func (t *Three) SpotLight() *SpotLight {
 }
 
 // New returns a new SpotLight object.
-func (t *SpotLight) New(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
-	p := t.p.New(color, intensity, distance, angle, penumbra, decay)
+func (s *SpotLight) New(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
+	p := s.p.New(color, intensity, distance, angle, penumbra, decay)
 	return &SpotLight{p: p}
 }
 

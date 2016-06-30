@@ -12,7 +12,7 @@ import (
 type LineCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LineCurve) JSObject() *js.Object { return t.p }
+func (l *LineCurve) JSObject() *js.Object { return l.p }
 
 // LineCurve returns a LineCurve object.
 func (t *Three) LineCurve() *LineCurve {
@@ -21,8 +21,8 @@ func (t *Three) LineCurve() *LineCurve {
 }
 
 // New returns a new LineCurve object.
-func (t *LineCurve) New(v1, v2 float64) *LineCurve {
-	p := t.p.New(v1, v2)
+func (l *LineCurve) New(v1, v2 float64) *LineCurve {
+	p := l.p.New(v1, v2)
 	return &LineCurve{p: p}
 }
 

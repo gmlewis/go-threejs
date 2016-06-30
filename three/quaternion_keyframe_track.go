@@ -12,7 +12,7 @@ import (
 type QuaternionKeyframeTrack struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *QuaternionKeyframeTrack) JSObject() *js.Object { return t.p }
+func (q *QuaternionKeyframeTrack) JSObject() *js.Object { return q.p }
 
 // QuaternionKeyframeTrack returns a QuaternionKeyframeTrack object.
 func (t *Three) QuaternionKeyframeTrack() *QuaternionKeyframeTrack {
@@ -21,8 +21,8 @@ func (t *Three) QuaternionKeyframeTrack() *QuaternionKeyframeTrack {
 }
 
 // New returns a new QuaternionKeyframeTrack object.
-func (t *QuaternionKeyframeTrack) New(name, times, values, interpolation float64) *QuaternionKeyframeTrack {
-	p := t.p.New(name, times, values, interpolation)
+func (q *QuaternionKeyframeTrack) New(name, times, values, interpolation float64) *QuaternionKeyframeTrack {
+	p := q.p.New(name, times, values, interpolation)
 	return &QuaternionKeyframeTrack{p: p}
 }
 

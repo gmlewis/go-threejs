@@ -12,7 +12,7 @@ import (
 type CubicBezierCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CubicBezierCurve) JSObject() *js.Object { return t.p }
+func (c *CubicBezierCurve) JSObject() *js.Object { return c.p }
 
 // CubicBezierCurve returns a CubicBezierCurve object.
 func (t *Three) CubicBezierCurve() *CubicBezierCurve {
@@ -21,8 +21,8 @@ func (t *Three) CubicBezierCurve() *CubicBezierCurve {
 }
 
 // New returns a new CubicBezierCurve object.
-func (t *CubicBezierCurve) New(v0, v1, v2, v3 float64) *CubicBezierCurve {
-	p := t.p.New(v0, v1, v2, v3)
+func (c *CubicBezierCurve) New(v0, v1, v2, v3 float64) *CubicBezierCurve {
+	p := c.p.New(v0, v1, v2, v3)
 	return &CubicBezierCurve{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type DirectGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *DirectGeometry) JSObject() *js.Object { return t.p }
+func (d *DirectGeometry) JSObject() *js.Object { return d.p }
 
 // DirectGeometry returns a DirectGeometry object.
 func (t *Three) DirectGeometry() *DirectGeometry {
@@ -21,8 +21,8 @@ func (t *Three) DirectGeometry() *DirectGeometry {
 }
 
 // New returns a new DirectGeometry object.
-func (t *DirectGeometry) New() *DirectGeometry {
-	p := t.p.New()
+func (d *DirectGeometry) New() *DirectGeometry {
+	p := d.p.New()
 	return &DirectGeometry{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type Box3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Box3) JSObject() *js.Object { return t.p }
+func (b *Box3) JSObject() *js.Object { return b.p }
 
 // Box3 returns a Box3 object.
 func (t *Three) Box3() *Box3 {
@@ -21,8 +21,8 @@ func (t *Three) Box3() *Box3 {
 }
 
 // New returns a new Box3 object.
-func (t *Box3) New(min, max float64) *Box3 {
-	p := t.p.New(min, max)
+func (b *Box3) New(min, max float64) *Box3 {
+	p := b.p.New(min, max)
 	return &Box3{p: p}
 }
 

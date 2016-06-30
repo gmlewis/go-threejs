@@ -12,7 +12,7 @@ import (
 type AudioListener struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AudioListener) JSObject() *js.Object { return t.p }
+func (a *AudioListener) JSObject() *js.Object { return a.p }
 
 // AudioListener returns an AudioListener object.
 func (t *Three) AudioListener() *AudioListener {
@@ -21,8 +21,8 @@ func (t *Three) AudioListener() *AudioListener {
 }
 
 // New returns a new AudioListener object.
-func (t *AudioListener) New() *AudioListener {
-	p := t.p.New()
+func (a *AudioListener) New() *AudioListener {
+	p := a.p.New()
 	return &AudioListener{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type QuadraticBezierCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *QuadraticBezierCurve) JSObject() *js.Object { return t.p }
+func (q *QuadraticBezierCurve) JSObject() *js.Object { return q.p }
 
 // QuadraticBezierCurve returns a QuadraticBezierCurve object.
 func (t *Three) QuadraticBezierCurve() *QuadraticBezierCurve {
@@ -21,8 +21,8 @@ func (t *Three) QuadraticBezierCurve() *QuadraticBezierCurve {
 }
 
 // New returns a new QuadraticBezierCurve object.
-func (t *QuadraticBezierCurve) New(v0, v1, v2 float64) *QuadraticBezierCurve {
-	p := t.p.New(v0, v1, v2)
+func (q *QuadraticBezierCurve) New(v0, v1, v2 float64) *QuadraticBezierCurve {
+	p := q.p.New(v0, v1, v2)
 	return &QuadraticBezierCurve{p: p}
 }
 

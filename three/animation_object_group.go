@@ -12,7 +12,7 @@ import (
 type AnimationObjectGroup struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AnimationObjectGroup) JSObject() *js.Object { return t.p }
+func (a *AnimationObjectGroup) JSObject() *js.Object { return a.p }
 
 // AnimationObjectGroup returns an AnimationObjectGroup object.
 func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
@@ -21,8 +21,8 @@ func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
 }
 
 // New returns a new AnimationObjectGroup object.
-func (t *AnimationObjectGroup) New(var_args float64) *AnimationObjectGroup {
-	p := t.p.New(var_args)
+func (a *AnimationObjectGroup) New(var_args float64) *AnimationObjectGroup {
+	p := a.p.New(var_args)
 	return &AnimationObjectGroup{p: p}
 }
 

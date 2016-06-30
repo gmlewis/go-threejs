@@ -14,7 +14,7 @@ import (
 type MeshPhongMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MeshPhongMaterial) JSObject() *js.Object { return t.p }
+func (m *MeshPhongMaterial) JSObject() *js.Object { return m.p }
 
 // MeshPhongMaterial returns a MeshPhongMaterial object.
 func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
@@ -45,8 +45,8 @@ func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (t *MeshPhongMaterial) New(parameters map[string]interface{}) *MeshPhongMaterial {
-	p := t.p.New(parameters)
+func (m *MeshPhongMaterial) New(parameters map[string]interface{}) *MeshPhongMaterial {
+	p := m.p.New(parameters)
 	return &MeshPhongMaterial{p: p}
 }
 

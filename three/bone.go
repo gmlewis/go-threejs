@@ -14,7 +14,7 @@ import (
 type Bone struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Bone) JSObject() *js.Object { return t.p }
+func (b *Bone) JSObject() *js.Object { return b.p }
 
 // Bone returns a Bone object.
 func (t *Three) Bone() *Bone {
@@ -23,8 +23,8 @@ func (t *Three) Bone() *Bone {
 }
 
 // New returns a new Bone object.
-func (t *Bone) New(skin float64) *Bone {
-	p := t.p.New(skin)
+func (b *Bone) New(skin float64) *Bone {
+	p := b.p.New(skin)
 	return &Bone{p: p}
 }
 

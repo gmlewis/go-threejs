@@ -12,7 +12,7 @@ import (
 type AmbientLight struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AmbientLight) JSObject() *js.Object { return t.p }
+func (a *AmbientLight) JSObject() *js.Object { return a.p }
 
 // AmbientLight returns an AmbientLight object.
 func (t *Three) AmbientLight() *AmbientLight {
@@ -21,7 +21,7 @@ func (t *Three) AmbientLight() *AmbientLight {
 }
 
 // New returns a new AmbientLight object.
-func (t *AmbientLight) New(color, intensity float64) *AmbientLight {
-	p := t.p.New(color, intensity)
+func (a *AmbientLight) New(color, intensity float64) *AmbientLight {
+	p := a.p.New(color, intensity)
 	return &AmbientLight{p: p}
 }

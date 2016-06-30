@@ -12,7 +12,7 @@ import (
 type Line3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Line3) JSObject() *js.Object { return t.p }
+func (l *Line3) JSObject() *js.Object { return l.p }
 
 // Line3 returns a Line3 object.
 func (t *Three) Line3() *Line3 {
@@ -21,8 +21,8 @@ func (t *Three) Line3() *Line3 {
 }
 
 // New returns a new Line3 object.
-func (t *Line3) New(start, end float64) *Line3 {
-	p := t.p.New(start, end)
+func (l *Line3) New(start, end float64) *Line3 {
+	p := l.p.New(start, end)
 	return &Line3{p: p}
 }
 

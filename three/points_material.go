@@ -14,7 +14,7 @@ import (
 type PointsMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PointsMaterial) JSObject() *js.Object { return t.p }
+func (p *PointsMaterial) JSObject() *js.Object { return p.p }
 
 // PointsMaterial returns a PointsMaterial object.
 func (t *Three) PointsMaterial() *PointsMaterial {
@@ -31,9 +31,9 @@ func (t *Three) PointsMaterial() *PointsMaterial {
 //     sizeAttenuation — Enable/disable size attenuation with distance.
 //     vertexColors — Define whether the material uses vertex colors, or not. Default is false.
 //     fog — Define whether the material color is affected by global fog settings. Default is true.
-func (t *PointsMaterial) New(parameters map[string]interface{}) *PointsMaterial {
-	p := t.p.New(parameters)
-	return &PointsMaterial{p: p}
+func (p *PointsMaterial) New(parameters map[string]interface{}) *PointsMaterial {
+	t := p.p.New(parameters)
+	return &PointsMaterial{p: t}
 }
 
 // Copy TODO description.

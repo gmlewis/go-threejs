@@ -12,7 +12,7 @@ import (
 type Face3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Face3) JSObject() *js.Object { return t.p }
+func (f *Face3) JSObject() *js.Object { return f.p }
 
 // Face3 returns a Face3 object.
 func (t *Three) Face3() *Face3 {
@@ -21,8 +21,8 @@ func (t *Three) Face3() *Face3 {
 }
 
 // New returns a new Face3 object.
-func (t *Face3) New(a, b, c, normal, color, materialIndex float64) *Face3 {
-	p := t.p.New(a, b, c, normal, color, materialIndex)
+func (f *Face3) New(a, b, c, normal, color, materialIndex float64) *Face3 {
+	p := f.p.New(a, b, c, normal, color, materialIndex)
 	return &Face3{p: p}
 }
 

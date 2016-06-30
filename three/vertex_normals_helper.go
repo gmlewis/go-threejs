@@ -12,7 +12,7 @@ import (
 type VertexNormalsHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *VertexNormalsHelper) JSObject() *js.Object { return t.p }
+func (v *VertexNormalsHelper) JSObject() *js.Object { return v.p }
 
 // VertexNormalsHelper returns a VertexNormalsHelper object.
 func (t *Three) VertexNormalsHelper() *VertexNormalsHelper {
@@ -21,7 +21,7 @@ func (t *Three) VertexNormalsHelper() *VertexNormalsHelper {
 }
 
 // New returns a new VertexNormalsHelper object.
-func (t *VertexNormalsHelper) New(object, size, hex, linewidth float64) *VertexNormalsHelper {
-	p := t.p.New(object, size, hex, linewidth)
+func (v *VertexNormalsHelper) New(object, size, hex, linewidth float64) *VertexNormalsHelper {
+	p := v.p.New(object, size, hex, linewidth)
 	return &VertexNormalsHelper{p: p}
 }

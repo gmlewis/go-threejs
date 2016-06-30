@@ -14,7 +14,7 @@ import (
 type LatheGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LatheGeometry) JSObject() *js.Object { return t.p }
+func (l *LatheGeometry) JSObject() *js.Object { return l.p }
 
 // LatheGeometry returns a LatheGeometry object.
 func (t *Three) LatheGeometry() *LatheGeometry {
@@ -28,7 +28,7 @@ func (t *Three) LatheGeometry() *LatheGeometry {
 //     segments — the number of circumference segments to generate. Default is 12.
 //     phiStart — the starting angle in radians. Default is 0.
 //     phiLength — the radian (0 to 2PI) range of the lathed section 2PI is a closed lathe, less than 2PI is a portion. Default is 2*PI
-func (t *LatheGeometry) New(points []*js.Object, segments int, phiStart, phiLength float64) *LatheGeometry {
-	p := t.p.New(points, segments, phiStart, phiLength)
+func (l *LatheGeometry) New(points []*js.Object, segments int, phiStart, phiLength float64) *LatheGeometry {
+	p := l.p.New(points, segments, phiStart, phiLength)
 	return &LatheGeometry{p: p}
 }

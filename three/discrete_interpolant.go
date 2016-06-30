@@ -12,7 +12,7 @@ import (
 type DiscreteInterpolant struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *DiscreteInterpolant) JSObject() *js.Object { return t.p }
+func (d *DiscreteInterpolant) JSObject() *js.Object { return d.p }
 
 // DiscreteInterpolant returns a DiscreteInterpolant object.
 func (t *Three) DiscreteInterpolant() *DiscreteInterpolant {
@@ -21,8 +21,8 @@ func (t *Three) DiscreteInterpolant() *DiscreteInterpolant {
 }
 
 // New returns a new DiscreteInterpolant object.
-func (t *DiscreteInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *DiscreteInterpolant {
-	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+func (d *DiscreteInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *DiscreteInterpolant {
+	p := d.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &DiscreteInterpolant{p: p}
 }
 

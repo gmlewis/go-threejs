@@ -12,7 +12,7 @@ import (
 type PointLight struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PointLight) JSObject() *js.Object { return t.p }
+func (p *PointLight) JSObject() *js.Object { return p.p }
 
 // PointLight returns a PointLight object.
 func (t *Three) PointLight() *PointLight {
@@ -21,9 +21,9 @@ func (t *Three) PointLight() *PointLight {
 }
 
 // New returns a new PointLight object.
-func (t *PointLight) New(color, intensity, distance, decay float64) *PointLight {
-	p := t.p.New(color, intensity, distance, decay)
-	return &PointLight{p: p}
+func (p *PointLight) New(color, intensity, distance, decay float64) *PointLight {
+	t := p.p.New(color, intensity, distance, decay)
+	return &PointLight{p: t}
 }
 
 // Get TODO description.

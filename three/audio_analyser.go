@@ -12,7 +12,7 @@ import (
 type AudioAnalyser struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AudioAnalyser) JSObject() *js.Object { return t.p }
+func (a *AudioAnalyser) JSObject() *js.Object { return a.p }
 
 // AudioAnalyser returns an AudioAnalyser object.
 func (t *Three) AudioAnalyser() *AudioAnalyser {
@@ -21,8 +21,8 @@ func (t *Three) AudioAnalyser() *AudioAnalyser {
 }
 
 // New returns a new AudioAnalyser object.
-func (t *AudioAnalyser) New(audio, fftSize float64) *AudioAnalyser {
-	p := t.p.New(audio, fftSize)
+func (a *AudioAnalyser) New(audio, fftSize float64) *AudioAnalyser {
+	p := a.p.New(audio, fftSize)
 	return &AudioAnalyser{p: p}
 }
 

@@ -14,7 +14,7 @@ import (
 type LineSegments struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LineSegments) JSObject() *js.Object { return t.p }
+func (l *LineSegments) JSObject() *js.Object { return l.p }
 
 // LineSegments returns a LineSegments object.
 func (t *Three) LineSegments() *LineSegments {
@@ -26,7 +26,7 @@ func (t *Three) LineSegments() *LineSegments {
 //
 //     geometry — Vertices representing the line segment(s).
 //     material — Material for the line. Default is LineBasicMaterial.
-func (t *LineSegments) New(geometry []*js.Object, material *js.Object) *LineSegments {
-	p := t.p.New(geometry, material)
+func (l *LineSegments) New(geometry []*js.Object, material *js.Object) *LineSegments {
+	p := l.p.New(geometry, material)
 	return &LineSegments{p: p}
 }

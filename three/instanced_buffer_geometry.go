@@ -12,7 +12,7 @@ import (
 type InstancedBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *InstancedBufferGeometry) JSObject() *js.Object { return t.p }
+func (i *InstancedBufferGeometry) JSObject() *js.Object { return i.p }
 
 // InstancedBufferGeometry returns an InstancedBufferGeometry object.
 func (t *Three) InstancedBufferGeometry() *InstancedBufferGeometry {
@@ -21,8 +21,8 @@ func (t *Three) InstancedBufferGeometry() *InstancedBufferGeometry {
 }
 
 // New returns a new InstancedBufferGeometry object.
-func (t *InstancedBufferGeometry) New() *InstancedBufferGeometry {
-	p := t.p.New()
+func (i *InstancedBufferGeometry) New() *InstancedBufferGeometry {
+	p := i.p.New()
 	return &InstancedBufferGeometry{p: p}
 }
 

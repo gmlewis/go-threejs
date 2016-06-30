@@ -12,7 +12,7 @@ import (
 type BoundingBoxHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BoundingBoxHelper) JSObject() *js.Object { return t.p }
+func (b *BoundingBoxHelper) JSObject() *js.Object { return b.p }
 
 // BoundingBoxHelper returns a BoundingBoxHelper object.
 func (t *Three) BoundingBoxHelper() *BoundingBoxHelper {
@@ -21,7 +21,7 @@ func (t *Three) BoundingBoxHelper() *BoundingBoxHelper {
 }
 
 // New returns a new BoundingBoxHelper object.
-func (t *BoundingBoxHelper) New(object, hex float64) *BoundingBoxHelper {
-	p := t.p.New(object, hex)
+func (b *BoundingBoxHelper) New(object, hex float64) *BoundingBoxHelper {
+	p := b.p.New(object, hex)
 	return &BoundingBoxHelper{p: p}
 }

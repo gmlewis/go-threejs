@@ -12,7 +12,7 @@ import (
 type WebGLProperties struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLProperties) JSObject() *js.Object { return t.p }
+func (w *WebGLProperties) JSObject() *js.Object { return w.p }
 
 // WebGLProperties returns a WebGLProperties object.
 func (t *Three) WebGLProperties() *WebGLProperties {
@@ -21,7 +21,7 @@ func (t *Three) WebGLProperties() *WebGLProperties {
 }
 
 // New returns a new WebGLProperties object.
-func (t *WebGLProperties) New() *WebGLProperties {
-	p := t.p.New()
+func (w *WebGLProperties) New() *WebGLProperties {
+	p := w.p.New()
 	return &WebGLProperties{p: p}
 }

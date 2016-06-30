@@ -12,7 +12,7 @@ import (
 type CylinderBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CylinderBufferGeometry) JSObject() *js.Object { return t.p }
+func (c *CylinderBufferGeometry) JSObject() *js.Object { return c.p }
 
 // CylinderBufferGeometry returns a CylinderBufferGeometry object.
 func (t *Three) CylinderBufferGeometry() *CylinderBufferGeometry {
@@ -21,7 +21,7 @@ func (t *Three) CylinderBufferGeometry() *CylinderBufferGeometry {
 }
 
 // New returns a new CylinderBufferGeometry object.
-func (t *CylinderBufferGeometry) New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength float64) *CylinderBufferGeometry {
-	p := t.p.New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
+func (c *CylinderBufferGeometry) New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength float64) *CylinderBufferGeometry {
+	p := c.p.New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
 	return &CylinderBufferGeometry{p: p}
 }

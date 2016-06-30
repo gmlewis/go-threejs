@@ -12,7 +12,7 @@ import (
 type MeshStandardMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MeshStandardMaterial) JSObject() *js.Object { return t.p }
+func (m *MeshStandardMaterial) JSObject() *js.Object { return m.p }
 
 // MeshStandardMaterial returns a MeshStandardMaterial object.
 func (t *Three) MeshStandardMaterial() *MeshStandardMaterial {
@@ -21,8 +21,8 @@ func (t *Three) MeshStandardMaterial() *MeshStandardMaterial {
 }
 
 // New returns a new MeshStandardMaterial object.
-func (t *MeshStandardMaterial) New(parameters float64) *MeshStandardMaterial {
-	p := t.p.New(parameters)
+func (m *MeshStandardMaterial) New(parameters float64) *MeshStandardMaterial {
+	p := m.p.New(parameters)
 	return &MeshStandardMaterial{p: p}
 }
 

@@ -14,7 +14,7 @@ import (
 type FogExp2 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *FogExp2) JSObject() *js.Object { return t.p }
+func (f *FogExp2) JSObject() *js.Object { return f.p }
 
 // FogExp2 returns a FogExp2 object.
 func (t *Three) FogExp2() *FogExp2 {
@@ -23,7 +23,7 @@ func (t *Three) FogExp2() *FogExp2 {
 }
 
 // New returns a new FogExp2 object.
-func (t *FogExp2) New(color, density float64) *FogExp2 {
-	p := t.p.New(color, density)
+func (f *FogExp2) New(color, density float64) *FogExp2 {
+	p := f.p.New(color, density)
 	return &FogExp2{p: p}
 }

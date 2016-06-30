@@ -12,7 +12,7 @@ import (
 type WebGLIndexedBufferRenderer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLIndexedBufferRenderer) JSObject() *js.Object { return t.p }
+func (w *WebGLIndexedBufferRenderer) JSObject() *js.Object { return w.p }
 
 // WebGLIndexedBufferRenderer returns a WebGLIndexedBufferRenderer object.
 func (t *Three) WebGLIndexedBufferRenderer() *WebGLIndexedBufferRenderer {
@@ -21,7 +21,7 @@ func (t *Three) WebGLIndexedBufferRenderer() *WebGLIndexedBufferRenderer {
 }
 
 // New returns a new WebGLIndexedBufferRenderer object.
-func (t *WebGLIndexedBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLIndexedBufferRenderer {
-	p := t.p.New(_gl, extensions, _infoRender)
+func (w *WebGLIndexedBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLIndexedBufferRenderer {
+	p := w.p.New(_gl, extensions, _infoRender)
 	return &WebGLIndexedBufferRenderer{p: p}
 }

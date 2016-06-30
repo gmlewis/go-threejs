@@ -12,7 +12,7 @@ import (
 type Camera struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
-func (t *Camera) JSObject() *js.Object { return t.p }
+func (c *Camera) JSObject() *js.Object { return c.p }
 
 // Camera returns a Camera object.
 func (t *Three) Camera() *Camera {
@@ -21,8 +21,8 @@ func (t *Three) Camera() *Camera {
 }
 
 // New returns a new Camera object.
-func (t *Camera) New() *Camera {
-	p := t.p.New()
+func (c *Camera) New() *Camera {
+	p := c.p.New()
 	return &Camera{&Object3D{p: p}}
 }
 
@@ -33,16 +33,16 @@ func (c *Camera) Copy(source float64) *Camera {
 }
 
 // Type returns the property of the same name.
-func (t *Camera) Type() string {
-	return t.p.Get("type").String()
+func (c *Camera) Type() string {
+	return c.p.Get("type").String()
 }
 
 // MatrixWorldInverse returns the property of the same name.
-func (t *Camera) MatrixWorldInverse() *Matrix4 {
-	return &Matrix4{p: t.p.Get("matrixWorldInverse")}
+func (c *Camera) MatrixWorldInverse() *Matrix4 {
+	return &Matrix4{p: c.p.Get("matrixWorldInverse")}
 }
 
 // ProjectionMatrix returns the property of the same name.
-func (t *Camera) ProjectionMatrix() *Matrix4 {
-	return &Matrix4{p: t.p.Get("projectionMatrix")}
+func (c *Camera) ProjectionMatrix() *Matrix4 {
+	return &Matrix4{p: c.p.Get("projectionMatrix")}
 }

@@ -14,7 +14,7 @@ import (
 type DodecahedronGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *DodecahedronGeometry) JSObject() *js.Object { return t.p }
+func (d *DodecahedronGeometry) JSObject() *js.Object { return d.p }
 
 // DodecahedronGeometry returns a DodecahedronGeometry object.
 func (t *Three) DodecahedronGeometry() *DodecahedronGeometry {
@@ -26,7 +26,7 @@ func (t *Three) DodecahedronGeometry() *DodecahedronGeometry {
 //
 //     radius — Radius of the dodecahedron. Default is 1.
 //     detail — Default is 0. Setting this to a value greater than 0 adds vertices making it no longer a dodecahedron.
-func (t *DodecahedronGeometry) New(radius, detail float64) *DodecahedronGeometry {
-	p := t.p.New(radius, detail)
+func (d *DodecahedronGeometry) New(radius, detail float64) *DodecahedronGeometry {
+	p := d.p.New(radius, detail)
 	return &DodecahedronGeometry{p: p}
 }

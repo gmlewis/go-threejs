@@ -12,7 +12,7 @@ import (
 type PlaneBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PlaneBufferGeometry) JSObject() *js.Object { return t.p }
+func (p *PlaneBufferGeometry) JSObject() *js.Object { return p.p }
 
 // PlaneBufferGeometry returns a PlaneBufferGeometry object.
 func (t *Three) PlaneBufferGeometry() *PlaneBufferGeometry {
@@ -21,7 +21,7 @@ func (t *Three) PlaneBufferGeometry() *PlaneBufferGeometry {
 }
 
 // New returns a new PlaneBufferGeometry object.
-func (t *PlaneBufferGeometry) New(width, height, widthSegments, heightSegments float64) *PlaneBufferGeometry {
-	p := t.p.New(width, height, widthSegments, heightSegments)
-	return &PlaneBufferGeometry{p: p}
+func (p *PlaneBufferGeometry) New(width, height, widthSegments, heightSegments float64) *PlaneBufferGeometry {
+	t := p.p.New(width, height, widthSegments, heightSegments)
+	return &PlaneBufferGeometry{p: t}
 }

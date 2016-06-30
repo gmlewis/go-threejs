@@ -12,7 +12,7 @@ import (
 type AnimationMixer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AnimationMixer) JSObject() *js.Object { return t.p }
+func (a *AnimationMixer) JSObject() *js.Object { return a.p }
 
 // AnimationMixer returns an AnimationMixer object.
 func (t *Three) AnimationMixer() *AnimationMixer {
@@ -21,8 +21,8 @@ func (t *Three) AnimationMixer() *AnimationMixer {
 }
 
 // New returns a new AnimationMixer object.
-func (t *AnimationMixer) New(root float64) *AnimationMixer {
-	p := t.p.New(root)
+func (a *AnimationMixer) New(root float64) *AnimationMixer {
+	p := a.p.New(root)
 	return &AnimationMixer{p: p}
 }
 

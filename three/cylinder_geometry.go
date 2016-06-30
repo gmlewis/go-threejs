@@ -14,7 +14,7 @@ import (
 type CylinderGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CylinderGeometry) JSObject() *js.Object { return t.p }
+func (c *CylinderGeometry) JSObject() *js.Object { return c.p }
 
 // CylinderGeometry returns a CylinderGeometry object.
 func (t *Three) CylinderGeometry() *CylinderGeometry {
@@ -34,7 +34,7 @@ func (t *Three) CylinderGeometry() *CylinderGeometry {
 //     thetaStart — Start angle for first segment, default = 0 (three o'clock position).
 //     thetaLength — The central angle, often called theta, of the circular sector.
 //         The default is 2*Pi, which makes for a complete cylinder.
-func (t *CylinderGeometry) New(radiusTop, radiusBottom, height float64, radialSegments, heightSegments int, openEnded bool, thetaStart, thetaLength float64) *CylinderGeometry {
-	p := t.p.New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
+func (c *CylinderGeometry) New(radiusTop, radiusBottom, height float64, radialSegments, heightSegments int, openEnded bool, thetaStart, thetaLength float64) *CylinderGeometry {
+	p := c.p.New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
 	return &CylinderGeometry{p: p}
 }

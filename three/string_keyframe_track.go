@@ -12,7 +12,7 @@ import (
 type StringKeyframeTrack struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *StringKeyframeTrack) JSObject() *js.Object { return t.p }
+func (s *StringKeyframeTrack) JSObject() *js.Object { return s.p }
 
 // StringKeyframeTrack returns a StringKeyframeTrack object.
 func (t *Three) StringKeyframeTrack() *StringKeyframeTrack {
@@ -21,7 +21,7 @@ func (t *Three) StringKeyframeTrack() *StringKeyframeTrack {
 }
 
 // New returns a new StringKeyframeTrack object.
-func (t *StringKeyframeTrack) New(name, times, values, interpolation float64) *StringKeyframeTrack {
-	p := t.p.New(name, times, values, interpolation)
+func (s *StringKeyframeTrack) New(name, times, values, interpolation float64) *StringKeyframeTrack {
+	p := s.p.New(name, times, values, interpolation)
 	return &StringKeyframeTrack{p: p}
 }

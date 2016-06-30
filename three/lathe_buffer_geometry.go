@@ -12,7 +12,7 @@ import (
 type LatheBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LatheBufferGeometry) JSObject() *js.Object { return t.p }
+func (l *LatheBufferGeometry) JSObject() *js.Object { return l.p }
 
 // LatheBufferGeometry returns a LatheBufferGeometry object.
 func (t *Three) LatheBufferGeometry() *LatheBufferGeometry {
@@ -21,7 +21,7 @@ func (t *Three) LatheBufferGeometry() *LatheBufferGeometry {
 }
 
 // New returns a new LatheBufferGeometry object.
-func (t *LatheBufferGeometry) New(points, segments, phiStart, phiLength float64) *LatheBufferGeometry {
-	p := t.p.New(points, segments, phiStart, phiLength)
+func (l *LatheBufferGeometry) New(points, segments, phiStart, phiLength float64) *LatheBufferGeometry {
+	p := l.p.New(points, segments, phiStart, phiLength)
 	return &LatheBufferGeometry{p: p}
 }

@@ -12,7 +12,7 @@ import (
 type DirectionalLightHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *DirectionalLightHelper) JSObject() *js.Object { return t.p }
+func (d *DirectionalLightHelper) JSObject() *js.Object { return d.p }
 
 // DirectionalLightHelper returns a DirectionalLightHelper object.
 func (t *Three) DirectionalLightHelper() *DirectionalLightHelper {
@@ -21,7 +21,7 @@ func (t *Three) DirectionalLightHelper() *DirectionalLightHelper {
 }
 
 // New returns a new DirectionalLightHelper object.
-func (t *DirectionalLightHelper) New(light, size float64) *DirectionalLightHelper {
-	p := t.p.New(light, size)
+func (d *DirectionalLightHelper) New(light, size float64) *DirectionalLightHelper {
+	p := d.p.New(light, size)
 	return &DirectionalLightHelper{p: p}
 }

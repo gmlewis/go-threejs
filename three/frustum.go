@@ -12,7 +12,7 @@ import (
 type Frustum struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Frustum) JSObject() *js.Object { return t.p }
+func (f *Frustum) JSObject() *js.Object { return f.p }
 
 // Frustum returns a Frustum object.
 func (t *Three) Frustum() *Frustum {
@@ -21,8 +21,8 @@ func (t *Three) Frustum() *Frustum {
 }
 
 // New returns a new Frustum object.
-func (t *Frustum) New(p0, p1, p2, p3, p4, p5 float64) *Frustum {
-	p := t.p.New(p0, p1, p2, p3, p4, p5)
+func (f *Frustum) New(p0, p1, p2, p3, p4, p5 float64) *Frustum {
+	p := f.p.New(p0, p1, p2, p3, p4, p5)
 	return &Frustum{p: p}
 }
 

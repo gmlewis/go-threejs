@@ -12,7 +12,7 @@ import (
 type BufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BufferGeometry) JSObject() *js.Object { return t.p }
+func (b *BufferGeometry) JSObject() *js.Object { return b.p }
 
 // BufferGeometry returns a BufferGeometry object.
 func (t *Three) BufferGeometry() *BufferGeometry {
@@ -21,8 +21,8 @@ func (t *Three) BufferGeometry() *BufferGeometry {
 }
 
 // New returns a new BufferGeometry object.
-func (t *BufferGeometry) New() *BufferGeometry {
-	p := t.p.New()
+func (b *BufferGeometry) New() *BufferGeometry {
+	p := b.p.New()
 	return &BufferGeometry{p: p}
 }
 

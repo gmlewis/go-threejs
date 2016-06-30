@@ -12,7 +12,7 @@ import (
 type BoxHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BoxHelper) JSObject() *js.Object { return t.p }
+func (b *BoxHelper) JSObject() *js.Object { return b.p }
 
 // BoxHelper returns a BoxHelper object.
 func (t *Three) BoxHelper() *BoxHelper {
@@ -21,7 +21,7 @@ func (t *Three) BoxHelper() *BoxHelper {
 }
 
 // New returns a new BoxHelper object.
-func (t *BoxHelper) New(object float64) *BoxHelper {
-	p := t.p.New(object)
+func (b *BoxHelper) New(object float64) *BoxHelper {
+	p := b.p.New(object)
 	return &BoxHelper{p: p}
 }

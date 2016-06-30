@@ -12,7 +12,7 @@ import (
 type CubicInterpolant struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CubicInterpolant) JSObject() *js.Object { return t.p }
+func (c *CubicInterpolant) JSObject() *js.Object { return c.p }
 
 // CubicInterpolant returns a CubicInterpolant object.
 func (t *Three) CubicInterpolant() *CubicInterpolant {
@@ -21,8 +21,8 @@ func (t *Three) CubicInterpolant() *CubicInterpolant {
 }
 
 // New returns a new CubicInterpolant object.
-func (t *CubicInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *CubicInterpolant {
-	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+func (c *CubicInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *CubicInterpolant {
+	p := c.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &CubicInterpolant{p: p}
 }
 

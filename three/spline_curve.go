@@ -12,7 +12,7 @@ import (
 type SplineCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SplineCurve) JSObject() *js.Object { return t.p }
+func (s *SplineCurve) JSObject() *js.Object { return s.p }
 
 // SplineCurve returns a SplineCurve object.
 func (t *Three) SplineCurve() *SplineCurve {
@@ -21,8 +21,8 @@ func (t *Three) SplineCurve() *SplineCurve {
 }
 
 // New returns a new SplineCurve object.
-func (t *SplineCurve) New(points /* array of Vector2 */ float64) *SplineCurve {
-	p := t.p.New(points /* array of Vector2 */)
+func (s *SplineCurve) New(points /* array of Vector2 */ float64) *SplineCurve {
+	p := s.p.New(points /* array of Vector2 */)
 	return &SplineCurve{p: p}
 }
 

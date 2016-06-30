@@ -12,7 +12,7 @@ import (
 type NumberKeyframeTrack struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *NumberKeyframeTrack) JSObject() *js.Object { return t.p }
+func (n *NumberKeyframeTrack) JSObject() *js.Object { return n.p }
 
 // NumberKeyframeTrack returns a NumberKeyframeTrack object.
 func (t *Three) NumberKeyframeTrack() *NumberKeyframeTrack {
@@ -21,7 +21,7 @@ func (t *Three) NumberKeyframeTrack() *NumberKeyframeTrack {
 }
 
 // New returns a new NumberKeyframeTrack object.
-func (t *NumberKeyframeTrack) New(name, times, values, interpolation float64) *NumberKeyframeTrack {
-	p := t.p.New(name, times, values, interpolation)
+func (n *NumberKeyframeTrack) New(name, times, values, interpolation float64) *NumberKeyframeTrack {
+	p := n.p.New(name, times, values, interpolation)
 	return &NumberKeyframeTrack{p: p}
 }

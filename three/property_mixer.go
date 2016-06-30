@@ -12,7 +12,7 @@ import (
 type PropertyMixer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *PropertyMixer) JSObject() *js.Object { return t.p }
+func (p *PropertyMixer) JSObject() *js.Object { return p.p }
 
 // PropertyMixer returns a PropertyMixer object.
 func (t *Three) PropertyMixer() *PropertyMixer {
@@ -21,9 +21,9 @@ func (t *Three) PropertyMixer() *PropertyMixer {
 }
 
 // New returns a new PropertyMixer object.
-func (t *PropertyMixer) New(binding, typName, valueSize float64) *PropertyMixer {
-	p := t.p.New(binding, typName, valueSize)
-	return &PropertyMixer{p: p}
+func (p *PropertyMixer) New(binding, typName, valueSize float64) *PropertyMixer {
+	t := p.p.New(binding, typName, valueSize)
+	return &PropertyMixer{p: t}
 }
 
 // Accumulate TODO description.

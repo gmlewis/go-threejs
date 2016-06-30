@@ -12,7 +12,7 @@ import (
 type DataTexture struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *DataTexture) JSObject() *js.Object { return t.p }
+func (d *DataTexture) JSObject() *js.Object { return d.p }
 
 // DataTexture returns a DataTexture object.
 func (t *Three) DataTexture() *DataTexture {
@@ -21,7 +21,7 @@ func (t *Three) DataTexture() *DataTexture {
 }
 
 // New returns a new DataTexture object.
-func (t *DataTexture) New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *DataTexture {
-	p := t.p.New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
+func (d *DataTexture) New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *DataTexture {
+	p := d.p.New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
 	return &DataTexture{p: p}
 }

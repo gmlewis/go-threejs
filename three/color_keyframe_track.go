@@ -12,7 +12,7 @@ import (
 type ColorKeyframeTrack struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ColorKeyframeTrack) JSObject() *js.Object { return t.p }
+func (c *ColorKeyframeTrack) JSObject() *js.Object { return c.p }
 
 // ColorKeyframeTrack returns a ColorKeyframeTrack object.
 func (t *Three) ColorKeyframeTrack() *ColorKeyframeTrack {
@@ -21,7 +21,7 @@ func (t *Three) ColorKeyframeTrack() *ColorKeyframeTrack {
 }
 
 // New returns a new ColorKeyframeTrack object.
-func (t *ColorKeyframeTrack) New(name, times, values, interpolation float64) *ColorKeyframeTrack {
-	p := t.p.New(name, times, values, interpolation)
+func (c *ColorKeyframeTrack) New(name, times, values, interpolation float64) *ColorKeyframeTrack {
+	p := c.p.New(name, times, values, interpolation)
 	return &ColorKeyframeTrack{p: p}
 }

@@ -12,7 +12,7 @@ import (
 type BufferGeometryLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BufferGeometryLoader) JSObject() *js.Object { return t.p }
+func (b *BufferGeometryLoader) JSObject() *js.Object { return b.p }
 
 // BufferGeometryLoader returns a BufferGeometryLoader object.
 func (t *Three) BufferGeometryLoader() *BufferGeometryLoader {
@@ -21,8 +21,8 @@ func (t *Three) BufferGeometryLoader() *BufferGeometryLoader {
 }
 
 // New returns a new BufferGeometryLoader object.
-func (t *BufferGeometryLoader) New(manager float64) *BufferGeometryLoader {
-	p := t.p.New(manager)
+func (b *BufferGeometryLoader) New(manager float64) *BufferGeometryLoader {
+	p := b.p.New(manager)
 	return &BufferGeometryLoader{p: p}
 }
 

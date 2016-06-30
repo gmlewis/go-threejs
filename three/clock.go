@@ -12,7 +12,7 @@ import (
 type Clock struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Clock) JSObject() *js.Object { return t.p }
+func (c *Clock) JSObject() *js.Object { return c.p }
 
 // Clock returns a Clock object.
 func (t *Three) Clock() *Clock {
@@ -21,8 +21,8 @@ func (t *Three) Clock() *Clock {
 }
 
 // New returns a new Clock object.
-func (t *Clock) New(autoStart float64) *Clock {
-	p := t.p.New(autoStart)
+func (c *Clock) New(autoStart float64) *Clock {
+	p := c.p.New(autoStart)
 	return &Clock{p: p}
 }
 

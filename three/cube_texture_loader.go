@@ -12,7 +12,7 @@ import (
 type CubeTextureLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CubeTextureLoader) JSObject() *js.Object { return t.p }
+func (c *CubeTextureLoader) JSObject() *js.Object { return c.p }
 
 // CubeTextureLoader returns a CubeTextureLoader object.
 func (t *Three) CubeTextureLoader() *CubeTextureLoader {
@@ -21,8 +21,8 @@ func (t *Three) CubeTextureLoader() *CubeTextureLoader {
 }
 
 // New returns a new CubeTextureLoader object.
-func (t *CubeTextureLoader) New(manager float64) *CubeTextureLoader {
-	p := t.p.New(manager)
+func (c *CubeTextureLoader) New(manager float64) *CubeTextureLoader {
+	p := c.p.New(manager)
 	return &CubeTextureLoader{p: p}
 }
 

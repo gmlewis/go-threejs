@@ -12,7 +12,7 @@ import (
 type EdgesGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *EdgesGeometry) JSObject() *js.Object { return t.p }
+func (e *EdgesGeometry) JSObject() *js.Object { return e.p }
 
 // EdgesGeometry returns an EdgesGeometry object.
 func (t *Three) EdgesGeometry() *EdgesGeometry {
@@ -21,7 +21,7 @@ func (t *Three) EdgesGeometry() *EdgesGeometry {
 }
 
 // New returns a new EdgesGeometry object.
-func (t *EdgesGeometry) New(geometry, thresholdAngle float64) *EdgesGeometry {
-	p := t.p.New(geometry, thresholdAngle)
+func (e *EdgesGeometry) New(geometry, thresholdAngle float64) *EdgesGeometry {
+	p := e.p.New(geometry, thresholdAngle)
 	return &EdgesGeometry{p: p}
 }

@@ -12,7 +12,7 @@ import (
 type AudioBuffer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AudioBuffer) JSObject() *js.Object { return t.p }
+func (a *AudioBuffer) JSObject() *js.Object { return a.p }
 
 // AudioBuffer returns an AudioBuffer object.
 func (t *Three) AudioBuffer() *AudioBuffer {
@@ -21,8 +21,8 @@ func (t *Three) AudioBuffer() *AudioBuffer {
 }
 
 // New returns a new AudioBuffer object.
-func (t *AudioBuffer) New(context float64) *AudioBuffer {
-	p := t.p.New(context)
+func (a *AudioBuffer) New(context float64) *AudioBuffer {
+	p := a.p.New(context)
 	return &AudioBuffer{p: p}
 }
 

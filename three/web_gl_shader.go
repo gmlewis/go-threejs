@@ -12,7 +12,7 @@ import (
 type WebGLShader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLShader) JSObject() *js.Object { return t.p }
+func (w *WebGLShader) JSObject() *js.Object { return w.p }
 
 // WebGLShader returns a WebGLShader object.
 func (t *Three) WebGLShader() *WebGLShader {
@@ -21,7 +21,7 @@ func (t *Three) WebGLShader() *WebGLShader {
 }
 
 // New returns a new WebGLShader object.
-func (t *WebGLShader) New() *WebGLShader {
-	p := t.p.New()
+func (w *WebGLShader) New() *WebGLShader {
+	p := w.p.New()
 	return &WebGLShader{p: p}
 }

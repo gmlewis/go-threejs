@@ -12,7 +12,7 @@ import (
 type SkeletonHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SkeletonHelper) JSObject() *js.Object { return t.p }
+func (s *SkeletonHelper) JSObject() *js.Object { return s.p }
 
 // SkeletonHelper returns a SkeletonHelper object.
 func (t *Three) SkeletonHelper() *SkeletonHelper {
@@ -21,8 +21,8 @@ func (t *Three) SkeletonHelper() *SkeletonHelper {
 }
 
 // New returns a new SkeletonHelper object.
-func (t *SkeletonHelper) New(object float64) *SkeletonHelper {
-	p := t.p.New(object)
+func (s *SkeletonHelper) New(object float64) *SkeletonHelper {
+	p := s.p.New(object)
 	return &SkeletonHelper{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type Font struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Font) JSObject() *js.Object { return t.p }
+func (f *Font) JSObject() *js.Object { return f.p }
 
 // Font returns a Font object.
 func (t *Three) Font() *Font {
@@ -21,8 +21,8 @@ func (t *Three) Font() *Font {
 }
 
 // New returns a new Font object.
-func (t *Font) New(data float64) *Font {
-	p := t.p.New(data)
+func (f *Font) New(data float64) *Font {
+	p := f.p.New(data)
 	return &Font{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type Group struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Group) JSObject() *js.Object { return t.p }
+func (g *Group) JSObject() *js.Object { return g.p }
 
 // Group returns a Group object.
 func (t *Three) Group() *Group {
@@ -21,7 +21,7 @@ func (t *Three) Group() *Group {
 }
 
 // New returns a new Group object.
-func (t *Group) New() *Group {
-	p := t.p.New()
+func (g *Group) New() *Group {
+	p := g.p.New()
 	return &Group{p: p}
 }

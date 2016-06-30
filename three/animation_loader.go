@@ -12,7 +12,7 @@ import (
 type AnimationLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *AnimationLoader) JSObject() *js.Object { return t.p }
+func (a *AnimationLoader) JSObject() *js.Object { return a.p }
 
 // AnimationLoader returns an AnimationLoader object.
 func (t *Three) AnimationLoader() *AnimationLoader {
@@ -21,8 +21,8 @@ func (t *Three) AnimationLoader() *AnimationLoader {
 }
 
 // New returns a new AnimationLoader object.
-func (t *AnimationLoader) New(manager float64) *AnimationLoader {
-	p := t.p.New(manager)
+func (a *AnimationLoader) New(manager float64) *AnimationLoader {
+	p := a.p.New(manager)
 	return &AnimationLoader{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type Scene struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Scene) JSObject() *js.Object { return t.p }
+func (s *Scene) JSObject() *js.Object { return s.p }
 
 // Scene returns a Scene object.
 func (t *Three) Scene() *Scene {
@@ -23,8 +23,8 @@ func (t *Three) Scene() *Scene {
 // New returns a new Scene object.
 //
 // http://threejs.org/docs/index.html#Reference/Scenes/Scene
-func (t *Scene) New() *Scene {
-	p := t.p.New()
+func (s *Scene) New() *Scene {
+	p := s.p.New()
 	return &Scene{p: p}
 }
 

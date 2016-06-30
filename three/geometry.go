@@ -12,7 +12,7 @@ import (
 type Geometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Geometry) JSObject() *js.Object { return t.p }
+func (g *Geometry) JSObject() *js.Object { return g.p }
 
 // Geometry returns a Geometry object.
 func (t *Three) Geometry() *Geometry {
@@ -21,8 +21,8 @@ func (t *Three) Geometry() *Geometry {
 }
 
 // New returns a new Geometry object.
-func (t *Geometry) New() *Geometry {
-	p := t.p.New()
+func (g *Geometry) New() *Geometry {
+	p := g.p.New()
 	return &Geometry{p: p}
 }
 

@@ -12,7 +12,7 @@ import (
 type Raycaster struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Raycaster) JSObject() *js.Object { return t.p }
+func (r *Raycaster) JSObject() *js.Object { return r.p }
 
 // Raycaster returns a Raycaster object.
 func (t *Three) Raycaster() *Raycaster {
@@ -21,8 +21,8 @@ func (t *Three) Raycaster() *Raycaster {
 }
 
 // New returns a new Raycaster object.
-func (t *Raycaster) New(origin, direction, near, far float64) *Raycaster {
-	p := t.p.New(origin, direction, near, far)
+func (r *Raycaster) New(origin, direction, near, far float64) *Raycaster {
+	p := r.p.New(origin, direction, near, far)
 	return &Raycaster{p: p}
 }
 

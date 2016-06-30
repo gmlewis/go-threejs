@@ -12,7 +12,7 @@ import (
 type WireframeHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WireframeHelper) JSObject() *js.Object { return t.p }
+func (w *WireframeHelper) JSObject() *js.Object { return w.p }
 
 // WireframeHelper returns a WireframeHelper object.
 func (t *Three) WireframeHelper() *WireframeHelper {
@@ -21,7 +21,7 @@ func (t *Three) WireframeHelper() *WireframeHelper {
 }
 
 // New returns a new WireframeHelper object.
-func (t *WireframeHelper) New(object, hex float64) *WireframeHelper {
-	p := t.p.New(object, hex)
+func (w *WireframeHelper) New(object, hex float64) *WireframeHelper {
+	p := w.p.New(object, hex)
 	return &WireframeHelper{p: p}
 }

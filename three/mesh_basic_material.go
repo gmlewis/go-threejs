@@ -14,7 +14,7 @@ import (
 type MeshBasicMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MeshBasicMaterial) JSObject() *js.Object { return t.p }
+func (m *MeshBasicMaterial) JSObject() *js.Object { return m.p }
 
 // MeshBasicMaterial returns a MeshBasicMaterial object.
 func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
@@ -40,8 +40,8 @@ func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (t *MeshBasicMaterial) New(parameters map[string]interface{}) *MeshBasicMaterial {
-	p := t.p.New(parameters)
+func (m *MeshBasicMaterial) New(parameters map[string]interface{}) *MeshBasicMaterial {
+	p := m.p.New(parameters)
 	return &MeshBasicMaterial{p: p}
 }
 

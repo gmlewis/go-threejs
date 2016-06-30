@@ -12,7 +12,7 @@ import (
 type WebGLBufferRenderer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLBufferRenderer) JSObject() *js.Object { return t.p }
+func (w *WebGLBufferRenderer) JSObject() *js.Object { return w.p }
 
 // WebGLBufferRenderer returns a WebGLBufferRenderer object.
 func (t *Three) WebGLBufferRenderer() *WebGLBufferRenderer {
@@ -21,7 +21,7 @@ func (t *Three) WebGLBufferRenderer() *WebGLBufferRenderer {
 }
 
 // New returns a new WebGLBufferRenderer object.
-func (t *WebGLBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLBufferRenderer {
-	p := t.p.New(_gl, extensions, _infoRender)
+func (w *WebGLBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLBufferRenderer {
+	p := w.p.New(_gl, extensions, _infoRender)
 	return &WebGLBufferRenderer{p: p}
 }

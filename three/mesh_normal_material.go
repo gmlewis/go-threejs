@@ -14,7 +14,7 @@ import (
 type MeshNormalMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *MeshNormalMaterial) JSObject() *js.Object { return t.p }
+func (m *MeshNormalMaterial) JSObject() *js.Object { return m.p }
 
 // MeshNormalMaterial returns a MeshNormalMaterial object.
 func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
@@ -28,8 +28,8 @@ func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
 //     wireframe -- Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
-func (t *MeshNormalMaterial) New(parameters map[string]interface{}) *MeshNormalMaterial {
-	p := t.p.New(parameters)
+func (m *MeshNormalMaterial) New(parameters map[string]interface{}) *MeshNormalMaterial {
+	p := m.p.New(parameters)
 	return &MeshNormalMaterial{p: p}
 }
 

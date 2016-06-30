@@ -12,7 +12,7 @@ import (
 type InstancedBufferAttribute struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *InstancedBufferAttribute) JSObject() *js.Object { return t.p }
+func (i *InstancedBufferAttribute) JSObject() *js.Object { return i.p }
 
 // InstancedBufferAttribute returns an InstancedBufferAttribute object.
 func (t *Three) InstancedBufferAttribute() *InstancedBufferAttribute {
@@ -21,8 +21,8 @@ func (t *Three) InstancedBufferAttribute() *InstancedBufferAttribute {
 }
 
 // New returns a new InstancedBufferAttribute object.
-func (t *InstancedBufferAttribute) New(array, itemSize, meshPerAttribute float64) *InstancedBufferAttribute {
-	p := t.p.New(array, itemSize, meshPerAttribute)
+func (i *InstancedBufferAttribute) New(array, itemSize, meshPerAttribute float64) *InstancedBufferAttribute {
+	p := i.p.New(array, itemSize, meshPerAttribute)
 	return &InstancedBufferAttribute{p: p}
 }
 

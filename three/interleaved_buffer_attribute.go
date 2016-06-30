@@ -12,7 +12,7 @@ import (
 type InterleavedBufferAttribute struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *InterleavedBufferAttribute) JSObject() *js.Object { return t.p }
+func (i *InterleavedBufferAttribute) JSObject() *js.Object { return i.p }
 
 // InterleavedBufferAttribute returns an InterleavedBufferAttribute object.
 func (t *Three) InterleavedBufferAttribute() *InterleavedBufferAttribute {
@@ -21,8 +21,8 @@ func (t *Three) InterleavedBufferAttribute() *InterleavedBufferAttribute {
 }
 
 // New returns a new InterleavedBufferAttribute object.
-func (t *InterleavedBufferAttribute) New(interleavedBuffer, itemSize, offset float64) *InterleavedBufferAttribute {
-	p := t.p.New(interleavedBuffer, itemSize, offset)
+func (i *InterleavedBufferAttribute) New(interleavedBuffer, itemSize, offset float64) *InterleavedBufferAttribute {
+	p := i.p.New(interleavedBuffer, itemSize, offset)
 	return &InterleavedBufferAttribute{p: p}
 }
 

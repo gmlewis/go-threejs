@@ -12,7 +12,7 @@ import (
 type Plane struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Plane) JSObject() *js.Object { return t.p }
+func (p *Plane) JSObject() *js.Object { return p.p }
 
 // Plane returns a Plane object.
 func (t *Three) Plane() *Plane {
@@ -21,9 +21,9 @@ func (t *Three) Plane() *Plane {
 }
 
 // New returns a new Plane object.
-func (t *Plane) New(normal, constant float64) *Plane {
-	p := t.p.New(normal, constant)
-	return &Plane{p: p}
+func (p *Plane) New(normal, constant float64) *Plane {
+	t := p.p.New(normal, constant)
+	return &Plane{p: t}
 }
 
 // Set TODO description.

@@ -12,7 +12,7 @@ import (
 type WebGLExtensions struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLExtensions) JSObject() *js.Object { return t.p }
+func (w *WebGLExtensions) JSObject() *js.Object { return w.p }
 
 // WebGLExtensions returns a WebGLExtensions object.
 func (t *Three) WebGLExtensions() *WebGLExtensions {
@@ -21,7 +21,7 @@ func (t *Three) WebGLExtensions() *WebGLExtensions {
 }
 
 // New returns a new WebGLExtensions object.
-func (t *WebGLExtensions) New(gl float64) *WebGLExtensions {
-	p := t.p.New(gl)
+func (w *WebGLExtensions) New(gl float64) *WebGLExtensions {
+	p := w.p.New(gl)
 	return &WebGLExtensions{p: p}
 }

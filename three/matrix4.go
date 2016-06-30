@@ -12,7 +12,7 @@ import (
 type Matrix4 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Matrix4) JSObject() *js.Object { return t.p }
+func (m *Matrix4) JSObject() *js.Object { return m.p }
 
 // Matrix4 returns a Matrix4 object.
 func (t *Three) Matrix4() *Matrix4 {
@@ -21,8 +21,8 @@ func (t *Three) Matrix4() *Matrix4 {
 }
 
 // New returns a new Matrix4 object.
-func (t *Matrix4) New() *Matrix4 {
-	p := t.p.New()
+func (m *Matrix4) New() *Matrix4 {
+	p := m.p.New()
 	return &Matrix4{p: p}
 }
 

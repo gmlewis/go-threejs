@@ -12,7 +12,7 @@ import (
 type WireframeGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WireframeGeometry) JSObject() *js.Object { return t.p }
+func (w *WireframeGeometry) JSObject() *js.Object { return w.p }
 
 // WireframeGeometry returns a WireframeGeometry object.
 func (t *Three) WireframeGeometry() *WireframeGeometry {
@@ -21,7 +21,7 @@ func (t *Three) WireframeGeometry() *WireframeGeometry {
 }
 
 // New returns a new WireframeGeometry object.
-func (t *WireframeGeometry) New(geometry float64) *WireframeGeometry {
-	p := t.p.New(geometry)
+func (w *WireframeGeometry) New(geometry float64) *WireframeGeometry {
+	p := w.p.New(geometry)
 	return &WireframeGeometry{p: p}
 }

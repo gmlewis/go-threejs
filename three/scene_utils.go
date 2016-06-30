@@ -12,7 +12,7 @@ import (
 type SceneUtils struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SceneUtils) JSObject() *js.Object { return t.p }
+func (s *SceneUtils) JSObject() *js.Object { return s.p }
 
 // SceneUtils returns a SceneUtils object.
 func (t *Three) SceneUtils() *SceneUtils {
@@ -21,8 +21,8 @@ func (t *Three) SceneUtils() *SceneUtils {
 }
 
 // New returns a new SceneUtils object.
-func (t *SceneUtils) New() *SceneUtils {
-	p := t.p.New()
+func (s *SceneUtils) New() *SceneUtils {
+	p := s.p.New()
 	return &SceneUtils{p: p}
 }
 

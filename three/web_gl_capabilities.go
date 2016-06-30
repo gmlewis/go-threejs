@@ -12,7 +12,7 @@ import (
 type WebGLCapabilities struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLCapabilities) JSObject() *js.Object { return t.p }
+func (w *WebGLCapabilities) JSObject() *js.Object { return w.p }
 
 // WebGLCapabilities returns a WebGLCapabilities object.
 func (t *Three) WebGLCapabilities() *WebGLCapabilities {
@@ -21,7 +21,7 @@ func (t *Three) WebGLCapabilities() *WebGLCapabilities {
 }
 
 // New returns a new WebGLCapabilities object.
-func (t *WebGLCapabilities) New(gl, extensions, parameters float64) *WebGLCapabilities {
-	p := t.p.New(gl, extensions, parameters)
+func (w *WebGLCapabilities) New(gl, extensions, parameters float64) *WebGLCapabilities {
+	p := w.p.New(gl, extensions, parameters)
 	return &WebGLCapabilities{p: p}
 }

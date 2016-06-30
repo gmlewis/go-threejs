@@ -12,7 +12,7 @@ import (
 type QuaternionLinearInterpolant struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *QuaternionLinearInterpolant) JSObject() *js.Object { return t.p }
+func (q *QuaternionLinearInterpolant) JSObject() *js.Object { return q.p }
 
 // QuaternionLinearInterpolant returns a QuaternionLinearInterpolant object.
 func (t *Three) QuaternionLinearInterpolant() *QuaternionLinearInterpolant {
@@ -21,8 +21,8 @@ func (t *Three) QuaternionLinearInterpolant() *QuaternionLinearInterpolant {
 }
 
 // New returns a new QuaternionLinearInterpolant object.
-func (t *QuaternionLinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *QuaternionLinearInterpolant {
-	p := t.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+func (q *QuaternionLinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *QuaternionLinearInterpolant {
+	p := q.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &QuaternionLinearInterpolant{p: p}
 }
 

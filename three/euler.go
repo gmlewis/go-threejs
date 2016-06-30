@@ -12,7 +12,7 @@ import (
 type Euler struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Euler) JSObject() *js.Object { return t.p }
+func (e *Euler) JSObject() *js.Object { return e.p }
 
 // Euler returns an Euler object.
 func (t *Three) Euler() *Euler {
@@ -21,8 +21,8 @@ func (t *Three) Euler() *Euler {
 }
 
 // New returns a new Euler object.
-func (t *Euler) New(x, y, z, order float64) *Euler {
-	p := t.p.New(x, y, z, order)
+func (e *Euler) New(x, y, z, order float64) *Euler {
+	p := e.p.New(x, y, z, order)
 	return &Euler{p: p}
 }
 

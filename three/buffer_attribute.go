@@ -12,7 +12,7 @@ import (
 type BufferAttribute struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *BufferAttribute) JSObject() *js.Object { return t.p }
+func (b *BufferAttribute) JSObject() *js.Object { return b.p }
 
 // BufferAttribute returns a BufferAttribute object.
 func (t *Three) BufferAttribute() *BufferAttribute {
@@ -21,8 +21,8 @@ func (t *Three) BufferAttribute() *BufferAttribute {
 }
 
 // New returns a new BufferAttribute object.
-func (t *BufferAttribute) New(array, itemSize float64) *BufferAttribute {
-	p := t.p.New(array, itemSize)
+func (b *BufferAttribute) New(array, itemSize float64) *BufferAttribute {
+	p := b.p.New(array, itemSize)
 	return &BufferAttribute{p: p}
 }
 
@@ -36,8 +36,8 @@ func (t *Three) Int8Attribute() *Int8Attribute {
 }
 
 // New returns a new Int8Attribute object.
-func (t *Int8Attribute) New(array, itemSize float64) *Int8Attribute {
-	p := t.p.New(array, itemSize)
+func (i *Int8Attribute) New(array, itemSize float64) *Int8Attribute {
+	p := i.p.New(array, itemSize)
 	return &Int8Attribute{p: p}
 }
 
@@ -51,8 +51,8 @@ func (t *Three) Uint8Attribute() *Uint8Attribute {
 }
 
 // New returns a new Uint8Attribute object.
-func (t *Uint8Attribute) New(array, itemSize float64) *Uint8Attribute {
-	p := t.p.New(array, itemSize)
+func (u *Uint8Attribute) New(array, itemSize float64) *Uint8Attribute {
+	p := u.p.New(array, itemSize)
 	return &Uint8Attribute{p: p}
 }
 
@@ -66,8 +66,8 @@ func (t *Three) Uint8ClampedAttribute() *Uint8ClampedAttribute {
 }
 
 // New returns a new Uint8ClampedAttribute object.
-func (t *Uint8ClampedAttribute) New(array, itemSize float64) *Uint8ClampedAttribute {
-	p := t.p.New(array, itemSize)
+func (u *Uint8ClampedAttribute) New(array, itemSize float64) *Uint8ClampedAttribute {
+	p := u.p.New(array, itemSize)
 	return &Uint8ClampedAttribute{p: p}
 }
 
@@ -81,8 +81,8 @@ func (t *Three) Int16Attribute() *Int16Attribute {
 }
 
 // New returns a new Int16Attribute object.
-func (t *Int16Attribute) New(array, itemSize float64) *Int16Attribute {
-	p := t.p.New(array, itemSize)
+func (i *Int16Attribute) New(array, itemSize float64) *Int16Attribute {
+	p := i.p.New(array, itemSize)
 	return &Int16Attribute{p: p}
 }
 
@@ -96,8 +96,8 @@ func (t *Three) Uint16Attribute() *Uint16Attribute {
 }
 
 // New returns a new Uint16Attribute object.
-func (t *Uint16Attribute) New(array, itemSize float64) *Uint16Attribute {
-	p := t.p.New(array, itemSize)
+func (u *Uint16Attribute) New(array, itemSize float64) *Uint16Attribute {
+	p := u.p.New(array, itemSize)
 	return &Uint16Attribute{p: p}
 }
 
@@ -111,8 +111,8 @@ func (t *Three) Int32Attribute() *Int32Attribute {
 }
 
 // New returns a new Int32Attribute object.
-func (t *Int32Attribute) New(array, itemSize float64) *Int32Attribute {
-	p := t.p.New(array, itemSize)
+func (i *Int32Attribute) New(array, itemSize float64) *Int32Attribute {
+	p := i.p.New(array, itemSize)
 	return &Int32Attribute{p: p}
 }
 
@@ -126,8 +126,8 @@ func (t *Three) Uint32Attribute() *Uint32Attribute {
 }
 
 // New returns a new Uint32Attribute object.
-func (t *Uint32Attribute) New(array, itemSize float64) *Uint32Attribute {
-	p := t.p.New(array, itemSize)
+func (u *Uint32Attribute) New(array, itemSize float64) *Uint32Attribute {
+	p := u.p.New(array, itemSize)
 	return &Uint32Attribute{p: p}
 }
 
@@ -141,8 +141,8 @@ func (t *Three) Float32Attribute() *Float32Attribute {
 }
 
 // New returns a new Float32Attribute object.
-func (t *Float32Attribute) New(array, itemSize float64) *Float32Attribute {
-	p := t.p.New(array, itemSize)
+func (f *Float32Attribute) New(array, itemSize float64) *Float32Attribute {
+	p := f.p.New(array, itemSize)
 	return &Float32Attribute{p: p}
 }
 
@@ -156,8 +156,8 @@ func (t *Three) Float64Attribute() *Float64Attribute {
 }
 
 // New returns a new Float64Attribute object.
-func (t *Float64Attribute) New(array, itemSize float64) *Float64Attribute {
-	p := t.p.New(array, itemSize)
+func (f *Float64Attribute) New(array, itemSize float64) *Float64Attribute {
+	p := f.p.New(array, itemSize)
 	return &Float64Attribute{p: p}
 }
 
@@ -171,8 +171,8 @@ func (t *Three) DynamicBufferAttribute() *DynamicBufferAttribute {
 }
 
 // New returns a new DynamicBufferAttribute object.
-func (t *DynamicBufferAttribute) New(array, itemSize float64) *DynamicBufferAttribute {
-	p := t.p.New(array, itemSize)
+func (d *DynamicBufferAttribute) New(array, itemSize float64) *DynamicBufferAttribute {
+	p := d.p.New(array, itemSize)
 	return &DynamicBufferAttribute{p: p}
 }
 

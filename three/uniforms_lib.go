@@ -12,7 +12,7 @@ import (
 type UniformsLib struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *UniformsLib) JSObject() *js.Object { return t.p }
+func (u *UniformsLib) JSObject() *js.Object { return u.p }
 
 // UniformsLib returns an UniformsLib object.
 func (t *Three) UniformsLib() *UniformsLib {
@@ -21,7 +21,7 @@ func (t *Three) UniformsLib() *UniformsLib {
 }
 
 // New returns a new UniformsLib object.
-func (t *UniformsLib) New() *UniformsLib {
-	p := t.p.New()
+func (u *UniformsLib) New() *UniformsLib {
+	p := u.p.New()
 	return &UniformsLib{p: p}
 }

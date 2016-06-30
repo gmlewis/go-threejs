@@ -14,7 +14,7 @@ import (
 type CircleGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CircleGeometry) JSObject() *js.Object { return t.p }
+func (c *CircleGeometry) JSObject() *js.Object { return c.p }
 
 // CircleGeometry returns a CircleGeometry object.
 func (t *Three) CircleGeometry() *CircleGeometry {
@@ -29,7 +29,7 @@ func (t *Three) CircleGeometry() *CircleGeometry {
 //     thetaStart — Start angle for first segment, default = 0 (three o'clock position).
 //     thetaLength — The central angle, often called theta, of the circular sector.
 //         The default is 2*Pi, which makes for a complete circle.
-func (t *CircleGeometry) New(radius float64, segments int, thetaStart, thetaLength float64) *CircleGeometry {
-	p := t.p.New(radius, segments, thetaStart, thetaLength)
+func (c *CircleGeometry) New(radius float64, segments int, thetaStart, thetaLength float64) *CircleGeometry {
+	p := c.p.New(radius, segments, thetaStart, thetaLength)
 	return &CircleGeometry{p: p}
 }

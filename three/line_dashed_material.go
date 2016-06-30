@@ -14,7 +14,7 @@ import (
 type LineDashedMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *LineDashedMaterial) JSObject() *js.Object { return t.p }
+func (l *LineDashedMaterial) JSObject() *js.Object { return l.p }
 
 // LineDashedMaterial returns a LineDashedMaterial object.
 func (t *Three) LineDashedMaterial() *LineDashedMaterial {
@@ -32,8 +32,8 @@ func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 //     gapSize - The size of the gap. Default is 1.
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     fog — Define whether the material color is affected by global fog settings. Default is false.
-func (t *LineDashedMaterial) New(parameters map[string]interface{}) *LineDashedMaterial {
-	p := t.p.New(parameters)
+func (l *LineDashedMaterial) New(parameters map[string]interface{}) *LineDashedMaterial {
+	p := l.p.New(parameters)
 	return &LineDashedMaterial{p: p}
 }
 

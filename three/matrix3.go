@@ -12,7 +12,7 @@ import (
 type Matrix3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *Matrix3) JSObject() *js.Object { return t.p }
+func (m *Matrix3) JSObject() *js.Object { return m.p }
 
 // Matrix3 returns a Matrix3 object.
 func (t *Three) Matrix3() *Matrix3 {
@@ -21,8 +21,8 @@ func (t *Three) Matrix3() *Matrix3 {
 }
 
 // New returns a new Matrix3 object.
-func (t *Matrix3) New() *Matrix3 {
-	p := t.p.New()
+func (m *Matrix3) New() *Matrix3 {
+	p := m.p.New()
 	return &Matrix3{p: p}
 }
 

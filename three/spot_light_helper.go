@@ -12,7 +12,7 @@ import (
 type SpotLightHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SpotLightHelper) JSObject() *js.Object { return t.p }
+func (s *SpotLightHelper) JSObject() *js.Object { return s.p }
 
 // SpotLightHelper returns a SpotLightHelper object.
 func (t *Three) SpotLightHelper() *SpotLightHelper {
@@ -21,7 +21,7 @@ func (t *Three) SpotLightHelper() *SpotLightHelper {
 }
 
 // New returns a new SpotLightHelper object.
-func (t *SpotLightHelper) New(light float64) *SpotLightHelper {
-	p := t.p.New(light)
+func (s *SpotLightHelper) New(light float64) *SpotLightHelper {
+	p := s.p.New(light)
 	return &SpotLightHelper{p: p}
 }

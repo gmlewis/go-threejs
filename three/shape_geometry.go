@@ -12,7 +12,7 @@ import (
 type ShapeGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ShapeGeometry) JSObject() *js.Object { return t.p }
+func (s *ShapeGeometry) JSObject() *js.Object { return s.p }
 
 // ShapeGeometry returns a ShapeGeometry object.
 func (t *Three) ShapeGeometry() *ShapeGeometry {
@@ -21,8 +21,8 @@ func (t *Three) ShapeGeometry() *ShapeGeometry {
 }
 
 // New returns a new ShapeGeometry object.
-func (t *ShapeGeometry) New(shapes, options float64) *ShapeGeometry {
-	p := t.p.New(shapes, options)
+func (s *ShapeGeometry) New(shapes, options float64) *ShapeGeometry {
+	p := s.p.New(shapes, options)
 	return &ShapeGeometry{p: p}
 }
 

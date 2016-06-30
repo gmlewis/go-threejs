@@ -12,7 +12,7 @@ import (
 type WebGLRenderer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLRenderer) JSObject() *js.Object { return t.p }
+func (w *WebGLRenderer) JSObject() *js.Object { return w.p }
 
 // WebGLRenderer returns a WebGLRenderer object.
 func (t *Three) WebGLRenderer() *WebGLRenderer {
@@ -35,7 +35,7 @@ type WebGLRendererOpts struct {
 }
 
 // New returns a new WebGLRenderer object.
-func (t *WebGLRenderer) New(opts *WebGLRendererOpts) *WebGLRenderer {
+func (w *WebGLRenderer) New(opts *WebGLRendererOpts) *WebGLRenderer {
 	params := map[string]interface{}{}
 	if opts != nil {
 		if opts.Precision != nil {
@@ -63,7 +63,7 @@ func (t *WebGLRenderer) New(opts *WebGLRendererOpts) *WebGLRenderer {
 			params["logarithmicDepthBuffer"] = *opts.LogarithmicDepthBuffer
 		}
 	}
-	p := t.p.New(params)
+	p := w.p.New(params)
 	return &WebGLRenderer{p: p}
 }
 

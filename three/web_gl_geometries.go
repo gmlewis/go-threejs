@@ -12,7 +12,7 @@ import (
 type WebGLGeometries struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLGeometries) JSObject() *js.Object { return t.p }
+func (w *WebGLGeometries) JSObject() *js.Object { return w.p }
 
 // WebGLGeometries returns a WebGLGeometries object.
 func (t *Three) WebGLGeometries() *WebGLGeometries {
@@ -21,7 +21,7 @@ func (t *Three) WebGLGeometries() *WebGLGeometries {
 }
 
 // New returns a new WebGLGeometries object.
-func (t *WebGLGeometries) New(gl, properties, info float64) *WebGLGeometries {
-	p := t.p.New(gl, properties, info)
+func (w *WebGLGeometries) New(gl, properties, info float64) *WebGLGeometries {
+	p := w.p.New(gl, properties, info)
 	return &WebGLGeometries{p: p}
 }

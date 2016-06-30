@@ -14,7 +14,7 @@ import (
 type SpriteMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *SpriteMaterial) JSObject() *js.Object { return t.p }
+func (s *SpriteMaterial) JSObject() *js.Object { return s.p }
 
 // SpriteMaterial returns a SpriteMaterial object.
 func (t *Three) SpriteMaterial() *SpriteMaterial {
@@ -29,8 +29,8 @@ func (t *Three) SpriteMaterial() *SpriteMaterial {
 //     map - the texture map
 //     rotation - the rotation of the sprite
 //     fog - whether or not to use the scene fog
-func (t *SpriteMaterial) New(parameters map[string]interface{}) *SpriteMaterial {
-	p := t.p.New(parameters)
+func (s *SpriteMaterial) New(parameters map[string]interface{}) *SpriteMaterial {
+	p := s.p.New(parameters)
 	return &SpriteMaterial{p: p}
 }
 

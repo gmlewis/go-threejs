@@ -12,7 +12,7 @@ import (
 type ShaderLib struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *ShaderLib) JSObject() *js.Object { return t.p }
+func (s *ShaderLib) JSObject() *js.Object { return s.p }
 
 // ShaderLib returns a ShaderLib object.
 func (t *Three) ShaderLib() *ShaderLib {
@@ -21,7 +21,7 @@ func (t *Three) ShaderLib() *ShaderLib {
 }
 
 // New returns a new ShaderLib object.
-func (t *ShaderLib) New() *ShaderLib {
-	p := t.p.New()
+func (s *ShaderLib) New() *ShaderLib {
+	p := s.p.New()
 	return &ShaderLib{p: p}
 }

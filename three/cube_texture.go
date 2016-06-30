@@ -12,7 +12,7 @@ import (
 type CubeTexture struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *CubeTexture) JSObject() *js.Object { return t.p }
+func (c *CubeTexture) JSObject() *js.Object { return c.p }
 
 // CubeTexture returns a CubeTexture object.
 func (t *Three) CubeTexture() *CubeTexture {
@@ -21,8 +21,8 @@ func (t *Three) CubeTexture() *CubeTexture {
 }
 
 // New returns a new CubeTexture object.
-func (t *CubeTexture) New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CubeTexture {
-	p := t.p.New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
+func (c *CubeTexture) New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CubeTexture {
+	p := c.p.New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
 	return &CubeTexture{p: p}
 }
 

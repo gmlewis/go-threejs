@@ -12,7 +12,7 @@ import (
 type WebGLRenderTargetCube struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
-func (t *WebGLRenderTargetCube) JSObject() *js.Object { return t.p }
+func (w *WebGLRenderTargetCube) JSObject() *js.Object { return w.p }
 
 // WebGLRenderTargetCube returns a WebGLRenderTargetCube object.
 func (t *Three) WebGLRenderTargetCube() *WebGLRenderTargetCube {
@@ -21,7 +21,7 @@ func (t *Three) WebGLRenderTargetCube() *WebGLRenderTargetCube {
 }
 
 // New returns a new WebGLRenderTargetCube object.
-func (t *WebGLRenderTargetCube) New(width, height, options float64) *WebGLRenderTargetCube {
-	p := t.p.New(width, height, options)
+func (w *WebGLRenderTargetCube) New(width, height, options float64) *WebGLRenderTargetCube {
+	p := w.p.New(width, height, options)
 	return &WebGLRenderTargetCube{p: p}
 }
