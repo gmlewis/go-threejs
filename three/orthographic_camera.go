@@ -11,7 +11,7 @@ import (
 // OrthographicCamera is a camera with orthographic projection.
 //
 // http://threejs.org/docs/index.html#Reference/Cameras/OrthographicCamera
-type OrthographicCamera struct{ p *js.Object }
+type OrthographicCamera struct{ *Camera }
 
 // JSObject returns the underlying *js.Object.
 func (t *OrthographicCamera) JSObject() *js.Object { return t.p }
@@ -19,13 +19,13 @@ func (t *OrthographicCamera) JSObject() *js.Object { return t.p }
 // OrthographicCamera returns an OrthographicCamera object.
 func (t *Three) OrthographicCamera() *OrthographicCamera {
 	p := t.ctx.Get("OrthographicCamera")
-	return &OrthographicCamera{p: p}
+	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
 }
 
 // New returns a new OrthographicCamera object.
 func (t *OrthographicCamera) New(left, right, top, bottom, near, far float64) *OrthographicCamera {
 	p := t.p.New(left, right, top, bottom, near, far)
-	return &OrthographicCamera{p: p}
+	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
 }
 
 // Copy TODO description.

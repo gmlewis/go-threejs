@@ -9,7 +9,7 @@ import (
 )
 
 // Camera represents a camera.
-type Camera struct{ p *js.Object }
+type Camera struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (t *Camera) JSObject() *js.Object { return t.p }
@@ -17,13 +17,13 @@ func (t *Camera) JSObject() *js.Object { return t.p }
 // Camera returns a Camera object.
 func (t *Three) Camera() *Camera {
 	p := t.ctx.Get("Camera")
-	return &Camera{p: p}
+	return &Camera{&Object3D{p: p}}
 }
 
 // New returns a new Camera object.
 func (t *Camera) New() *Camera {
 	p := t.p.New()
-	return &Camera{p: p}
+	return &Camera{&Object3D{p: p}}
 }
 
 // Copy TODO description.

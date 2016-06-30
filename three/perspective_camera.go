@@ -11,7 +11,7 @@ import (
 // PerspectiveCamera is a camera with perspective projection.
 //
 // http://threejs.org/docs/index.html#Reference/Cameras/PerspectiveCamera
-type PerspectiveCamera struct{ p *js.Object }
+type PerspectiveCamera struct{ *Camera }
 
 // JSObject returns the underlying *js.Object.
 func (t *PerspectiveCamera) JSObject() *js.Object { return t.p }
@@ -19,13 +19,13 @@ func (t *PerspectiveCamera) JSObject() *js.Object { return t.p }
 // PerspectiveCamera returns a PerspectiveCamera object.
 func (t *Three) PerspectiveCamera() *PerspectiveCamera {
 	p := t.ctx.Get("PerspectiveCamera")
-	return &PerspectiveCamera{p: p}
+	return &PerspectiveCamera{&Camera{&Object3D{p: p}}}
 }
 
 // New returns a new PerspectiveCamera object.
 func (t *PerspectiveCamera) New(fov, aspect, near, far float64) *PerspectiveCamera {
 	p := t.p.New(fov, aspect, near, far)
-	return &PerspectiveCamera{p: p}
+	return &PerspectiveCamera{&Camera{&Object3D{p: p}}}
 }
 
 // SetLens TODO description.
