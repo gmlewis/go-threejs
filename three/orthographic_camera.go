@@ -14,7 +14,7 @@ import (
 type OrthographicCamera struct{ *Camera }
 
 // JSObject returns the underlying *js.Object.
-func (t *OrthographicCamera) JSObject() *js.Object { return t.p }
+func (o *OrthographicCamera) JSObject() *js.Object { return o.p }
 
 // OrthographicCamera returns an OrthographicCamera object.
 func (t *Three) OrthographicCamera() *OrthographicCamera {
@@ -23,8 +23,8 @@ func (t *Three) OrthographicCamera() *OrthographicCamera {
 }
 
 // New returns a new OrthographicCamera object.
-func (t *OrthographicCamera) New(left, right, top, bottom, near, far float64) *OrthographicCamera {
-	p := t.p.New(left, right, top, bottom, near, far)
+func (o *OrthographicCamera) New(left, right, top, bottom, near, far float64) *OrthographicCamera {
+	p := o.p.New(left, right, top, bottom, near, far)
 	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
 }
 
@@ -38,4 +38,39 @@ func (o *OrthographicCamera) Copy(source float64) *OrthographicCamera {
 func (o *OrthographicCamera) ToJSON(meta float64) *OrthographicCamera {
 	o.p.Call("toJSON", meta)
 	return o
+}
+
+// Zoom returns the property of the same name.
+func (o *OrthographicCamera) Zoom() float64 {
+	return o.p.Get("zoom").Float()
+}
+
+// Left returns the property of the same name.
+func (o *OrthographicCamera) Left() float64 {
+	return o.p.Get("left").Float()
+}
+
+// Right returns the property of the same name.
+func (o *OrthographicCamera) Right() float64 {
+	return o.p.Get("right").Float()
+}
+
+// Top returns the property of the same name.
+func (o *OrthographicCamera) Top() float64 {
+	return o.p.Get("top").Float()
+}
+
+// Bottom returns the property of the same name.
+func (o *OrthographicCamera) Bottom() float64 {
+	return o.p.Get("bottom").Float()
+}
+
+// Near returns the property of the same name.
+func (o *OrthographicCamera) Near() float64 {
+	return o.p.Get("near").Float()
+}
+
+// Far returns the property of the same name.
+func (o *OrthographicCamera) Far() float64 {
+	return o.p.Get("far").Float()
 }
