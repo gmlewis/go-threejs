@@ -20,7 +20,7 @@ var (
 func main() {
 	t := three.New()
 
-	scene = t.Scene()
+	scene = t.Scene().New()
 
 	window := js.Global.Get("window")
 	camera = t.PerspectiveCamera().New(75, float64(window.Get("innerWidth").Int())/float64(window.Get("innerHeight").Int()), 1, 10000)
