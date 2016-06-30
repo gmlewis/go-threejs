@@ -235,3 +235,8 @@ func (o *Object3D) Copy(source, recursive float64) *Object3D {
 	o.p.Call("copy", source, recursive)
 	return o
 }
+
+// Rotation is the Object3D property of the same name.
+func (o *Object3D) Rotation() *Euler {
+	return &Euler{p: o.p.Get("rotation")}
+}
