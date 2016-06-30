@@ -161,160 +161,145 @@ func (f *Float64Attribute) New(array, itemSize float64) *Float64Attribute {
 	return &Float64Attribute{p: p}
 }
 
-// DynamicBufferAttribute represents a dynamicbufferattribute.
-type DynamicBufferAttribute struct{ p *js.Object }
-
-// DynamicBufferAttribute returns a DynamicBufferAttribute object.
-func (t *Three) DynamicBufferAttribute() *DynamicBufferAttribute {
-	p := t.ctx.Get("DynamicBufferAttribute")
-	return &DynamicBufferAttribute{p: p}
-}
-
-// New returns a new DynamicBufferAttribute object.
-func (d *DynamicBufferAttribute) New(array, itemSize float64) *DynamicBufferAttribute {
-	p := d.p.New(array, itemSize)
-	return &DynamicBufferAttribute{p: p}
-}
-
-// Count returns the count-component of the DynamicBufferAttribute.
-func (d *DynamicBufferAttribute) Count() float64 {
+// Count returns the count-component of the BufferAttribute.
+func (d *BufferAttribute) Count() float64 {
 	return d.p.Get("count").Float()
 }
 
-// SetNeedsUpdate sets the needsUpdate-component of the DynamicBufferAttribute.
-func (d *DynamicBufferAttribute) SetNeedsUpdate(value float64) *DynamicBufferAttribute {
+// SetNeedsUpdate sets the needsUpdate-component of the BufferAttribute.
+func (d *BufferAttribute) SetNeedsUpdate(value float64) *BufferAttribute {
 	d.p.Set("needsUpdate", value)
 	return d
 }
 
 // SetDynamic TODO description.
-func (d *DynamicBufferAttribute) SetDynamic(value float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetDynamic(value float64) *BufferAttribute {
 	d.p.Call("setDynamic", value)
 	return d
 }
 
 // Copy TODO description.
-func (d *DynamicBufferAttribute) Copy(source float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) Copy(source float64) *BufferAttribute {
 	d.p.Call("copy", source)
 	return d
 }
 
 // CopyAt TODO description.
-func (d *DynamicBufferAttribute) CopyAt(index1, attribute, index2 float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyAt(index1, attribute, index2 float64) *BufferAttribute {
 	d.p.Call("copyAt", index1, attribute, index2)
 	return d
 }
 
 // CopyArray TODO description.
-func (d *DynamicBufferAttribute) CopyArray(array float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyArray(array float64) *BufferAttribute {
 	d.p.Call("copyArray", array)
 	return d
 }
 
 // CopyColorsArray TODO description.
-func (d *DynamicBufferAttribute) CopyColorsArray(colors float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyColorsArray(colors float64) *BufferAttribute {
 	d.p.Call("copyColorsArray", colors)
 	return d
 }
 
 // CopyIndicesArray TODO description.
-func (d *DynamicBufferAttribute) CopyIndicesArray(indices float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyIndicesArray(indices float64) *BufferAttribute {
 	d.p.Call("copyIndicesArray", indices)
 	return d
 }
 
 // CopyVector2sArray TODO description.
-func (d *DynamicBufferAttribute) CopyVector2sArray(vectors float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyVector2sArray(vectors float64) *BufferAttribute {
 	d.p.Call("copyVector2sArray", vectors)
 	return d
 }
 
 // CopyVector3sArray TODO description.
-func (d *DynamicBufferAttribute) CopyVector3sArray(vectors float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyVector3sArray(vectors float64) *BufferAttribute {
 	d.p.Call("copyVector3sArray", vectors)
 	return d
 }
 
 // CopyVector4sArray TODO description.
-func (d *DynamicBufferAttribute) CopyVector4sArray(vectors float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) CopyVector4sArray(vectors float64) *BufferAttribute {
 	d.p.Call("copyVector4sArray", vectors)
 	return d
 }
 
 // Set TODO description.
-func (d *DynamicBufferAttribute) Set(value, offset float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) Set(value, offset float64) *BufferAttribute {
 	d.p.Call("set", value, offset)
 	return d
 }
 
 // GetX TODO description.
-func (d *DynamicBufferAttribute) GetX(index float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) GetX(index float64) *BufferAttribute {
 	d.p.Call("getX", index)
 	return d
 }
 
 // SetX TODO description.
-func (d *DynamicBufferAttribute) SetX(index, x float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetX(index, x float64) *BufferAttribute {
 	d.p.Call("setX", index, x)
 	return d
 }
 
 // GetY TODO description.
-func (d *DynamicBufferAttribute) GetY(index float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) GetY(index float64) *BufferAttribute {
 	d.p.Call("getY", index)
 	return d
 }
 
 // SetY TODO description.
-func (d *DynamicBufferAttribute) SetY(index, y float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetY(index, y float64) *BufferAttribute {
 	d.p.Call("setY", index, y)
 	return d
 }
 
 // GetZ TODO description.
-func (d *DynamicBufferAttribute) GetZ(index float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) GetZ(index float64) *BufferAttribute {
 	d.p.Call("getZ", index)
 	return d
 }
 
 // SetZ TODO description.
-func (d *DynamicBufferAttribute) SetZ(index, z float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetZ(index, z float64) *BufferAttribute {
 	d.p.Call("setZ", index, z)
 	return d
 }
 
 // GetW TODO description.
-func (d *DynamicBufferAttribute) GetW(index float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) GetW(index float64) *BufferAttribute {
 	d.p.Call("getW", index)
 	return d
 }
 
 // SetW TODO description.
-func (d *DynamicBufferAttribute) SetW(index, w float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetW(index, w float64) *BufferAttribute {
 	d.p.Call("setW", index, w)
 	return d
 }
 
 // SetXY TODO description.
-func (d *DynamicBufferAttribute) SetXY(index, x, y float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetXY(index, x, y float64) *BufferAttribute {
 	d.p.Call("setXY", index, x, y)
 	return d
 }
 
 // SetXYZ TODO description.
-func (d *DynamicBufferAttribute) SetXYZ(index, x, y, z float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetXYZ(index, x, y, z float64) *BufferAttribute {
 	d.p.Call("setXYZ", index, x, y, z)
 	return d
 }
 
 // SetXYZW TODO description.
-func (d *DynamicBufferAttribute) SetXYZW(index, x, y, z, w float64) *DynamicBufferAttribute {
+func (d *BufferAttribute) SetXYZW(index, x, y, z, w float64) *BufferAttribute {
 	d.p.Call("setXYZW", index, x, y, z, w)
 	return d
 }
 
 // Clone TODO description.
-func (d *DynamicBufferAttribute) Clone() *DynamicBufferAttribute {
+func (d *BufferAttribute) Clone() *BufferAttribute {
 	d.p.Call("clone")
 	return d
 }
