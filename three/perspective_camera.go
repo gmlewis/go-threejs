@@ -52,22 +52,32 @@ func (p *PerspectiveCamera) ToJSON(meta float64) *PerspectiveCamera {
 	return p
 }
 
-// Position returns the Object3D base class member of the same name.
-func (p *PerspectiveCamera) Position() *Vector3 {
-	return &Vector3{p: p.p.Get("position")}
+// Zoom returns the property of the same name.
+func (o *PerspectiveCamera) Zoom() float64 {
+	return o.p.Get("zoom").Float()
 }
 
-// Rotation returns the Object3D base class member of the same name.
-func (p *PerspectiveCamera) Rotation() *Euler {
-	return &Euler{p: p.p.Get("rotation")}
+// FocalLength returns the property of the same name.
+func (o *PerspectiveCamera) FocalLength() float64 {
+	return o.p.Get("focalLength").Float()
 }
 
-// Quaternion returns the Object3D base class member of the same name.
-func (p *PerspectiveCamera) Quaternion() *Quaternion {
-	return &Quaternion{p: p.p.Get("quaternion")}
+// FOV returns the property of the same name.
+func (o *PerspectiveCamera) FOV() float64 {
+	return o.p.Get("fov").Float()
 }
 
-// Scale returns the Object3D base class member of the same name.
-func (p *PerspectiveCamera) Scale() *Vector3 {
-	return &Vector3{p: p.p.Get("scale")}
+// Aspect returns the property of the same name.
+func (o *PerspectiveCamera) Aspect() float64 {
+	return o.p.Get("aspect").Float()
+}
+
+// Near returns the property of the same name.
+func (o *PerspectiveCamera) Near() float64 {
+	return o.p.Get("near").Float()
+}
+
+// Far returns the property of the same name.
+func (o *PerspectiveCamera) Far() float64 {
+	return o.p.Get("far").Float()
 }
