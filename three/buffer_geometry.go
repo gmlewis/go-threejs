@@ -33,31 +33,31 @@ func (b *BufferGeometry) GetIndex() *BufferGeometry {
 }
 
 // SetIndex TODO description.
-func (b *BufferGeometry) SetIndex(index float64) *BufferGeometry {
+func (b *BufferGeometry) SetIndex(index int) *BufferGeometry {
 	b.p.Call("setIndex", index)
 	return b
 }
 
 // AddAttribute TODO description.
-func (b *BufferGeometry) AddAttribute(name, attribute float64) *BufferGeometry {
+func (b *BufferGeometry) AddAttribute(name string, attribute *js.Object) *BufferGeometry {
 	b.p.Call("addAttribute", name, attribute)
 	return b
 }
 
 // GetAttribute TODO description.
-func (b *BufferGeometry) GetAttribute(name float64) *BufferGeometry {
+func (b *BufferGeometry) GetAttribute(name string) *BufferGeometry {
 	b.p.Call("getAttribute", name)
 	return b
 }
 
 // RemoveAttribute TODO description.
-func (b *BufferGeometry) RemoveAttribute(name float64) *BufferGeometry {
+func (b *BufferGeometry) RemoveAttribute(name string) *BufferGeometry {
 	b.p.Call("removeAttribute", name)
 	return b
 }
 
 // AddGroup TODO description.
-func (b *BufferGeometry) AddGroup(start, count, materialIndex float64) *BufferGeometry {
+func (b *BufferGeometry) AddGroup(start, count, materialIndex int) *BufferGeometry {
 	b.p.Call("addGroup", start, count, materialIndex)
 	return b
 }
@@ -69,13 +69,13 @@ func (b *BufferGeometry) ClearGroups() *BufferGeometry {
 }
 
 // SetDrawRange TODO description.
-func (b *BufferGeometry) SetDrawRange(start, count float64) *BufferGeometry {
+func (b *BufferGeometry) SetDrawRange(start, count int) *BufferGeometry {
 	b.p.Call("setDrawRange", start, count)
 	return b
 }
 
 // ApplyMatrix TODO description.
-func (b *BufferGeometry) ApplyMatrix(matrix float64) *BufferGeometry {
+func (b *BufferGeometry) ApplyMatrix(matrix *Matrix4) *BufferGeometry {
 	b.p.Call("applyMatrix", matrix)
 	return b
 }
@@ -123,26 +123,26 @@ func (b *BufferGeometry) Center() *BufferGeometry {
 }
 
 // SetFromObject TODO description.
-func (b *BufferGeometry) SetFromObject(object float64) *BufferGeometry {
-	b.p.Call("setFromObject", object)
+func (b *BufferGeometry) SetFromObject(object JSObject) *BufferGeometry {
+	b.p.Call("setFromObject", object.JSObject())
 	return b
 }
 
 // UpdateFromObject TODO description.
-func (b *BufferGeometry) UpdateFromObject(object float64) *BufferGeometry {
-	b.p.Call("updateFromObject", object)
+func (b *BufferGeometry) UpdateFromObject(object JSObject) *BufferGeometry {
+	b.p.Call("updateFromObject", object.JSObject())
 	return b
 }
 
 // FromGeometry TODO description.
-func (b *BufferGeometry) FromGeometry(geometry float64) *BufferGeometry {
-	b.p.Call("fromGeometry", geometry)
+func (b *BufferGeometry) FromGeometry(geometry JSObject) *BufferGeometry {
+	b.p.Call("fromGeometry", geometry.JSObject())
 	return b
 }
 
 // FromDirectGeometry TODO description.
-func (b *BufferGeometry) FromDirectGeometry(geometry float64) *BufferGeometry {
-	b.p.Call("fromDirectGeometry", geometry)
+func (b *BufferGeometry) FromDirectGeometry(geometry JSObject) *BufferGeometry {
+	b.p.Call("fromDirectGeometry", geometry.JSObject())
 	return b
 }
 
@@ -171,8 +171,8 @@ func (b *BufferGeometry) ComputeVertexNormals() *BufferGeometry {
 }
 
 // Merge TODO description.
-func (b *BufferGeometry) Merge(geometry, offset float64) *BufferGeometry {
-	b.p.Call("merge", geometry, offset)
+func (b *BufferGeometry) Merge(geometry JSObject, offset int) *BufferGeometry {
+	b.p.Call("merge", geometry.JSObject(), offset)
 	return b
 }
 
@@ -201,8 +201,8 @@ func (b *BufferGeometry) Clone() *BufferGeometry {
 }
 
 // Copy TODO description.
-func (b *BufferGeometry) Copy(source float64) *BufferGeometry {
-	b.p.Call("copy", source)
+func (b *BufferGeometry) Copy(source *BufferGeometry) *BufferGeometry {
+	b.p.Call("copy", source.p)
 	return b
 }
 

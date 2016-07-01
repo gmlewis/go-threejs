@@ -22,6 +22,8 @@ func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
 	return &MeshBasicMaterial{p: p}
 }
 
+type MeshBasicMaterialOpts map[string]interface{}
+
 // New returns a new MeshBasicMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
@@ -40,7 +42,7 @@ func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (m *MeshBasicMaterial) New(parameters map[string]interface{}) *MeshBasicMaterial {
+func (m *MeshBasicMaterial) New(parameters MeshBasicMaterialOpts) *MeshBasicMaterial {
 	p := m.p.New(parameters)
 	return &MeshBasicMaterial{p: p}
 }
