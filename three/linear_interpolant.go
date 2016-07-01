@@ -14,15 +14,15 @@ type LinearInterpolant struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LinearInterpolant) JSObject() *js.Object { return l.p }
 
-// LinearInterpolant returns a LinearInterpolant object.
+// LinearInterpolant returns a LinearInterpolant JavaScript class.
 func (t *Three) LinearInterpolant() *LinearInterpolant {
 	p := t.ctx.Get("LinearInterpolant")
 	return &LinearInterpolant{p: p}
 }
 
-// New returns a new LinearInterpolant object.
-func (l *LinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *LinearInterpolant {
-	p := l.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+// NewLinearInterpolant returns a new LinearInterpolant object.
+func (t *Three) NewLinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *LinearInterpolant {
+	p := t.ctx.Get("LinearInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &LinearInterpolant{p: p}
 }
 

@@ -14,15 +14,15 @@ type Quaternion struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (q *Quaternion) JSObject() *js.Object { return q.p }
 
-// Quaternion returns a Quaternion object.
+// Quaternion returns a Quaternion JavaScript class.
 func (t *Three) Quaternion() *Quaternion {
 	p := t.ctx.Get("Quaternion")
 	return &Quaternion{p: p}
 }
 
-// New returns a new Quaternion object.
-func (q *Quaternion) New(x, y, z, w float64) *Quaternion {
-	p := q.p.New(x, y, z, w)
+// NewQuaternion returns a new Quaternion object.
+func (t *Three) NewQuaternion(x, y, z, w float64) *Quaternion {
+	p := t.ctx.Get("Quaternion").New(x, y, z, w)
 	return &Quaternion{p: p}
 }
 

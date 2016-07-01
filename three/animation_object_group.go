@@ -14,15 +14,15 @@ type AnimationObjectGroup struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AnimationObjectGroup) JSObject() *js.Object { return a.p }
 
-// AnimationObjectGroup returns an AnimationObjectGroup object.
+// AnimationObjectGroup returns an AnimationObjectGroup JavaScript class.
 func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
 	p := t.ctx.Get("AnimationObjectGroup")
 	return &AnimationObjectGroup{p: p}
 }
 
-// New returns a new AnimationObjectGroup object.
-func (a *AnimationObjectGroup) New(var_args float64) *AnimationObjectGroup {
-	p := a.p.New(var_args)
+// NewAnimationObjectGroup returns a new AnimationObjectGroup object.
+func (t *Three) NewAnimationObjectGroup(var_args float64) *AnimationObjectGroup {
+	p := t.ctx.Get("AnimationObjectGroup").New(var_args)
 	return &AnimationObjectGroup{p: p}
 }
 

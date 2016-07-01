@@ -16,15 +16,15 @@ type OrthographicCamera struct{ *Camera }
 // JSObject returns the underlying *js.Object.
 func (o *OrthographicCamera) JSObject() *js.Object { return o.p }
 
-// OrthographicCamera returns an OrthographicCamera object.
+// OrthographicCamera returns an OrthographicCamera JavaScript class.
 func (t *Three) OrthographicCamera() *OrthographicCamera {
 	p := t.ctx.Get("OrthographicCamera")
 	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
 }
 
-// New returns a new OrthographicCamera object.
-func (o *OrthographicCamera) New(left, right, top, bottom, near, far float64) *OrthographicCamera {
-	p := o.p.New(left, right, top, bottom, near, far)
+// NewOrthographicCamera returns a new OrthographicCamera object.
+func (t *Three) NewOrthographicCamera(left, right, top, bottom, near, far float64) *OrthographicCamera {
+	p := t.ctx.Get("OrthographicCamera").New(left, right, top, bottom, near, far)
 	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
 }
 

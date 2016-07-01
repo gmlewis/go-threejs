@@ -16,15 +16,15 @@ type CubeCamera struct{ *Object3D }
 // JSObject returns the underlying *js.Object.
 func (c *CubeCamera) JSObject() *js.Object { return c.p }
 
-// CubeCamera returns a CubeCamera object.
+// CubeCamera returns a CubeCamera JavaScript class.
 func (t *Three) CubeCamera() *CubeCamera {
 	p := t.ctx.Get("CubeCamera")
 	return &CubeCamera{&Object3D{p: p}}
 }
 
-// New returns a new CubeCamera object.
-func (c *CubeCamera) New(near, far, cubeResolution float64) *CubeCamera {
-	p := c.p.New(near, far, cubeResolution)
+// NewCubeCamera returns a new CubeCamera object.
+func (t *Three) NewCubeCamera(near, far, cubeResolution float64) *CubeCamera {
+	p := t.ctx.Get("CubeCamera").New(near, far, cubeResolution)
 	return &CubeCamera{&Object3D{p: p}}
 }
 

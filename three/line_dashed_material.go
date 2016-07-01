@@ -16,13 +16,13 @@ type LineDashedMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LineDashedMaterial) JSObject() *js.Object { return l.p }
 
-// LineDashedMaterial returns a LineDashedMaterial object.
+// LineDashedMaterial returns a LineDashedMaterial JavaScript class.
 func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 	p := t.ctx.Get("LineDashedMaterial")
 	return &LineDashedMaterial{p: p}
 }
 
-// New returns a new LineDashedMaterial object.
+// NewLineDashedMaterial returns a new LineDashedMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
 //     color — Line color in hexadecimal. Default is 0xffffff.
@@ -32,8 +32,8 @@ func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 //     gapSize - The size of the gap. Default is 1.
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     fog — Define whether the material color is affected by global fog settings. Default is false.
-func (l *LineDashedMaterial) New(parameters map[string]interface{}) *LineDashedMaterial {
-	p := l.p.New(parameters)
+func (t *Three) NewLineDashedMaterial(parameters map[string]interface{}) *LineDashedMaterial {
+	p := t.ctx.Get("LineDashedMaterial").New(parameters)
 	return &LineDashedMaterial{p: p}
 }
 

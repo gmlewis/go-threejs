@@ -14,15 +14,15 @@ type Object3D struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (o *Object3D) JSObject() *js.Object { return o.p }
 
-// Object3D returns an Object3D object.
+// Object3D returns an Object3D JavaScript class.
 func (t *Three) Object3D() *Object3D {
 	p := t.ctx.Get("Object3D")
 	return &Object3D{p: p}
 }
 
-// New returns a new Object3D object.
-func (o *Object3D) New() *Object3D {
-	p := o.p.New()
+// NewObject3D returns a new Object3D object.
+func (t *Three) NewObject3D() *Object3D {
+	p := t.ctx.Get("Object3D").New()
 	return &Object3D{p: p}
 }
 

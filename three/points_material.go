@@ -16,13 +16,13 @@ type PointsMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PointsMaterial) JSObject() *js.Object { return p.p }
 
-// PointsMaterial returns a PointsMaterial object.
+// PointsMaterial returns a PointsMaterial JavaScript class.
 func (t *Three) PointsMaterial() *PointsMaterial {
 	p := t.ctx.Get("PointsMaterial")
 	return &PointsMaterial{p: p}
 }
 
-// New returns a new PointsMaterial object.
+// NewPointsMaterial returns a new PointsMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
 //     color — Particle color in hexadecimal. Default is 0xffffff.
@@ -31,9 +31,9 @@ func (t *Three) PointsMaterial() *PointsMaterial {
 //     sizeAttenuation — Enable/disable size attenuation with distance.
 //     vertexColors — Define whether the material uses vertex colors, or not. Default is false.
 //     fog — Define whether the material color is affected by global fog settings. Default is true.
-func (p *PointsMaterial) New(parameters map[string]interface{}) *PointsMaterial {
-	t := p.p.New(parameters)
-	return &PointsMaterial{p: t}
+func (t *Three) NewPointsMaterial(parameters map[string]interface{}) *PointsMaterial {
+	p := t.ctx.Get("PointsMaterial").New(parameters)
+	return &PointsMaterial{p: p}
 }
 
 // Copy TODO description.

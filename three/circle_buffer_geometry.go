@@ -14,14 +14,14 @@ type CircleBufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CircleBufferGeometry) JSObject() *js.Object { return c.p }
 
-// CircleBufferGeometry returns a CircleBufferGeometry object.
+// CircleBufferGeometry returns a CircleBufferGeometry JavaScript class.
 func (t *Three) CircleBufferGeometry() *CircleBufferGeometry {
 	p := t.ctx.Get("CircleBufferGeometry")
 	return &CircleBufferGeometry{p: p}
 }
 
-// New returns a new CircleBufferGeometry object.
-func (c *CircleBufferGeometry) New(radius, segments, thetaStart, thetaLength float64) *CircleBufferGeometry {
-	p := c.p.New(radius, segments, thetaStart, thetaLength)
+// NewCircleBufferGeometry returns a new CircleBufferGeometry object.
+func (t *Three) NewCircleBufferGeometry(radius, segments, thetaStart, thetaLength float64) *CircleBufferGeometry {
+	p := t.ctx.Get("CircleBufferGeometry").New(radius, segments, thetaStart, thetaLength)
 	return &CircleBufferGeometry{p: p}
 }

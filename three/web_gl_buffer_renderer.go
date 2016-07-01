@@ -14,14 +14,14 @@ type WebGLBufferRenderer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLBufferRenderer) JSObject() *js.Object { return w.p }
 
-// WebGLBufferRenderer returns a WebGLBufferRenderer object.
+// WebGLBufferRenderer returns a WebGLBufferRenderer JavaScript class.
 func (t *Three) WebGLBufferRenderer() *WebGLBufferRenderer {
 	p := t.ctx.Get("WebGLBufferRenderer")
 	return &WebGLBufferRenderer{p: p}
 }
 
-// New returns a new WebGLBufferRenderer object.
-func (w *WebGLBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLBufferRenderer {
-	p := w.p.New(_gl, extensions, _infoRender)
+// NewWebGLBufferRenderer returns a new WebGLBufferRenderer object.
+func (t *Three) NewWebGLBufferRenderer(_gl, extensions, _infoRender float64) *WebGLBufferRenderer {
+	p := t.ctx.Get("WebGLBufferRenderer").New(_gl, extensions, _infoRender)
 	return &WebGLBufferRenderer{p: p}
 }

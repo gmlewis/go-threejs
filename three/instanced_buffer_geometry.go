@@ -14,15 +14,15 @@ type InstancedBufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (i *InstancedBufferGeometry) JSObject() *js.Object { return i.p }
 
-// InstancedBufferGeometry returns an InstancedBufferGeometry object.
+// InstancedBufferGeometry returns an InstancedBufferGeometry JavaScript class.
 func (t *Three) InstancedBufferGeometry() *InstancedBufferGeometry {
 	p := t.ctx.Get("InstancedBufferGeometry")
 	return &InstancedBufferGeometry{p: p}
 }
 
-// New returns a new InstancedBufferGeometry object.
-func (i *InstancedBufferGeometry) New() *InstancedBufferGeometry {
-	p := i.p.New()
+// NewInstancedBufferGeometry returns a new InstancedBufferGeometry object.
+func (t *Three) NewInstancedBufferGeometry() *InstancedBufferGeometry {
+	p := t.ctx.Get("InstancedBufferGeometry").New()
 	return &InstancedBufferGeometry{p: p}
 }
 

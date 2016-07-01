@@ -14,15 +14,15 @@ type Cache struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *Cache) JSObject() *js.Object { return c.p }
 
-// Cache returns a Cache object.
+// Cache returns a Cache JavaScript class.
 func (t *Three) Cache() *Cache {
 	p := t.ctx.Get("Cache")
 	return &Cache{p: p}
 }
 
-// New returns a new Cache object.
-func (c *Cache) New() *Cache {
-	p := c.p.New()
+// NewCache returns a new Cache object.
+func (t *Three) NewCache() *Cache {
+	p := t.ctx.Get("Cache").New()
 	return &Cache{p: p}
 }
 

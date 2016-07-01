@@ -14,15 +14,15 @@ type LightShadow struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LightShadow) JSObject() *js.Object { return l.p }
 
-// LightShadow returns a LightShadow object.
+// LightShadow returns a LightShadow JavaScript class.
 func (t *Three) LightShadow() *LightShadow {
 	p := t.ctx.Get("LightShadow")
 	return &LightShadow{p: p}
 }
 
-// New returns a new LightShadow object.
-func (l *LightShadow) New(camera float64) *LightShadow {
-	p := l.p.New(camera)
+// NewLightShadow returns a new LightShadow object.
+func (t *Three) NewLightShadow(camera float64) *LightShadow {
+	p := t.ctx.Get("LightShadow").New(camera)
 	return &LightShadow{p: p}
 }
 

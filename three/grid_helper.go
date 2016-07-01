@@ -14,15 +14,15 @@ type GridHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (g *GridHelper) JSObject() *js.Object { return g.p }
 
-// GridHelper returns a GridHelper object.
+// GridHelper returns a GridHelper JavaScript class.
 func (t *Three) GridHelper() *GridHelper {
 	p := t.ctx.Get("GridHelper")
 	return &GridHelper{p: p}
 }
 
-// New returns a new GridHelper object.
-func (g *GridHelper) New(size, step float64) *GridHelper {
-	p := g.p.New(size, step)
+// NewGridHelper returns a new GridHelper object.
+func (t *Three) NewGridHelper(size, step float64) *GridHelper {
+	p := t.ctx.Get("GridHelper").New(size, step)
 	return &GridHelper{p: p}
 }
 

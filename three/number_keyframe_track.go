@@ -14,14 +14,14 @@ type NumberKeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (n *NumberKeyframeTrack) JSObject() *js.Object { return n.p }
 
-// NumberKeyframeTrack returns a NumberKeyframeTrack object.
+// NumberKeyframeTrack returns a NumberKeyframeTrack JavaScript class.
 func (t *Three) NumberKeyframeTrack() *NumberKeyframeTrack {
 	p := t.ctx.Get("NumberKeyframeTrack")
 	return &NumberKeyframeTrack{p: p}
 }
 
-// New returns a new NumberKeyframeTrack object.
-func (n *NumberKeyframeTrack) New(name, times, values, interpolation float64) *NumberKeyframeTrack {
-	p := n.p.New(name, times, values, interpolation)
+// NewNumberKeyframeTrack returns a new NumberKeyframeTrack object.
+func (t *Three) NewNumberKeyframeTrack(name, times, values, interpolation float64) *NumberKeyframeTrack {
+	p := t.ctx.Get("NumberKeyframeTrack").New(name, times, values, interpolation)
 	return &NumberKeyframeTrack{p: p}
 }

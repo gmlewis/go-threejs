@@ -14,15 +14,15 @@ type ShapeUtils struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *ShapeUtils) JSObject() *js.Object { return s.p }
 
-// ShapeUtils returns a ShapeUtils object.
+// ShapeUtils returns a ShapeUtils JavaScript class.
 func (t *Three) ShapeUtils() *ShapeUtils {
 	p := t.ctx.Get("ShapeUtils")
 	return &ShapeUtils{p: p}
 }
 
-// New returns a new ShapeUtils object.
-func (s *ShapeUtils) New() *ShapeUtils {
-	p := s.p.New()
+// NewShapeUtils returns a new ShapeUtils object.
+func (t *Three) NewShapeUtils() *ShapeUtils {
+	p := t.ctx.Get("ShapeUtils").New()
 	return &ShapeUtils{p: p}
 }
 

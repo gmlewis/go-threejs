@@ -19,15 +19,15 @@ type BufferAttribute struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BufferAttribute) JSObject() *js.Object { return b.p }
 
-// BufferAttribute returns a BufferAttribute object.
+// BufferAttribute returns a BufferAttribute JavaScript class.
 func (t *Three) BufferAttribute() *BufferAttribute {
 	p := t.ctx.Get("BufferAttribute")
 	return &BufferAttribute{p: p}
 }
 
-// New returns a new BufferAttribute object.
-func (b *BufferAttribute) New(array []float64, itemSize int) *BufferAttribute {
-	p := b.p.New(array, itemSize)
+// NewBufferAttribute returns a new BufferAttribute object.
+func (t *Three) NewBufferAttribute(array []float64, itemSize int) *BufferAttribute {
+	p := t.ctx.Get("BufferAttribute").New(array, itemSize)
 	return &BufferAttribute{p: p}
 }
 
@@ -40,9 +40,9 @@ func (t *Three) Int8Attribute() *Int8Attribute {
 	return &Int8Attribute{p: p}
 }
 
-// New returns a new Int8Attribute object.
-func (i *Int8Attribute) New(array []int8, itemSize int) *Int8Attribute {
-	p := i.p.New(array, itemSize)
+// NewInt8Attribute returns a new Int8Attribute object.
+func (t *Three) NewInt8Attribute(array []int8, itemSize int) *Int8Attribute {
+	p := t.ctx.Get("Int8Attribute").New(array, itemSize)
 	return &Int8Attribute{p: p}
 }
 
@@ -55,9 +55,9 @@ func (t *Three) Uint8Attribute() *Uint8Attribute {
 	return &Uint8Attribute{p: p}
 }
 
-// New returns a new Uint8Attribute object.
-func (u *Uint8Attribute) New(array []uint8, itemSize int) *Uint8Attribute {
-	p := u.p.New(array, itemSize)
+// NewUint8Attribute returns a new Uint8Attribute object.
+func (t *Three) NewUint8Attribute(array []uint8, itemSize int) *Uint8Attribute {
+	p := t.ctx.Get("Uint8Attribute").New(array, itemSize)
 	return &Uint8Attribute{p: p}
 }
 
@@ -70,9 +70,9 @@ func (t *Three) Uint8ClampedAttribute() *Uint8ClampedAttribute {
 	return &Uint8ClampedAttribute{p: p}
 }
 
-// New returns a new Uint8ClampedAttribute object.
-func (u *Uint8ClampedAttribute) New(array []uint8, itemSize int) *Uint8ClampedAttribute {
-	p := u.p.New(array, itemSize)
+// NewUint8ClampedAttribute returns a new Uint8ClampedAttribute object.
+func (t *Three) NewUint8ClampedAttribute(array []uint8, itemSize int) *Uint8ClampedAttribute {
+	p := t.ctx.Get("Uint8ClampedAttribute").New(array, itemSize)
 	return &Uint8ClampedAttribute{p: p}
 }
 
@@ -85,9 +85,9 @@ func (t *Three) Int16Attribute() *Int16Attribute {
 	return &Int16Attribute{p: p}
 }
 
-// New returns a new Int16Attribute object.
-func (i *Int16Attribute) New(array []int16, itemSize int) *Int16Attribute {
-	p := i.p.New(array, itemSize)
+// NewInt16Attribute returns a new Int16Attribute object.
+func (t *Three) NewInt16Attribute(array []int16, itemSize int) *Int16Attribute {
+	p := t.ctx.Get("Int16Attribute").New(array, itemSize)
 	return &Int16Attribute{p: p}
 }
 
@@ -100,9 +100,9 @@ func (t *Three) Uint16Attribute() *Uint16Attribute {
 	return &Uint16Attribute{p: p}
 }
 
-// New returns a new Uint16Attribute object.
-func (u *Uint16Attribute) New(array []uint16, itemSize int) *Uint16Attribute {
-	p := u.p.New(array, itemSize)
+// NewUint16Attribute returns a new Uint16Attribute object.
+func (t *Three) NewUint16Attribute(array []uint16, itemSize int) *Uint16Attribute {
+	p := t.ctx.Get("Uint16Attribute").New(array, itemSize)
 	return &Uint16Attribute{p: p}
 }
 
@@ -115,9 +115,9 @@ func (t *Three) Int32Attribute() *Int32Attribute {
 	return &Int32Attribute{p: p}
 }
 
-// New returns a new Int32Attribute object.
-func (i *Int32Attribute) New(array []int32, itemSize int) *Int32Attribute {
-	p := i.p.New(array, itemSize)
+// NewInt32Attribute returns a new Int32Attribute object.
+func (t *Three) NewInt32Attribute(array []int32, itemSize int) *Int32Attribute {
+	p := t.ctx.Get("Int32Attribute").New(array, itemSize)
 	return &Int32Attribute{p: p}
 }
 
@@ -130,9 +130,9 @@ func (t *Three) Uint32Attribute() *Uint32Attribute {
 	return &Uint32Attribute{p: p}
 }
 
-// New returns a new Uint32Attribute object.
-func (u *Uint32Attribute) New(array []uint32, itemSize int) *Uint32Attribute {
-	p := u.p.New(array, itemSize)
+// NewUint32Attribute returns a new Uint32Attribute object.
+func (t *Three) NewUint32Attribute(array []uint32, itemSize int) *Uint32Attribute {
+	p := t.ctx.Get("Uint32Attribute").New(array, itemSize)
 	return &Uint32Attribute{p: p}
 }
 
@@ -145,9 +145,9 @@ func (t *Three) Float32Attribute() *Float32Attribute {
 	return &Float32Attribute{p: p}
 }
 
-// New returns a new Float32Attribute object.
-func (f *Float32Attribute) New(array []float32, itemSize int) *Float32Attribute {
-	p := f.p.New(array, itemSize)
+// NewFloat32Attribute returns a new Float32Attribute object.
+func (t *Three) NewFloat32Attribute(array []float32, itemSize int) *Float32Attribute {
+	p := t.ctx.Get("Float32Attribute").New(array, itemSize)
 	return &Float32Attribute{p: p}
 }
 
@@ -160,9 +160,9 @@ func (t *Three) Float64Attribute() *Float64Attribute {
 	return &Float64Attribute{p: p}
 }
 
-// New returns a new Float64Attribute object.
-func (f *Float64Attribute) New(array []float64, itemSize int) *Float64Attribute {
-	p := f.p.New(array, itemSize)
+// NewFloat64Attribute returns a new Float64Attribute object.
+func (t *Three) NewFloat64Attribute(array []float64, itemSize int) *Float64Attribute {
+	p := t.ctx.Get("Float64Attribute").New(array, itemSize)
 	return &Float64Attribute{p: p}
 }
 

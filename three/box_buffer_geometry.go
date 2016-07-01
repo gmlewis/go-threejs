@@ -14,14 +14,14 @@ type BoxBufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BoxBufferGeometry) JSObject() *js.Object { return b.p }
 
-// BoxBufferGeometry returns a BoxBufferGeometry object.
+// BoxBufferGeometry returns a BoxBufferGeometry JavaScript class.
 func (t *Three) BoxBufferGeometry() *BoxBufferGeometry {
 	p := t.ctx.Get("BoxBufferGeometry")
 	return &BoxBufferGeometry{p: p}
 }
 
-// New returns a new BoxBufferGeometry object.
-func (b *BoxBufferGeometry) New(width, height, depth, widthSegments, heightSegments, depthSegments float64) *BoxBufferGeometry {
-	p := b.p.New(width, height, depth, widthSegments, heightSegments, depthSegments)
+// NewBoxBufferGeometry returns a new BoxBufferGeometry object.
+func (t *Three) NewBoxBufferGeometry(width, height, depth, widthSegments, heightSegments, depthSegments float64) *BoxBufferGeometry {
+	p := t.ctx.Get("BoxBufferGeometry").New(width, height, depth, widthSegments, heightSegments, depthSegments)
 	return &BoxBufferGeometry{p: p}
 }

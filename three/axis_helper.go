@@ -14,14 +14,14 @@ type AxisHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AxisHelper) JSObject() *js.Object { return a.p }
 
-// AxisHelper returns an AxisHelper object.
+// AxisHelper returns an AxisHelper JavaScript class.
 func (t *Three) AxisHelper() *AxisHelper {
 	p := t.ctx.Get("AxisHelper")
 	return &AxisHelper{p: p}
 }
 
-// New returns a new AxisHelper object.
-func (a *AxisHelper) New(size float64) *AxisHelper {
-	p := a.p.New(size)
+// NewAxisHelper returns a new AxisHelper object.
+func (t *Three) NewAxisHelper(size float64) *AxisHelper {
+	p := t.ctx.Get("AxisHelper").New(size)
 	return &AxisHelper{p: p}
 }

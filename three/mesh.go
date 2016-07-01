@@ -16,18 +16,18 @@ type Mesh struct{ *Object3D }
 // JSObject returns the underlying *js.Object.
 func (m *Mesh) JSObject() *js.Object { return m.p }
 
-// Mesh returns a Mesh object.
+// Mesh returns a Mesh JavaScript class.
 func (t *Three) Mesh() *Mesh {
 	p := t.ctx.Get("Mesh")
 	return &Mesh{&Object3D{p: p}}
 }
 
-// New returns a new Mesh object.
+// NewMesh returns a new Mesh object.
 //
 //     geometry — an instance of geometry.
 //     material — an instance of material (optional).
-func (m *Mesh) New(geometry, material JSObject) *Mesh {
-	p := m.p.New(geometry.JSObject(), material.JSObject())
+func (t *Three) NewMesh(geometry, material JSObject) *Mesh {
+	p := t.ctx.Get("Mesh").New(geometry.JSObject(), material.JSObject())
 	return &Mesh{&Object3D{p: p}}
 }
 

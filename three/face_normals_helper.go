@@ -14,14 +14,14 @@ type FaceNormalsHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (f *FaceNormalsHelper) JSObject() *js.Object { return f.p }
 
-// FaceNormalsHelper returns a FaceNormalsHelper object.
+// FaceNormalsHelper returns a FaceNormalsHelper JavaScript class.
 func (t *Three) FaceNormalsHelper() *FaceNormalsHelper {
 	p := t.ctx.Get("FaceNormalsHelper")
 	return &FaceNormalsHelper{p: p}
 }
 
-// New returns a new FaceNormalsHelper object.
-func (f *FaceNormalsHelper) New(object, size, hex, linewidth float64) *FaceNormalsHelper {
-	p := f.p.New(object, size, hex, linewidth)
+// NewFaceNormalsHelper returns a new FaceNormalsHelper object.
+func (t *Three) NewFaceNormalsHelper(object, size, hex, linewidth float64) *FaceNormalsHelper {
+	p := t.ctx.Get("FaceNormalsHelper").New(object, size, hex, linewidth)
 	return &FaceNormalsHelper{p: p}
 }

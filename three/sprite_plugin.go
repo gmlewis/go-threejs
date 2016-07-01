@@ -14,14 +14,14 @@ type SpritePlugin struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SpritePlugin) JSObject() *js.Object { return s.p }
 
-// SpritePlugin returns a SpritePlugin object.
+// SpritePlugin returns a SpritePlugin JavaScript class.
 func (t *Three) SpritePlugin() *SpritePlugin {
 	p := t.ctx.Get("SpritePlugin")
 	return &SpritePlugin{p: p}
 }
 
-// New returns a new SpritePlugin object.
-func (s *SpritePlugin) New(renderer, sprites float64) *SpritePlugin {
-	p := s.p.New(renderer, sprites)
+// NewSpritePlugin returns a new SpritePlugin object.
+func (t *Three) NewSpritePlugin(renderer, sprites float64) *SpritePlugin {
+	p := t.ctx.Get("SpritePlugin").New(renderer, sprites)
 	return &SpritePlugin{p: p}
 }

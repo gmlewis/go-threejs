@@ -14,14 +14,14 @@ type ShaderLib struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *ShaderLib) JSObject() *js.Object { return s.p }
 
-// ShaderLib returns a ShaderLib object.
+// ShaderLib returns a ShaderLib JavaScript class.
 func (t *Three) ShaderLib() *ShaderLib {
 	p := t.ctx.Get("ShaderLib")
 	return &ShaderLib{p: p}
 }
 
-// New returns a new ShaderLib object.
-func (s *ShaderLib) New() *ShaderLib {
-	p := s.p.New()
+// NewShaderLib returns a new ShaderLib object.
+func (t *Three) NewShaderLib() *ShaderLib {
+	p := t.ctx.Get("ShaderLib").New()
 	return &ShaderLib{p: p}
 }

@@ -16,7 +16,7 @@ type MeshLambertMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MeshLambertMaterial) JSObject() *js.Object { return m.p }
 
-// MeshLambertMaterial returns a MeshLambertMaterial object.
+// MeshLambertMaterial returns a MeshLambertMaterial JavaScript class.
 func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 	p := t.ctx.Get("MeshLambertMaterial")
 	return &MeshLambertMaterial{p: p}
@@ -24,7 +24,7 @@ func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 
 type MeshLambertMaterialOpts map[string]interface{}
 
-// New returns a new MeshLambertMaterial object.
+// NewMeshLambertMaterial returns a new MeshLambertMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
 //     color — Line color in hexadecimal. Default is 0xffffff.
@@ -43,8 +43,8 @@ type MeshLambertMaterialOpts map[string]interface{}
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (m *MeshLambertMaterial) New(parameters MeshLambertMaterialOpts) *MeshLambertMaterial {
-	p := m.p.New(parameters)
+func (t *Three) NewMeshLambertMaterial(parameters MeshLambertMaterialOpts) *MeshLambertMaterial {
+	p := t.ctx.Get("MeshLambertMaterial").New(parameters)
 	return &MeshLambertMaterial{p: p}
 }
 

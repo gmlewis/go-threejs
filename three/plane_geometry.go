@@ -16,19 +16,19 @@ type PlaneGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PlaneGeometry) JSObject() *js.Object { return p.p }
 
-// PlaneGeometry returns a PlaneGeometry object.
+// PlaneGeometry returns a PlaneGeometry JavaScript class.
 func (t *Three) PlaneGeometry() *PlaneGeometry {
 	p := t.ctx.Get("PlaneGeometry")
 	return &PlaneGeometry{p: p}
 }
 
-// New returns a new PlaneGeometry object.
+// NewPlaneGeometry returns a new PlaneGeometry object.
 //
 //     width — Width along the X axis.
 //     height — Height along the Y axis.
 //     widthSegments — Optional. Default is 1.
 //     heightSegments — Optional. Default is 1.
-func (p *PlaneGeometry) New(width, height float64, widthSegments, heightSegments int) *PlaneGeometry {
-	t := p.p.New(width, height, widthSegments, heightSegments)
-	return &PlaneGeometry{p: t}
+func (t *Three) NewPlaneGeometry(width, height float64, widthSegments, heightSegments int) *PlaneGeometry {
+	p := t.ctx.Get("PlaneGeometry").New(width, height, widthSegments, heightSegments)
+	return &PlaneGeometry{p: p}
 }

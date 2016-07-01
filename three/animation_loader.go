@@ -14,15 +14,15 @@ type AnimationLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AnimationLoader) JSObject() *js.Object { return a.p }
 
-// AnimationLoader returns an AnimationLoader object.
+// AnimationLoader returns an AnimationLoader JavaScript class.
 func (t *Three) AnimationLoader() *AnimationLoader {
 	p := t.ctx.Get("AnimationLoader")
 	return &AnimationLoader{p: p}
 }
 
-// New returns a new AnimationLoader object.
-func (a *AnimationLoader) New(manager float64) *AnimationLoader {
-	p := a.p.New(manager)
+// NewAnimationLoader returns a new AnimationLoader object.
+func (t *Three) NewAnimationLoader(manager float64) *AnimationLoader {
+	p := t.ctx.Get("AnimationLoader").New(manager)
 	return &AnimationLoader{p: p}
 }
 

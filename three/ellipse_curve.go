@@ -14,15 +14,15 @@ type EllipseCurve struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (e *EllipseCurve) JSObject() *js.Object { return e.p }
 
-// EllipseCurve returns an EllipseCurve object.
+// EllipseCurve returns an EllipseCurve JavaScript class.
 func (t *Three) EllipseCurve() *EllipseCurve {
 	p := t.ctx.Get("EllipseCurve")
 	return &EllipseCurve{p: p}
 }
 
-// New returns a new EllipseCurve object.
-func (e *EllipseCurve) New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
-	p := e.p.New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
+// NewEllipseCurve returns a new EllipseCurve object.
+func (t *Three) NewEllipseCurve(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
+	p := t.ctx.Get("EllipseCurve").New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
 	return &EllipseCurve{p: p}
 }
 

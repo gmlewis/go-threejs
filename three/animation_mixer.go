@@ -14,15 +14,15 @@ type AnimationMixer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AnimationMixer) JSObject() *js.Object { return a.p }
 
-// AnimationMixer returns an AnimationMixer object.
+// AnimationMixer returns an AnimationMixer JavaScript class.
 func (t *Three) AnimationMixer() *AnimationMixer {
 	p := t.ctx.Get("AnimationMixer")
 	return &AnimationMixer{p: p}
 }
 
-// New returns a new AnimationMixer object.
-func (a *AnimationMixer) New(root float64) *AnimationMixer {
-	p := a.p.New(root)
+// NewAnimationMixer returns a new AnimationMixer object.
+func (t *Three) NewAnimationMixer(root float64) *AnimationMixer {
+	p := t.ctx.Get("AnimationMixer").New(root)
 	return &AnimationMixer{p: p}
 }
 

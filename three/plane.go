@@ -14,16 +14,16 @@ type Plane struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *Plane) JSObject() *js.Object { return p.p }
 
-// Plane returns a Plane object.
+// Plane returns a Plane JavaScript class.
 func (t *Three) Plane() *Plane {
 	p := t.ctx.Get("Plane")
 	return &Plane{p: p}
 }
 
-// New returns a new Plane object.
-func (p *Plane) New(normal, constant float64) *Plane {
-	t := p.p.New(normal, constant)
-	return &Plane{p: t}
+// NewPlane returns a new Plane object.
+func (t *Three) NewPlane(normal, constant float64) *Plane {
+	p := t.ctx.Get("Plane").New(normal, constant)
+	return &Plane{p: p}
 }
 
 // Set TODO description.

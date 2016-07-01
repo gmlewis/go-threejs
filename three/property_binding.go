@@ -14,16 +14,16 @@ type PropertyBinding struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PropertyBinding) JSObject() *js.Object { return p.p }
 
-// PropertyBinding returns a PropertyBinding object.
+// PropertyBinding returns a PropertyBinding JavaScript class.
 func (t *Three) PropertyBinding() *PropertyBinding {
 	p := t.ctx.Get("PropertyBinding")
 	return &PropertyBinding{p: p}
 }
 
-// New returns a new PropertyBinding object.
-func (p *PropertyBinding) New(rootNode, path, parsedPath float64) *PropertyBinding {
-	t := p.p.New(rootNode, path, parsedPath)
-	return &PropertyBinding{p: t}
+// NewPropertyBinding returns a new PropertyBinding object.
+func (t *Three) NewPropertyBinding(rootNode, path, parsedPath float64) *PropertyBinding {
+	p := t.ctx.Get("PropertyBinding").New(rootNode, path, parsedPath)
+	return &PropertyBinding{p: p}
 }
 
 // Bind TODO description.

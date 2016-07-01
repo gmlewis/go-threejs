@@ -16,20 +16,20 @@ type MeshNormalMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MeshNormalMaterial) JSObject() *js.Object { return m.p }
 
-// MeshNormalMaterial returns a MeshNormalMaterial object.
+// MeshNormalMaterial returns a MeshNormalMaterial JavaScript class.
 func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
 	p := t.ctx.Get("MeshNormalMaterial")
 	return &MeshNormalMaterial{p: p}
 }
 
-// New returns a new MeshNormalMaterial object.
+// NewMeshNormalMaterial returns a new MeshNormalMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
 //     wireframe -- Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
-func (m *MeshNormalMaterial) New(parameters map[string]interface{}) *MeshNormalMaterial {
-	p := m.p.New(parameters)
+func (t *Three) NewMeshNormalMaterial(parameters map[string]interface{}) *MeshNormalMaterial {
+	p := t.ctx.Get("MeshNormalMaterial").New(parameters)
 	return &MeshNormalMaterial{p: p}
 }
 

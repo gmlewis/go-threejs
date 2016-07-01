@@ -14,15 +14,15 @@ type ExtrudeGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (e *ExtrudeGeometry) JSObject() *js.Object { return e.p }
 
-// ExtrudeGeometry returns an ExtrudeGeometry object.
+// ExtrudeGeometry returns an ExtrudeGeometry JavaScript class.
 func (t *Three) ExtrudeGeometry() *ExtrudeGeometry {
 	p := t.ctx.Get("ExtrudeGeometry")
 	return &ExtrudeGeometry{p: p}
 }
 
-// New returns a new ExtrudeGeometry object.
-func (e *ExtrudeGeometry) New(shapes, options float64) *ExtrudeGeometry {
-	p := e.p.New(shapes, options)
+// NewExtrudeGeometry returns a new ExtrudeGeometry object.
+func (t *Three) NewExtrudeGeometry(shapes, options float64) *ExtrudeGeometry {
+	p := t.ctx.Get("ExtrudeGeometry").New(shapes, options)
 	return &ExtrudeGeometry{p: p}
 }
 

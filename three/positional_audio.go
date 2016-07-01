@@ -14,16 +14,16 @@ type PositionalAudio struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PositionalAudio) JSObject() *js.Object { return p.p }
 
-// PositionalAudio returns a PositionalAudio object.
+// PositionalAudio returns a PositionalAudio JavaScript class.
 func (t *Three) PositionalAudio() *PositionalAudio {
 	p := t.ctx.Get("PositionalAudio")
 	return &PositionalAudio{p: p}
 }
 
-// New returns a new PositionalAudio object.
-func (p *PositionalAudio) New(listener float64) *PositionalAudio {
-	t := p.p.New(listener)
-	return &PositionalAudio{p: t}
+// NewPositionalAudio returns a new PositionalAudio object.
+func (t *Three) NewPositionalAudio(listener float64) *PositionalAudio {
+	p := t.ctx.Get("PositionalAudio").New(listener)
+	return &PositionalAudio{p: p}
 }
 
 // SetRefDistance TODO description.

@@ -16,7 +16,7 @@ type BoxGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BoxGeometry) JSObject() *js.Object { return b.p }
 
-// BoxGeometry returns a BoxGeometry object.
+// BoxGeometry returns a BoxGeometry JavaScript class.
 func (t *Three) BoxGeometry() *BoxGeometry {
 	p := t.ctx.Get("BoxGeometry")
 	return &BoxGeometry{p: p}
@@ -29,17 +29,17 @@ type BoxGeometryOpts struct {
 	depthSegments  int // Number of segmented faces along the depth of the sides. Default is 1.
 }
 
-// New returns a new BoxGeometry object.
+// NewBoxGeometry returns a new BoxGeometry object.
 //
 //     width — Width of the sides on the X axis.
 //     height — Height of the sides on the Y axis.
 //     depth — Depth of the sides on the Z axis.
-func (b *BoxGeometry) New(width, height, depth float64, opts *BoxGeometryOpts) *BoxGeometry {
-	var p *js.Object
+func (t *Three) NewBoxGeometry(width, height, depth float64, opts *BoxGeometryOpts) *BoxGeometry {
+	p := t.ctx.Get("BoxGeometry")
 	if opts != nil {
-		p = b.p.New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
+		p = p.New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
 	} else {
-		p = b.p.New(width, height, depth)
+		p = p.New(width, height, depth)
 	}
 	return &BoxGeometry{p: p}
 }

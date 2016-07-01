@@ -14,14 +14,14 @@ type CatmullRomCurve3 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CatmullRomCurve3) JSObject() *js.Object { return c.p }
 
-// CatmullRomCurve3 returns a CatmullRomCurve3 object.
+// CatmullRomCurve3 returns a CatmullRomCurve3 JavaScript class.
 func (t *Three) CatmullRomCurve3() *CatmullRomCurve3 {
 	p := t.ctx.Get("CatmullRomCurve3")
 	return &CatmullRomCurve3{p: p}
 }
 
-// New returns a new CatmullRomCurve3 object.
-func (c *CatmullRomCurve3) New() *CatmullRomCurve3 {
-	p := c.p.New()
+// NewCatmullRomCurve3 returns a new CatmullRomCurve3 object.
+func (t *Three) NewCatmullRomCurve3() *CatmullRomCurve3 {
+	p := t.ctx.Get("CatmullRomCurve3").New()
 	return &CatmullRomCurve3{p: p}
 }

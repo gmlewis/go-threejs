@@ -14,14 +14,14 @@ type ShaderChunk struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *ShaderChunk) JSObject() *js.Object { return s.p }
 
-// ShaderChunk returns a ShaderChunk object.
+// ShaderChunk returns a ShaderChunk JavaScript class.
 func (t *Three) ShaderChunk() *ShaderChunk {
 	p := t.ctx.Get("ShaderChunk")
 	return &ShaderChunk{p: p}
 }
 
-// New returns a new ShaderChunk object.
-func (s *ShaderChunk) New() *ShaderChunk {
-	p := s.p.New()
+// NewShaderChunk returns a new ShaderChunk object.
+func (t *Three) NewShaderChunk() *ShaderChunk {
+	p := t.ctx.Get("ShaderChunk").New()
 	return &ShaderChunk{p: p}
 }

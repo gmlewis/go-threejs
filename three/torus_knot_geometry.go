@@ -16,13 +16,13 @@ type TorusKnotGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *TorusKnotGeometry) JSObject() *js.Object { return t.p }
 
-// TorusKnotGeometry returns a TorusKnotGeometry object.
+// TorusKnotGeometry returns a TorusKnotGeometry JavaScript class.
 func (t *Three) TorusKnotGeometry() *TorusKnotGeometry {
 	p := t.ctx.Get("TorusKnotGeometry")
 	return &TorusKnotGeometry{p: p}
 }
 
-// New returns a new TorusKnotGeometry object.
+// NewTorusKnotGeometry returns a new TorusKnotGeometry object.
 //
 //     radius — Default is 100.
 //     tube — Default is 40.
@@ -31,7 +31,7 @@ func (t *Three) TorusKnotGeometry() *TorusKnotGeometry {
 //     p — Default is 2.
 //     q — Default is 3.
 //     heightScale — Default is 1.
-func (t *TorusKnotGeometry) New(radius, tube float64, tubularSegments, radialSegments int, p, q, heightScale float64) *TorusKnotGeometry {
-	s := t.p.New(radius, tube, tubularSegments, radialSegments, p, q, heightScale)
+func (t *Three) NewTorusKnotGeometry(radius, tube float64, tubularSegments, radialSegments int, p, q, heightScale float64) *TorusKnotGeometry {
+	s := t.ctx.Get("TorusKnotGeometry").New(radius, tube, tubularSegments, radialSegments, p, q, heightScale)
 	return &TorusKnotGeometry{p: s}
 }

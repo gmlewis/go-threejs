@@ -11,15 +11,15 @@ import (
 func ExampleGeometry() {
 	t := three.New()
 
-	geometry := t.Geometry().New()
+	geometry := t.NewGeometry()
+	/*
+		geometry.vertices.push(
+			t.NewVector3(-10, 10, 0),
+			t.NewVector3(-10, -10, 0),
+			t.NewVector3(10, -10, 0),
+		)
 
-	geometry.vertices.push(
-		t.Vector3().New(-10, 10, 0),
-		t.Vector3().New(-10, -10, 0),
-		t.Vector3().New(10, -10, 0),
-	)
-
-	geometry.faces.push(t.Face3().New(0, 1, 2))
-
-	geometry.computeBoundingSphere()
+		geometry.faces.push(t.NewFace3(0, 1, 2))
+	*/
+	geometry.ComputeBoundingSphere()
 }

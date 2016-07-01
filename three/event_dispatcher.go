@@ -16,15 +16,15 @@ type EventDispatcher struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (e *EventDispatcher) JSObject() *js.Object { return e.p }
 
-// EventDispatcher returns an EventDispatcher object.
+// EventDispatcher returns an EventDispatcher JavaScript class.
 func (t *Three) EventDispatcher() *EventDispatcher {
 	p := t.ctx.Get("EventDispatcher")
 	return &EventDispatcher{p: p}
 }
 
-// New returns a new EventDispatcher object.
-func (e *EventDispatcher) New() *EventDispatcher {
-	p := e.p.New()
+// NewEventDispatcher returns a new EventDispatcher object.
+func (t *Three) NewEventDispatcher() *EventDispatcher {
+	p := t.ctx.Get("EventDispatcher").New()
 	return &EventDispatcher{p: p}
 }
 

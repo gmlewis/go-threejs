@@ -14,15 +14,15 @@ type XHRLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (x *XHRLoader) JSObject() *js.Object { return x.p }
 
-// XHRLoader returns a XHRLoader object.
+// XHRLoader returns a XHRLoader JavaScript class.
 func (t *Three) XHRLoader() *XHRLoader {
 	p := t.ctx.Get("XHRLoader")
 	return &XHRLoader{p: p}
 }
 
-// New returns a new XHRLoader object.
-func (x *XHRLoader) New(manager float64) *XHRLoader {
-	p := x.p.New(manager)
+// NewXHRLoader returns a new XHRLoader object.
+func (t *Three) NewXHRLoader(manager float64) *XHRLoader {
+	p := t.ctx.Get("XHRLoader").New(manager)
 	return &XHRLoader{p: p}
 }
 

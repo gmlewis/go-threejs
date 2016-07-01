@@ -14,14 +14,14 @@ type RawShaderMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (r *RawShaderMaterial) JSObject() *js.Object { return r.p }
 
-// RawShaderMaterial returns a RawShaderMaterial object.
+// RawShaderMaterial returns a RawShaderMaterial JavaScript class.
 func (t *Three) RawShaderMaterial() *RawShaderMaterial {
 	p := t.ctx.Get("RawShaderMaterial")
 	return &RawShaderMaterial{p: p}
 }
 
-// New returns a new RawShaderMaterial object.
-func (r *RawShaderMaterial) New(parameters float64) *RawShaderMaterial {
-	p := r.p.New(parameters)
+// NewRawShaderMaterial returns a new RawShaderMaterial object.
+func (t *Three) NewRawShaderMaterial(parameters float64) *RawShaderMaterial {
+	p := t.ctx.Get("RawShaderMaterial").New(parameters)
 	return &RawShaderMaterial{p: p}
 }

@@ -14,14 +14,14 @@ type WebGLLights struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLLights) JSObject() *js.Object { return w.p }
 
-// WebGLLights returns a WebGLLights object.
+// WebGLLights returns a WebGLLights JavaScript class.
 func (t *Three) WebGLLights() *WebGLLights {
 	p := t.ctx.Get("WebGLLights")
 	return &WebGLLights{p: p}
 }
 
-// New returns a new WebGLLights object.
-func (w *WebGLLights) New() *WebGLLights {
-	p := w.p.New()
+// NewWebGLLights returns a new WebGLLights object.
+func (t *Three) NewWebGLLights() *WebGLLights {
+	p := t.ctx.Get("WebGLLights").New()
 	return &WebGLLights{p: p}
 }

@@ -11,8 +11,8 @@ import (
 func ExamplePerspectiveCamera() {
 	const width, height = 800, 600
 	t := three.New()
-	scene := t.Scene().New()
+	scene := t.NewScene()
 
-	camera := t.PerspectiveCamera().New(45, width/height, 1, 1000)
+	camera := t.NewPerspectiveCamera(45, width/height, 1, 1000)
 	scene.Add(camera)
 }

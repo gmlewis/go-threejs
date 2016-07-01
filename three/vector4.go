@@ -14,15 +14,15 @@ type Vector4 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (v *Vector4) JSObject() *js.Object { return v.p }
 
-// Vector4 returns a Vector4 object.
+// Vector4 returns a Vector4 JavaScript class.
 func (t *Three) Vector4() *Vector4 {
 	p := t.ctx.Get("Vector4")
 	return &Vector4{p: p}
 }
 
-// New returns a new Vector4 object.
-func (v *Vector4) New(x, y, z, w float64) *Vector4 {
-	p := v.p.New(x, y, z, w)
+// NewVector4 returns a new Vector4 object.
+func (t *Three) NewVector4(x, y, z, w float64) *Vector4 {
+	p := t.ctx.Get("Vector4").New(x, y, z, w)
 	return &Vector4{p: p}
 }
 

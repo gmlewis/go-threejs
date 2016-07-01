@@ -14,14 +14,14 @@ type EdgesHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (e *EdgesHelper) JSObject() *js.Object { return e.p }
 
-// EdgesHelper returns an EdgesHelper object.
+// EdgesHelper returns an EdgesHelper JavaScript class.
 func (t *Three) EdgesHelper() *EdgesHelper {
 	p := t.ctx.Get("EdgesHelper")
 	return &EdgesHelper{p: p}
 }
 
-// New returns a new EdgesHelper object.
-func (e *EdgesHelper) New(object, hex, thresholdAngle float64) *EdgesHelper {
-	p := e.p.New(object, hex, thresholdAngle)
+// NewEdgesHelper returns a new EdgesHelper object.
+func (t *Three) NewEdgesHelper(object, hex, thresholdAngle float64) *EdgesHelper {
+	p := t.ctx.Get("EdgesHelper").New(object, hex, thresholdAngle)
 	return &EdgesHelper{p: p}
 }

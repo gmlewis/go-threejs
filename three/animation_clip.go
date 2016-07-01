@@ -14,15 +14,15 @@ type AnimationClip struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AnimationClip) JSObject() *js.Object { return a.p }
 
-// AnimationClip returns an AnimationClip object.
+// AnimationClip returns an AnimationClip JavaScript class.
 func (t *Three) AnimationClip() *AnimationClip {
 	p := t.ctx.Get("AnimationClip")
 	return &AnimationClip{p: p}
 }
 
-// New returns a new AnimationClip object.
-func (a *AnimationClip) New(name, duration, tracks float64) *AnimationClip {
-	p := a.p.New(name, duration, tracks)
+// NewAnimationClip returns a new AnimationClip object.
+func (t *Three) NewAnimationClip(name, duration, tracks float64) *AnimationClip {
+	p := t.ctx.Get("AnimationClip").New(name, duration, tracks)
 	return &AnimationClip{p: p}
 }
 

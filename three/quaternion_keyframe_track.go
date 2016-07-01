@@ -14,15 +14,15 @@ type QuaternionKeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (q *QuaternionKeyframeTrack) JSObject() *js.Object { return q.p }
 
-// QuaternionKeyframeTrack returns a QuaternionKeyframeTrack object.
+// QuaternionKeyframeTrack returns a QuaternionKeyframeTrack JavaScript class.
 func (t *Three) QuaternionKeyframeTrack() *QuaternionKeyframeTrack {
 	p := t.ctx.Get("QuaternionKeyframeTrack")
 	return &QuaternionKeyframeTrack{p: p}
 }
 
-// New returns a new QuaternionKeyframeTrack object.
-func (q *QuaternionKeyframeTrack) New(name, times, values, interpolation float64) *QuaternionKeyframeTrack {
-	p := q.p.New(name, times, values, interpolation)
+// NewQuaternionKeyframeTrack returns a new QuaternionKeyframeTrack object.
+func (t *Three) NewQuaternionKeyframeTrack(name, times, values, interpolation float64) *QuaternionKeyframeTrack {
+	p := t.ctx.Get("QuaternionKeyframeTrack").New(name, times, values, interpolation)
 	return &QuaternionKeyframeTrack{p: p}
 }
 

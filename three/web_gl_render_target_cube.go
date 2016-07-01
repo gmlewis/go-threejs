@@ -14,14 +14,14 @@ type WebGLRenderTargetCube struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLRenderTargetCube) JSObject() *js.Object { return w.p }
 
-// WebGLRenderTargetCube returns a WebGLRenderTargetCube object.
+// WebGLRenderTargetCube returns a WebGLRenderTargetCube JavaScript class.
 func (t *Three) WebGLRenderTargetCube() *WebGLRenderTargetCube {
 	p := t.ctx.Get("WebGLRenderTargetCube")
 	return &WebGLRenderTargetCube{p: p}
 }
 
-// New returns a new WebGLRenderTargetCube object.
-func (w *WebGLRenderTargetCube) New(width, height, options float64) *WebGLRenderTargetCube {
-	p := w.p.New(width, height, options)
+// NewWebGLRenderTargetCube returns a new WebGLRenderTargetCube object.
+func (t *Three) NewWebGLRenderTargetCube(width, height, options float64) *WebGLRenderTargetCube {
+	p := t.ctx.Get("WebGLRenderTargetCube").New(width, height, options)
 	return &WebGLRenderTargetCube{p: p}
 }

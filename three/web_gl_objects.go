@@ -14,14 +14,14 @@ type WebGLObjects struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLObjects) JSObject() *js.Object { return w.p }
 
-// WebGLObjects returns a WebGLObjects object.
+// WebGLObjects returns a WebGLObjects JavaScript class.
 func (t *Three) WebGLObjects() *WebGLObjects {
 	p := t.ctx.Get("WebGLObjects")
 	return &WebGLObjects{p: p}
 }
 
-// New returns a new WebGLObjects object.
-func (w *WebGLObjects) New(gl, properties, info float64) *WebGLObjects {
-	p := w.p.New(gl, properties, info)
+// NewWebGLObjects returns a new WebGLObjects object.
+func (t *Three) NewWebGLObjects(gl, properties, info float64) *WebGLObjects {
+	p := t.ctx.Get("WebGLObjects").New(gl, properties, info)
 	return &WebGLObjects{p: p}
 }

@@ -14,14 +14,14 @@ type WebGLExtensions struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLExtensions) JSObject() *js.Object { return w.p }
 
-// WebGLExtensions returns a WebGLExtensions object.
+// WebGLExtensions returns a WebGLExtensions JavaScript class.
 func (t *Three) WebGLExtensions() *WebGLExtensions {
 	p := t.ctx.Get("WebGLExtensions")
 	return &WebGLExtensions{p: p}
 }
 
-// New returns a new WebGLExtensions object.
-func (w *WebGLExtensions) New(gl float64) *WebGLExtensions {
-	p := w.p.New(gl)
+// NewWebGLExtensions returns a new WebGLExtensions object.
+func (t *Three) NewWebGLExtensions(gl float64) *WebGLExtensions {
+	p := t.ctx.Get("WebGLExtensions").New(gl)
 	return &WebGLExtensions{p: p}
 }

@@ -14,15 +14,15 @@ type Audio struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *Audio) JSObject() *js.Object { return a.p }
 
-// Audio returns an Audio object.
+// Audio returns an Audio JavaScript class.
 func (t *Three) Audio() *Audio {
 	p := t.ctx.Get("Audio")
 	return &Audio{p: p}
 }
 
-// New returns a new Audio object.
-func (a *Audio) New(listener float64) *Audio {
-	p := a.p.New(listener)
+// NewAudio returns a new Audio object.
+func (t *Three) NewAudio(listener float64) *Audio {
+	p := t.ctx.Get("Audio").New(listener)
 	return &Audio{p: p}
 }
 

@@ -14,15 +14,15 @@ type Euler struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (e *Euler) JSObject() *js.Object { return e.p }
 
-// Euler returns an Euler object.
+// Euler returns an Euler JavaScript class.
 func (t *Three) Euler() *Euler {
 	p := t.ctx.Get("Euler")
 	return &Euler{p: p}
 }
 
-// New returns a new Euler object.
-func (e *Euler) New(x, y, z, order float64) *Euler {
-	p := e.p.New(x, y, z, order)
+// NewEuler returns a new Euler object.
+func (t *Three) NewEuler(x, y, z, order float64) *Euler {
+	p := t.ctx.Get("Euler").New(x, y, z, order)
 	return &Euler{p: p}
 }
 

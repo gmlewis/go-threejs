@@ -16,14 +16,14 @@ type Fog struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (f *Fog) JSObject() *js.Object { return f.p }
 
-// Fog returns a Fog object.
+// Fog returns a Fog JavaScript class.
 func (t *Three) Fog() *Fog {
 	p := t.ctx.Get("Fog")
 	return &Fog{p: p}
 }
 
-// New returns a new Fog object.
-func (f *Fog) New(color, near, far float64) *Fog {
-	p := f.p.New(color, near, far)
+// NewFog returns a new Fog object.
+func (t *Three) NewFog(color, near, far float64) *Fog {
+	p := t.ctx.Get("Fog").New(color, near, far)
 	return &Fog{p: p}
 }

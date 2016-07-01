@@ -14,14 +14,14 @@ type VectorKeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (v *VectorKeyframeTrack) JSObject() *js.Object { return v.p }
 
-// VectorKeyframeTrack returns a VectorKeyframeTrack object.
+// VectorKeyframeTrack returns a VectorKeyframeTrack JavaScript class.
 func (t *Three) VectorKeyframeTrack() *VectorKeyframeTrack {
 	p := t.ctx.Get("VectorKeyframeTrack")
 	return &VectorKeyframeTrack{p: p}
 }
 
-// New returns a new VectorKeyframeTrack object.
-func (v *VectorKeyframeTrack) New(name, times, values, interpolation float64) *VectorKeyframeTrack {
-	p := v.p.New(name, times, values, interpolation)
+// NewVectorKeyframeTrack returns a new VectorKeyframeTrack object.
+func (t *Three) NewVectorKeyframeTrack(name, times, values, interpolation float64) *VectorKeyframeTrack {
+	p := t.ctx.Get("VectorKeyframeTrack").New(name, times, values, interpolation)
 	return &VectorKeyframeTrack{p: p}
 }

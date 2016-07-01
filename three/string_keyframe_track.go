@@ -14,14 +14,14 @@ type StringKeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *StringKeyframeTrack) JSObject() *js.Object { return s.p }
 
-// StringKeyframeTrack returns a StringKeyframeTrack object.
+// StringKeyframeTrack returns a StringKeyframeTrack JavaScript class.
 func (t *Three) StringKeyframeTrack() *StringKeyframeTrack {
 	p := t.ctx.Get("StringKeyframeTrack")
 	return &StringKeyframeTrack{p: p}
 }
 
-// New returns a new StringKeyframeTrack object.
-func (s *StringKeyframeTrack) New(name, times, values, interpolation float64) *StringKeyframeTrack {
-	p := s.p.New(name, times, values, interpolation)
+// NewStringKeyframeTrack returns a new StringKeyframeTrack object.
+func (t *Three) NewStringKeyframeTrack(name, times, values, interpolation float64) *StringKeyframeTrack {
+	p := t.ctx.Get("StringKeyframeTrack").New(name, times, values, interpolation)
 	return &StringKeyframeTrack{p: p}
 }

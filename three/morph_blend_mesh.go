@@ -14,15 +14,15 @@ type MorphBlendMesh struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MorphBlendMesh) JSObject() *js.Object { return m.p }
 
-// MorphBlendMesh returns a MorphBlendMesh object.
+// MorphBlendMesh returns a MorphBlendMesh JavaScript class.
 func (t *Three) MorphBlendMesh() *MorphBlendMesh {
 	p := t.ctx.Get("MorphBlendMesh")
 	return &MorphBlendMesh{p: p}
 }
 
-// New returns a new MorphBlendMesh object.
-func (m *MorphBlendMesh) New(geometry, material float64) *MorphBlendMesh {
-	p := m.p.New(geometry, material)
+// NewMorphBlendMesh returns a new MorphBlendMesh object.
+func (t *Three) NewMorphBlendMesh(geometry, material float64) *MorphBlendMesh {
+	p := t.ctx.Get("MorphBlendMesh").New(geometry, material)
 	return &MorphBlendMesh{p: p}
 }
 

@@ -14,14 +14,14 @@ type ImmediateRenderObject struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (i *ImmediateRenderObject) JSObject() *js.Object { return i.p }
 
-// ImmediateRenderObject returns an ImmediateRenderObject object.
+// ImmediateRenderObject returns an ImmediateRenderObject JavaScript class.
 func (t *Three) ImmediateRenderObject() *ImmediateRenderObject {
 	p := t.ctx.Get("ImmediateRenderObject")
 	return &ImmediateRenderObject{p: p}
 }
 
-// New returns a new ImmediateRenderObject object.
-func (i *ImmediateRenderObject) New(material float64) *ImmediateRenderObject {
-	p := i.p.New(material)
+// NewImmediateRenderObject returns a new ImmediateRenderObject object.
+func (t *Three) NewImmediateRenderObject(material float64) *ImmediateRenderObject {
+	p := t.ctx.Get("ImmediateRenderObject").New(material)
 	return &ImmediateRenderObject{p: p}
 }

@@ -14,14 +14,14 @@ type WebGLIndexedBufferRenderer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLIndexedBufferRenderer) JSObject() *js.Object { return w.p }
 
-// WebGLIndexedBufferRenderer returns a WebGLIndexedBufferRenderer object.
+// WebGLIndexedBufferRenderer returns a WebGLIndexedBufferRenderer JavaScript class.
 func (t *Three) WebGLIndexedBufferRenderer() *WebGLIndexedBufferRenderer {
 	p := t.ctx.Get("WebGLIndexedBufferRenderer")
 	return &WebGLIndexedBufferRenderer{p: p}
 }
 
-// New returns a new WebGLIndexedBufferRenderer object.
-func (w *WebGLIndexedBufferRenderer) New(_gl, extensions, _infoRender float64) *WebGLIndexedBufferRenderer {
-	p := w.p.New(_gl, extensions, _infoRender)
+// NewWebGLIndexedBufferRenderer returns a new WebGLIndexedBufferRenderer object.
+func (t *Three) NewWebGLIndexedBufferRenderer(_gl, extensions, _infoRender float64) *WebGLIndexedBufferRenderer {
+	p := t.ctx.Get("WebGLIndexedBufferRenderer").New(_gl, extensions, _infoRender)
 	return &WebGLIndexedBufferRenderer{p: p}
 }

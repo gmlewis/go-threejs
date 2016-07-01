@@ -14,15 +14,15 @@ type WebGLProgram struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLProgram) JSObject() *js.Object { return w.p }
 
-// WebGLProgram returns a WebGLProgram object.
+// WebGLProgram returns a WebGLProgram JavaScript class.
 func (t *Three) WebGLProgram() *WebGLProgram {
 	p := t.ctx.Get("WebGLProgram")
 	return &WebGLProgram{p: p}
 }
 
-// New returns a new WebGLProgram object.
-func (w *WebGLProgram) New() *WebGLProgram {
-	p := w.p.New()
+// NewWebGLProgram returns a new WebGLProgram object.
+func (t *Three) NewWebGLProgram() *WebGLProgram {
+	p := t.ctx.Get("WebGLProgram").New()
 	return &WebGLProgram{p: p}
 }
 

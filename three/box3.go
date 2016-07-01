@@ -14,15 +14,15 @@ type Box3 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *Box3) JSObject() *js.Object { return b.p }
 
-// Box3 returns a Box3 object.
+// Box3 returns a Box3 JavaScript class.
 func (t *Three) Box3() *Box3 {
 	p := t.ctx.Get("Box3")
 	return &Box3{p: p}
 }
 
-// New returns a new Box3 object.
-func (b *Box3) New(min, max float64) *Box3 {
-	p := b.p.New(min, max)
+// NewBox3 returns a new Box3 object.
+func (t *Three) NewBox3(min, max float64) *Box3 {
+	p := t.ctx.Get("Box3").New(min, max)
 	return &Box3{p: p}
 }
 

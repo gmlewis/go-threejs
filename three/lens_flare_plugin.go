@@ -14,14 +14,14 @@ type LensFlarePlugin struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LensFlarePlugin) JSObject() *js.Object { return l.p }
 
-// LensFlarePlugin returns a LensFlarePlugin object.
+// LensFlarePlugin returns a LensFlarePlugin JavaScript class.
 func (t *Three) LensFlarePlugin() *LensFlarePlugin {
 	p := t.ctx.Get("LensFlarePlugin")
 	return &LensFlarePlugin{p: p}
 }
 
-// New returns a new LensFlarePlugin object.
-func (l *LensFlarePlugin) New(renderer, flares float64) *LensFlarePlugin {
-	p := l.p.New(renderer, flares)
+// NewLensFlarePlugin returns a new LensFlarePlugin object.
+func (t *Three) NewLensFlarePlugin(renderer, flares float64) *LensFlarePlugin {
+	p := t.ctx.Get("LensFlarePlugin").New(renderer, flares)
 	return &LensFlarePlugin{p: p}
 }

@@ -14,15 +14,15 @@ type JSONLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (j *JSONLoader) JSObject() *js.Object { return j.p }
 
-// JSONLoader returns a JSONLoader object.
+// JSONLoader returns a JSONLoader JavaScript class.
 func (t *Three) JSONLoader() *JSONLoader {
 	p := t.ctx.Get("JSONLoader")
 	return &JSONLoader{p: p}
 }
 
-// New returns a new JSONLoader object.
-func (j *JSONLoader) New(manager float64) *JSONLoader {
-	p := j.p.New(manager)
+// NewJSONLoader returns a new JSONLoader object.
+func (t *Three) NewJSONLoader(manager float64) *JSONLoader {
+	p := t.ctx.Get("JSONLoader").New(manager)
 	return &JSONLoader{p: p}
 }
 

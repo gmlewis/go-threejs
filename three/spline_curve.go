@@ -14,15 +14,15 @@ type SplineCurve struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SplineCurve) JSObject() *js.Object { return s.p }
 
-// SplineCurve returns a SplineCurve object.
+// SplineCurve returns a SplineCurve JavaScript class.
 func (t *Three) SplineCurve() *SplineCurve {
 	p := t.ctx.Get("SplineCurve")
 	return &SplineCurve{p: p}
 }
 
-// New returns a new SplineCurve object.
-func (s *SplineCurve) New(points /* array of Vector2 */ float64) *SplineCurve {
-	p := s.p.New(points /* array of Vector2 */)
+// NewSplineCurve returns a new SplineCurve object.
+func (t *Three) NewSplineCurve(points /* array of Vector2 */ float64) *SplineCurve {
+	p := t.ctx.Get("SplineCurve").New(points /* array of Vector2 */)
 	return &SplineCurve{p: p}
 }
 

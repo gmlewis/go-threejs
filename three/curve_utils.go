@@ -14,15 +14,15 @@ type CurveUtils struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CurveUtils) JSObject() *js.Object { return c.p }
 
-// CurveUtils returns a CurveUtils object.
+// CurveUtils returns a CurveUtils JavaScript class.
 func (t *Three) CurveUtils() *CurveUtils {
 	p := t.ctx.Get("CurveUtils")
 	return &CurveUtils{p: p}
 }
 
-// New returns a new CurveUtils object.
-func (c *CurveUtils) New() *CurveUtils {
-	p := c.p.New()
+// NewCurveUtils returns a new CurveUtils object.
+func (t *Three) NewCurveUtils() *CurveUtils {
+	p := t.ctx.Get("CurveUtils").New()
 	return &CurveUtils{p: p}
 }
 

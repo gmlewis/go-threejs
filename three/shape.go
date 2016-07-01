@@ -14,15 +14,15 @@ type Shape struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *Shape) JSObject() *js.Object { return s.p }
 
-// Shape returns a Shape object.
+// Shape returns a Shape JavaScript class.
 func (t *Three) Shape() *Shape {
 	p := t.ctx.Get("Shape")
 	return &Shape{p: p}
 }
 
-// New returns a new Shape object.
-func (s *Shape) New() *Shape {
-	p := s.p.New()
+// NewShape returns a new Shape object.
+func (t *Three) NewShape() *Shape {
+	p := t.ctx.Get("Shape").New()
 	return &Shape{p: p}
 }
 

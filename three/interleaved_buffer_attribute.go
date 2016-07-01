@@ -14,15 +14,15 @@ type InterleavedBufferAttribute struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (i *InterleavedBufferAttribute) JSObject() *js.Object { return i.p }
 
-// InterleavedBufferAttribute returns an InterleavedBufferAttribute object.
+// InterleavedBufferAttribute returns an InterleavedBufferAttribute JavaScript class.
 func (t *Three) InterleavedBufferAttribute() *InterleavedBufferAttribute {
 	p := t.ctx.Get("InterleavedBufferAttribute")
 	return &InterleavedBufferAttribute{p: p}
 }
 
-// New returns a new InterleavedBufferAttribute object.
-func (i *InterleavedBufferAttribute) New(interleavedBuffer, itemSize, offset float64) *InterleavedBufferAttribute {
-	p := i.p.New(interleavedBuffer, itemSize, offset)
+// NewInterleavedBufferAttribute returns a new InterleavedBufferAttribute object.
+func (t *Three) NewInterleavedBufferAttribute(interleavedBuffer, itemSize, offset float64) *InterleavedBufferAttribute {
+	p := t.ctx.Get("InterleavedBufferAttribute").New(interleavedBuffer, itemSize, offset)
 	return &InterleavedBufferAttribute{p: p}
 }
 

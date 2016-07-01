@@ -14,15 +14,15 @@ type Uniform struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (u *Uniform) JSObject() *js.Object { return u.p }
 
-// Uniform returns an Uniform object.
+// Uniform returns an Uniform JavaScript class.
 func (t *Three) Uniform() *Uniform {
 	p := t.ctx.Get("Uniform")
 	return &Uniform{p: p}
 }
 
-// New returns a new Uniform object.
-func (u *Uniform) New(typ, value float64) *Uniform {
-	p := u.p.New(typ, value)
+// NewUniform returns a new Uniform object.
+func (t *Three) NewUniform(typ, value float64) *Uniform {
+	p := t.ctx.Get("Uniform").New(typ, value)
 	return &Uniform{p: p}
 }
 

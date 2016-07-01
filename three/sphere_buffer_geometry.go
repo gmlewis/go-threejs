@@ -14,14 +14,14 @@ type SphereBufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SphereBufferGeometry) JSObject() *js.Object { return s.p }
 
-// SphereBufferGeometry returns a SphereBufferGeometry object.
+// SphereBufferGeometry returns a SphereBufferGeometry JavaScript class.
 func (t *Three) SphereBufferGeometry() *SphereBufferGeometry {
 	p := t.ctx.Get("SphereBufferGeometry")
 	return &SphereBufferGeometry{p: p}
 }
 
-// New returns a new SphereBufferGeometry object.
-func (s *SphereBufferGeometry) New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength float64) *SphereBufferGeometry {
-	p := s.p.New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
+// NewSphereBufferGeometry returns a new SphereBufferGeometry object.
+func (t *Three) NewSphereBufferGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength float64) *SphereBufferGeometry {
+	p := t.ctx.Get("SphereBufferGeometry").New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
 	return &SphereBufferGeometry{p: p}
 }

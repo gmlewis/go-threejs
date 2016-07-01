@@ -14,14 +14,14 @@ type CameraHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CameraHelper) JSObject() *js.Object { return c.p }
 
-// CameraHelper returns a CameraHelper object.
+// CameraHelper returns a CameraHelper JavaScript class.
 func (t *Three) CameraHelper() *CameraHelper {
 	p := t.ctx.Get("CameraHelper")
 	return &CameraHelper{p: p}
 }
 
-// New returns a new CameraHelper object.
-func (c *CameraHelper) New(camera float64) *CameraHelper {
-	p := c.p.New(camera)
+// NewCameraHelper returns a new CameraHelper object.
+func (t *Three) NewCameraHelper(camera float64) *CameraHelper {
+	p := t.ctx.Get("CameraHelper").New(camera)
 	return &CameraHelper{p: p}
 }

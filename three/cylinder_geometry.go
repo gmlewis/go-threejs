@@ -16,13 +16,13 @@ type CylinderGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CylinderGeometry) JSObject() *js.Object { return c.p }
 
-// CylinderGeometry returns a CylinderGeometry object.
+// CylinderGeometry returns a CylinderGeometry JavaScript class.
 func (t *Three) CylinderGeometry() *CylinderGeometry {
 	p := t.ctx.Get("CylinderGeometry")
 	return &CylinderGeometry{p: p}
 }
 
-// New returns a new CylinderGeometry object.
+// NewCylinderGeometry returns a new CylinderGeometry object.
 //
 //     radiusTop — Radius of the cylinder at the top. Default is 20.
 //     radiusBottom — Radius of the cylinder at the bottom. Default is 20.
@@ -34,7 +34,7 @@ func (t *Three) CylinderGeometry() *CylinderGeometry {
 //     thetaStart — Start angle for first segment, default = 0 (three o'clock position).
 //     thetaLength — The central angle, often called theta, of the circular sector.
 //         The default is 2*Pi, which makes for a complete cylinder.
-func (c *CylinderGeometry) New(radiusTop, radiusBottom, height float64, radialSegments, heightSegments int, openEnded bool, thetaStart, thetaLength float64) *CylinderGeometry {
-	p := c.p.New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
+func (t *Three) NewCylinderGeometry(radiusTop, radiusBottom, height float64, radialSegments, heightSegments int, openEnded bool, thetaStart, thetaLength float64) *CylinderGeometry {
+	p := t.ctx.Get("CylinderGeometry").New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
 	return &CylinderGeometry{p: p}
 }

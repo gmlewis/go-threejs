@@ -14,15 +14,15 @@ type SpotLight struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SpotLight) JSObject() *js.Object { return s.p }
 
-// SpotLight returns a SpotLight object.
+// SpotLight returns a SpotLight JavaScript class.
 func (t *Three) SpotLight() *SpotLight {
 	p := t.ctx.Get("SpotLight")
 	return &SpotLight{p: p}
 }
 
-// New returns a new SpotLight object.
-func (s *SpotLight) New(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
-	p := s.p.New(color, intensity, distance, angle, penumbra, decay)
+// NewSpotLight returns a new SpotLight object.
+func (t *Three) NewSpotLight(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
+	p := t.ctx.Get("SpotLight").New(color, intensity, distance, angle, penumbra, decay)
 	return &SpotLight{p: p}
 }
 

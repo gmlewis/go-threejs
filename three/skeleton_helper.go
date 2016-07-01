@@ -14,15 +14,15 @@ type SkeletonHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SkeletonHelper) JSObject() *js.Object { return s.p }
 
-// SkeletonHelper returns a SkeletonHelper object.
+// SkeletonHelper returns a SkeletonHelper JavaScript class.
 func (t *Three) SkeletonHelper() *SkeletonHelper {
 	p := t.ctx.Get("SkeletonHelper")
 	return &SkeletonHelper{p: p}
 }
 
-// New returns a new SkeletonHelper object.
-func (s *SkeletonHelper) New(object float64) *SkeletonHelper {
-	p := s.p.New(object)
+// NewSkeletonHelper returns a new SkeletonHelper object.
+func (t *Three) NewSkeletonHelper(object float64) *SkeletonHelper {
+	p := t.ctx.Get("SkeletonHelper").New(object)
 	return &SkeletonHelper{p: p}
 }
 

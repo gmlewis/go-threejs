@@ -14,15 +14,15 @@ type TextureLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *TextureLoader) JSObject() *js.Object { return t.p }
 
-// TextureLoader returns a TextureLoader object.
+// TextureLoader returns a TextureLoader JavaScript class.
 func (t *Three) TextureLoader() *TextureLoader {
 	p := t.ctx.Get("TextureLoader")
 	return &TextureLoader{p: p}
 }
 
-// New returns a new TextureLoader object.
-func (t *TextureLoader) New(manager float64) *TextureLoader {
-	p := t.p.New(manager)
+// NewTextureLoader returns a new TextureLoader object.
+func (t *Three) NewTextureLoader(manager float64) *TextureLoader {
+	p := t.ctx.Get("TextureLoader").New(manager)
 	return &TextureLoader{p: p}
 }
 

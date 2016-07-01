@@ -14,7 +14,7 @@ type WebGLRenderer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLRenderer) JSObject() *js.Object { return w.p }
 
-// WebGLRenderer returns a WebGLRenderer object.
+// WebGLRenderer returns a WebGLRenderer JavaScript class.
 func (t *Three) WebGLRenderer() *WebGLRenderer {
 	p := t.ctx.Get("WebGLRenderer")
 	return &WebGLRenderer{p: p}
@@ -34,8 +34,8 @@ type WebGLRendererOpts struct {
 	LogarithmicDepthBuffer *bool   `json:"logatihmicDepthBuffer,omitempty"` // default is false.
 }
 
-// New returns a new WebGLRenderer object.
-func (w *WebGLRenderer) New(opts *WebGLRendererOpts) *WebGLRenderer {
+// NewWebGLRenderer returns a new WebGLRenderer object.
+func (t *Three) NewWebGLRenderer(opts *WebGLRendererOpts) *WebGLRenderer {
 	params := map[string]interface{}{}
 	if opts != nil {
 		if opts.Precision != nil {
@@ -63,7 +63,7 @@ func (w *WebGLRenderer) New(opts *WebGLRendererOpts) *WebGLRenderer {
 			params["logarithmicDepthBuffer"] = *opts.LogarithmicDepthBuffer
 		}
 	}
-	p := w.p.New(params)
+	p := t.ctx.Get("WebGLRenderer").New(params)
 	return &WebGLRenderer{p: p}
 }
 

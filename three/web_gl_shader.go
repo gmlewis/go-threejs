@@ -14,14 +14,14 @@ type WebGLShader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLShader) JSObject() *js.Object { return w.p }
 
-// WebGLShader returns a WebGLShader object.
+// WebGLShader returns a WebGLShader JavaScript class.
 func (t *Three) WebGLShader() *WebGLShader {
 	p := t.ctx.Get("WebGLShader")
 	return &WebGLShader{p: p}
 }
 
-// New returns a new WebGLShader object.
-func (w *WebGLShader) New() *WebGLShader {
-	p := w.p.New()
+// NewWebGLShader returns a new WebGLShader object.
+func (t *Three) NewWebGLShader() *WebGLShader {
+	p := t.ctx.Get("WebGLShader").New()
 	return &WebGLShader{p: p}
 }

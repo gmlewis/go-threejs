@@ -14,15 +14,15 @@ type ShapeGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *ShapeGeometry) JSObject() *js.Object { return s.p }
 
-// ShapeGeometry returns a ShapeGeometry object.
+// ShapeGeometry returns a ShapeGeometry JavaScript class.
 func (t *Three) ShapeGeometry() *ShapeGeometry {
 	p := t.ctx.Get("ShapeGeometry")
 	return &ShapeGeometry{p: p}
 }
 
-// New returns a new ShapeGeometry object.
-func (s *ShapeGeometry) New(shapes, options float64) *ShapeGeometry {
-	p := s.p.New(shapes, options)
+// NewShapeGeometry returns a new ShapeGeometry object.
+func (t *Three) NewShapeGeometry(shapes, options float64) *ShapeGeometry {
+	p := t.ctx.Get("ShapeGeometry").New(shapes, options)
 	return &ShapeGeometry{p: p}
 }
 

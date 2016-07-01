@@ -16,15 +16,15 @@ type LOD struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LOD) JSObject() *js.Object { return l.p }
 
-// LOD returns a LOD object.
+// LOD returns a LOD JavaScript class.
 func (t *Three) LOD() *LOD {
 	p := t.ctx.Get("LOD")
 	return &LOD{p: p}
 }
 
-// New returns a new LOD object.
-func (l *LOD) New() *LOD {
-	p := l.p.New()
+// NewLOD returns a new LOD object.
+func (t *Three) NewLOD() *LOD {
+	p := t.ctx.Get("LOD").New()
 	return &LOD{p: p}
 }
 

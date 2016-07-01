@@ -14,15 +14,15 @@ type InterleavedBuffer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (i *InterleavedBuffer) JSObject() *js.Object { return i.p }
 
-// InterleavedBuffer returns an InterleavedBuffer object.
+// InterleavedBuffer returns an InterleavedBuffer JavaScript class.
 func (t *Three) InterleavedBuffer() *InterleavedBuffer {
 	p := t.ctx.Get("InterleavedBuffer")
 	return &InterleavedBuffer{p: p}
 }
 
-// New returns a new InterleavedBuffer object.
-func (i *InterleavedBuffer) New(array, stride float64) *InterleavedBuffer {
-	p := i.p.New(array, stride)
+// NewInterleavedBuffer returns a new InterleavedBuffer object.
+func (t *Three) NewInterleavedBuffer(array, stride float64) *InterleavedBuffer {
+	p := t.ctx.Get("InterleavedBuffer").New(array, stride)
 	return &InterleavedBuffer{p: p}
 }
 

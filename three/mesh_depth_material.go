@@ -17,20 +17,20 @@ type MeshDepthMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MeshDepthMaterial) JSObject() *js.Object { return m.p }
 
-// MeshDepthMaterial returns a MeshDepthMaterial object.
+// MeshDepthMaterial returns a MeshDepthMaterial JavaScript class.
 func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
 	p := t.ctx.Get("MeshDepthMaterial")
 	return &MeshDepthMaterial{p: p}
 }
 
-// New returns a new MeshDepthMaterial object.
+// NewMeshDepthMaterial returns a new MeshDepthMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
 //     wireframe -- Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
-func (m *MeshDepthMaterial) New(parameters map[string]interface{}) *MeshDepthMaterial {
-	p := m.p.New(parameters)
+func (t *Three) NewMeshDepthMaterial(parameters map[string]interface{}) *MeshDepthMaterial {
+	p := t.ctx.Get("MeshDepthMaterial").New(parameters)
 	return &MeshDepthMaterial{p: p}
 }
 

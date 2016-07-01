@@ -14,15 +14,15 @@ type CubeTextureLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CubeTextureLoader) JSObject() *js.Object { return c.p }
 
-// CubeTextureLoader returns a CubeTextureLoader object.
+// CubeTextureLoader returns a CubeTextureLoader JavaScript class.
 func (t *Three) CubeTextureLoader() *CubeTextureLoader {
 	p := t.ctx.Get("CubeTextureLoader")
 	return &CubeTextureLoader{p: p}
 }
 
-// New returns a new CubeTextureLoader object.
-func (c *CubeTextureLoader) New(manager float64) *CubeTextureLoader {
-	p := c.p.New(manager)
+// NewCubeTextureLoader returns a new CubeTextureLoader object.
+func (t *Three) NewCubeTextureLoader(manager float64) *CubeTextureLoader {
+	p := t.ctx.Get("CubeTextureLoader").New(manager)
 	return &CubeTextureLoader{p: p}
 }
 

@@ -14,15 +14,15 @@ type MaterialLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MaterialLoader) JSObject() *js.Object { return m.p }
 
-// MaterialLoader returns a MaterialLoader object.
+// MaterialLoader returns a MaterialLoader JavaScript class.
 func (t *Three) MaterialLoader() *MaterialLoader {
 	p := t.ctx.Get("MaterialLoader")
 	return &MaterialLoader{p: p}
 }
 
-// New returns a new MaterialLoader object.
-func (m *MaterialLoader) New(manager float64) *MaterialLoader {
-	p := m.p.New(manager)
+// NewMaterialLoader returns a new MaterialLoader object.
+func (t *Three) NewMaterialLoader(manager float64) *MaterialLoader {
+	p := t.ctx.Get("MaterialLoader").New(manager)
 	return &MaterialLoader{p: p}
 }
 

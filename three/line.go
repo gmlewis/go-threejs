@@ -16,17 +16,17 @@ type Line struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *Line) JSObject() *js.Object { return l.p }
 
-// Line returns a Line object.
+// Line returns a Line JavaScript class.
 func (t *Three) Line() *Line {
 	p := t.ctx.Get("Line")
 	return &Line{p: p}
 }
 
-// New returns a new Line object.
+// NewLine returns a new Line object.
 //
 //     geometry — Vertices representing the line segment(s).
 //     material — Material for the line. Default is LineBasicMaterial.
-func (l *Line) New(geometry []*js.Object, material *js.Object, mode float64) *Line {
-	p := l.p.New(geometry, material, mode)
+func (t *Three) NewLine(geometry []*js.Object, material *js.Object, mode float64) *Line {
+	p := t.ctx.Get("Line").New(geometry, material, mode)
 	return &Line{p: p}
 }

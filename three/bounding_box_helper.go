@@ -14,14 +14,14 @@ type BoundingBoxHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BoundingBoxHelper) JSObject() *js.Object { return b.p }
 
-// BoundingBoxHelper returns a BoundingBoxHelper object.
+// BoundingBoxHelper returns a BoundingBoxHelper JavaScript class.
 func (t *Three) BoundingBoxHelper() *BoundingBoxHelper {
 	p := t.ctx.Get("BoundingBoxHelper")
 	return &BoundingBoxHelper{p: p}
 }
 
-// New returns a new BoundingBoxHelper object.
-func (b *BoundingBoxHelper) New(object, hex float64) *BoundingBoxHelper {
-	p := b.p.New(object, hex)
+// NewBoundingBoxHelper returns a new BoundingBoxHelper object.
+func (t *Three) NewBoundingBoxHelper(object, hex float64) *BoundingBoxHelper {
+	p := t.ctx.Get("BoundingBoxHelper").New(object, hex)
 	return &BoundingBoxHelper{p: p}
 }

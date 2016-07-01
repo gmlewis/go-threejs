@@ -14,14 +14,14 @@ type CanvasTexture struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CanvasTexture) JSObject() *js.Object { return c.p }
 
-// CanvasTexture returns a CanvasTexture object.
+// CanvasTexture returns a CanvasTexture JavaScript class.
 func (t *Three) CanvasTexture() *CanvasTexture {
 	p := t.ctx.Get("CanvasTexture")
 	return &CanvasTexture{p: p}
 }
 
-// New returns a new CanvasTexture object.
-func (c *CanvasTexture) New(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CanvasTexture {
-	p := c.p.New(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
+// NewCanvasTexture returns a new CanvasTexture object.
+func (t *Three) NewCanvasTexture(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CanvasTexture {
+	p := t.ctx.Get("CanvasTexture").New(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
 	return &CanvasTexture{p: p}
 }

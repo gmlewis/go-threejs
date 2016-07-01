@@ -14,15 +14,15 @@ type SceneUtils struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SceneUtils) JSObject() *js.Object { return s.p }
 
-// SceneUtils returns a SceneUtils object.
+// SceneUtils returns a SceneUtils JavaScript class.
 func (t *Three) SceneUtils() *SceneUtils {
 	p := t.ctx.Get("SceneUtils")
 	return &SceneUtils{p: p}
 }
 
-// New returns a new SceneUtils object.
-func (s *SceneUtils) New() *SceneUtils {
-	p := s.p.New()
+// NewSceneUtils returns a new SceneUtils object.
+func (t *Three) NewSceneUtils() *SceneUtils {
+	p := t.ctx.Get("SceneUtils").New()
 	return &SceneUtils{p: p}
 }
 

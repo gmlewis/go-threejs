@@ -14,15 +14,15 @@ type Spherical struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *Spherical) JSObject() *js.Object { return s.p }
 
-// Spherical returns a Spherical object.
+// Spherical returns a Spherical JavaScript class.
 func (t *Three) Spherical() *Spherical {
 	p := t.ctx.Get("Spherical")
 	return &Spherical{p: p}
 }
 
-// New returns a new Spherical object.
-func (s *Spherical) New(radius, phi, theta float64) *Spherical {
-	p := s.p.New(radius, phi, theta)
+// NewSpherical returns a new Spherical object.
+func (t *Three) NewSpherical(radius, phi, theta float64) *Spherical {
+	p := t.ctx.Get("Spherical").New(radius, phi, theta)
 	return &Spherical{p: p}
 }
 

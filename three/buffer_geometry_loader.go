@@ -14,15 +14,15 @@ type BufferGeometryLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BufferGeometryLoader) JSObject() *js.Object { return b.p }
 
-// BufferGeometryLoader returns a BufferGeometryLoader object.
+// BufferGeometryLoader returns a BufferGeometryLoader JavaScript class.
 func (t *Three) BufferGeometryLoader() *BufferGeometryLoader {
 	p := t.ctx.Get("BufferGeometryLoader")
 	return &BufferGeometryLoader{p: p}
 }
 
-// New returns a new BufferGeometryLoader object.
-func (b *BufferGeometryLoader) New(manager float64) *BufferGeometryLoader {
-	p := b.p.New(manager)
+// NewBufferGeometryLoader returns a new BufferGeometryLoader object.
+func (t *Three) NewBufferGeometryLoader(manager float64) *BufferGeometryLoader {
+	p := t.ctx.Get("BufferGeometryLoader").New(manager)
 	return &BufferGeometryLoader{p: p}
 }
 

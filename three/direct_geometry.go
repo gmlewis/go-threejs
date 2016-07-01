@@ -14,15 +14,15 @@ type DirectGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (d *DirectGeometry) JSObject() *js.Object { return d.p }
 
-// DirectGeometry returns a DirectGeometry object.
+// DirectGeometry returns a DirectGeometry JavaScript class.
 func (t *Three) DirectGeometry() *DirectGeometry {
 	p := t.ctx.Get("DirectGeometry")
 	return &DirectGeometry{p: p}
 }
 
-// New returns a new DirectGeometry object.
-func (d *DirectGeometry) New() *DirectGeometry {
-	p := d.p.New()
+// NewDirectGeometry returns a new DirectGeometry object.
+func (t *Three) NewDirectGeometry() *DirectGeometry {
+	p := t.ctx.Get("DirectGeometry").New()
 	return &DirectGeometry{p: p}
 }
 

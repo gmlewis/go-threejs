@@ -14,14 +14,14 @@ type WireframeGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WireframeGeometry) JSObject() *js.Object { return w.p }
 
-// WireframeGeometry returns a WireframeGeometry object.
+// WireframeGeometry returns a WireframeGeometry JavaScript class.
 func (t *Three) WireframeGeometry() *WireframeGeometry {
 	p := t.ctx.Get("WireframeGeometry")
 	return &WireframeGeometry{p: p}
 }
 
-// New returns a new WireframeGeometry object.
-func (w *WireframeGeometry) New(geometry float64) *WireframeGeometry {
-	p := w.p.New(geometry)
+// NewWireframeGeometry returns a new WireframeGeometry object.
+func (t *Three) NewWireframeGeometry(geometry float64) *WireframeGeometry {
+	p := t.ctx.Get("WireframeGeometry").New(geometry)
 	return &WireframeGeometry{p: p}
 }

@@ -14,14 +14,14 @@ type HemisphereLightHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (h *HemisphereLightHelper) JSObject() *js.Object { return h.p }
 
-// HemisphereLightHelper returns a HemisphereLightHelper object.
+// HemisphereLightHelper returns a HemisphereLightHelper JavaScript class.
 func (t *Three) HemisphereLightHelper() *HemisphereLightHelper {
 	p := t.ctx.Get("HemisphereLightHelper")
 	return &HemisphereLightHelper{p: p}
 }
 
-// New returns a new HemisphereLightHelper object.
-func (h *HemisphereLightHelper) New(light, sphereSize float64) *HemisphereLightHelper {
-	p := h.p.New(light, sphereSize)
+// NewHemisphereLightHelper returns a new HemisphereLightHelper object.
+func (t *Three) NewHemisphereLightHelper(light, sphereSize float64) *HemisphereLightHelper {
+	p := t.ctx.Get("HemisphereLightHelper").New(light, sphereSize)
 	return &HemisphereLightHelper{p: p}
 }

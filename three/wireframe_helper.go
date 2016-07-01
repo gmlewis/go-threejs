@@ -14,14 +14,14 @@ type WireframeHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WireframeHelper) JSObject() *js.Object { return w.p }
 
-// WireframeHelper returns a WireframeHelper object.
+// WireframeHelper returns a WireframeHelper JavaScript class.
 func (t *Three) WireframeHelper() *WireframeHelper {
 	p := t.ctx.Get("WireframeHelper")
 	return &WireframeHelper{p: p}
 }
 
-// New returns a new WireframeHelper object.
-func (w *WireframeHelper) New(object, hex float64) *WireframeHelper {
-	p := w.p.New(object, hex)
+// NewWireframeHelper returns a new WireframeHelper object.
+func (t *Three) NewWireframeHelper(object, hex float64) *WireframeHelper {
+	p := t.ctx.Get("WireframeHelper").New(object, hex)
 	return &WireframeHelper{p: p}
 }

@@ -11,8 +11,8 @@ import (
 func ExampleFace3() {
 	t := three.New()
 
-	normal := t.Vector3().New(0, 1, 0)
-	color := t.Color().New(0xffaa00)
-	/* face := */ t.Face3().New(0, 1, 2, normal, color, 0)
+	normal := t.NewVector3(0, 1, 0)
+	color := t.NewColor(0xffaa00)
+	/* face := */ t.NewFace3(0, 1, 2, normal, color, 0)
 	//...
 }

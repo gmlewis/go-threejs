@@ -14,14 +14,14 @@ type PointLightHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PointLightHelper) JSObject() *js.Object { return p.p }
 
-// PointLightHelper returns a PointLightHelper object.
+// PointLightHelper returns a PointLightHelper JavaScript class.
 func (t *Three) PointLightHelper() *PointLightHelper {
 	p := t.ctx.Get("PointLightHelper")
 	return &PointLightHelper{p: p}
 }
 
-// New returns a new PointLightHelper object.
-func (p *PointLightHelper) New(light, sphereSize float64) *PointLightHelper {
-	t := p.p.New(light, sphereSize)
-	return &PointLightHelper{p: t}
+// NewPointLightHelper returns a new PointLightHelper object.
+func (t *Three) NewPointLightHelper(light, sphereSize float64) *PointLightHelper {
+	p := t.ctx.Get("PointLightHelper").New(light, sphereSize)
+	return &PointLightHelper{p: p}
 }

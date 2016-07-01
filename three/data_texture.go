@@ -14,14 +14,14 @@ type DataTexture struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (d *DataTexture) JSObject() *js.Object { return d.p }
 
-// DataTexture returns a DataTexture object.
+// DataTexture returns a DataTexture JavaScript class.
 func (t *Three) DataTexture() *DataTexture {
 	p := t.ctx.Get("DataTexture")
 	return &DataTexture{p: p}
 }
 
-// New returns a new DataTexture object.
-func (d *DataTexture) New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *DataTexture {
-	p := d.p.New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
+// NewDataTexture returns a new DataTexture object.
+func (t *Three) NewDataTexture(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *DataTexture {
+	p := t.ctx.Get("DataTexture").New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
 	return &DataTexture{p: p}
 }

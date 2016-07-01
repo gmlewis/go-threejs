@@ -17,15 +17,15 @@ type Camera struct{ *Object3D }
 // JSObject returns the underlying *js.Object.
 func (c *Camera) JSObject() *js.Object { return c.p }
 
-// Camera returns a Camera object.
+// Camera returns a Camera JavaScript class.
 func (t *Three) Camera() *Camera {
 	p := t.ctx.Get("Camera")
 	return &Camera{&Object3D{p: p}}
 }
 
-// New returns a new Camera object.
-func (c *Camera) New() *Camera {
-	p := c.p.New()
+// NewCamera returns a new Camera object.
+func (t *Three) NewCamera() *Camera {
+	p := t.ctx.Get("Camera").New()
 	return &Camera{&Object3D{p: p}}
 }
 

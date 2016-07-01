@@ -16,13 +16,13 @@ type LineBasicMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LineBasicMaterial) JSObject() *js.Object { return l.p }
 
-// LineBasicMaterial returns a LineBasicMaterial object.
+// LineBasicMaterial returns a LineBasicMaterial JavaScript class.
 func (t *Three) LineBasicMaterial() *LineBasicMaterial {
 	p := t.ctx.Get("LineBasicMaterial")
 	return &LineBasicMaterial{p: p}
 }
 
-// New returns a new LineBasicMaterial object.
+// NewLineBasicMaterial returns a new LineBasicMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
 //     color — Line color in hexadecimal. Default is 0xffffff.
@@ -31,8 +31,8 @@ func (t *Three) LineBasicMaterial() *LineBasicMaterial {
 //     linejoin — Define appearance of line joints. Default is 'round'.
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     fog — Define whether the material color is affected by global fog settings. Default is false.
-func (l *LineBasicMaterial) New(parameters map[string]interface{}) *LineBasicMaterial {
-	p := l.p.New(parameters)
+func (t *Three) NewLineBasicMaterial(parameters map[string]interface{}) *LineBasicMaterial {
+	p := t.ctx.Get("LineBasicMaterial").New(parameters)
 	return &LineBasicMaterial{p: p}
 }
 

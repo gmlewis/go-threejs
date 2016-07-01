@@ -14,14 +14,14 @@ type ClosedSplineCurve3 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *ClosedSplineCurve3) JSObject() *js.Object { return c.p }
 
-// ClosedSplineCurve3 returns a ClosedSplineCurve3 object.
+// ClosedSplineCurve3 returns a ClosedSplineCurve3 JavaScript class.
 func (t *Three) ClosedSplineCurve3() *ClosedSplineCurve3 {
 	p := t.ctx.Get("ClosedSplineCurve3")
 	return &ClosedSplineCurve3{p: p}
 }
 
-// New returns a new ClosedSplineCurve3 object.
-func (c *ClosedSplineCurve3) New(points float64) *ClosedSplineCurve3 {
-	p := c.p.New(points)
+// NewClosedSplineCurve3 returns a new ClosedSplineCurve3 object.
+func (t *Three) NewClosedSplineCurve3(points float64) *ClosedSplineCurve3 {
+	p := t.ctx.Get("ClosedSplineCurve3").New(points)
 	return &ClosedSplineCurve3{p: p}
 }

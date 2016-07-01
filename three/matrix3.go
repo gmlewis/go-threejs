@@ -14,15 +14,15 @@ type Matrix3 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *Matrix3) JSObject() *js.Object { return m.p }
 
-// Matrix3 returns a Matrix3 object.
+// Matrix3 returns a Matrix3 JavaScript class.
 func (t *Three) Matrix3() *Matrix3 {
 	p := t.ctx.Get("Matrix3")
 	return &Matrix3{p: p}
 }
 
-// New returns a new Matrix3 object.
-func (m *Matrix3) New() *Matrix3 {
-	p := m.p.New()
+// NewMatrix3 returns a new Matrix3 object.
+func (t *Three) NewMatrix3() *Matrix3 {
+	p := t.ctx.Get("Matrix3").New()
 	return &Matrix3{p: p}
 }
 

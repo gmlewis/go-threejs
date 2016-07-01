@@ -14,14 +14,14 @@ type WebGLState struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLState) JSObject() *js.Object { return w.p }
 
-// WebGLState returns a WebGLState object.
+// WebGLState returns a WebGLState JavaScript class.
 func (t *Three) WebGLState() *WebGLState {
 	p := t.ctx.Get("WebGLState")
 	return &WebGLState{p: p}
 }
 
-// New returns a new WebGLState object.
-func (w *WebGLState) New(gl, extensions, paramThreeToGL float64) *WebGLState {
-	p := w.p.New(gl, extensions, paramThreeToGL)
+// NewWebGLState returns a new WebGLState object.
+func (t *Three) NewWebGLState(gl, extensions, paramThreeToGL float64) *WebGLState {
+	p := t.ctx.Get("WebGLState").New(gl, extensions, paramThreeToGL)
 	return &WebGLState{p: p}
 }

@@ -14,14 +14,14 @@ type LatheBufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LatheBufferGeometry) JSObject() *js.Object { return l.p }
 
-// LatheBufferGeometry returns a LatheBufferGeometry object.
+// LatheBufferGeometry returns a LatheBufferGeometry JavaScript class.
 func (t *Three) LatheBufferGeometry() *LatheBufferGeometry {
 	p := t.ctx.Get("LatheBufferGeometry")
 	return &LatheBufferGeometry{p: p}
 }
 
-// New returns a new LatheBufferGeometry object.
-func (l *LatheBufferGeometry) New(points, segments, phiStart, phiLength float64) *LatheBufferGeometry {
-	p := l.p.New(points, segments, phiStart, phiLength)
+// NewLatheBufferGeometry returns a new LatheBufferGeometry object.
+func (t *Three) NewLatheBufferGeometry(points, segments, phiStart, phiLength float64) *LatheBufferGeometry {
+	p := t.ctx.Get("LatheBufferGeometry").New(points, segments, phiStart, phiLength)
 	return &LatheBufferGeometry{p: p}
 }

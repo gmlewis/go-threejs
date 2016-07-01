@@ -14,15 +14,15 @@ type AudioBuffer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AudioBuffer) JSObject() *js.Object { return a.p }
 
-// AudioBuffer returns an AudioBuffer object.
+// AudioBuffer returns an AudioBuffer JavaScript class.
 func (t *Three) AudioBuffer() *AudioBuffer {
 	p := t.ctx.Get("AudioBuffer")
 	return &AudioBuffer{p: p}
 }
 
-// New returns a new AudioBuffer object.
-func (a *AudioBuffer) New(context float64) *AudioBuffer {
-	p := a.p.New(context)
+// NewAudioBuffer returns a new AudioBuffer object.
+func (t *Three) NewAudioBuffer(context float64) *AudioBuffer {
+	p := t.ctx.Get("AudioBuffer").New(context)
 	return &AudioBuffer{p: p}
 }
 

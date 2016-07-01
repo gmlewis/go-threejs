@@ -14,15 +14,15 @@ type Color struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *Color) JSObject() *js.Object { return c.p }
 
-// Color returns a Color object.
+// Color returns a Color JavaScript class.
 func (t *Three) Color() *Color {
 	p := t.ctx.Get("Color")
 	return &Color{p: p}
 }
 
-// New returns a new Color object.
-func (c *Color) New(color float64) *Color {
-	p := c.p.New(color)
+// NewColor returns a new Color object.
+func (t *Three) NewColor(color float64) *Color {
+	p := t.ctx.Get("Color").New(color)
 	return &Color{p: p}
 }
 

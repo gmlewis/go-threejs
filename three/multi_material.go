@@ -14,15 +14,15 @@ type MultiMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MultiMaterial) JSObject() *js.Object { return m.p }
 
-// MultiMaterial returns a MultiMaterial object.
+// MultiMaterial returns a MultiMaterial JavaScript class.
 func (t *Three) MultiMaterial() *MultiMaterial {
 	p := t.ctx.Get("MultiMaterial")
 	return &MultiMaterial{p: p}
 }
 
-// New returns a new MultiMaterial object.
-func (m *MultiMaterial) New(materials float64) *MultiMaterial {
-	p := m.p.New(materials)
+// NewMultiMaterial returns a new MultiMaterial object.
+func (t *Three) NewMultiMaterial(materials float64) *MultiMaterial {
+	p := t.ctx.Get("MultiMaterial").New(materials)
 	return &MultiMaterial{p: p}
 }
 

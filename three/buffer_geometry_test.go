@@ -11,7 +11,7 @@ import (
 func ExampleBufferGeometry() {
 	t := three.New()
 
-	geometry := t.BufferGeometry().New()
+	geometry := t.NewBufferGeometry()
 	// create a simple square shape. We duplicate the top left and bottom right
 	// vertices because each vertex needs to appear once per triangle.
 	vertices := []float64{
@@ -25,9 +25,9 @@ func ExampleBufferGeometry() {
 	}
 
 	// itemSize = 3 because there are 3 values (components) per vertex
-	geometry.AddAttribute("position", t.BufferAttribute().New(vertices, 3).JSObject())
+	geometry.AddAttribute("position", t.NewBufferAttribute(vertices, 3).JSObject())
 	opts := three.MeshBasicMaterialOpts{"color": 0xff0000}
-	material := t.MeshBasicMaterial().New(opts)
-	/* mesh := */ t.Mesh().New(geometry, material)
+	material := t.NewMeshBasicMaterial(opts)
+	/* mesh := */ t.NewMesh(geometry, material)
 	//...
 }

@@ -16,20 +16,20 @@ type TorusGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *TorusGeometry) JSObject() *js.Object { return t.p }
 
-// TorusGeometry returns a TorusGeometry object.
+// TorusGeometry returns a TorusGeometry JavaScript class.
 func (t *Three) TorusGeometry() *TorusGeometry {
 	p := t.ctx.Get("TorusGeometry")
 	return &TorusGeometry{p: p}
 }
 
-// New returns a new TorusGeometry object.
+// NewTorusGeometry returns a new TorusGeometry object.
 //
 //     radius — Default is 100.
 //     tube — Diameter of the tube. Default is 40.
 //     radialSegments — Default is 8
 //     tubularSegments — Default is 6.
 //     arc — Central angle. Default is Math.PI * 2.
-func (t *TorusGeometry) New(radius, tube float64, radialSegments, tubularSegments int, arc float64) *TorusGeometry {
-	p := t.p.New(radius, tube, radialSegments, tubularSegments, arc)
+func (t *Three) NewTorusGeometry(radius, tube float64, radialSegments, tubularSegments int, arc float64) *TorusGeometry {
+	p := t.ctx.Get("TorusGeometry").New(radius, tube, radialSegments, tubularSegments, arc)
 	return &TorusGeometry{p: p}
 }

@@ -14,15 +14,15 @@ type AnimationUtils struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AnimationUtils) JSObject() *js.Object { return a.p }
 
-// AnimationUtils returns an AnimationUtils object.
+// AnimationUtils returns an AnimationUtils JavaScript class.
 func (t *Three) AnimationUtils() *AnimationUtils {
 	p := t.ctx.Get("AnimationUtils")
 	return &AnimationUtils{p: p}
 }
 
-// New returns a new AnimationUtils object.
-func (a *AnimationUtils) New() *AnimationUtils {
-	p := a.p.New()
+// NewAnimationUtils returns a new AnimationUtils object.
+func (t *Three) NewAnimationUtils() *AnimationUtils {
+	p := t.ctx.Get("AnimationUtils").New()
 	return &AnimationUtils{p: p}
 }
 

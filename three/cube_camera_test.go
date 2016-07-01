@@ -11,12 +11,12 @@ import (
 func ExampleCubeCamera() {
 	t := three.New()
 
-	camera := t.PerspectiveCamera().New(75, 1.25, 1, 10000)
-	renderer := t.WebGLRenderer().New(nil)
+	camera := t.NewPerspectiveCamera(75, 1.25, 1, 10000)
+	renderer := t.NewWebGLRenderer(nil)
 
 	// Create cube camera.
-	cubeCamera := t.CubeCamera().New(1, 100000, 128)
-	scene := t.Scene().New()
+	cubeCamera := t.NewCubeCamera(1, 100000, 128)
+	scene := t.NewScene()
 	scene.Add(cubeCamera)
 
 	// Create car.
@@ -24,9 +24,9 @@ func ExampleCubeCamera() {
 		"color":  0xffffff,
 		"envMap": cubeCamera.RenderTarget(),
 	}
-	chromeMaterial := t.MeshLambertMaterial().New(opts)
-	carGeometry := t.Object3D().New() // Load car geometry here.
-	car := t.Mesh().New(carGeometry, chromeMaterial)
+	chromeMaterial := t.NewMeshLambertMaterial(opts)
+	carGeometry := t.NewObject3D() // Load car geometry here.
+	car := t.NewMesh(carGeometry, chromeMaterial)
 	scene.Add(car)
 
 	// Update the render target cube.

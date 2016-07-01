@@ -14,14 +14,14 @@ type WebGLCapabilities struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLCapabilities) JSObject() *js.Object { return w.p }
 
-// WebGLCapabilities returns a WebGLCapabilities object.
+// WebGLCapabilities returns a WebGLCapabilities JavaScript class.
 func (t *Three) WebGLCapabilities() *WebGLCapabilities {
 	p := t.ctx.Get("WebGLCapabilities")
 	return &WebGLCapabilities{p: p}
 }
 
-// New returns a new WebGLCapabilities object.
-func (w *WebGLCapabilities) New(gl, extensions, parameters float64) *WebGLCapabilities {
-	p := w.p.New(gl, extensions, parameters)
+// NewWebGLCapabilities returns a new WebGLCapabilities object.
+func (t *Three) NewWebGLCapabilities(gl, extensions, parameters float64) *WebGLCapabilities {
+	p := t.ctx.Get("WebGLCapabilities").New(gl, extensions, parameters)
 	return &WebGLCapabilities{p: p}
 }

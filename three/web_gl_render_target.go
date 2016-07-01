@@ -14,15 +14,15 @@ type WebGLRenderTarget struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLRenderTarget) JSObject() *js.Object { return w.p }
 
-// WebGLRenderTarget returns a WebGLRenderTarget object.
+// WebGLRenderTarget returns a WebGLRenderTarget JavaScript class.
 func (t *Three) WebGLRenderTarget() *WebGLRenderTarget {
 	p := t.ctx.Get("WebGLRenderTarget")
 	return &WebGLRenderTarget{p: p}
 }
 
-// New returns a new WebGLRenderTarget object.
-func (w *WebGLRenderTarget) New(width, height, options float64) *WebGLRenderTarget {
-	p := w.p.New(width, height, options)
+// NewWebGLRenderTarget returns a new WebGLRenderTarget object.
+func (t *Three) NewWebGLRenderTarget(width, height, options float64) *WebGLRenderTarget {
+	p := t.ctx.Get("WebGLRenderTarget").New(width, height, options)
 	return &WebGLRenderTarget{p: p}
 }
 

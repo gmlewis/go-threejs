@@ -14,15 +14,15 @@ type Clock struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *Clock) JSObject() *js.Object { return c.p }
 
-// Clock returns a Clock object.
+// Clock returns a Clock JavaScript class.
 func (t *Three) Clock() *Clock {
 	p := t.ctx.Get("Clock")
 	return &Clock{p: p}
 }
 
-// New returns a new Clock object.
-func (c *Clock) New(autoStart bool) *Clock {
-	p := c.p.New(autoStart)
+// NewClock returns a new Clock object.
+func (t *Three) NewClock(autoStart bool) *Clock {
+	p := t.ctx.Get("Clock").New(autoStart)
 	return &Clock{p: p}
 }
 

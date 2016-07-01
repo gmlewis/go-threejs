@@ -14,15 +14,15 @@ type Material struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *Material) JSObject() *js.Object { return m.p }
 
-// Material returns a Material object.
+// Material returns a Material JavaScript class.
 func (t *Three) Material() *Material {
 	p := t.ctx.Get("Material")
 	return &Material{p: p}
 }
 
-// New returns a new Material object.
-func (m *Material) New() *Material {
-	p := m.p.New()
+// NewMaterial returns a new Material object.
+func (t *Three) NewMaterial() *Material {
+	p := t.ctx.Get("Material").New()
 	return &Material{p: p}
 }
 

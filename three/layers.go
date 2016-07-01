@@ -14,15 +14,15 @@ type Layers struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *Layers) JSObject() *js.Object { return l.p }
 
-// Layers returns a Layers object.
+// Layers returns a Layers JavaScript class.
 func (t *Three) Layers() *Layers {
 	p := t.ctx.Get("Layers")
 	return &Layers{p: p}
 }
 
-// New returns a new Layers object.
-func (l *Layers) New() *Layers {
-	p := l.p.New()
+// NewLayers returns a new Layers object.
+func (t *Three) NewLayers() *Layers {
+	p := t.ctx.Get("Layers").New()
 	return &Layers{p: p}
 }
 

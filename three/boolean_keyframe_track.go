@@ -14,14 +14,14 @@ type BooleanKeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BooleanKeyframeTrack) JSObject() *js.Object { return b.p }
 
-// BooleanKeyframeTrack returns a BooleanKeyframeTrack object.
+// BooleanKeyframeTrack returns a BooleanKeyframeTrack JavaScript class.
 func (t *Three) BooleanKeyframeTrack() *BooleanKeyframeTrack {
 	p := t.ctx.Get("BooleanKeyframeTrack")
 	return &BooleanKeyframeTrack{p: p}
 }
 
-// New returns a new BooleanKeyframeTrack object.
-func (b *BooleanKeyframeTrack) New(name, times, values float64) *BooleanKeyframeTrack {
-	p := b.p.New(name, times, values)
+// NewBooleanKeyframeTrack returns a new BooleanKeyframeTrack object.
+func (t *Three) NewBooleanKeyframeTrack(name, times, values float64) *BooleanKeyframeTrack {
+	p := t.ctx.Get("BooleanKeyframeTrack").New(name, times, values)
 	return &BooleanKeyframeTrack{p: p}
 }

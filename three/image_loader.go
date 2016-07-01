@@ -14,15 +14,15 @@ type ImageLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (i *ImageLoader) JSObject() *js.Object { return i.p }
 
-// ImageLoader returns an ImageLoader object.
+// ImageLoader returns an ImageLoader JavaScript class.
 func (t *Three) ImageLoader() *ImageLoader {
 	p := t.ctx.Get("ImageLoader")
 	return &ImageLoader{p: p}
 }
 
-// New returns a new ImageLoader object.
-func (i *ImageLoader) New(manager float64) *ImageLoader {
-	p := i.p.New(manager)
+// NewImageLoader returns a new ImageLoader object.
+func (t *Three) NewImageLoader(manager float64) *ImageLoader {
+	p := t.ctx.Get("ImageLoader").New(manager)
 	return &ImageLoader{p: p}
 }
 

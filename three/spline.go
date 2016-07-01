@@ -14,14 +14,14 @@ type Spline struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *Spline) JSObject() *js.Object { return s.p }
 
-// Spline returns a Spline object.
+// Spline returns a Spline JavaScript class.
 func (t *Three) Spline() *Spline {
 	p := t.ctx.Get("Spline")
 	return &Spline{p: p}
 }
 
-// New returns a new Spline object.
-func (s *Spline) New(points float64) *Spline {
-	p := s.p.New(points)
+// NewSpline returns a new Spline object.
+func (t *Three) NewSpline(points float64) *Spline {
+	p := t.ctx.Get("Spline").New(points)
 	return &Spline{p: p}
 }

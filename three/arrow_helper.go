@@ -14,15 +14,15 @@ type ArrowHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *ArrowHelper) JSObject() *js.Object { return a.p }
 
-// ArrowHelper returns an ArrowHelper object.
+// ArrowHelper returns an ArrowHelper JavaScript class.
 func (t *Three) ArrowHelper() *ArrowHelper {
 	p := t.ctx.Get("ArrowHelper")
 	return &ArrowHelper{p: p}
 }
 
-// New returns a new ArrowHelper object.
-func (a *ArrowHelper) New() *ArrowHelper {
-	p := a.p.New()
+// NewArrowHelper returns a new ArrowHelper object.
+func (t *Three) NewArrowHelper() *ArrowHelper {
+	p := t.ctx.Get("ArrowHelper").New()
 	return &ArrowHelper{p: p}
 }
 

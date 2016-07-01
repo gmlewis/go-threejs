@@ -14,14 +14,14 @@ type WebGLGeometries struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLGeometries) JSObject() *js.Object { return w.p }
 
-// WebGLGeometries returns a WebGLGeometries object.
+// WebGLGeometries returns a WebGLGeometries JavaScript class.
 func (t *Three) WebGLGeometries() *WebGLGeometries {
 	p := t.ctx.Get("WebGLGeometries")
 	return &WebGLGeometries{p: p}
 }
 
-// New returns a new WebGLGeometries object.
-func (w *WebGLGeometries) New(gl, properties, info float64) *WebGLGeometries {
-	p := w.p.New(gl, properties, info)
+// NewWebGLGeometries returns a new WebGLGeometries object.
+func (t *Three) NewWebGLGeometries(gl, properties, info float64) *WebGLGeometries {
+	p := t.ctx.Get("WebGLGeometries").New(gl, properties, info)
 	return &WebGLGeometries{p: p}
 }

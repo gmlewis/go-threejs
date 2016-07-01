@@ -14,15 +14,15 @@ type KeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (k *KeyframeTrack) JSObject() *js.Object { return k.p }
 
-// KeyframeTrack returns a KeyframeTrack object.
+// KeyframeTrack returns a KeyframeTrack JavaScript class.
 func (t *Three) KeyframeTrack() *KeyframeTrack {
 	p := t.ctx.Get("KeyframeTrack")
 	return &KeyframeTrack{p: p}
 }
 
-// New returns a new KeyframeTrack object.
-func (k *KeyframeTrack) New(name, times, values, interpolation float64) *KeyframeTrack {
-	p := k.p.New(name, times, values, interpolation)
+// NewKeyframeTrack returns a new KeyframeTrack object.
+func (t *Three) NewKeyframeTrack(name, times, values, interpolation float64) *KeyframeTrack {
+	p := t.ctx.Get("KeyframeTrack").New(name, times, values, interpolation)
 	return &KeyframeTrack{p: p}
 }
 

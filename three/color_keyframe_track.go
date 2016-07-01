@@ -14,14 +14,14 @@ type ColorKeyframeTrack struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *ColorKeyframeTrack) JSObject() *js.Object { return c.p }
 
-// ColorKeyframeTrack returns a ColorKeyframeTrack object.
+// ColorKeyframeTrack returns a ColorKeyframeTrack JavaScript class.
 func (t *Three) ColorKeyframeTrack() *ColorKeyframeTrack {
 	p := t.ctx.Get("ColorKeyframeTrack")
 	return &ColorKeyframeTrack{p: p}
 }
 
-// New returns a new ColorKeyframeTrack object.
-func (c *ColorKeyframeTrack) New(name, times, values, interpolation float64) *ColorKeyframeTrack {
-	p := c.p.New(name, times, values, interpolation)
+// NewColorKeyframeTrack returns a new ColorKeyframeTrack object.
+func (t *Three) NewColorKeyframeTrack(name, times, values, interpolation float64) *ColorKeyframeTrack {
+	p := t.ctx.Get("ColorKeyframeTrack").New(name, times, values, interpolation)
 	return &ColorKeyframeTrack{p: p}
 }

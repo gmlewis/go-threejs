@@ -14,14 +14,14 @@ type SpotLightHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SpotLightHelper) JSObject() *js.Object { return s.p }
 
-// SpotLightHelper returns a SpotLightHelper object.
+// SpotLightHelper returns a SpotLightHelper JavaScript class.
 func (t *Three) SpotLightHelper() *SpotLightHelper {
 	p := t.ctx.Get("SpotLightHelper")
 	return &SpotLightHelper{p: p}
 }
 
-// New returns a new SpotLightHelper object.
-func (s *SpotLightHelper) New(light float64) *SpotLightHelper {
-	p := s.p.New(light)
+// NewSpotLightHelper returns a new SpotLightHelper object.
+func (t *Three) NewSpotLightHelper(light float64) *SpotLightHelper {
+	p := t.ctx.Get("SpotLightHelper").New(light)
 	return &SpotLightHelper{p: p}
 }

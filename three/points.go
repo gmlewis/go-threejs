@@ -16,17 +16,17 @@ type Points struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *Points) JSObject() *js.Object { return p.p }
 
-// Points returns a Points object.
+// Points returns a Points JavaScript class.
 func (t *Three) Points() *Points {
 	p := t.ctx.Get("Points")
 	return &Points{p: p}
 }
 
-// New returns a new Points object.
+// NewPoints returns a new Points object.
 //
 //     geometry — an instance of geometry.
 //     material — an instance of material (optional).
-func (p *Points) New(geometry, material *js.Object) *Points {
-	t := p.p.New(geometry, material)
-	return &Points{p: t}
+func (t *Three) NewPoints(geometry, material *js.Object) *Points {
+	p := t.ctx.Get("Points").New(geometry, material)
+	return &Points{p: p}
 }

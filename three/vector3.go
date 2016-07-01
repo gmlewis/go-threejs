@@ -14,15 +14,15 @@ type Vector3 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (v *Vector3) JSObject() *js.Object { return v.p }
 
-// Vector3 returns a Vector3 object.
+// Vector3 returns a Vector3 JavaScript class.
 func (t *Three) Vector3() *Vector3 {
 	p := t.ctx.Get("Vector3")
 	return &Vector3{p: p}
 }
 
-// New returns a new Vector3 object.
-func (v *Vector3) New(x, y, z float64) *Vector3 {
-	p := v.p.New(x, y, z)
+// NewVector3 returns a new Vector3 object.
+func (t *Three) NewVector3(x, y, z float64) *Vector3 {
+	p := t.ctx.Get("Vector3").New(x, y, z)
 	return &Vector3{p: p}
 }
 

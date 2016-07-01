@@ -14,14 +14,14 @@ type UniformsLib struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (u *UniformsLib) JSObject() *js.Object { return u.p }
 
-// UniformsLib returns an UniformsLib object.
+// UniformsLib returns an UniformsLib JavaScript class.
 func (t *Three) UniformsLib() *UniformsLib {
 	p := t.ctx.Get("UniformsLib")
 	return &UniformsLib{p: p}
 }
 
-// New returns a new UniformsLib object.
-func (u *UniformsLib) New() *UniformsLib {
-	p := u.p.New()
+// NewUniformsLib returns a new UniformsLib object.
+func (t *Three) NewUniformsLib() *UniformsLib {
+	p := t.ctx.Get("UniformsLib").New()
 	return &UniformsLib{p: p}
 }

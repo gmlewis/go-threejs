@@ -14,15 +14,15 @@ type CurvePath struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CurvePath) JSObject() *js.Object { return c.p }
 
-// CurvePath returns a CurvePath object.
+// CurvePath returns a CurvePath JavaScript class.
 func (t *Three) CurvePath() *CurvePath {
 	p := t.ctx.Get("CurvePath")
 	return &CurvePath{p: p}
 }
 
-// New returns a new CurvePath object.
-func (c *CurvePath) New() *CurvePath {
-	p := c.p.New()
+// NewCurvePath returns a new CurvePath object.
+func (t *Three) NewCurvePath() *CurvePath {
+	p := t.ctx.Get("CurvePath").New()
 	return &CurvePath{p: p}
 }
 

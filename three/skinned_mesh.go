@@ -17,19 +17,19 @@ type SkinnedMesh struct{ *Mesh }
 // JSObject returns the underlying *js.Object.
 func (s *SkinnedMesh) JSObject() *js.Object { return s.p }
 
-// SkinnedMesh returns a SkinnedMesh object.
+// SkinnedMesh returns a SkinnedMesh JavaScript class.
 func (t *Three) SkinnedMesh() *SkinnedMesh {
 	p := t.ctx.Get("SkinnedMesh")
 	return &SkinnedMesh{&Mesh{&Object3D{p: p}}}
 }
 
-// New returns a new SkinnedMesh object.
+// NewSkinnedMesh returns a new SkinnedMesh object.
 //
 //     geometry — An instance of Geometry. Geometry.skinIndices and Geometry.skinWeights should be set.
 //     material — An instance of Material (optional).
 //     useVertexTexture -- Defines whether a vertex texture can be used (optional).
-func (s *SkinnedMesh) New(geometry, material *js.Object, useVertexTexture bool) *SkinnedMesh {
-	p := s.p.New(geometry, material, useVertexTexture)
+func (t *Three) NewSkinnedMesh(geometry, material *js.Object, useVertexTexture bool) *SkinnedMesh {
+	p := t.ctx.Get("SkinnedMesh").New(geometry, material, useVertexTexture)
 	return &SkinnedMesh{&Mesh{&Object3D{p: p}}}
 }
 

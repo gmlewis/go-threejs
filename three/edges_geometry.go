@@ -14,14 +14,14 @@ type EdgesGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (e *EdgesGeometry) JSObject() *js.Object { return e.p }
 
-// EdgesGeometry returns an EdgesGeometry object.
+// EdgesGeometry returns an EdgesGeometry JavaScript class.
 func (t *Three) EdgesGeometry() *EdgesGeometry {
 	p := t.ctx.Get("EdgesGeometry")
 	return &EdgesGeometry{p: p}
 }
 
-// New returns a new EdgesGeometry object.
-func (e *EdgesGeometry) New(geometry, thresholdAngle float64) *EdgesGeometry {
-	p := e.p.New(geometry, thresholdAngle)
+// NewEdgesGeometry returns a new EdgesGeometry object.
+func (t *Three) NewEdgesGeometry(geometry, thresholdAngle float64) *EdgesGeometry {
+	p := t.ctx.Get("EdgesGeometry").New(geometry, thresholdAngle)
 	return &EdgesGeometry{p: p}
 }

@@ -16,16 +16,16 @@ type Sprite struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *Sprite) JSObject() *js.Object { return s.p }
 
-// Sprite returns a Sprite object.
+// Sprite returns a Sprite JavaScript class.
 func (t *Three) Sprite() *Sprite {
 	p := t.ctx.Get("Sprite")
 	return &Sprite{p: p}
 }
 
-// New returns a new Sprite object.
+// NewSprite returns a new Sprite object.
 //
 //     material — An instance of Material (optional).
-func (s *Sprite) New(material *js.Object) *Sprite {
-	p := s.p.New(material)
+func (t *Three) NewSprite(material *js.Object) *Sprite {
+	p := t.ctx.Get("Sprite").New(material)
 	return &Sprite{p: p}
 }

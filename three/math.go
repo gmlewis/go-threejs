@@ -14,15 +14,15 @@ type Math struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *Math) JSObject() *js.Object { return m.p }
 
-// Math returns a Math object.
+// Math returns a Math JavaScript class.
 func (t *Three) Math() *Math {
 	p := t.ctx.Get("Math")
 	return &Math{p: p}
 }
 
-// New returns a new Math object.
-func (m *Math) New() *Math {
-	p := m.p.New()
+// NewMath returns a new Math object.
+func (t *Three) NewMath() *Math {
+	p := t.ctx.Get("Math").New()
 	return &Math{p: p}
 }
 

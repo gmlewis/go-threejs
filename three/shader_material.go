@@ -14,15 +14,15 @@ type ShaderMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *ShaderMaterial) JSObject() *js.Object { return s.p }
 
-// ShaderMaterial returns a ShaderMaterial object.
+// ShaderMaterial returns a ShaderMaterial JavaScript class.
 func (t *Three) ShaderMaterial() *ShaderMaterial {
 	p := t.ctx.Get("ShaderMaterial")
 	return &ShaderMaterial{p: p}
 }
 
-// New returns a new ShaderMaterial object.
-func (s *ShaderMaterial) New(parameters float64) *ShaderMaterial {
-	p := s.p.New(parameters)
+// NewShaderMaterial returns a new ShaderMaterial object.
+func (t *Three) NewShaderMaterial(parameters float64) *ShaderMaterial {
+	p := t.ctx.Get("ShaderMaterial").New(parameters)
 	return &ShaderMaterial{p: p}
 }
 

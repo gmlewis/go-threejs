@@ -14,14 +14,14 @@ type RingBufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (r *RingBufferGeometry) JSObject() *js.Object { return r.p }
 
-// RingBufferGeometry returns a RingBufferGeometry object.
+// RingBufferGeometry returns a RingBufferGeometry JavaScript class.
 func (t *Three) RingBufferGeometry() *RingBufferGeometry {
 	p := t.ctx.Get("RingBufferGeometry")
 	return &RingBufferGeometry{p: p}
 }
 
-// New returns a new RingBufferGeometry object.
-func (r *RingBufferGeometry) New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength float64) *RingBufferGeometry {
-	p := r.p.New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
+// NewRingBufferGeometry returns a new RingBufferGeometry object.
+func (t *Three) NewRingBufferGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength float64) *RingBufferGeometry {
+	p := t.ctx.Get("RingBufferGeometry").New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
 	return &RingBufferGeometry{p: p}
 }

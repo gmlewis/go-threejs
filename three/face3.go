@@ -16,15 +16,15 @@ type Face3 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (f *Face3) JSObject() *js.Object { return f.p }
 
-// Face3 returns a Face3 object.
+// Face3 returns a Face3 JavaScript class.
 func (t *Three) Face3() *Face3 {
 	p := t.ctx.Get("Face3")
 	return &Face3{p: p}
 }
 
-// New returns a new Face3 object.
-func (f *Face3) New(a, b, c float64, normal *Vector3, color *Color, materialIndex int) *Face3 {
-	p := f.p.New(a, b, c, normal, color, materialIndex)
+// NewFace3 returns a new Face3 object.
+func (t *Three) NewFace3(a, b, c float64, normal *Vector3, color *Color, materialIndex int) *Face3 {
+	p := t.ctx.Get("Face3").New(a, b, c, normal, color, materialIndex)
 	return &Face3{p: p}
 }
 

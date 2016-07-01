@@ -14,14 +14,14 @@ type VertexNormalsHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (v *VertexNormalsHelper) JSObject() *js.Object { return v.p }
 
-// VertexNormalsHelper returns a VertexNormalsHelper object.
+// VertexNormalsHelper returns a VertexNormalsHelper JavaScript class.
 func (t *Three) VertexNormalsHelper() *VertexNormalsHelper {
 	p := t.ctx.Get("VertexNormalsHelper")
 	return &VertexNormalsHelper{p: p}
 }
 
-// New returns a new VertexNormalsHelper object.
-func (v *VertexNormalsHelper) New(object, size, hex, linewidth float64) *VertexNormalsHelper {
-	p := v.p.New(object, size, hex, linewidth)
+// NewVertexNormalsHelper returns a new VertexNormalsHelper object.
+func (t *Three) NewVertexNormalsHelper(object, size, hex, linewidth float64) *VertexNormalsHelper {
+	p := t.ctx.Get("VertexNormalsHelper").New(object, size, hex, linewidth)
 	return &VertexNormalsHelper{p: p}
 }

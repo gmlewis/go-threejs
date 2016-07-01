@@ -14,14 +14,14 @@ type AmbientLight struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (a *AmbientLight) JSObject() *js.Object { return a.p }
 
-// AmbientLight returns an AmbientLight object.
+// AmbientLight returns an AmbientLight JavaScript class.
 func (t *Three) AmbientLight() *AmbientLight {
 	p := t.ctx.Get("AmbientLight")
 	return &AmbientLight{p: p}
 }
 
-// New returns a new AmbientLight object.
-func (a *AmbientLight) New(color, intensity float64) *AmbientLight {
-	p := a.p.New(color, intensity)
+// NewAmbientLight returns a new AmbientLight object.
+func (t *Three) NewAmbientLight(color, intensity float64) *AmbientLight {
+	p := t.ctx.Get("AmbientLight").New(color, intensity)
 	return &AmbientLight{p: p}
 }

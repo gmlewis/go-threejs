@@ -14,17 +14,17 @@ type Scene struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *Scene) JSObject() *js.Object { return s.p }
 
-// Scene returns a Scene object.
+// Scene returns a Scene JavaScript class.
 func (t *Three) Scene() *Scene {
 	p := t.ctx.Get("Scene")
 	return &Scene{p: p}
 }
 
-// New returns a new Scene object.
+// NewScene returns a new Scene object.
 //
 // http://threejs.org/docs/index.html#Reference/Scenes/Scene
-func (s *Scene) New() *Scene {
-	p := s.p.New()
+func (t *Three) NewScene() *Scene {
+	p := t.ctx.Get("Scene").New()
 	return &Scene{p: p}
 }
 

@@ -16,21 +16,21 @@ type LensFlare struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LensFlare) JSObject() *js.Object { return l.p }
 
-// LensFlare returns a LensFlare object.
+// LensFlare returns a LensFlare JavaScript class.
 func (t *Three) LensFlare() *LensFlare {
 	p := t.ctx.Get("LensFlare")
 	return &LensFlare{p: p}
 }
 
-// New returns a new LensFlare object.
+// NewLensFlare returns a new LensFlare object.
 //
 //     texture -- THREE.Texture (optional)
 //     size -- size in pixels (-1 = use texture.width)
 //     distance -- (0-1) from light source (0 = at light source)
 //     blending -- Blending Mode - Defaults to THREE.NormalBlending
 //     color -- The color of the lens flare
-func (l *LensFlare) New(texture *js.Object, size, distance float64, blending, color int) *LensFlare {
-	p := l.p.New(texture, size, distance, blending, color)
+func (t *Three) NewLensFlare(texture *js.Object, size, distance float64, blending, color int) *LensFlare {
+	p := t.ctx.Get("LensFlare").New(texture, size, distance, blending, color)
 	return &LensFlare{p: p}
 }
 

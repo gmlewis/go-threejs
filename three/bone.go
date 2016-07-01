@@ -16,15 +16,15 @@ type Bone struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *Bone) JSObject() *js.Object { return b.p }
 
-// Bone returns a Bone object.
+// Bone returns a Bone JavaScript class.
 func (t *Three) Bone() *Bone {
 	p := t.ctx.Get("Bone")
 	return &Bone{p: p}
 }
 
-// New returns a new Bone object.
-func (b *Bone) New(skin float64) *Bone {
-	p := b.p.New(skin)
+// NewBone returns a new Bone object.
+func (t *Three) NewBone(skin float64) *Bone {
+	p := t.ctx.Get("Bone").New(skin)
 	return &Bone{p: p}
 }
 

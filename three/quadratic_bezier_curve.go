@@ -14,15 +14,15 @@ type QuadraticBezierCurve struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (q *QuadraticBezierCurve) JSObject() *js.Object { return q.p }
 
-// QuadraticBezierCurve returns a QuadraticBezierCurve object.
+// QuadraticBezierCurve returns a QuadraticBezierCurve JavaScript class.
 func (t *Three) QuadraticBezierCurve() *QuadraticBezierCurve {
 	p := t.ctx.Get("QuadraticBezierCurve")
 	return &QuadraticBezierCurve{p: p}
 }
 
-// New returns a new QuadraticBezierCurve object.
-func (q *QuadraticBezierCurve) New(v0, v1, v2 float64) *QuadraticBezierCurve {
-	p := q.p.New(v0, v1, v2)
+// NewQuadraticBezierCurve returns a new QuadraticBezierCurve object.
+func (t *Three) NewQuadraticBezierCurve(v0, v1, v2 float64) *QuadraticBezierCurve {
+	p := t.ctx.Get("QuadraticBezierCurve").New(v0, v1, v2)
 	return &QuadraticBezierCurve{p: p}
 }
 

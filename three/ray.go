@@ -14,15 +14,15 @@ type Ray struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (r *Ray) JSObject() *js.Object { return r.p }
 
-// Ray returns a Ray object.
+// Ray returns a Ray JavaScript class.
 func (t *Three) Ray() *Ray {
 	p := t.ctx.Get("Ray")
 	return &Ray{p: p}
 }
 
-// New returns a new Ray object.
-func (r *Ray) New(origin, direction float64) *Ray {
-	p := r.p.New(origin, direction)
+// NewRay returns a new Ray object.
+func (t *Three) NewRay(origin, direction float64) *Ray {
+	p := t.ctx.Get("Ray").New(origin, direction)
 	return &Ray{p: p}
 }
 

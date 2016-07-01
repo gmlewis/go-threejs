@@ -14,14 +14,14 @@ type TubeGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *TubeGeometry) JSObject() *js.Object { return t.p }
 
-// TubeGeometry returns a TubeGeometry object.
+// TubeGeometry returns a TubeGeometry JavaScript class.
 func (t *Three) TubeGeometry() *TubeGeometry {
 	p := t.ctx.Get("TubeGeometry")
 	return &TubeGeometry{p: p}
 }
 
-// New returns a new TubeGeometry object.
-func (t *TubeGeometry) New(path, segments, radius, radialSegments, closed, taper float64) *TubeGeometry {
-	p := t.p.New(path, segments, radius, radialSegments, closed, taper)
+// NewTubeGeometry returns a new TubeGeometry object.
+func (t *Three) NewTubeGeometry(path, segments, radius, radialSegments, closed, taper float64) *TubeGeometry {
+	p := t.ctx.Get("TubeGeometry").New(path, segments, radius, radialSegments, closed, taper)
 	return &TubeGeometry{p: p}
 }

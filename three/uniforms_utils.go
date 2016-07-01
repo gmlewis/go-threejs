@@ -14,15 +14,15 @@ type UniformsUtils struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (u *UniformsUtils) JSObject() *js.Object { return u.p }
 
-// UniformsUtils returns an UniformsUtils object.
+// UniformsUtils returns an UniformsUtils JavaScript class.
 func (t *Three) UniformsUtils() *UniformsUtils {
 	p := t.ctx.Get("UniformsUtils")
 	return &UniformsUtils{p: p}
 }
 
-// New returns a new UniformsUtils object.
-func (u *UniformsUtils) New() *UniformsUtils {
-	p := u.p.New()
+// NewUniformsUtils returns a new UniformsUtils object.
+func (t *Three) NewUniformsUtils() *UniformsUtils {
+	p := t.ctx.Get("UniformsUtils").New()
 	return &UniformsUtils{p: p}
 }
 

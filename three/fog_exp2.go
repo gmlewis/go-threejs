@@ -16,14 +16,14 @@ type FogExp2 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (f *FogExp2) JSObject() *js.Object { return f.p }
 
-// FogExp2 returns a FogExp2 object.
+// FogExp2 returns a FogExp2 JavaScript class.
 func (t *Three) FogExp2() *FogExp2 {
 	p := t.ctx.Get("FogExp2")
 	return &FogExp2{p: p}
 }
 
-// New returns a new FogExp2 object.
-func (f *FogExp2) New(color, density float64) *FogExp2 {
-	p := f.p.New(color, density)
+// NewFogExp2 returns a new FogExp2 object.
+func (t *Three) NewFogExp2(color, density float64) *FogExp2 {
+	p := t.ctx.Get("FogExp2").New(color, density)
 	return &FogExp2{p: p}
 }

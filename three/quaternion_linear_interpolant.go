@@ -14,15 +14,15 @@ type QuaternionLinearInterpolant struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (q *QuaternionLinearInterpolant) JSObject() *js.Object { return q.p }
 
-// QuaternionLinearInterpolant returns a QuaternionLinearInterpolant object.
+// QuaternionLinearInterpolant returns a QuaternionLinearInterpolant JavaScript class.
 func (t *Three) QuaternionLinearInterpolant() *QuaternionLinearInterpolant {
 	p := t.ctx.Get("QuaternionLinearInterpolant")
 	return &QuaternionLinearInterpolant{p: p}
 }
 
-// New returns a new QuaternionLinearInterpolant object.
-func (q *QuaternionLinearInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *QuaternionLinearInterpolant {
-	p := q.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+// NewQuaternionLinearInterpolant returns a new QuaternionLinearInterpolant object.
+func (t *Three) NewQuaternionLinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *QuaternionLinearInterpolant {
+	p := t.ctx.Get("QuaternionLinearInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &QuaternionLinearInterpolant{p: p}
 }
 

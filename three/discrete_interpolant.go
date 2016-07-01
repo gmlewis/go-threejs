@@ -14,15 +14,15 @@ type DiscreteInterpolant struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (d *DiscreteInterpolant) JSObject() *js.Object { return d.p }
 
-// DiscreteInterpolant returns a DiscreteInterpolant object.
+// DiscreteInterpolant returns a DiscreteInterpolant JavaScript class.
 func (t *Three) DiscreteInterpolant() *DiscreteInterpolant {
 	p := t.ctx.Get("DiscreteInterpolant")
 	return &DiscreteInterpolant{p: p}
 }
 
-// New returns a new DiscreteInterpolant object.
-func (d *DiscreteInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *DiscreteInterpolant {
-	p := d.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+// NewDiscreteInterpolant returns a new DiscreteInterpolant object.
+func (t *Three) NewDiscreteInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *DiscreteInterpolant {
+	p := t.ctx.Get("DiscreteInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &DiscreteInterpolant{p: p}
 }
 

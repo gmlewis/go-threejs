@@ -14,15 +14,15 @@ type LineCurve struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *LineCurve) JSObject() *js.Object { return l.p }
 
-// LineCurve returns a LineCurve object.
+// LineCurve returns a LineCurve JavaScript class.
 func (t *Three) LineCurve() *LineCurve {
 	p := t.ctx.Get("LineCurve")
 	return &LineCurve{p: p}
 }
 
-// New returns a new LineCurve object.
-func (l *LineCurve) New(v1, v2 float64) *LineCurve {
-	p := l.p.New(v1, v2)
+// NewLineCurve returns a new LineCurve object.
+func (t *Three) NewLineCurve(v1, v2 float64) *LineCurve {
+	p := t.ctx.Get("LineCurve").New(v1, v2)
 	return &LineCurve{p: p}
 }
 

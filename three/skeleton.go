@@ -16,18 +16,18 @@ type Skeleton struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *Skeleton) JSObject() *js.Object { return s.p }
 
-// Skeleton returns a Skeleton object.
+// Skeleton returns a Skeleton JavaScript class.
 func (t *Three) Skeleton() *Skeleton {
 	p := t.ctx.Get("Skeleton")
 	return &Skeleton{p: p}
 }
 
-// New returns a new Skeleton object.
+// NewSkeleton returns a new Skeleton object.
 //
 //     bones — The array of bones
 //     boneInverses — (optional) An array of Matrix4s
 //     useVertexTexture — (optional) Whether or not to use a vertex texture in the shader.
-func (s *Skeleton) New(bones, boneInverses []*js.Object, useVertexTexture bool) *Skeleton {
-	p := s.p.New(bones, boneInverses, useVertexTexture)
+func (t *Three) NewSkeleton(bones, boneInverses []*js.Object, useVertexTexture bool) *Skeleton {
+	p := t.ctx.Get("Skeleton").New(bones, boneInverses, useVertexTexture)
 	return &Skeleton{p: p}
 }

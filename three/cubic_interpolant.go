@@ -14,15 +14,15 @@ type CubicInterpolant struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CubicInterpolant) JSObject() *js.Object { return c.p }
 
-// CubicInterpolant returns a CubicInterpolant object.
+// CubicInterpolant returns a CubicInterpolant JavaScript class.
 func (t *Three) CubicInterpolant() *CubicInterpolant {
 	p := t.ctx.Get("CubicInterpolant")
 	return &CubicInterpolant{p: p}
 }
 
-// New returns a new CubicInterpolant object.
-func (c *CubicInterpolant) New(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *CubicInterpolant {
-	p := c.p.New(parameterPositions, sampleValues, sampleSize, resultBuffer)
+// NewCubicInterpolant returns a new CubicInterpolant object.
+func (t *Three) NewCubicInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *CubicInterpolant {
+	p := t.ctx.Get("CubicInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
 	return &CubicInterpolant{p: p}
 }
 

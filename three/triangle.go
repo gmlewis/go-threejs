@@ -14,15 +14,15 @@ type Triangle struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *Triangle) JSObject() *js.Object { return t.p }
 
-// Triangle returns a Triangle object.
+// Triangle returns a Triangle JavaScript class.
 func (t *Three) Triangle() *Triangle {
 	p := t.ctx.Get("Triangle")
 	return &Triangle{p: p}
 }
 
-// New returns a new Triangle object.
-func (t *Triangle) New(a, b, c float64) *Triangle {
-	p := t.p.New(a, b, c)
+// NewTriangle returns a new Triangle object.
+func (t *Three) NewTriangle(a, b, c float64) *Triangle {
+	p := t.ctx.Get("Triangle").New(a, b, c)
 	return &Triangle{p: p}
 }
 

@@ -14,15 +14,15 @@ type MeshStandardMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MeshStandardMaterial) JSObject() *js.Object { return m.p }
 
-// MeshStandardMaterial returns a MeshStandardMaterial object.
+// MeshStandardMaterial returns a MeshStandardMaterial JavaScript class.
 func (t *Three) MeshStandardMaterial() *MeshStandardMaterial {
 	p := t.ctx.Get("MeshStandardMaterial")
 	return &MeshStandardMaterial{p: p}
 }
 
-// New returns a new MeshStandardMaterial object.
-func (m *MeshStandardMaterial) New(parameters float64) *MeshStandardMaterial {
-	p := m.p.New(parameters)
+// NewMeshStandardMaterial returns a new MeshStandardMaterial object.
+func (t *Three) NewMeshStandardMaterial(parameters float64) *MeshStandardMaterial {
+	p := t.ctx.Get("MeshStandardMaterial").New(parameters)
 	return &MeshStandardMaterial{p: p}
 }
 

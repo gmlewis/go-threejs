@@ -14,15 +14,15 @@ type Box2 struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *Box2) JSObject() *js.Object { return b.p }
 
-// Box2 returns a Box2 object.
+// Box2 returns a Box2 JavaScript class.
 func (t *Three) Box2() *Box2 {
 	p := t.ctx.Get("Box2")
 	return &Box2{p: p}
 }
 
-// New returns a new Box2 object.
-func (b *Box2) New(min, max float64) *Box2 {
-	p := b.p.New(min, max)
+// NewBox2 returns a new Box2 object.
+func (t *Three) NewBox2(min, max float64) *Box2 {
+	p := t.ctx.Get("Box2").New(min, max)
 	return &Box2{p: p}
 }
 

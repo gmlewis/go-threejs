@@ -14,15 +14,15 @@ type Loader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *Loader) JSObject() *js.Object { return l.p }
 
-// Loader returns a Loader object.
+// Loader returns a Loader JavaScript class.
 func (t *Three) Loader() *Loader {
 	p := t.ctx.Get("Loader")
 	return &Loader{p: p}
 }
 
-// New returns a new Loader object.
-func (l *Loader) New() *Loader {
-	p := l.p.New()
+// NewLoader returns a new Loader object.
+func (t *Three) NewLoader() *Loader {
+	p := t.ctx.Get("Loader").New()
 	return &Loader{p: p}
 }
 

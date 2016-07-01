@@ -14,16 +14,16 @@ type PropertyMixer struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PropertyMixer) JSObject() *js.Object { return p.p }
 
-// PropertyMixer returns a PropertyMixer object.
+// PropertyMixer returns a PropertyMixer JavaScript class.
 func (t *Three) PropertyMixer() *PropertyMixer {
 	p := t.ctx.Get("PropertyMixer")
 	return &PropertyMixer{p: p}
 }
 
-// New returns a new PropertyMixer object.
-func (p *PropertyMixer) New(binding, typName, valueSize float64) *PropertyMixer {
-	t := p.p.New(binding, typName, valueSize)
-	return &PropertyMixer{p: t}
+// NewPropertyMixer returns a new PropertyMixer object.
+func (t *Three) NewPropertyMixer(binding, typName, valueSize float64) *PropertyMixer {
+	p := t.ctx.Get("PropertyMixer").New(binding, typName, valueSize)
+	return &PropertyMixer{p: p}
 }
 
 // Accumulate TODO description.

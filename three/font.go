@@ -14,15 +14,15 @@ type Font struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (f *Font) JSObject() *js.Object { return f.p }
 
-// Font returns a Font object.
+// Font returns a Font JavaScript class.
 func (t *Three) Font() *Font {
 	p := t.ctx.Get("Font")
 	return &Font{p: p}
 }
 
-// New returns a new Font object.
-func (f *Font) New(data float64) *Font {
-	p := f.p.New(data)
+// NewFont returns a new Font object.
+func (t *Three) NewFont(data float64) *Font {
+	p := t.ctx.Get("Font").New(data)
 	return &Font{p: p}
 }
 

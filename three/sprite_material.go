@@ -16,21 +16,21 @@ type SpriteMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *SpriteMaterial) JSObject() *js.Object { return s.p }
 
-// SpriteMaterial returns a SpriteMaterial object.
+// SpriteMaterial returns a SpriteMaterial JavaScript class.
 func (t *Three) SpriteMaterial() *SpriteMaterial {
 	p := t.ctx.Get("SpriteMaterial")
 	return &SpriteMaterial{p: p}
 }
 
-// New returns a new SpriteMaterial object.
+// NewSpriteMaterial returns a new SpriteMaterial object.
 //
 // parameters is an object defining the the default properties:
 //     color - color of the sprite
 //     map - the texture map
 //     rotation - the rotation of the sprite
 //     fog - whether or not to use the scene fog
-func (s *SpriteMaterial) New(parameters map[string]interface{}) *SpriteMaterial {
-	p := s.p.New(parameters)
+func (t *Three) NewSpriteMaterial(parameters map[string]interface{}) *SpriteMaterial {
+	p := t.ctx.Get("SpriteMaterial").New(parameters)
 	return &SpriteMaterial{p: p}
 }
 

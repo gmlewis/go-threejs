@@ -14,15 +14,15 @@ type Path struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *Path) JSObject() *js.Object { return p.p }
 
-// Path returns a Path object.
+// Path returns a Path JavaScript class.
 func (t *Three) Path() *Path {
 	p := t.ctx.Get("Path")
 	return &Path{p: p}
 }
 
-// New returns a new Path object.
-func (p *Path) New(points float64) *Path {
-	return &Path{p: p.p.New(points)}
+// NewPath returns a new Path object.
+func (t *Three) NewPath(points float64) *Path {
+	return &Path{p: t.ctx.Get("Path").New(points)}
 }
 
 // FromPoints TODO description.

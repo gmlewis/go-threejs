@@ -14,16 +14,16 @@ type PointLight struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (p *PointLight) JSObject() *js.Object { return p.p }
 
-// PointLight returns a PointLight object.
+// PointLight returns a PointLight JavaScript class.
 func (t *Three) PointLight() *PointLight {
 	p := t.ctx.Get("PointLight")
 	return &PointLight{p: p}
 }
 
-// New returns a new PointLight object.
-func (p *PointLight) New(color, intensity, distance, decay float64) *PointLight {
-	t := p.p.New(color, intensity, distance, decay)
-	return &PointLight{p: t}
+// NewPointLight returns a new PointLight object.
+func (t *Three) NewPointLight(color, intensity, distance, decay float64) *PointLight {
+	p := t.ctx.Get("PointLight").New(color, intensity, distance, decay)
+	return &PointLight{p: p}
 }
 
 // Get TODO description.

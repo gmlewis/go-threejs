@@ -14,15 +14,15 @@ type Raycaster struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (r *Raycaster) JSObject() *js.Object { return r.p }
 
-// Raycaster returns a Raycaster object.
+// Raycaster returns a Raycaster JavaScript class.
 func (t *Three) Raycaster() *Raycaster {
 	p := t.ctx.Get("Raycaster")
 	return &Raycaster{p: p}
 }
 
-// New returns a new Raycaster object.
-func (r *Raycaster) New(origin, direction, near, far float64) *Raycaster {
-	p := r.p.New(origin, direction, near, far)
+// NewRaycaster returns a new Raycaster object.
+func (t *Three) NewRaycaster(origin, direction, near, far float64) *Raycaster {
+	p := t.ctx.Get("Raycaster").New(origin, direction, near, far)
 	return &Raycaster{p: p}
 }
 

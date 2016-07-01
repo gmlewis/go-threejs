@@ -14,15 +14,15 @@ type Light struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (l *Light) JSObject() *js.Object { return l.p }
 
-// Light returns a Light object.
+// Light returns a Light JavaScript class.
 func (t *Three) Light() *Light {
 	p := t.ctx.Get("Light")
 	return &Light{p: p}
 }
 
-// New returns a new Light object.
-func (l *Light) New(color, intensity float64) *Light {
-	p := l.p.New(color, intensity)
+// NewLight returns a new Light object.
+func (t *Three) NewLight(color, intensity float64) *Light {
+	p := t.ctx.Get("Light").New(color, intensity)
 	return &Light{p: p}
 }
 

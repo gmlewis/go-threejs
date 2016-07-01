@@ -16,13 +16,13 @@ type MeshPhongMaterial struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (m *MeshPhongMaterial) JSObject() *js.Object { return m.p }
 
-// MeshPhongMaterial returns a MeshPhongMaterial object.
+// MeshPhongMaterial returns a MeshPhongMaterial JavaScript class.
 func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 	p := t.ctx.Get("MeshPhongMaterial")
 	return &MeshPhongMaterial{p: p}
 }
 
-// New returns a new MeshPhongMaterial object.
+// NewMeshPhongMaterial returns a new MeshPhongMaterial object.
 //
 // parameters is an object with one or more of the material's properties defining its appearance:
 //     color — geometry color in hexadecimal. Default is 0xffffff.
@@ -45,8 +45,8 @@ func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (m *MeshPhongMaterial) New(parameters map[string]interface{}) *MeshPhongMaterial {
-	p := m.p.New(parameters)
+func (t *Three) NewMeshPhongMaterial(parameters map[string]interface{}) *MeshPhongMaterial {
+	p := t.ctx.Get("MeshPhongMaterial").New(parameters)
 	return &MeshPhongMaterial{p: p}
 }
 

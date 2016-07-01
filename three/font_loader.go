@@ -14,15 +14,15 @@ type FontLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (f *FontLoader) JSObject() *js.Object { return f.p }
 
-// FontLoader returns a FontLoader object.
+// FontLoader returns a FontLoader JavaScript class.
 func (t *Three) FontLoader() *FontLoader {
 	p := t.ctx.Get("FontLoader")
 	return &FontLoader{p: p}
 }
 
-// New returns a new FontLoader object.
-func (f *FontLoader) New(manager float64) *FontLoader {
-	p := f.p.New(manager)
+// NewFontLoader returns a new FontLoader object.
+func (t *Three) NewFontLoader(manager float64) *FontLoader {
+	p := t.ctx.Get("FontLoader").New(manager)
 	return &FontLoader{p: p}
 }
 

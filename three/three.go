@@ -20,10 +20,10 @@ type Three struct {
 	ctx *js.Object
 }
 
-// New returns a new Three object that binds to three.js.
+// New returns a new JavaScript object that binds to three.js.
 func New() *Three { return &Three{ctx: js.Global.Get("THREE")} }
 
-// JSObject returns the underlying *js.Object.
+// JSObject returns the underlying *js.JavaScript class.
 func (t *Three) JSObject() *js.Object { return t.ctx }
 
 const (
@@ -252,9 +252,9 @@ func (t *Three) MOUSE() *MOUSE {
 	return &MOUSE{p: p}
 }
 
-// New returns a new MOUSE object.
-func (t *MOUSE) New() *MOUSE {
-	p := t.p.New()
+// NewJSObject returns a new MOUSE object.
+func (t *Three) NewJSObject() *MOUSE {
+	p := t.ctx.Get("JSObject").New()
 	return &MOUSE{p: p}
 }
 

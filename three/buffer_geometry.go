@@ -25,15 +25,15 @@ type BufferGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BufferGeometry) JSObject() *js.Object { return b.p }
 
-// BufferGeometry returns a BufferGeometry object.
+// BufferGeometry returns a BufferGeometry JavaScript class.
 func (t *Three) BufferGeometry() *BufferGeometry {
 	p := t.ctx.Get("BufferGeometry")
 	return &BufferGeometry{p: p}
 }
 
-// New returns a new BufferGeometry object.
-func (b *BufferGeometry) New() *BufferGeometry {
-	p := b.p.New()
+// NewBufferGeometry returns a new BufferGeometry object.
+func (t *Three) NewBufferGeometry() *BufferGeometry {
+	p := t.ctx.Get("BufferGeometry").New()
 	return &BufferGeometry{p: p}
 }
 

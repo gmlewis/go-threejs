@@ -14,14 +14,14 @@ type WebGLProperties struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLProperties) JSObject() *js.Object { return w.p }
 
-// WebGLProperties returns a WebGLProperties object.
+// WebGLProperties returns a WebGLProperties JavaScript class.
 func (t *Three) WebGLProperties() *WebGLProperties {
 	p := t.ctx.Get("WebGLProperties")
 	return &WebGLProperties{p: p}
 }
 
-// New returns a new WebGLProperties object.
-func (w *WebGLProperties) New() *WebGLProperties {
-	p := w.p.New()
+// NewWebGLProperties returns a new WebGLProperties object.
+func (t *Three) NewWebGLProperties() *WebGLProperties {
+	p := t.ctx.Get("WebGLProperties").New()
 	return &WebGLProperties{p: p}
 }

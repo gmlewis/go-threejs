@@ -16,16 +16,16 @@ type PerspectiveCamera struct{ *Camera }
 // JSObject returns the underlying *js.Object.
 func (p *PerspectiveCamera) JSObject() *js.Object { return p.p }
 
-// PerspectiveCamera returns a PerspectiveCamera object.
+// PerspectiveCamera returns a PerspectiveCamera JavaScript class.
 func (t *Three) PerspectiveCamera() *PerspectiveCamera {
 	p := t.ctx.Get("PerspectiveCamera")
 	return &PerspectiveCamera{&Camera{&Object3D{p: p}}}
 }
 
-// New returns a new PerspectiveCamera object.
-func (p *PerspectiveCamera) New(fov, aspect, near, far float64) *PerspectiveCamera {
-	t := p.p.New(fov, aspect, near, far)
-	return &PerspectiveCamera{&Camera{&Object3D{p: t}}}
+// NewPerspectiveCamera returns a new PerspectiveCamera object.
+func (t *Three) NewPerspectiveCamera(fov, aspect, near, far float64) *PerspectiveCamera {
+	p := t.ctx.Get("PerspectiveCamera").New(fov, aspect, near, far)
+	return &PerspectiveCamera{&Camera{&Object3D{p: p}}}
 }
 
 // SetLens TODO description.

@@ -14,15 +14,15 @@ type CubeTexture struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (c *CubeTexture) JSObject() *js.Object { return c.p }
 
-// CubeTexture returns a CubeTexture object.
+// CubeTexture returns a CubeTexture JavaScript class.
 func (t *Three) CubeTexture() *CubeTexture {
 	p := t.ctx.Get("CubeTexture")
 	return &CubeTexture{p: p}
 }
 
-// New returns a new CubeTexture object.
-func (c *CubeTexture) New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CubeTexture {
-	p := c.p.New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
+// NewCubeTexture returns a new CubeTexture object.
+func (t *Three) NewCubeTexture(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CubeTexture {
+	p := t.ctx.Get("CubeTexture").New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
 	return &CubeTexture{p: p}
 }
 

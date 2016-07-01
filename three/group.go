@@ -14,14 +14,14 @@ type Group struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (g *Group) JSObject() *js.Object { return g.p }
 
-// Group returns a Group object.
+// Group returns a Group JavaScript class.
 func (t *Three) Group() *Group {
 	p := t.ctx.Get("Group")
 	return &Group{p: p}
 }
 
-// New returns a new Group object.
-func (g *Group) New() *Group {
-	p := g.p.New()
+// NewGroup returns a new Group object.
+func (t *Three) NewGroup() *Group {
+	p := t.ctx.Get("Group").New()
 	return &Group{p: p}
 }

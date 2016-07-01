@@ -14,15 +14,15 @@ type StereoCamera struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (s *StereoCamera) JSObject() *js.Object { return s.p }
 
-// StereoCamera returns a StereoCamera object.
+// StereoCamera returns a StereoCamera JavaScript class.
 func (t *Three) StereoCamera() *StereoCamera {
 	p := t.ctx.Get("StereoCamera")
 	return &StereoCamera{p: p}
 }
 
-// New returns a new StereoCamera object.
-func (s *StereoCamera) New() *StereoCamera {
-	p := s.p.New()
+// NewStereoCamera returns a new StereoCamera object.
+func (t *Three) NewStereoCamera() *StereoCamera {
+	p := t.ctx.Get("StereoCamera").New()
 	return &StereoCamera{p: p}
 }
 

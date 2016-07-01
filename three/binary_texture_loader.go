@@ -14,15 +14,15 @@ type BinaryTextureLoader struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BinaryTextureLoader) JSObject() *js.Object { return b.p }
 
-// BinaryTextureLoader returns a BinaryTextureLoader object.
+// BinaryTextureLoader returns a BinaryTextureLoader JavaScript class.
 func (t *Three) BinaryTextureLoader() *BinaryTextureLoader {
 	p := t.ctx.Get("BinaryTextureLoader")
 	return &BinaryTextureLoader{p: p}
 }
 
-// New returns a new BinaryTextureLoader object.
-func (b *BinaryTextureLoader) New() *BinaryTextureLoader {
-	p := b.p.New()
+// NewBinaryTextureLoader returns a new BinaryTextureLoader object.
+func (t *Three) NewBinaryTextureLoader() *BinaryTextureLoader {
+	p := t.ctx.Get("BinaryTextureLoader").New()
 	return &BinaryTextureLoader{p: p}
 }
 

@@ -14,15 +14,15 @@ type Texture struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *Texture) JSObject() *js.Object { return t.p }
 
-// Texture returns a Texture object.
+// Texture returns a Texture JavaScript class.
 func (t *Three) Texture() *Texture {
 	p := t.ctx.Get("Texture")
 	return &Texture{p: p}
 }
 
-// New returns a new Texture object.
-func (t *Texture) New(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *Texture {
-	p := t.p.New(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
+// NewTexture returns a new Texture object.
+func (t *Three) NewTexture(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *Texture {
+	p := t.ctx.Get("Texture").New(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
 	return &Texture{p: p}
 }
 

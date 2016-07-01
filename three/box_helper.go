@@ -14,14 +14,14 @@ type BoxHelper struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (b *BoxHelper) JSObject() *js.Object { return b.p }
 
-// BoxHelper returns a BoxHelper object.
+// BoxHelper returns a BoxHelper JavaScript class.
 func (t *Three) BoxHelper() *BoxHelper {
 	p := t.ctx.Get("BoxHelper")
 	return &BoxHelper{p: p}
 }
 
-// New returns a new BoxHelper object.
-func (b *BoxHelper) New(object float64) *BoxHelper {
-	p := b.p.New(object)
+// NewBoxHelper returns a new BoxHelper object.
+func (t *Three) NewBoxHelper(object float64) *BoxHelper {
+	p := t.ctx.Get("BoxHelper").New(object)
 	return &BoxHelper{p: p}
 }

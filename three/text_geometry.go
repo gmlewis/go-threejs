@@ -16,17 +16,17 @@ type TextGeometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (t *TextGeometry) JSObject() *js.Object { return t.p }
 
-// TextGeometry returns a TextGeometry object.
+// TextGeometry returns a TextGeometry JavaScript class.
 func (t *Three) TextGeometry() *TextGeometry {
 	p := t.ctx.Get("TextGeometry")
 	return &TextGeometry{p: p}
 }
 
-// New returns a new TextGeometry object.
+// NewTextGeometry returns a new TextGeometry object.
 //
 //     text — The text to be shown.
 //     parameters — Object that can contains the following parameters.  TODO.
-func (t *TextGeometry) New(text string, parameters map[string]interface{}) *TextGeometry {
-	p := t.p.New(text, parameters)
+func (t *Three) NewTextGeometry(text string, parameters map[string]interface{}) *TextGeometry {
+	p := t.ctx.Get("TextGeometry").New(text, parameters)
 	return &TextGeometry{p: p}
 }

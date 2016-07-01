@@ -14,14 +14,14 @@ type WebGLShadowMap struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (w *WebGLShadowMap) JSObject() *js.Object { return w.p }
 
-// WebGLShadowMap returns a WebGLShadowMap object.
+// WebGLShadowMap returns a WebGLShadowMap JavaScript class.
 func (t *Three) WebGLShadowMap() *WebGLShadowMap {
 	p := t.ctx.Get("WebGLShadowMap")
 	return &WebGLShadowMap{p: p}
 }
 
-// New returns a new WebGLShadowMap object.
-func (w *WebGLShadowMap) New(_renderer, _lights, _objects float64) *WebGLShadowMap {
-	p := w.p.New(_renderer, _lights, _objects)
+// NewWebGLShadowMap returns a new WebGLShadowMap object.
+func (t *Three) NewWebGLShadowMap(_renderer, _lights, _objects float64) *WebGLShadowMap {
+	p := t.ctx.Get("WebGLShadowMap").New(_renderer, _lights, _objects)
 	return &WebGLShadowMap{p: p}
 }

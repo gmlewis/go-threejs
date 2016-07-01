@@ -14,15 +14,15 @@ type InstancedBufferAttribute struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (i *InstancedBufferAttribute) JSObject() *js.Object { return i.p }
 
-// InstancedBufferAttribute returns an InstancedBufferAttribute object.
+// InstancedBufferAttribute returns an InstancedBufferAttribute JavaScript class.
 func (t *Three) InstancedBufferAttribute() *InstancedBufferAttribute {
 	p := t.ctx.Get("InstancedBufferAttribute")
 	return &InstancedBufferAttribute{p: p}
 }
 
-// New returns a new InstancedBufferAttribute object.
-func (i *InstancedBufferAttribute) New(array, itemSize, meshPerAttribute float64) *InstancedBufferAttribute {
-	p := i.p.New(array, itemSize, meshPerAttribute)
+// NewInstancedBufferAttribute returns a new InstancedBufferAttribute object.
+func (t *Three) NewInstancedBufferAttribute(array, itemSize, meshPerAttribute float64) *InstancedBufferAttribute {
+	p := t.ctx.Get("InstancedBufferAttribute").New(array, itemSize, meshPerAttribute)
 	return &InstancedBufferAttribute{p: p}
 }
 

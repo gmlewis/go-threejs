@@ -17,15 +17,15 @@ type Geometry struct{ p *js.Object }
 // JSObject returns the underlying *js.Object.
 func (g *Geometry) JSObject() *js.Object { return g.p }
 
-// Geometry returns a Geometry object.
+// Geometry returns a Geometry JavaScript class.
 func (t *Three) Geometry() *Geometry {
 	p := t.ctx.Get("Geometry")
 	return &Geometry{p: p}
 }
 
-// New returns a new Geometry object.
-func (g *Geometry) New() *Geometry {
-	p := g.p.New()
+// NewGeometry returns a new Geometry object.
+func (t *Three) NewGeometry() *Geometry {
+	p := t.ctx.Get("Geometry").New()
 	return &Geometry{p: p}
 }
 

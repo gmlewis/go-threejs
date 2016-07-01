@@ -11,8 +11,8 @@ import (
 func ExampleOrthographicCamera() {
 	const width, height = 800, 600
 	t := three.New()
-	scene := t.Scene().New()
+	scene := t.NewScene()
 
-	camera := t.OrthographicCamera().New(width/-2, width/2, height/2, height/-2, 1, 1000)
+	camera := t.NewOrthographicCamera(width/-2, width/2, height/2, height/-2, 1, 1000)
 	scene.Add(camera)
 }
