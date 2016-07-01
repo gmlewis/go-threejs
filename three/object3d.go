@@ -322,7 +322,7 @@ func (o *Object3D) Visible() bool {
 	return o.p.Get("visible").Bool()
 }
 
-// SetVisible returns the property of the same name.
+// SetVisible sets the visible property.
 func (o *Object3D) SetVisible(value bool) *Object3D {
 	o.p.Set("visible", value)
 	return o

@@ -4,9 +4,7 @@
 
 package three
 
-import (
-	"github.com/gopherjs/gopherjs/js"
-)
+import "github.com/gopherjs/gopherjs/js"
 
 // Clock represents a clock.
 type Clock struct{ p *js.Object }
@@ -21,7 +19,7 @@ func (t *Three) Clock() *Clock {
 }
 
 // New returns a new Clock object.
-func (c *Clock) New(autoStart float64) *Clock {
+func (c *Clock) New(autoStart bool) *Clock {
 	p := c.p.New(autoStart)
 	return &Clock{p: p}
 }
@@ -39,13 +37,16 @@ func (c *Clock) Stop() *Clock {
 }
 
 // GetElapsedTime TODO description.
-func (c *Clock) GetElapsedTime() *Clock {
-	c.p.Call("getElapsedTime")
-	return c
+func (c *Clock) GetElapsedTime() float64 {
+	return c.p.Call("getElapsedTime").Float()
 }
 
 // GetDelta TODO description.
-func (c *Clock) GetDelta() *Clock {
-	c.p.Call("getDelta")
-	return c
+func (c *Clock) GetDelta() float64 {
+	return c.p.Call("getDelta").Float()
+}
+
+// Running returns the property of the same name.
+func (c *Clock) Running() bool {
+	return c.p.Get("running").Bool()
 }

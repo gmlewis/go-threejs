@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Face3 represents a face3.
+// Face3 represents a triangle face.
 type Face3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -21,7 +21,7 @@ func (t *Three) Face3() *Face3 {
 }
 
 // New returns a new Face3 object.
-func (f *Face3) New(a, b, c, normal, color, materialIndex float64) *Face3 {
+func (f *Face3) New(a, b, c float64, normal *Vector3, color *Color, materialIndex int) *Face3 {
 	p := f.p.New(a, b, c, normal, color, materialIndex)
 	return &Face3{p: p}
 }
@@ -33,7 +33,7 @@ func (f *Face3) Clone() *Face3 {
 }
 
 // Copy TODO description.
-func (f *Face3) Copy(source float64) *Face3 {
-	f.p.Call("copy", source)
+func (f *Face3) Copy(source *Face3) *Face3 {
+	f.p.Call("copy", source.p)
 	return f
 }
