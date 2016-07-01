@@ -8,11 +8,10 @@ import (
 	"github.com/gmlewis/go-threejs/three"
 )
 
-func ExampleDirectionalLight() {
+func ExampleHemisphereLight() {
 	t := three.New()
 	scene := t.NewScene()
 
-	light := t.NewDirectionalLight(0xffffff, 0.5)
-	light.Position().Set(0, 1, 0)
+	light := t.NewHemisphereLight(0xffffbb, 0x080820, 1)
 	scene.Add(light)
 }
