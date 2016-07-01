@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Light represents a light.
-type Light struct{ p *js.Object }
+// Light is the JavaScript abstract base class for lights.
+//
+// http://threejs.org/docs/index.html#Reference/Lights/Light
+type Light struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (l *Light) JSObject() *js.Object { return l.p }
@@ -17,13 +19,13 @@ func (l *Light) JSObject() *js.Object { return l.p }
 // Light returns a Light JavaScript class.
 func (t *Three) Light() *Light {
 	p := t.ctx.Get("Light")
-	return &Light{p: p}
+	return &Light{&Object3D{p: p}}
 }
 
 // NewLight returns a new Light object.
 func (t *Three) NewLight(color, intensity float64) *Light {
 	p := t.ctx.Get("Light").New(color, intensity)
-	return &Light{p: p}
+	return &Light{&Object3D{p: p}}
 }
 
 // Copy TODO description.

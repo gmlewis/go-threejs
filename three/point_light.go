@@ -8,8 +8,11 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// PointLight represents a pointlight.
-type PointLight struct{ p *js.Object }
+// PointLight is a light that affects objects using MeshLambertMaterial or
+// MeshPhongMaterial.
+//
+// http://threejs.org/docs/index.html#Reference/Lights/PointLight
+type PointLight struct{ *Light }
 
 // JSObject returns the underlying *js.Object.
 func (p *PointLight) JSObject() *js.Object { return p.p }
@@ -17,13 +20,13 @@ func (p *PointLight) JSObject() *js.Object { return p.p }
 // PointLight returns a PointLight JavaScript class.
 func (t *Three) PointLight() *PointLight {
 	p := t.ctx.Get("PointLight")
-	return &PointLight{p: p}
+	return &PointLight{&Light{&Object3D{p: p}}}
 }
 
 // NewPointLight returns a new PointLight object.
 func (t *Three) NewPointLight(color, intensity, distance, decay float64) *PointLight {
 	p := t.ctx.Get("PointLight").New(color, intensity, distance, decay)
-	return &PointLight{p: p}
+	return &PointLight{&Light{&Object3D{p: p}}}
 }
 
 // Get TODO description.

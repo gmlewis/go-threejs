@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// HemisphereLight represents a hemispherelight.
-type HemisphereLight struct{ p *js.Object }
+// HemisphereLight is a light that is positioned directly above the scene.
+//
+// http://threejs.org/docs/index.html#Reference/Lights/HemisphereLight
+type HemisphereLight struct{ *Light }
 
 // JSObject returns the underlying *js.Object.
 func (h *HemisphereLight) JSObject() *js.Object { return h.p }
@@ -17,13 +19,13 @@ func (h *HemisphereLight) JSObject() *js.Object { return h.p }
 // HemisphereLight returns a HemisphereLight JavaScript class.
 func (t *Three) HemisphereLight() *HemisphereLight {
 	p := t.ctx.Get("HemisphereLight")
-	return &HemisphereLight{p: p}
+	return &HemisphereLight{&Light{&Object3D{p: p}}}
 }
 
 // NewHemisphereLight returns a new HemisphereLight object.
 func (t *Three) NewHemisphereLight(skyColor, groundColor, intensity float64) *HemisphereLight {
 	p := t.ctx.Get("HemisphereLight").New(skyColor, groundColor, intensity)
-	return &HemisphereLight{p: p}
+	return &HemisphereLight{&Light{&Object3D{p: p}}}
 }
 
 // Copy TODO description.

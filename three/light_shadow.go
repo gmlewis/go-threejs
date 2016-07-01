@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// LightShadow represents a lightshadow.
+// LightShadow represents a light shadow.
+//
+// http://threejs.org/docs/index.html#Reference/Lights/LightShadow
 type LightShadow struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

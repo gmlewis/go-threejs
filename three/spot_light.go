@@ -8,8 +8,12 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// SpotLight represents a spotlight.
-type SpotLight struct{ p *js.Object }
+// SpotLight is a point light that can cast a shadow in one direction within a
+// falloff cone.  It affects objects using MeshLambertMaterial or
+// MeshPhongMaterial.
+//
+// http://threejs.org/docs/index.html#Reference/Lights/SpotLight
+type SpotLight struct{ *Light }
 
 // JSObject returns the underlying *js.Object.
 func (s *SpotLight) JSObject() *js.Object { return s.p }
@@ -17,13 +21,13 @@ func (s *SpotLight) JSObject() *js.Object { return s.p }
 // SpotLight returns a SpotLight JavaScript class.
 func (t *Three) SpotLight() *SpotLight {
 	p := t.ctx.Get("SpotLight")
-	return &SpotLight{p: p}
+	return &SpotLight{&Light{&Object3D{p: p}}}
 }
 
 // NewSpotLight returns a new SpotLight object.
 func (t *Three) NewSpotLight(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
 	p := t.ctx.Get("SpotLight").New(color, intensity, distance, angle, penumbra, decay)
-	return &SpotLight{p: p}
+	return &SpotLight{&Light{&Object3D{p: p}}}
 }
 
 // Get TODO description.
