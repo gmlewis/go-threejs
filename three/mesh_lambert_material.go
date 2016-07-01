@@ -22,6 +22,8 @@ func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 	return &MeshLambertMaterial{p: p}
 }
 
+type MeshLambertMaterialOpts map[string]interface{}
+
 // New returns a new MeshLambertMaterial object.
 //
 // parameters is an object with one or more properties defining the material's appearance:
@@ -41,7 +43,7 @@ func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (m *MeshLambertMaterial) New(parameters map[string]interface{}) *MeshLambertMaterial {
+func (m *MeshLambertMaterial) New(parameters MeshLambertMaterialOpts) *MeshLambertMaterial {
 	p := m.p.New(parameters)
 	return &MeshLambertMaterial{p: p}
 }

@@ -236,7 +236,94 @@ func (o *Object3D) Copy(source, recursive float64) *Object3D {
 	return o
 }
 
-// Rotation is the Object3D property of the same name.
+// UUID returns the property of the same name.
+func (o *Object3D) UUID() int {
+	return o.p.Get("uuid").Int()
+}
+
+// Name returns the property of the same name.
+func (o *Object3D) Name() string {
+	return o.p.Get("name").String()
+}
+
+// Type returns the property of the same name.
+func (o *Object3D) Type() string {
+	return o.p.Get("type").String()
+}
+
+// Parent returns the property of the same name.
+func (o *Object3D) Parent() *js.Object {
+	return o.p.Get("parent")
+}
+
+// Children returns the property of the same name.
+func (o *Object3D) Children() *js.Object {
+	return o.p.Get("children")
+}
+
+// Up returns the property of the same name.
+func (o *Object3D) Up() *Vector3 {
+	return &Vector3{p: o.p.Get("up")}
+}
+
+// Position returns the property of the same name.
+func (o *Object3D) Position() *Vector3 {
+	return &Vector3{p: o.p.Get("position")}
+}
+
+// Rotation returns the property of the same name.
 func (o *Object3D) Rotation() *Euler {
 	return &Euler{p: o.p.Get("rotation")}
+}
+
+// Quaternion returns the property of the same name.
+func (o *Object3D) Quaternion() *Quaternion {
+	return &Quaternion{p: o.p.Get("quaternion")}
+}
+
+// Scale returns the property of the same name.
+func (o *Object3D) Scale() *Vector3 {
+	return &Vector3{p: o.p.Get("scale")}
+}
+
+// ModelViewMatrix returns the property of the same name.
+func (c *Camera) ModelViewMatrix() *Matrix4 {
+	return &Matrix4{p: c.p.Get("modelViewMatrix")}
+}
+
+// NormalMatrix returns the property of the same name.
+func (c *Camera) NormalMatrix() *Matrix3 {
+	return &Matrix3{p: c.p.Get("normalMatrix")}
+}
+
+/* TODO:
+this.rotationAutoUpdate = true;
+
+this.matrix = new THREE.Matrix4();
+this.matrixWorld = new THREE.Matrix4();
+
+this.matrixAutoUpdate = THREE.Object3D.DefaultMatrixAutoUpdate;
+this.matrixWorldNeedsUpdate = false;
+
+this.layers = new THREE.Layers();
+this.visible = true;
+
+this.castShadow = false;
+this.receiveShadow = false;
+
+this.frustumCulled = true;
+this.renderOrder = 0;
+
+this.userData = {};
+*/
+
+// Visible returns the property of the same name.
+func (o *Object3D) Visible() bool {
+	return o.p.Get("visible").Bool()
+}
+
+// SetVisible returns the property of the same name.
+func (o *Object3D) SetVisible(value bool) *Object3D {
+	o.p.Set("visible", value)
+	return o
 }
