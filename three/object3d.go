@@ -136,8 +136,8 @@ func (o *Object3D) Remove(object float64) *Object3D {
 	return o
 }
 
-// GetObjectById TODO description.
-func (o *Object3D) GetObjectById(id float64) *Object3D {
+// GetObjectByID TODO description.
+func (o *Object3D) GetObjectByID(id float64) *Object3D {
 	o.p.Call("getObjectById", id)
 	return o
 }

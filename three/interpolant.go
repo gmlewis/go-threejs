@@ -32,26 +32,26 @@ func (i *Interpolant) Evaluate(t float64) *Interpolant {
 	return i
 }
 
-// GetSettings_ TODO description.
-func (i *Interpolant) GetSettings_() *Interpolant {
+// GetSettings TODO description.
+func (i *Interpolant) GetSettings() *Interpolant {
 	i.p.Call("getSettings_")
 	return i
 }
 
-// CopySampleValue_ TODO description.
-func (i *Interpolant) CopySampleValue_(index float64) *Interpolant {
+// CopySampleValue TODO description.
+func (i *Interpolant) CopySampleValue(index float64) *Interpolant {
 	i.p.Call("copySampleValue_", index)
 	return i
 }
 
-// Interpolate_ TODO description.
-func (i *Interpolant) Interpolate_(i1, t0, t, t1 float64) *Interpolant {
+// Interpolate TODO description.
+func (i *Interpolant) Interpolate(i1, t0, t, t1 float64) *Interpolant {
 	i.p.Call("interpolate_", i1, t0, t, t1)
 	return i
 }
 
-// IntervalChanged_ TODO description.
-func (i *Interpolant) IntervalChanged_(i1, t0, t1 float64) *Interpolant {
+// IntervalChanged TODO description.
+func (i *Interpolant) IntervalChanged(i1, t0, t1 float64) *Interpolant {
 	i.p.Call("intervalChanged_", i1, t0, t1)
 	return i
 }

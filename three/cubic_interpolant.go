@@ -26,14 +26,14 @@ func (t *Three) NewCubicInterpolant(parameterPositions, sampleValues, sampleSize
 	return &CubicInterpolant{p: p}
 }
 
-// IntervalChanged_ TODO description.
-func (c *CubicInterpolant) IntervalChanged_(i1, t0, t1 float64) *CubicInterpolant {
+// IntervalChanged TODO description.
+func (c *CubicInterpolant) IntervalChanged(i1, t0, t1 float64) *CubicInterpolant {
 	c.p.Call("intervalChanged_", i1, t0, t1)
 	return c
 }
 
-// Interpolate_ TODO description.
-func (c *CubicInterpolant) Interpolate_(i1, t0, t, t1 float64) *CubicInterpolant {
+// Interpolate TODO description.
+func (c *CubicInterpolant) Interpolate(i1, t0, t, t1 float64) *CubicInterpolant {
 	c.p.Call("interpolate_", i1, t0, t, t1)
 	return c
 }

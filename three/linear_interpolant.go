@@ -26,8 +26,8 @@ func (t *Three) NewLinearInterpolant(parameterPositions, sampleValues, sampleSiz
 	return &LinearInterpolant{p: p}
 }
 
-// Interpolate_ TODO description.
-func (l *LinearInterpolant) Interpolate_(i1, t0, t, t1 float64) *LinearInterpolant {
+// Interpolate TODO description.
+func (l *LinearInterpolant) Interpolate(i1, t0, t, t1 float64) *LinearInterpolant {
 	l.p.Call("interpolate_", i1, t0, t, t1)
 	return l
 }

@@ -33,7 +33,7 @@ func (u *UniformsUtils) Merge(uniforms float64) *UniformsUtils {
 }
 
 // Clone TODO description.
-func (u *UniformsUtils) Clone(uniforms_src float64) *UniformsUtils {
-	u.p.Call("clone", uniforms_src)
+func (u *UniformsUtils) Clone(uniformsSrc JSObject) *UniformsUtils {
+	u.p.Call("clone", uniformsSrc.JSObject())
 	return u
 }

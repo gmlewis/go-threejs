@@ -38,18 +38,6 @@ func (p *PropertyBinding) Unbind() *PropertyBinding {
 	return p
 }
 
-// _getValue_unavailable TODO description.
-func (p *PropertyBinding) _getValue_unavailable() *PropertyBinding {
-	p.p.Call("_getValue_unavailable")
-	return p
-}
-
-// _setValue_unavailable TODO description.
-func (p *PropertyBinding) _setValue_unavailable() *PropertyBinding {
-	p.p.Call("_setValue_unavailable")
-	return p
-}
-
 // GetValue TODO description.
 func (p *PropertyBinding) GetValue(array, offset float64) *PropertyBinding {
 	p.p.Call("getValue", array, offset)

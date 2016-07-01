@@ -21,8 +21,8 @@ func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
 }
 
 // NewAnimationObjectGroup returns a new AnimationObjectGroup object.
-func (t *Three) NewAnimationObjectGroup(var_args float64) *AnimationObjectGroup {
-	p := t.ctx.Get("AnimationObjectGroup").New(var_args)
+func (t *Three) NewAnimationObjectGroup(varArgs JSObject) *AnimationObjectGroup {
+	p := t.ctx.Get("AnimationObjectGroup").New(varArgs.JSObject())
 	return &AnimationObjectGroup{p: p}
 }
 
@@ -42,31 +42,31 @@ func (a *AnimationObjectGroup) BindingsPerObject() float64 {
 }
 
 // Add TODO description.
-func (a *AnimationObjectGroup) Add(var_args float64) *AnimationObjectGroup {
-	a.p.Call("add", var_args)
+func (a *AnimationObjectGroup) Add(varArgs JSObject) *AnimationObjectGroup {
+	a.p.Call("add", varArgs.JSObject())
 	return a
 }
 
 // Remove TODO description.
-func (a *AnimationObjectGroup) Remove(var_args float64) *AnimationObjectGroup {
-	a.p.Call("remove", var_args)
+func (a *AnimationObjectGroup) Remove(varArgs JSObject) *AnimationObjectGroup {
+	a.p.Call("remove", varArgs.JSObject())
 	return a
 }
 
 // Uncache TODO description.
-func (a *AnimationObjectGroup) Uncache(var_args float64) *AnimationObjectGroup {
-	a.p.Call("uncache", var_args)
+func (a *AnimationObjectGroup) Uncache(varArgs JSObject) *AnimationObjectGroup {
+	a.p.Call("uncache", varArgs.JSObject())
 	return a
 }
 
-// Subscribe_ TODO description.
-func (a *AnimationObjectGroup) Subscribe_(path, parsedPath float64) *AnimationObjectGroup {
+// Subscribe TODO description.
+func (a *AnimationObjectGroup) Subscribe(path, parsedPath float64) *AnimationObjectGroup {
 	a.p.Call("subscribe_", path, parsedPath)
 	return a
 }
 
-// Unsubscribe_ TODO description.
-func (a *AnimationObjectGroup) Unsubscribe_(path float64) *AnimationObjectGroup {
+// Unsubscribe TODO description.
+func (a *AnimationObjectGroup) Unsubscribe(path float64) *AnimationObjectGroup {
 	a.p.Call("unsubscribe_", path)
 	return a
 }

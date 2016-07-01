@@ -289,8 +289,8 @@ func (a *AnimationMixer) _isActiveAction(action float64) *AnimationMixer {
 }
 
 // _addInactiveAction TODO description.
-func (a *AnimationMixer) _addInactiveAction(action, clipName, rootUuid float64) *AnimationMixer {
-	a.p.Call("_addInactiveAction", action, clipName, rootUuid)
+func (a *AnimationMixer) _addInactiveAction(action, clipName, rootUUID float64) *AnimationMixer {
+	a.p.Call("_addInactiveAction", action, clipName, rootUUID)
 	return a
 }
 
@@ -319,8 +319,8 @@ func (a *AnimationMixer) _takeBackAction(action float64) *AnimationMixer {
 }
 
 // _addInactiveBinding TODO description.
-func (a *AnimationMixer) _addInactiveBinding(binding, rootUuid, trackName float64) *AnimationMixer {
-	a.p.Call("_addInactiveBinding", binding, rootUuid, trackName)
+func (a *AnimationMixer) _addInactiveBinding(binding, rootUUID, trackName float64) *AnimationMixer {
+	a.p.Call("_addInactiveBinding", binding, rootUUID, trackName)
 	return a
 }
 

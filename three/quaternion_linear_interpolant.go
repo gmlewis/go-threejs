@@ -26,8 +26,8 @@ func (t *Three) NewQuaternionLinearInterpolant(parameterPositions, sampleValues,
 	return &QuaternionLinearInterpolant{p: p}
 }
 
-// Interpolate_ TODO description.
-func (q *QuaternionLinearInterpolant) Interpolate_(i1, t0, t, t1 float64) *QuaternionLinearInterpolant {
+// Interpolate TODO description.
+func (q *QuaternionLinearInterpolant) Interpolate(i1, t0, t, t1 float64) *QuaternionLinearInterpolant {
 	q.p.Call("interpolate_", i1, t0, t, t1)
 	return q
 }

@@ -22,11 +22,9 @@ func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 	return &MeshLambertMaterial{p: p}
 }
 
-type MeshLambertMaterialOpts map[string]interface{}
-
-// NewMeshLambertMaterial returns a new MeshLambertMaterial object.
+// MeshLambertMaterialOpts is a map with one or more properties defining
+// the material's appearance:
 //
-// parameters is an object with one or more properties defining the material's appearance:
 //     color — Line color in hexadecimal. Default is 0xffffff.
 //     map — Sets the texture map. Default is null
 //     lightMap — Set light map. Default is null.
@@ -35,14 +33,21 @@ type MeshLambertMaterialOpts map[string]interface{}
 //     specularMap — Set specular map. Default is null.
 //     alphaMap — Set alpha map. Default is null.
 //     envMap — Set env map. Default is null.
-//     fog — Define whether the material color is affected by global fog settings. Default is false.
-//     wireframe — Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
+//     fog — Define whether the material color is affected by global fog
+//         settings. Default is false.
+//     wireframe — Render geometry as wireframe. Default is false (i.e. render
+//         as smooth shaded).
 //     wireframeLinewidth — Controls wireframe thickness. Default is 1.
 //     wireframeLinecap — Define appearance of line ends. Default is 'round'.
 //     wireframeLinejoin — Define appearance of line joints. Default is 'round'.
-//     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
+//     vertexColors — Define how the vertices gets colored.
+//         Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
-//     morphTargets — Define whether the material uses morphTargets. Default is false.
+//     morphTargets — Define whether the material uses morphTargets.
+//         Default is false.
+type MeshLambertMaterialOpts map[string]interface{}
+
+// NewMeshLambertMaterial returns a new MeshLambertMaterial object.
 func (t *Three) NewMeshLambertMaterial(parameters MeshLambertMaterialOpts) *MeshLambertMaterial {
 	p := t.ctx.Get("MeshLambertMaterial").New(parameters)
 	return &MeshLambertMaterial{p: p}

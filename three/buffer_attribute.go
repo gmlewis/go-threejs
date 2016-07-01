@@ -167,146 +167,146 @@ func (t *Three) NewFloat64Attribute(array []float64, itemSize int) *Float64Attri
 }
 
 // Count returns the count-component of the BufferAttribute.
-func (d *BufferAttribute) Count() float64 {
-	return d.p.Get("count").Float()
+func (b *BufferAttribute) Count() float64 {
+	return b.p.Get("count").Float()
 }
 
 // SetNeedsUpdate sets the needsUpdate-component of the BufferAttribute.
-func (d *BufferAttribute) SetNeedsUpdate(value float64) *BufferAttribute {
-	d.p.Set("needsUpdate", value)
-	return d
+func (b *BufferAttribute) SetNeedsUpdate(value float64) *BufferAttribute {
+	b.p.Set("needsUpdate", value)
+	return b
 }
 
 // SetDynamic TODO description.
-func (d *BufferAttribute) SetDynamic(value float64) *BufferAttribute {
-	d.p.Call("setDynamic", value)
-	return d
+func (b *BufferAttribute) SetDynamic(value float64) *BufferAttribute {
+	b.p.Call("setDynamic", value)
+	return b
 }
 
 // Copy TODO description.
-func (d *BufferAttribute) Copy(source *BufferAttribute) *BufferAttribute {
-	d.p.Call("copy", source.p)
-	return d
+func (b *BufferAttribute) Copy(source *BufferAttribute) *BufferAttribute {
+	b.p.Call("copy", source.p)
+	return b
 }
 
 // CopyAt TODO description.
-func (d *BufferAttribute) CopyAt(index1, attribute, index2 float64) *BufferAttribute {
-	d.p.Call("copyAt", index1, attribute, index2)
-	return d
+func (b *BufferAttribute) CopyAt(index1, attribute, index2 float64) *BufferAttribute {
+	b.p.Call("copyAt", index1, attribute, index2)
+	return b
 }
 
 // CopyArray TODO description.
-func (d *BufferAttribute) CopyArray(array []float64) *BufferAttribute {
-	d.p.Call("copyArray", array)
-	return d
+func (b *BufferAttribute) CopyArray(array []float64) *BufferAttribute {
+	b.p.Call("copyArray", array)
+	return b
 }
 
 // CopyColorsArray TODO description.
-func (d *BufferAttribute) CopyColorsArray(colors []float64) *BufferAttribute {
-	d.p.Call("copyColorsArray", colors)
-	return d
+func (b *BufferAttribute) CopyColorsArray(colors []float64) *BufferAttribute {
+	b.p.Call("copyColorsArray", colors)
+	return b
 }
 
 // CopyIndicesArray TODO description.
-func (d *BufferAttribute) CopyIndicesArray(indices []int) *BufferAttribute {
-	d.p.Call("copyIndicesArray", indices)
-	return d
+func (b *BufferAttribute) CopyIndicesArray(indices []int) *BufferAttribute {
+	b.p.Call("copyIndicesArray", indices)
+	return b
 }
 
 // CopyVector2sArray TODO description.
-func (d *BufferAttribute) CopyVector2sArray(vectors []*Vector2) *BufferAttribute {
-	d.p.Call("copyVector2sArray", vectors)
-	return d
+func (b *BufferAttribute) CopyVector2sArray(vectors []*Vector2) *BufferAttribute {
+	b.p.Call("copyVector2sArray", vectors)
+	return b
 }
 
 // CopyVector3sArray TODO description.
-func (d *BufferAttribute) CopyVector3sArray(vectors []*Vector3) *BufferAttribute {
-	d.p.Call("copyVector3sArray", vectors)
-	return d
+func (b *BufferAttribute) CopyVector3sArray(vectors []*Vector3) *BufferAttribute {
+	b.p.Call("copyVector3sArray", vectors)
+	return b
 }
 
 // CopyVector4sArray TODO description.
-func (d *BufferAttribute) CopyVector4sArray(vectors []*Vector4) *BufferAttribute {
-	d.p.Call("copyVector4sArray", vectors)
-	return d
+func (b *BufferAttribute) CopyVector4sArray(vectors []*Vector4) *BufferAttribute {
+	b.p.Call("copyVector4sArray", vectors)
+	return b
 }
 
 // Set TODO description.
-func (d *BufferAttribute) Set(value float64, offset int) *BufferAttribute {
-	d.p.Call("set", value, offset)
-	return d
+func (b *BufferAttribute) Set(value float64, offset int) *BufferAttribute {
+	b.p.Call("set", value, offset)
+	return b
 }
 
 // GetX TODO description.
-func (d *BufferAttribute) GetX(index int) *BufferAttribute {
-	d.p.Call("getX", index)
-	return d
+func (b *BufferAttribute) GetX(index int) *BufferAttribute {
+	b.p.Call("getX", index)
+	return b
 }
 
 // SetX TODO description.
-func (d *BufferAttribute) SetX(index int, x float64) *BufferAttribute {
-	d.p.Call("setX", index, x)
-	return d
+func (b *BufferAttribute) SetX(index int, x float64) *BufferAttribute {
+	b.p.Call("setX", index, x)
+	return b
 }
 
 // GetY TODO description.
-func (d *BufferAttribute) GetY(index int) *BufferAttribute {
-	d.p.Call("getY", index)
-	return d
+func (b *BufferAttribute) GetY(index int) *BufferAttribute {
+	b.p.Call("getY", index)
+	return b
 }
 
 // SetY TODO description.
-func (d *BufferAttribute) SetY(index int, y float64) *BufferAttribute {
-	d.p.Call("setY", index, y)
-	return d
+func (b *BufferAttribute) SetY(index int, y float64) *BufferAttribute {
+	b.p.Call("setY", index, y)
+	return b
 }
 
 // GetZ TODO description.
-func (d *BufferAttribute) GetZ(index int) *BufferAttribute {
-	d.p.Call("getZ", index)
-	return d
+func (b *BufferAttribute) GetZ(index int) *BufferAttribute {
+	b.p.Call("getZ", index)
+	return b
 }
 
 // SetZ TODO description.
-func (d *BufferAttribute) SetZ(index int, z float64) *BufferAttribute {
-	d.p.Call("setZ", index, z)
-	return d
+func (b *BufferAttribute) SetZ(index int, z float64) *BufferAttribute {
+	b.p.Call("setZ", index, z)
+	return b
 }
 
 // GetW TODO description.
-func (d *BufferAttribute) GetW(index int) *BufferAttribute {
-	d.p.Call("getW", index)
-	return d
+func (b *BufferAttribute) GetW(index int) *BufferAttribute {
+	b.p.Call("getW", index)
+	return b
 }
 
 // SetW TODO description.
-func (d *BufferAttribute) SetW(index int, w float64) *BufferAttribute {
-	d.p.Call("setW", index, w)
-	return d
+func (b *BufferAttribute) SetW(index int, w float64) *BufferAttribute {
+	b.p.Call("setW", index, w)
+	return b
 }
 
 // SetXY TODO description.
-func (d *BufferAttribute) SetXY(index int, x, y float64) *BufferAttribute {
-	d.p.Call("setXY", index, x, y)
-	return d
+func (b *BufferAttribute) SetXY(index int, x, y float64) *BufferAttribute {
+	b.p.Call("setXY", index, x, y)
+	return b
 }
 
 // SetXYZ TODO description.
-func (d *BufferAttribute) SetXYZ(index int, x, y, z float64) *BufferAttribute {
-	d.p.Call("setXYZ", index, x, y, z)
-	return d
+func (b *BufferAttribute) SetXYZ(index int, x, y, z float64) *BufferAttribute {
+	b.p.Call("setXYZ", index, x, y, z)
+	return b
 }
 
 // SetXYZW TODO description.
-func (d *BufferAttribute) SetXYZW(index int, x, y, z, w float64) *BufferAttribute {
-	d.p.Call("setXYZW", index, x, y, z, w)
-	return d
+func (b *BufferAttribute) SetXYZW(index int, x, y, z, w float64) *BufferAttribute {
+	b.p.Call("setXYZW", index, x, y, z, w)
+	return b
 }
 
 // Clone TODO description.
-func (d *BufferAttribute) Clone() *BufferAttribute {
-	d.p.Call("clone")
-	return d
+func (b *BufferAttribute) Clone() *BufferAttribute {
+	b.p.Call("clone")
+	return b
 }
 
 // UUID returns the property of the same name.

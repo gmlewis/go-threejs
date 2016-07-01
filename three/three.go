@@ -100,6 +100,7 @@ const (
 	//OneMinusSrcAlphaFactor = 205
 	//DstAlphaFactor = 206
 	//OneMinusDstAlphaFactor = 207
+
 	DstColorFactor         = 208
 	OneMinusDstColorFactor = 209
 	SrcAlphaSaturateFactor = 210
@@ -172,6 +173,7 @@ const (
 	// Pixel types
 
 	//UnsignedByteType = 1009
+
 	UnsignedShort4444Type = 1016
 	UnsignedShort5551Type = 1017
 	UnsignedShort565Type  = 1018
@@ -188,21 +190,21 @@ const (
 
 	// DDS / ST3C Compressed texture formats
 
-	RGB_S3TC_DXT1_Format  = 2001
-	RGBA_S3TC_DXT1_Format = 2002
-	RGBA_S3TC_DXT3_Format = 2003
-	RGBA_S3TC_DXT5_Format = 2004
+	RGBS3TCDXT1Format  = 2001
+	RGBAS3TCDXT1Format = 2002
+	RGBAS3TCDXT3Format = 2003
+	RGBAS3TCDXT5Format = 2004
 
 	// PVRTC compressed texture formats
 
-	RGB_PVRTC_4BPPV1_Format  = 2100
-	RGB_PVRTC_2BPPV1_Format  = 2101
-	RGBA_PVRTC_4BPPV1_Format = 2102
-	RGBA_PVRTC_2BPPV1_Format = 2103
+	RGBPVRTC4BPPV1Format  = 2100
+	RGBPVRTC2BPPV1Format  = 2101
+	RGBAPVRTC4BPPV1Format = 2102
+	RGBAPVRTC2BPPV1Format = 2103
 
 	// ETC compressed texture formats
 
-	RGB_ETC1_Format = 2151
+	RGBETC1Format = 2151
 
 	// Loop styles for AnimationAction
 
@@ -236,6 +238,7 @@ const (
 
 	// The following Texture Encodings are for RGB-only (no alpha) HDR light emission sources.
 	// These encodings should not specified as output encodings except in rare situations.
+
 	RGBEEncoding   = 3002 // AKA Radiance.
 	LogLuvEncoding = 3003
 	RGBM7Encoding  = 3004

@@ -26,8 +26,8 @@ func (t *Three) NewDiscreteInterpolant(parameterPositions, sampleValues, sampleS
 	return &DiscreteInterpolant{p: p}
 }
 
-// Interpolate_ TODO description.
-func (d *DiscreteInterpolant) Interpolate_(i1, t0, t, t1 float64) *DiscreteInterpolant {
+// Interpolate TODO description.
+func (d *DiscreteInterpolant) Interpolate(i1, t0, t, t1 float64) *DiscreteInterpolant {
 	d.p.Call("interpolate_", i1, t0, t, t1)
 	return d
 }

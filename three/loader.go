@@ -26,8 +26,8 @@ func (t *Three) NewLoader() *Loader {
 	return &Loader{p: p}
 }
 
-// ExtractUrlBase TODO description.
-func (l *Loader) ExtractUrlBase(url float64) *Loader {
+// ExtractURLBase TODO description.
+func (l *Loader) ExtractURLBase(url float64) *Loader {
 	l.p.Call("extractUrlBase", url)
 	return l
 }

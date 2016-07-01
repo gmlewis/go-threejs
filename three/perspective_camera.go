@@ -56,31 +56,31 @@ func (p *PerspectiveCamera) ToJSON(meta float64) *PerspectiveCamera {
 }
 
 // Zoom returns the property of the same name.
-func (o *PerspectiveCamera) Zoom() float64 {
-	return o.p.Get("zoom").Float()
+func (p *PerspectiveCamera) Zoom() float64 {
+	return p.p.Get("zoom").Float()
 }
 
 // FocalLength returns the property of the same name.
-func (o *PerspectiveCamera) FocalLength() float64 {
-	return o.p.Get("focalLength").Float()
+func (p *PerspectiveCamera) FocalLength() float64 {
+	return p.p.Get("focalLength").Float()
 }
 
 // FOV returns the property of the same name.
-func (o *PerspectiveCamera) FOV() float64 {
-	return o.p.Get("fov").Float()
+func (p *PerspectiveCamera) FOV() float64 {
+	return p.p.Get("fov").Float()
 }
 
 // Aspect returns the property of the same name.
-func (o *PerspectiveCamera) Aspect() float64 {
-	return o.p.Get("aspect").Float()
+func (p *PerspectiveCamera) Aspect() float64 {
+	return p.p.Get("aspect").Float()
 }
 
 // Near returns the property of the same name.
-func (o *PerspectiveCamera) Near() float64 {
-	return o.p.Get("near").Float()
+func (p *PerspectiveCamera) Near() float64 {
+	return p.p.Get("near").Float()
 }
 
 // Far returns the property of the same name.
-func (o *PerspectiveCamera) Far() float64 {
-	return o.p.Get("far").Float()
+func (p *PerspectiveCamera) Far() float64 {
+	return p.p.Get("far").Float()
 }
