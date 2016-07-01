@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Raycaster represents a raycaster.
+// Raycaster is the JavaScript class that makes raycasting easier.
+// Raycasting is used for picking and more.
+//
+// http://threejs.org/docs/index.html#Reference/Core/Raycaster
 type Raycaster struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

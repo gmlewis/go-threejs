@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Object3D represents an object3d.
+// Object3D is the JavaScript base class for scene graph objects.
+//
+// http://threejs.org/docs/index.html#Reference/Core/Object3D
 type Object3D struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
