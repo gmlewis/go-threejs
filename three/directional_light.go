@@ -19,14 +19,17 @@ func (d *DirectionalLight) JSObject() *js.Object { return d.p }
 
 // DirectionalLight returns a DirectionalLight JavaScript class.
 func (t *Three) DirectionalLight() *DirectionalLight {
-	p := t.ctx.Get("DirectionalLight")
+	return directionalLight(t.ctx.Get("DirectionalLight"))
+}
+
+// directionalLight returns a wrapped DirectionalLight JavaScript class.
+func directionalLight(p *js.Object) *DirectionalLight {
 	return &DirectionalLight{&Light{&Object3D{p: p}}}
 }
 
 // NewDirectionalLight returns a new DirectionalLight object.
 func (t *Three) NewDirectionalLight(color, intensity float64) *DirectionalLight {
-	p := t.ctx.Get("DirectionalLight").New(color, intensity)
-	return &DirectionalLight{&Light{&Object3D{p: p}}}
+	return directionalLight(t.ctx.Get("DirectionalLight").New(color, intensity))
 }
 
 // Copy TODO description.

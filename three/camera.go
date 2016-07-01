@@ -19,14 +19,17 @@ func (c *Camera) JSObject() *js.Object { return c.p }
 
 // Camera returns a Camera JavaScript class.
 func (t *Three) Camera() *Camera {
-	p := t.ctx.Get("Camera")
+	return camera(t.ctx.Get("Camera"))
+}
+
+// camera returns a wrapped Camera JavaScript class.
+func camera(p *js.Object) *Camera {
 	return &Camera{&Object3D{p: p}}
 }
 
 // NewCamera returns a new Camera object.
 func (t *Three) NewCamera() *Camera {
-	p := t.ctx.Get("Camera").New()
-	return &Camera{&Object3D{p: p}}
+	return camera(t.ctx.Get("Camera").New())
 }
 
 // Copy TODO description.

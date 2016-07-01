@@ -20,14 +20,17 @@ func (s *SpotLight) JSObject() *js.Object { return s.p }
 
 // SpotLight returns a SpotLight JavaScript class.
 func (t *Three) SpotLight() *SpotLight {
-	p := t.ctx.Get("SpotLight")
+	return spotLight(t.ctx.Get("SpotLight"))
+}
+
+// spotLight returns a wrapped SpotLight JavaScript class.
+func spotLight(p *js.Object) *SpotLight {
 	return &SpotLight{&Light{&Object3D{p: p}}}
 }
 
 // NewSpotLight returns a new SpotLight object.
 func (t *Three) NewSpotLight(color, intensity, distance, angle, penumbra, decay float64) *SpotLight {
-	p := t.ctx.Get("SpotLight").New(color, intensity, distance, angle, penumbra, decay)
-	return &SpotLight{&Light{&Object3D{p: p}}}
+	return spotLight(t.ctx.Get("SpotLight").New(color, intensity, distance, angle, penumbra, decay))
 }
 
 // Get TODO description.

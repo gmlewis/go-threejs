@@ -18,14 +18,17 @@ func (p *PerspectiveCamera) JSObject() *js.Object { return p.p }
 
 // PerspectiveCamera returns a PerspectiveCamera JavaScript class.
 func (t *Three) PerspectiveCamera() *PerspectiveCamera {
-	p := t.ctx.Get("PerspectiveCamera")
+	return perspectiveCamera(t.ctx.Get("PerspectiveCamera"))
+}
+
+// perspectiveCamera returns a wrapped PerspectiveCamera JavaScript class.
+func perspectiveCamera(p *js.Object) *PerspectiveCamera {
 	return &PerspectiveCamera{&Camera{&Object3D{p: p}}}
 }
 
 // NewPerspectiveCamera returns a new PerspectiveCamera object.
 func (t *Three) NewPerspectiveCamera(fov, aspect, near, far float64) *PerspectiveCamera {
-	p := t.ctx.Get("PerspectiveCamera").New(fov, aspect, near, far)
-	return &PerspectiveCamera{&Camera{&Object3D{p: p}}}
+	return perspectiveCamera(t.ctx.Get("PerspectiveCamera").New(fov, aspect, near, far))
 }
 
 // SetLens TODO description.

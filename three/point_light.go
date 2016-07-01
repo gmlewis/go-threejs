@@ -19,14 +19,17 @@ func (p *PointLight) JSObject() *js.Object { return p.p }
 
 // PointLight returns a PointLight JavaScript class.
 func (t *Three) PointLight() *PointLight {
-	p := t.ctx.Get("PointLight")
+	return pointLight(t.ctx.Get("PointLight"))
+}
+
+// pointLight returns a wrapped PointLight JavaScript class.
+func pointLight(p *js.Object) *PointLight {
 	return &PointLight{&Light{&Object3D{p: p}}}
 }
 
 // NewPointLight returns a new PointLight object.
 func (t *Three) NewPointLight(color, intensity, distance, decay float64) *PointLight {
-	p := t.ctx.Get("PointLight").New(color, intensity, distance, decay)
-	return &PointLight{&Light{&Object3D{p: p}}}
+	return pointLight(t.ctx.Get("PointLight").New(color, intensity, distance, decay))
 }
 
 // Get TODO description.

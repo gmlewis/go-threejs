@@ -18,14 +18,17 @@ func (o *OrthographicCamera) JSObject() *js.Object { return o.p }
 
 // OrthographicCamera returns an OrthographicCamera JavaScript class.
 func (t *Three) OrthographicCamera() *OrthographicCamera {
-	p := t.ctx.Get("OrthographicCamera")
+	return orthographicCamera(t.ctx.Get("OrthographicCamera"))
+}
+
+// orthographicCamera returns a wrapped OrthographicCamera JavaScript class.
+func orthographicCamera(p *js.Object) *OrthographicCamera {
 	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
 }
 
 // NewOrthographicCamera returns a new OrthographicCamera object.
 func (t *Three) NewOrthographicCamera(left, right, top, bottom, near, far float64) *OrthographicCamera {
-	p := t.ctx.Get("OrthographicCamera").New(left, right, top, bottom, near, far)
-	return &OrthographicCamera{&Camera{&Object3D{p: p}}}
+	return orthographicCamera(t.ctx.Get("OrthographicCamera").New(left, right, top, bottom, near, far))
 }
 
 // Copy TODO description.

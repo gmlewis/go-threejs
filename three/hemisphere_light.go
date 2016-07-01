@@ -18,14 +18,17 @@ func (h *HemisphereLight) JSObject() *js.Object { return h.p }
 
 // HemisphereLight returns a HemisphereLight JavaScript class.
 func (t *Three) HemisphereLight() *HemisphereLight {
-	p := t.ctx.Get("HemisphereLight")
+	return hemisphereLight(t.ctx.Get("HemisphereLight"))
+}
+
+// hemisphereLight returns a wrapped HemisphereLight JavaScript class.
+func hemisphereLight(p *js.Object) *HemisphereLight {
 	return &HemisphereLight{&Light{&Object3D{p: p}}}
 }
 
 // NewHemisphereLight returns a new HemisphereLight object.
 func (t *Three) NewHemisphereLight(skyColor, groundColor, intensity float64) *HemisphereLight {
-	p := t.ctx.Get("HemisphereLight").New(skyColor, groundColor, intensity)
-	return &HemisphereLight{&Light{&Object3D{p: p}}}
+	return hemisphereLight(t.ctx.Get("HemisphereLight").New(skyColor, groundColor, intensity))
 }
 
 // Copy TODO description.
