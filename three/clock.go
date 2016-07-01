@@ -6,7 +6,9 @@ package three
 
 import "github.com/gopherjs/gopherjs/js"
 
-// Clock represents a clock.
+// Clock is an object for keeping track of time.
+//
+// http://threejs.org/docs/index.html#Reference/Core/Clock
 type Clock struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

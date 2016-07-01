@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// EventDispatcher represents an eventdispatcher.
+// EventDispatcher handles JavaScript events for custom objects.
+//
+// http://threejs.org/docs/index.html#Reference/Core/EventDispatcher
 type EventDispatcher struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

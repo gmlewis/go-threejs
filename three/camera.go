@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Camera represents a camera.
+// Camera is the JavaScript base class for cameras.
+// It should always be inherited when you build a new camera.
+//
+// http://threejs.org/docs/index.html#Reference/Cameras/Camera
 type Camera struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.

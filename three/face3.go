@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Face3 represents a triangle face.
+// Face3 is a triangle face.
+//
+// http://threejs.org/docs/index.html#Reference/Core/Face3
 type Face3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

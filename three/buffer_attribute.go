@@ -8,7 +8,12 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// BufferAttribute represents a bufferattribute.
+// BufferAttribute stores data for an attribute associated with a BufferGeometry.
+// See that page for details and a usage example. This class is used to store
+// builtin attributes such as vertex position, normals, color, etc., but can also
+// be used in your code to store custom attributes in a BufferGeometry.
+//
+// http://threejs.org/docs/index.html#Reference/Core/BufferAttribute
 type BufferAttribute struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

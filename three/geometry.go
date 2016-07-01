@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Geometry represents a geometry.
+// Geometry is a Javascript base class for geometries.
+// A geometry holds all data necessary to describe a 3D model.
+//
+// http://threejs.org/docs/index.html#Reference/Core/Geometry
 type Geometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
