@@ -47,3 +47,8 @@ func (s *SpotLight) Copy(source *SpotLight) *SpotLight {
 	s.p.Call("copy", source.p)
 	return s
 }
+
+// Shadow returns the property of the same name.
+func (o *Object3D) Shadow() *LightShadow {
+	return &LightShadow{p: o.p.Get("shadow")}
+}

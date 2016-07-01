@@ -23,8 +23,8 @@ func (t *Three) LightShadow() *LightShadow {
 }
 
 // NewLightShadow returns a new LightShadow object.
-func (t *Three) NewLightShadow(camera float64) *LightShadow {
-	p := t.ctx.Get("LightShadow").New(camera)
+func (t *Three) NewLightShadow(camera *Camera) *LightShadow {
+	p := t.ctx.Get("LightShadow").New(camera.JSObject())
 	return &LightShadow{p: p}
 }
 
@@ -37,5 +37,54 @@ func (l *LightShadow) Copy(source *LightShadow) *LightShadow {
 // Clone TODO description.
 func (l *LightShadow) Clone() *LightShadow {
 	l.p.Call("clone")
+	return l
+}
+
+// Camera returns the property of the same name.
+func (l *LightShadow) Camera() *Camera {
+	return &Camera{&Object3D{p: l.p.Get("camera")}}
+}
+
+// MapSize returns the property of the same name.
+func (l *LightShadow) MapSize() *Vector2 {
+	return &Vector2{p: l.p.Get("mapSize")}
+}
+
+// SetMapSize sets the mapSize property.
+func (l *LightShadow) SetMapSize(value *Vector2) *LightShadow {
+	l.p.Set("mapSize", value.p)
+	return l
+}
+
+// Matrix returns the property of the same name.
+func (l *LightShadow) Matrix() *Matrix4 {
+	return &Matrix4{p: l.p.Get("matrix")}
+}
+
+// SetMatrix sets the matrix property.
+func (l *LightShadow) SetMatrix(value *Matrix4) *LightShadow {
+	l.p.Set("matrix", value.p)
+	return l
+}
+
+// Bias returns the property of the same name.
+func (l *LightShadow) Bias() float64 {
+	return l.p.Get("bias").Float()
+}
+
+// SetBias sets the bias property.
+func (l *LightShadow) SetBias(value float64) *LightShadow {
+	l.p.Set("bias", value)
+	return l
+}
+
+// Radius returns the property of the same name.
+func (l *LightShadow) Radius() float64 {
+	return l.p.Get("radius").Float()
+}
+
+// SetRadius sets the radius property.
+func (l *LightShadow) SetRadius(value float64) *LightShadow {
+	l.p.Set("radius", value)
 	return l
 }

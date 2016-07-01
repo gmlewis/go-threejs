@@ -49,3 +49,24 @@ func (c *Camera) MatrixWorldInverse() *Matrix4 {
 func (c *Camera) ProjectionMatrix() *Matrix4 {
 	return &Matrix4{p: c.p.Get("projectionMatrix")}
 }
+
+// SetNear sets the property of the same name.
+// Note that this function was added to make the SpotLight example work.
+func (c *Camera) SetNear(value float64) *Camera {
+	c.p.Set("near", value)
+	return c
+}
+
+// SetFar sets the property of the same name.
+// Note that this function was added to make the SpotLight example work.
+func (c *Camera) SetFar(value float64) *Camera {
+	c.p.Set("far", value)
+	return c
+}
+
+// SetFOV sets the property of the same name.
+// Note that this function was added to make the SpotLight example work.
+func (c *Camera) SetFOV(value float64) *Camera {
+	c.p.Set("fov", value)
+	return c
+}

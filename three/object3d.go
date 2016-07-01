@@ -289,35 +289,75 @@ func (o *Object3D) Scale() *Vector3 {
 }
 
 // ModelViewMatrix returns the property of the same name.
-func (c *Camera) ModelViewMatrix() *Matrix4 {
-	return &Matrix4{p: c.p.Get("modelViewMatrix")}
+func (o *Object3D) ModelViewMatrix() *Matrix4 {
+	return &Matrix4{p: o.p.Get("modelViewMatrix")}
 }
 
 // NormalMatrix returns the property of the same name.
-func (c *Camera) NormalMatrix() *Matrix3 {
-	return &Matrix3{p: c.p.Get("normalMatrix")}
+func (o *Object3D) NormalMatrix() *Matrix3 {
+	return &Matrix3{p: o.p.Get("normalMatrix")}
 }
 
 /* TODO:
-this.rotationAutoUpdate = true;
-
-this.matrix = new THREE.Matrix4();
-this.matrixWorld = new THREE.Matrix4();
-
 this.matrixAutoUpdate = THREE.Object3D.DefaultMatrixAutoUpdate;
-this.matrixWorldNeedsUpdate = false;
-
-this.layers = new THREE.Layers();
-this.visible = true;
-
-this.castShadow = false;
-this.receiveShadow = false;
-
-this.frustumCulled = true;
-this.renderOrder = 0;
 
 this.userData = {};
 */
+
+// Matrix returns the property of the same name.
+func (o *Object3D) Matrix() *Matrix4 {
+	return &Matrix4{p: o.p.Get("matrix")}
+}
+
+// SetMatrix sets the matrix property.
+func (o *Object3D) SetMatrix(value *Matrix4) *Object3D {
+	o.p.Set("matrix", value.p)
+	return o
+}
+
+// MatrixWorld returns the property of the same name.
+func (o *Object3D) MatrixWorld() *Matrix4 {
+	return &Matrix4{p: o.p.Get("matrixWorld")}
+}
+
+// SetMatrixWorld sets the matrixWorld property.
+func (o *Object3D) SetMatrixWorld(value *Matrix4) *Object3D {
+	o.p.Set("matrixWorld", value.p)
+	return o
+}
+
+// RotationAutoUpdate returns the property of the same name.
+func (o *Object3D) RotationAutoUpdate() bool {
+	return o.p.Get("rotationAutoUpdate").Bool()
+}
+
+// SetRotationAutoUpdate sets the rotationAutoUpdate property.
+func (o *Object3D) SetRotationAutoUpdate(value bool) *Object3D {
+	o.p.Set("rotationAutoUpdate", value)
+	return o
+}
+
+// MatrixWorldNeedsUpdate returns the property of the same name.
+func (o *Object3D) MatrixWorldNeedsUpdate() bool {
+	return o.p.Get("matrixWorldNeedsUpdate").Bool()
+}
+
+// SetMatrixWorldNeedsUpdate sets the matrixWorldNeedsUpdate property.
+func (o *Object3D) SetMatrixWorldNeedsUpdate(value bool) *Object3D {
+	o.p.Set("matrixWorldNeedsUpdate", value)
+	return o
+}
+
+// Layers returns the property of the same name.
+func (o *Object3D) Layers() *Layers {
+	return &Layers{p: o.p.Get("layers")}
+}
+
+// SetLayers sets the layers property.
+func (o *Object3D) SetLayers(value *Layers) *Object3D {
+	o.p.Set("layers", value.p)
+	return o
+}
 
 // Visible returns the property of the same name.
 func (o *Object3D) Visible() bool {
@@ -327,5 +367,49 @@ func (o *Object3D) Visible() bool {
 // SetVisible sets the visible property.
 func (o *Object3D) SetVisible(value bool) *Object3D {
 	o.p.Set("visible", value)
+	return o
+}
+
+// CastShadow returns the property of the same name.
+func (o *Object3D) CastShadow() bool {
+	return o.p.Get("castShadow").Bool()
+}
+
+// SetCastShadow sets the castShadow property.
+func (o *Object3D) SetCastShadow(value bool) *Object3D {
+	o.p.Set("castShadow", value)
+	return o
+}
+
+// ReceiveShadow returns the property of the same name.
+func (o *Object3D) ReceiveShadow() bool {
+	return o.p.Get("receiveShadow").Bool()
+}
+
+// SetReceiveShadow sets the receiveShadow property.
+func (o *Object3D) SetReceiveShadow(value bool) *Object3D {
+	o.p.Set("receiveShadow", value)
+	return o
+}
+
+// FrustumCulled returns the property of the same name.
+func (o *Object3D) FrustumCulled() bool {
+	return o.p.Get("frustumCulled").Bool()
+}
+
+// SetFrustumCulled sets the frustumCulled property.
+func (o *Object3D) SetFrustumCulled(value bool) *Object3D {
+	o.p.Set("frustumCulled", value)
+	return o
+}
+
+// RenderOrder returns the property of the same name.
+func (o *Object3D) RenderOrder() int {
+	return o.p.Get("renderOrder").Int()
+}
+
+// SetRenderOrder sets the renderOrder property.
+func (o *Object3D) SetRenderOrder(value int) *Object3D {
+	o.p.Set("renderOrder", value)
 	return o
 }
