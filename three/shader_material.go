@@ -27,8 +27,8 @@ func (s *ShaderMaterial) New(parameters float64) *ShaderMaterial {
 }
 
 // Copy TODO description.
-func (s *ShaderMaterial) Copy(source float64) *ShaderMaterial {
-	s.p.Call("copy", source)
+func (s *ShaderMaterial) Copy(source *ShaderMaterial) *ShaderMaterial {
+	s.p.Call("copy", source.p)
 	return s
 }
 

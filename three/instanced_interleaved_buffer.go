@@ -27,7 +27,7 @@ func (i *InstancedInterleavedBuffer) New(array, stride, meshPerAttribute float64
 }
 
 // Copy TODO description.
-func (i *InstancedInterleavedBuffer) Copy(source float64) *InstancedInterleavedBuffer {
-	i.p.Call("copy", source)
+func (i *InstancedInterleavedBuffer) Copy(source *InstancedInterleavedBuffer) *InstancedInterleavedBuffer {
+	i.p.Call("copy", source.p)
 	return i
 }

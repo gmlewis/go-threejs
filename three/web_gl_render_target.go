@@ -39,8 +39,8 @@ func (w *WebGLRenderTarget) Clone() *WebGLRenderTarget {
 }
 
 // Copy TODO description.
-func (w *WebGLRenderTarget) Copy(source float64) *WebGLRenderTarget {
-	w.p.Call("copy", source)
+func (w *WebGLRenderTarget) Copy(source *WebGLRenderTarget) *WebGLRenderTarget {
+	w.p.Call("copy", source.p)
 	return w
 }
 

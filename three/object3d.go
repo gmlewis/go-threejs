@@ -231,8 +231,8 @@ func (o *Object3D) Clone(recursive float64) *Object3D {
 }
 
 // Copy TODO description.
-func (o *Object3D) Copy(source, recursive float64) *Object3D {
-	o.p.Call("copy", source, recursive)
+func (o *Object3D) Copy(source *Object3D, recursive bool) *Object3D {
+	o.p.Call("copy", source.p, recursive)
 	return o
 }
 

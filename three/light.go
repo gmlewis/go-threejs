@@ -27,8 +27,8 @@ func (l *Light) New(color, intensity float64) *Light {
 }
 
 // Copy TODO description.
-func (l *Light) Copy(source float64) *Light {
-	l.p.Call("copy", source)
+func (l *Light) Copy(source *Light) *Light {
+	l.p.Call("copy", source.p)
 	return l
 }
 

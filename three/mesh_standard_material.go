@@ -27,7 +27,7 @@ func (m *MeshStandardMaterial) New(parameters float64) *MeshStandardMaterial {
 }
 
 // Copy TODO description.
-func (m *MeshStandardMaterial) Copy(source float64) *MeshStandardMaterial {
-	m.p.Call("copy", source)
+func (m *MeshStandardMaterial) Copy(source *MeshStandardMaterial) *MeshStandardMaterial {
+	m.p.Call("copy", source.p)
 	return m
 }

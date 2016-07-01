@@ -27,8 +27,8 @@ func (l *LightShadow) New(camera float64) *LightShadow {
 }
 
 // Copy TODO description.
-func (l *LightShadow) Copy(source float64) *LightShadow {
-	l.p.Call("copy", source)
+func (l *LightShadow) Copy(source *LightShadow) *LightShadow {
+	l.p.Call("copy", source.p)
 	return l
 }
 

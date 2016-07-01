@@ -56,8 +56,8 @@ func (m *Material) Clone() *Material {
 }
 
 // Copy TODO description.
-func (m *Material) Copy(source float64) *Material {
-	m.p.Call("copy", source)
+func (m *Material) Copy(source *Material) *Material {
+	m.p.Call("copy", source.p)
 	return m
 }
 

@@ -29,8 +29,8 @@ func (o *OrthographicCamera) New(left, right, top, bottom, near, far float64) *O
 }
 
 // Copy TODO description.
-func (o *OrthographicCamera) Copy(source float64) *OrthographicCamera {
-	o.p.Call("copy", source)
+func (o *OrthographicCamera) Copy(source *OrthographicCamera) *OrthographicCamera {
+	o.p.Call("copy", source.p)
 	return o
 }
 

@@ -45,8 +45,8 @@ func (t *Triangle) Clone() *Triangle {
 }
 
 // Copy TODO description.
-func (t *Triangle) Copy(triangle float64) *Triangle {
-	t.p.Call("copy", triangle)
+func (t *Triangle) Copy(triangle *Triangle) *Triangle {
+	t.p.Call("copy", triangle.p)
 	return t
 }
 

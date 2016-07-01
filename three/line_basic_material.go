@@ -37,7 +37,7 @@ func (l *LineBasicMaterial) New(parameters map[string]interface{}) *LineBasicMat
 }
 
 // Copy TODO description.
-func (l *LineBasicMaterial) Copy(source float64) *LineBasicMaterial {
-	l.p.Call("copy", source)
+func (l *LineBasicMaterial) Copy(source *LineBasicMaterial) *LineBasicMaterial {
+	l.p.Call("copy", source.p)
 	return l
 }

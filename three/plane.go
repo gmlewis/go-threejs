@@ -57,8 +57,8 @@ func (p *Plane) Clone() *Plane {
 }
 
 // Copy TODO description.
-func (p *Plane) Copy(plane float64) *Plane {
-	p.p.Call("copy", plane)
+func (p *Plane) Copy(plane *Plane) *Plane {
+	p.p.Call("copy", plane.p)
 	return p
 }
 

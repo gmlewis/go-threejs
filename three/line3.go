@@ -39,8 +39,8 @@ func (l *Line3) Clone() *Line3 {
 }
 
 // Copy TODO description.
-func (l *Line3) Copy(line float64) *Line3 {
-	l.p.Call("copy", line)
+func (l *Line3) Copy(line *Line3) *Line3 {
+	l.p.Call("copy", line.p)
 	return l
 }
 

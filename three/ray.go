@@ -39,8 +39,8 @@ func (r *Ray) Clone() *Ray {
 }
 
 // Copy TODO description.
-func (r *Ray) Copy(ray float64) *Ray {
-	r.p.Call("copy", ray)
+func (r *Ray) Copy(ray *Ray) *Ray {
+	r.p.Call("copy", ray.p)
 	return r
 }
 

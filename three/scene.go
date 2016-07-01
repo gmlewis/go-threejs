@@ -29,8 +29,8 @@ func (s *Scene) New() *Scene {
 }
 
 // Copy TODO description.
-func (s *Scene) Copy(source, recursive float64) *Scene {
-	s.p.Call("copy", source, recursive)
+func (s *Scene) Copy(source *Scene, recursive bool) *Scene {
+	s.p.Call("copy", source.p, recursive)
 	return s
 }
 

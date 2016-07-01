@@ -39,8 +39,8 @@ func (f *Frustum) Clone() *Frustum {
 }
 
 // Copy TODO description.
-func (f *Frustum) Copy(frustum float64) *Frustum {
-	f.p.Call("copy", frustum)
+func (f *Frustum) Copy(frustum *Frustum) *Frustum {
+	f.p.Call("copy", frustum.p)
 	return f
 }
 

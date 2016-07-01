@@ -39,7 +39,7 @@ func (s *SpotLight) Set(power float64) *SpotLight {
 }
 
 // Copy TODO description.
-func (s *SpotLight) Copy(source float64) *SpotLight {
-	s.p.Call("copy", source)
+func (s *SpotLight) Copy(source *SpotLight) *SpotLight {
+	s.p.Call("copy", source.p)
 	return s
 }

@@ -27,7 +27,7 @@ func (i *InstancedBufferAttribute) New(array, itemSize, meshPerAttribute float64
 }
 
 // Copy TODO description.
-func (i *InstancedBufferAttribute) Copy(source float64) *InstancedBufferAttribute {
-	i.p.Call("copy", source)
+func (i *InstancedBufferAttribute) Copy(source *InstancedBufferAttribute) *InstancedBufferAttribute {
+	i.p.Call("copy", source.p)
 	return i
 }

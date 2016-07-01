@@ -49,8 +49,8 @@ func (i *InterleavedBuffer) SetDynamic(value float64) *InterleavedBuffer {
 }
 
 // Copy TODO description.
-func (i *InterleavedBuffer) Copy(source float64) *InterleavedBuffer {
-	i.p.Call("copy", source)
+func (i *InterleavedBuffer) Copy(source *InterleavedBuffer) *InterleavedBuffer {
+	i.p.Call("copy", source.p)
 	return i
 }
 

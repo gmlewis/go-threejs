@@ -179,8 +179,8 @@ func (d *BufferAttribute) SetDynamic(value float64) *BufferAttribute {
 }
 
 // Copy TODO description.
-func (d *BufferAttribute) Copy(source float64) *BufferAttribute {
-	d.p.Call("copy", source)
+func (d *BufferAttribute) Copy(source *BufferAttribute) *BufferAttribute {
+	d.p.Call("copy", source.p)
 	return d
 }
 

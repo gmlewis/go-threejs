@@ -27,8 +27,8 @@ func (c *Camera) New() *Camera {
 }
 
 // Copy TODO description.
-func (c *Camera) Copy(source float64) *Camera {
-	c.p.Call("copy", source)
+func (c *Camera) Copy(source *Camera) *Camera {
+	c.p.Call("copy", source.p)
 	return c
 }
 

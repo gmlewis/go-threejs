@@ -47,8 +47,8 @@ func (l *LOD) GetObjectForDistance(distance float64) *LOD {
 }
 
 // Copy TODO description.
-func (l *LOD) Copy(source float64) *LOD {
-	l.p.Call("copy", source)
+func (l *LOD) Copy(source *LOD) *LOD {
+	l.p.Call("copy", source.p)
 	return l
 }
 

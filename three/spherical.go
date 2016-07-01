@@ -39,8 +39,8 @@ func (s *Spherical) Clone() *Spherical {
 }
 
 // Copy TODO description.
-func (s *Spherical) Copy(other float64) *Spherical {
-	s.p.Call("copy", other)
+func (s *Spherical) Copy(other *Spherical) *Spherical {
+	s.p.Call("copy", other.p)
 	return s
 }
 

@@ -33,7 +33,7 @@ func (i *InstancedBufferGeometry) AddGroup(start, count, instances float64) *Ins
 }
 
 // Copy TODO description.
-func (i *InstancedBufferGeometry) Copy(source float64) *InstancedBufferGeometry {
-	i.p.Call("copy", source)
+func (i *InstancedBufferGeometry) Copy(source *InstancedBufferGeometry) *InstancedBufferGeometry {
+	i.p.Call("copy", source.p)
 	return i
 }

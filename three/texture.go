@@ -39,8 +39,8 @@ func (t *Texture) Clone() *Texture {
 }
 
 // Copy TODO description.
-func (t *Texture) Copy(source float64) *Texture {
-	t.p.Call("copy", source)
+func (t *Texture) Copy(source *Texture) *Texture {
+	t.p.Call("copy", source.p)
 	return t
 }
 

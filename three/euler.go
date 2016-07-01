@@ -83,8 +83,8 @@ func (e *Euler) Clone() *Euler {
 }
 
 // Copy TODO description.
-func (e *Euler) Copy(euler float64) *Euler {
-	e.p.Call("copy", euler)
+func (e *Euler) Copy(euler *Euler) *Euler {
+	e.p.Call("copy", euler.p)
 	return e
 }
 

@@ -27,7 +27,7 @@ func (h *HemisphereLight) New(skyColor, groundColor, intensity float64) *Hemisph
 }
 
 // Copy TODO description.
-func (h *HemisphereLight) Copy(source float64) *HemisphereLight {
-	h.p.Call("copy", source)
+func (h *HemisphereLight) Copy(source *HemisphereLight) *HemisphereLight {
+	h.p.Call("copy", source.p)
 	return h
 }

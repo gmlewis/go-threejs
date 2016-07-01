@@ -39,7 +39,7 @@ func (p *PointLight) Set(power float64) *PointLight {
 }
 
 // Copy TODO description.
-func (p *PointLight) Copy(source float64) *PointLight {
-	p.p.Call("copy", source)
+func (p *PointLight) Copy(source *PointLight) *PointLight {
+	p.p.Call("copy", source.p)
 	return p
 }

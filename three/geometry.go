@@ -165,8 +165,8 @@ func (g *Geometry) Clone() *Geometry {
 }
 
 // Copy TODO description.
-func (g *Geometry) Copy(source float64) *Geometry {
-	g.p.Call("copy", source)
+func (g *Geometry) Copy(source *Geometry) *Geometry {
+	g.p.Call("copy", source.p)
 	return g
 }
 

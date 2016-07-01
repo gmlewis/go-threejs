@@ -29,7 +29,7 @@ func (b *Bone) New(skin float64) *Bone {
 }
 
 // Copy TODO description.
-func (b *Bone) Copy(source float64) *Bone {
-	b.p.Call("copy", source)
+func (b *Bone) Copy(source *Bone) *Bone {
+	b.p.Call("copy", source.p)
 	return b
 }

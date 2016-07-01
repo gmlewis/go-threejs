@@ -27,7 +27,7 @@ func (d *DirectionalLight) New(color, intensity float64) *DirectionalLight {
 }
 
 // Copy TODO description.
-func (d *DirectionalLight) Copy(source float64) *DirectionalLight {
-	d.p.Call("copy", source)
+func (d *DirectionalLight) Copy(source *DirectionalLight) *DirectionalLight {
+	d.p.Call("copy", source.p)
 	return d
 }

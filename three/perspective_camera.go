@@ -41,8 +41,8 @@ func (p *PerspectiveCamera) SetViewOffset(fullWidth, fullHeight, x, y, width, he
 }
 
 // Copy TODO description.
-func (p *PerspectiveCamera) Copy(source float64) *PerspectiveCamera {
-	p.p.Call("copy", source)
+func (p *PerspectiveCamera) Copy(source *PerspectiveCamera) *PerspectiveCamera {
+	p.p.Call("copy", source.p)
 	return p
 }
 

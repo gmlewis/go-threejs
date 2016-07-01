@@ -63,8 +63,8 @@ func (b *Box3) Clone() *Box3 {
 }
 
 // Copy TODO description.
-func (b *Box3) Copy(box float64) *Box3 {
-	b.p.Call("copy", box)
+func (b *Box3) Copy(box *Box3) *Box3 {
+	b.p.Call("copy", box.p)
 	return b
 }
 

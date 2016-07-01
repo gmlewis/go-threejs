@@ -45,8 +45,8 @@ func (s *Sphere) Clone() *Sphere {
 }
 
 // Copy TODO description.
-func (s *Sphere) Copy(sphere float64) *Sphere {
-	s.p.Call("copy", sphere)
+func (s *Sphere) Copy(sphere *Sphere) *Sphere {
+	s.p.Call("copy", sphere.p)
 	return s
 }
 

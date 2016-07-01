@@ -69,8 +69,8 @@ func (c *Color) Clone() *Color {
 }
 
 // Copy TODO description.
-func (c *Color) Copy(color float64) *Color {
-	c.p.Call("copy", color)
+func (c *Color) Copy(color *Color) *Color {
+	c.p.Call("copy", color.p)
 	return c
 }
 
