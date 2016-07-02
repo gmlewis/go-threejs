@@ -20,19 +20,19 @@ var (
 func main() {
 	t := three.New()
 
-	scene = t.Scene().New()
+	scene = t.NewScene()
 
 	window := js.Global.Get("window")
-	camera = t.PerspectiveCamera().New(75, float64(window.Get("innerWidth").Int())/float64(window.Get("innerHeight").Int()), 1, 10000)
+	camera = t.NewPerspectiveCamera(75, float64(window.Get("innerWidth").Int())/float64(window.Get("innerHeight").Int()), 1, 10000)
 	camera.Position().SetZ(1000)
 
-	geometry := t.BoxGeometry().New(200, 200, 200, nil)
-	material := t.MeshBasicMaterial().New(map[string]interface{}{"color": 0xff0000, "wireframe": true})
+	geometry := t.NewBoxGeometry(200, 200, 200, nil)
+	material := t.NewMeshBasicMaterial(map[string]interface{}{"color": 0xff0000, "wireframe": true})
 
-	mesh = t.Mesh().New(geometry, material)
+	mesh = t.NewMesh(geometry, material)
 	scene.Add(mesh)
 
-	renderer = t.WebGLRenderer().New(nil)
+	renderer = t.NewWebGLRenderer(nil)
 	renderer.SetSize(window.Get("innerWidth").Float(), window.Get("innerHeight").Float(), false)
 
 	js.Global.Get("document").Get("body").Call("appendChild", renderer.DOMElement())
