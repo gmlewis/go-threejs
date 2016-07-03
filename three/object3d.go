@@ -31,9 +31,10 @@ func (t *Three) NewObject3D() *Object3D {
 	return object3D(t.ctx.Get("Object3D").New())
 }
 
-// ApplyMatrix TODO description.
-func (o *Object3D) ApplyMatrix(matrix float64) *Object3D {
-	o.p.Call("applyMatrix", matrix)
+// ApplyMatrix updates the position, rotation and scale with the
+// matrix.
+func (o *Object3D) ApplyMatrix(matrix *Matrix4) *Object3D {
+	o.p.Call("applyMatrix", matrix.p)
 	return o
 }
 
@@ -91,15 +92,15 @@ func (o *Object3D) TranslateOnAxis() *Object3D {
 	return o
 }
 
-// TranslateX TODO description.
-func (o *Object3D) TranslateX() *Object3D {
-	o.p.Call("translateX")
+// TranslateX translates object along x axis by distance.
+func (o *Object3D) TranslateX(distance float64) *Object3D {
+	o.p.Call("translateX", distance)
 	return o
 }
 
-// TranslateY TODO description.
-func (o *Object3D) TranslateY() *Object3D {
-	o.p.Call("translateY")
+// TranslateY translates object along y axis by distance.
+func (o *Object3D) TranslateY(distance float64) *Object3D {
+	o.p.Call("translateY", distance)
 	return o
 }
 
@@ -326,7 +327,8 @@ func (o *Object3D) SetMatrix(value *Matrix4) *Object3D {
 	return o
 }
 
-// MatrixWorld returns the property of the same name.
+// MatrixWorld is the global transform of the object. If the Object3d
+// has no parent, then it's identical to the local transform.
 func (o *Object3D) MatrixWorld() *Matrix4 {
 	return matrix4(o.p.Get("matrixWorld"))
 }
