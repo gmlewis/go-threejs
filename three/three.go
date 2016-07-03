@@ -26,6 +26,7 @@ func New() *Three { return &Three{ctx: js.Global.Get("THREE")} }
 // JSObject returns the underlying *js.JavaScript class.
 func (t *Three) JSObject() *js.Object { return t.ctx }
 
+// GL Constants
 const (
 	// GL STATE CONSTANTS
 

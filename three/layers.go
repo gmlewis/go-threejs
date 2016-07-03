@@ -17,13 +17,18 @@ func (l *Layers) JSObject() *js.Object { return l.p }
 // Layers returns a Layers JavaScript class.
 func (t *Three) Layers() *Layers {
 	p := t.ctx.Get("Layers")
+	return layers(p)
+}
+
+// layers returns a wrapped Layers JavaScript class.
+func layers(p *js.Object) *Layers {
 	return &Layers{p: p}
 }
 
 // NewLayers returns a new Layers object.
 func (t *Three) NewLayers() *Layers {
 	p := t.ctx.Get("Layers").New()
-	return &Layers{p: p}
+	return layers(p)
 }
 
 // Set TODO description.

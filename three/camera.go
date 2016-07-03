@@ -28,6 +28,9 @@ func camera(p *js.Object) *Camera {
 }
 
 // NewCamera returns a new Camera object.
+//
+// This constructor sets the following properties to the correct
+// type: matrixWorldInverse and projectionMatrix.
 func (t *Three) NewCamera() *Camera {
 	return camera(t.ctx.Get("Camera").New())
 }
@@ -43,12 +46,13 @@ func (c *Camera) Type() string {
 	return c.p.Get("type").String()
 }
 
-// MatrixWorldInverse returns the property of the same name.
+// MatrixWorldInverse is the inverse of matrixWorld. MatrixWorld
+// contains the Matrix which has the world transform of the Camera.
 func (c *Camera) MatrixWorldInverse() *Matrix4 {
 	return &Matrix4{p: c.p.Get("matrixWorldInverse")}
 }
 
-// ProjectionMatrix returns the property of the same name.
+// ProjectionMatrix is the matrix which contains the projection.
 func (c *Camera) ProjectionMatrix() *Matrix4 {
 	return &Matrix4{p: c.p.Get("projectionMatrix")}
 }

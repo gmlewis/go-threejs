@@ -17,13 +17,18 @@ func (m *Matrix3) JSObject() *js.Object { return m.p }
 // Matrix3 returns a Matrix3 JavaScript class.
 func (t *Three) Matrix3() *Matrix3 {
 	p := t.ctx.Get("Matrix3")
+	return matrix3(p)
+}
+
+// matrix3 returns a wrapped Matrix3 JavaScript class.
+func matrix3(p *js.Object) *Matrix3 {
 	return &Matrix3{p: p}
 }
 
 // NewMatrix3 returns a new Matrix3 object.
 func (t *Three) NewMatrix3() *Matrix3 {
 	p := t.ctx.Get("Matrix3").New()
-	return &Matrix3{p: p}
+	return matrix3(p)
 }
 
 // Set TODO description.

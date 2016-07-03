@@ -24,7 +24,7 @@ func (t *Three) AmbientLight() *AmbientLight {
 
 // ambientLight returns a wrapped AmbientLight JavaScript class.
 func ambientLight(p *js.Object) *AmbientLight {
-	return &AmbientLight{&Light{&Object3D{p: p}}}
+	return &AmbientLight{&Light{&Object3D{p}}}
 }
 
 // NewAmbientLight returns a new AmbientLight object.

@@ -18,14 +18,17 @@ func (o *Object3D) JSObject() *js.Object { return o.p }
 
 // Object3D returns an Object3D JavaScript class.
 func (t *Three) Object3D() *Object3D {
-	p := t.ctx.Get("Object3D")
+	return object3D(t.ctx.Get("Object3D"))
+}
+
+// object3D returns a wrapped Object3D JavaScript class.
+func object3D(p *js.Object) *Object3D {
 	return &Object3D{p: p}
 }
 
 // NewObject3D returns a new Object3D object.
 func (t *Three) NewObject3D() *Object3D {
-	p := t.ctx.Get("Object3D").New()
-	return &Object3D{p: p}
+	return object3D(t.ctx.Get("Object3D").New())
 }
 
 // ApplyMatrix TODO description.
@@ -238,12 +241,19 @@ func (o *Object3D) Copy(source *Object3D, recursive bool) *Object3D {
 	return o
 }
 
-// UUID returns the property of the same name.
+// ID returns a unique identifier for this object instance.
+func (o *Object3D) ID() int {
+	return o.p.Get("id").Int()
+}
+
+// UUID returns the universally unique identifier for this object
+// instance.
 func (o *Object3D) UUID() int {
 	return o.p.Get("uuid").Int()
 }
 
-// Name returns the property of the same name.
+// Name returns the optional name of the object (which does not
+// need to be unique).
 func (o *Object3D) Name() string {
 	return o.p.Get("name").String()
 }
@@ -253,60 +263,61 @@ func (o *Object3D) Type() string {
 	return o.p.Get("type").String()
 }
 
-// Parent returns the property of the same name.
-func (o *Object3D) Parent() *js.Object {
-	return o.p.Get("parent")
+// Parent is the object's parent in the scene graph.
+func (o *Object3D) Parent() *Object3D {
+	return object3D(o.p.Get("parent"))
 }
 
-// Children returns the property of the same name.
-func (o *Object3D) Children() *js.Object {
-	return o.p.Get("children")
+// Children returns a slice of the object's children.
+func (o *Object3D) Children() []*Object3D {
+	var result []*Object3D
+	children := o.p.Get("children").Interface().([]interface{})
+	for i := 0; i < len(children); i++ {
+		result = append(result, object3D(children[i].(*js.Object)))
+	}
+	return result
 }
 
-// Up returns the property of the same name.
+// Up returns the up direction.
+// The default is &Vector(0, 1, 0).
 func (o *Object3D) Up() *Vector3 {
-	return &Vector3{p: o.p.Get("up")}
+	return vector3(o.p.Get("up"))
 }
 
-// Position returns the property of the same name.
+// Position is the object's local position.
 func (o *Object3D) Position() *Vector3 {
-	return &Vector3{p: o.p.Get("position")}
+	return vector3(o.p.Get("position"))
 }
 
-// Rotation returns the property of the same name.
+// Rotation is the object's local rotation (Euler angles), in
+// radians.
 func (o *Object3D) Rotation() *Euler {
-	return &Euler{p: o.p.Get("rotation")}
+	return euler(o.p.Get("rotation"))
 }
 
 // Quaternion returns the property of the same name.
 func (o *Object3D) Quaternion() *Quaternion {
-	return &Quaternion{p: o.p.Get("quaternion")}
+	return quaternion(o.p.Get("quaternion"))
 }
 
-// Scale returns the property of the same name.
+// Scale is the object's local scale.
 func (o *Object3D) Scale() *Vector3 {
-	return &Vector3{p: o.p.Get("scale")}
+	return vector3(o.p.Get("scale"))
 }
 
 // ModelViewMatrix returns the property of the same name.
 func (o *Object3D) ModelViewMatrix() *Matrix4 {
-	return &Matrix4{p: o.p.Get("modelViewMatrix")}
+	return matrix4(o.p.Get("modelViewMatrix"))
 }
 
 // NormalMatrix returns the property of the same name.
 func (o *Object3D) NormalMatrix() *Matrix3 {
-	return &Matrix3{p: o.p.Get("normalMatrix")}
+	return matrix3(o.p.Get("normalMatrix"))
 }
 
-/* TODO:
-this.matrixAutoUpdate = THREE.Object3D.DefaultMatrixAutoUpdate;
-
-this.userData = {};
-*/
-
-// Matrix returns the property of the same name.
+// Matrix is the local transform.
 func (o *Object3D) Matrix() *Matrix4 {
-	return &Matrix4{p: o.p.Get("matrix")}
+	return matrix4(o.p.Get("matrix"))
 }
 
 // SetMatrix sets the matrix property.
@@ -317,7 +328,7 @@ func (o *Object3D) SetMatrix(value *Matrix4) *Object3D {
 
 // MatrixWorld returns the property of the same name.
 func (o *Object3D) MatrixWorld() *Matrix4 {
-	return &Matrix4{p: o.p.Get("matrixWorld")}
+	return matrix4(o.p.Get("matrixWorld"))
 }
 
 // SetMatrixWorld sets the matrixWorld property.
@@ -337,7 +348,10 @@ func (o *Object3D) SetRotationAutoUpdate(value bool) *Object3D {
 	return o
 }
 
-// MatrixWorldNeedsUpdate returns the property of the same name.
+// MatrixWorldNeedsUpdate determines if matrixWorld is recalculated
+// for the frame, in which case this property is reset to false
+// afterward.
+// The default is false.
 func (o *Object3D) MatrixWorldNeedsUpdate() bool {
 	return o.p.Get("matrixWorldNeedsUpdate").Bool()
 }
@@ -350,7 +364,7 @@ func (o *Object3D) SetMatrixWorldNeedsUpdate(value bool) *Object3D {
 
 // Layers returns the property of the same name.
 func (o *Object3D) Layers() *Layers {
-	return &Layers{p: o.p.Get("layers")}
+	return layers(o.p.Get("layers"))
 }
 
 // SetLayers sets the layers property.
@@ -359,7 +373,8 @@ func (o *Object3D) SetLayers(value *Layers) *Object3D {
 	return o
 }
 
-// Visible returns the property of the same name.
+// Visible is the visibility of the object.
+// The default is true.
 func (o *Object3D) Visible() bool {
 	return o.p.Get("visible").Bool()
 }
@@ -370,7 +385,8 @@ func (o *Object3D) SetVisible(value bool) *Object3D {
 	return o
 }
 
-// CastShadow returns the property of the same name.
+// CastShadow determines if the object is rendered to the shadow map.
+// The default is true.
 func (o *Object3D) CastShadow() bool {
 	return o.p.Get("castShadow").Bool()
 }
@@ -381,7 +397,8 @@ func (o *Object3D) SetCastShadow(value bool) *Object3D {
 	return o
 }
 
-// ReceiveShadow returns the property of the same name.
+// ReceiveShadow determines if the material gets bakes in shadow receiving.
+// The default is false.
 func (o *Object3D) ReceiveShadow() bool {
 	return o.p.Get("receiveShadow").Bool()
 }
@@ -392,7 +409,10 @@ func (o *Object3D) SetReceiveShadow(value bool) *Object3D {
 	return o
 }
 
-// FrustumCulled returns the property of the same name.
+// FrustumCulled determines if every frame is checked if the object
+// is in the frustum of the camera. Otherwise the object gets drawn
+// every frame even if it isn't visible.
+// The default is true.
 func (o *Object3D) FrustumCulled() bool {
 	return o.p.Get("frustumCulled").Bool()
 }
@@ -400,6 +420,20 @@ func (o *Object3D) FrustumCulled() bool {
 // SetFrustumCulled sets the frustumCulled property.
 func (o *Object3D) SetFrustumCulled(value bool) *Object3D {
 	o.p.Set("frustumCulled", value)
+	return o
+}
+
+// MatrixAutoUpdate determines if the position, (rotation or
+// quaternion), scale, and matrixWorld matrices are recalculated for
+// every frame.
+// The default is true.
+func (o *Object3D) MatrixAutoUpdate() bool {
+	return o.p.Get("matrixAutoUpdate").Bool()
+}
+
+// SetMatrixAutoUpdate sets the matrixAutoUpdate property.
+func (o *Object3D) SetMatrixAutoUpdate(value bool) *Object3D {
+	o.p.Set("matrixAutoUpdate", value)
 	return o
 }
 
@@ -411,5 +445,17 @@ func (o *Object3D) RenderOrder() int {
 // SetRenderOrder sets the renderOrder property.
 func (o *Object3D) SetRenderOrder(value int) *Object3D {
 	o.p.Set("renderOrder", value)
+	return o
+}
+
+// UserData is an object that can be used to store custom data about
+// the Object3d.
+func (o *Object3D) UserData() *js.Object {
+	return o.p.Get("userData")
+}
+
+// SetUserData sets the userData property.
+func (o *Object3D) SetUserData(value *js.Object) *Object3D {
+	o.p.Set("userData", value)
 	return o
 }

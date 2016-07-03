@@ -17,13 +17,18 @@ func (e *Euler) JSObject() *js.Object { return e.p }
 // Euler returns an Euler JavaScript class.
 func (t *Three) Euler() *Euler {
 	p := t.ctx.Get("Euler")
+	return euler(p)
+}
+
+// euler returns a wrapped Euler JavaScript class.
+func euler(p *js.Object) *Euler {
 	return &Euler{p: p}
 }
 
 // NewEuler returns a new Euler object.
 func (t *Three) NewEuler(x, y, z, order float64) *Euler {
 	p := t.ctx.Get("Euler").New(x, y, z, order)
-	return &Euler{p: p}
+	return euler(p)
 }
 
 // X returns the x-component of the Euler.
