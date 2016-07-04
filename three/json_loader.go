@@ -4,9 +4,7 @@
 
 package three
 
-import (
-	"github.com/gopherjs/gopherjs/js"
-)
+import "github.com/gopherjs/gopherjs/js"
 
 // JSONLoader represents a jsonloader.
 type JSONLoader struct{ p *js.Object }
@@ -21,8 +19,8 @@ func (t *Three) JSONLoader() *JSONLoader {
 }
 
 // NewJSONLoader returns a new JSONLoader object.
-func (t *Three) NewJSONLoader(manager interface{}) *JSONLoader {
-	p := t.ctx.Get("JSONLoader").New(manager)
+func (t *Three) NewJSONLoader() *JSONLoader {
+	p := t.ctx.Get("JSONLoader").New()
 	return &JSONLoader{p: p}
 }
 
@@ -31,9 +29,29 @@ func (j *JSONLoader) StatusDomElement() float64 {
 	return j.p.Get("statusDomElement").Float()
 }
 
+// LoadFunc is a callback function called by Load.
+type LoadFunc func(geometry *Geometry, materials []*Material)
+
 // Load TODO description.
-func (j *JSONLoader) Load(url string, onLoad, onProgress, onError interface{}) *JSONLoader {
-	j.p.Call("load", url, onLoad, onProgress, onError)
+func (j *JSONLoader) Load(url string, onLoad LoadFunc, onProgress, onError interface{}) *JSONLoader {
+	onLoadWrapper := func(geom, mater *js.Object) {
+		g := geometry(geom)
+		var materials []*Material
+		for i := 0; i < mater.Length(); i++ {
+			materials = append(materials, material(mater.Index(i)))
+		}
+		onLoad(g, materials)
+	}
+	switch {
+	case onProgress != nil && onError != nil:
+		// case !reflect.ValueOf(onProgress).IsNil() && !reflect.ValueOf(onError).IsNil():
+		j.p.Call("load", url, onLoadWrapper, onProgress, onError)
+	case onProgress != nil:
+		// case !reflect.ValueOf(onProgress).IsNil():
+		j.p.Call("load", url, onLoadWrapper, onProgress)
+	default:
+		j.p.Call("load", url, onLoadWrapper)
+	}
 	return j
 }
 

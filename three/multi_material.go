@@ -4,9 +4,7 @@
 
 package three
 
-import (
-	"github.com/gopherjs/gopherjs/js"
-)
+import "github.com/gopherjs/gopherjs/js"
 
 // MultiMaterial represents a multimaterial.
 type MultiMaterial struct{ p *js.Object }
@@ -21,8 +19,12 @@ func (t *Three) MultiMaterial() *MultiMaterial {
 }
 
 // NewMultiMaterial returns a new MultiMaterial object.
-func (t *Three) NewMultiMaterial(materials float64) *MultiMaterial {
-	p := t.ctx.Get("MultiMaterial").New(materials)
+func (t *Three) NewMultiMaterial(materials []*Material) *MultiMaterial {
+	var m []*js.Object
+	for i := 0; i < len(materials); i++ {
+		m = append(m, materials[i].JSObject())
+	}
+	p := t.ctx.Get("MultiMaterial").New(m)
 	return &MultiMaterial{p: p}
 }
 

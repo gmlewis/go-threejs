@@ -77,3 +77,9 @@ func (m *Material) Dispose() *Material {
 	m.p.Call("dispose")
 	return m
 }
+
+// SetShading set the shading-component of the Material.
+func (m *Material) SetShading(value int) *Material {
+	m.p.Set("shading", value)
+	return m
+}

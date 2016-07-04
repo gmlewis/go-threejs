@@ -6,8 +6,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/gmlewis/go-threejs/three"
 	"github.com/gopherjs/gopherjs/js"
 )
@@ -39,6 +37,7 @@ var (
 
 func init() {
 	t := three.New()
+
 	// if ( ! Detector.webgl ) Detector.addGetWebGLMessage()
 
 	container = document.Call("getElementById", "container")
@@ -52,7 +51,7 @@ func init() {
 	light.Position().Set(0, 0, 1).Normalize()
 	scene.Add(light)
 
-	loader := t.NewJSONLoader(nil)
+	loader := t.NewJSONLoader()
 
 	loader.Load("http://threejs.org/examples/obj/cubecolors/cubecolors.js", createScene1, nil, nil)
 	loader.Load("http://threejs.org/examples/obj/cubecolors/cube_fvc.js", createScene2, nil, nil)
@@ -72,30 +71,24 @@ func init() {
 	window.Call("addEventListener", "resize", onWindowResize, false)
 }
 
-func createScene1(geometry *js.Object, materials []interface{}) {
-	println("createScene1: geometry:", geometry, "materials:", materials)
-	println(fmt.Sprintf("createScene1: geometry.T=%T, materials.T=%T", geometry, materials))
-	/*
-		materials[0].shading = three.FlatShading
+func createScene1(geometry *three.Geometry, materials []*three.Material) {
+	materials[0].SetShading(three.FlatShading)
 
-		mesh = t.NewMesh(geometry, t.NewMultiMaterial(materials))
-		mesh.Position().SetX(400)
-		mesh.Scale().SetX(250).SetY(250).SetZ(250)
-		scene.Add(mesh)
-	*/
+	t := three.New()
+	mesh = t.NewMesh(geometry, t.NewMultiMaterial(materials))
+	mesh.Position().SetX(400)
+	mesh.Scale().SetX(250).SetY(250).SetZ(250)
+	scene.Add(mesh)
 }
 
-func createScene2(geometry *js.Object, materials []interface{}) {
-	println("createScene2: geometry:", geometry, "materials:", materials)
-	println(fmt.Sprintf("createScene2: geometry.T=%T, materials.T=%T", geometry, materials))
-	/*
-		materials[0].shading = THREE.FlatShading
+func createScene2(geometry *three.Geometry, materials []*three.Material) {
+	materials[0].SetShading(three.FlatShading)
 
-		mesh2 = t.NewMesh(geometry, t.NewMultiMaterial(materials))
-		mesh2.Position().SetX(-400)
-		mesh2.Scale.SetX(250).SetY(250).SetZ(250)
-		scene.Add(mesh2)
-	*/
+	t := three.New()
+	mesh2 = t.NewMesh(geometry, t.NewMultiMaterial(materials))
+	mesh2.Position().SetX(-400)
+	mesh2.Scale().SetX(250).SetY(250).SetZ(250)
+	scene.Add(mesh2)
 }
 
 func main() {
