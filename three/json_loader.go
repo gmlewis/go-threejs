@@ -21,7 +21,7 @@ func (t *Three) JSONLoader() *JSONLoader {
 }
 
 // NewJSONLoader returns a new JSONLoader object.
-func (t *Three) NewJSONLoader(manager float64) *JSONLoader {
+func (t *Three) NewJSONLoader(manager interface{}) *JSONLoader {
 	p := t.ctx.Get("JSONLoader").New(manager)
 	return &JSONLoader{p: p}
 }
@@ -32,7 +32,7 @@ func (j *JSONLoader) StatusDomElement() float64 {
 }
 
 // Load TODO description.
-func (j *JSONLoader) Load(url, onLoad, onProgress, onError float64) *JSONLoader {
+func (j *JSONLoader) Load(url string, onLoad, onProgress, onError interface{}) *JSONLoader {
 	j.p.Call("load", url, onLoad, onProgress, onError)
 	return j
 }
