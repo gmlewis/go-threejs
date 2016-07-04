@@ -21,7 +21,7 @@ func (t *Three) Color() *Color {
 }
 
 // NewColor returns a new Color object.
-func (t *Three) NewColor(color float64) *Color {
+func (t *Three) NewColor(color int) *Color {
 	p := t.ctx.Get("Color").New(color)
 	return &Color{p: p}
 }
@@ -45,14 +45,14 @@ func (c *Color) SetHex(hex float64) *Color {
 }
 
 // SetRGB TODO description.
-func (c *Color) SetRGB(r, g, b float64) *Color {
-	c.p.Call("setRGB", r, g, b)
+func (c *Color) SetRGB(red, green, blue float64) *Color {
+	c.p.Call("setRGB", red, green, blue)
 	return c
 }
 
 // SetHSL TODO description.
-func (c *Color) SetHSL() *Color {
-	c.p.Call("setHSL")
+func (c *Color) SetHSL(hue, saturation, luminance float64) *Color {
+	c.p.Call("setHSL", hue, saturation, luminance)
 	return c
 }
 

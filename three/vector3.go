@@ -43,16 +43,31 @@ func (v *Vector3) SetScalar(scalar float64) *Vector3 {
 	return v
 }
 
+// X gets the x-component of the vector.
+func (v *Vector3) X() float64 {
+	return v.p.Get("x").Float()
+}
+
 // SetX sets the X component of the vector.
 func (v *Vector3) SetX(x float64) *Vector3 {
 	v.p.Call("setX", x)
 	return v
 }
 
+// Y gets the y-component of the vector.
+func (v *Vector3) Y() float64 {
+	return v.p.Get("y").Float()
+}
+
 // SetY sets the Y component of the vector.
 func (v *Vector3) SetY(y float64) *Vector3 {
 	v.p.Call("setY", y)
 	return v
+}
+
+// Z gets the z-component of the vector.
+func (v *Vector3) Z() float64 {
+	return v.p.Get("z").Float()
 }
 
 // SetZ sets the Z component of the vector.

@@ -22,13 +22,16 @@ func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
 	return &MeshNormalMaterial{p: p}
 }
 
-// NewMeshNormalMaterial returns a new MeshNormalMaterial object.
+// MeshNormalMaterialOpts is a map with one or more properties defining
+// the material's appearance:
 //
-// parameters is an object with one or more properties defining the material's appearance:
 //     wireframe -- Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
-func (t *Three) NewMeshNormalMaterial(parameters map[string]interface{}) *MeshNormalMaterial {
+type MeshNormalMaterialOpts map[string]interface{}
+
+// NewMeshNormalMaterial returns a new MeshNormalMaterial object.
+func (t *Three) NewMeshNormalMaterial(parameters MeshNormalMaterialOpts) *MeshNormalMaterial {
 	p := t.ctx.Get("MeshNormalMaterial").New(parameters)
 	return &MeshNormalMaterial{p: p}
 }

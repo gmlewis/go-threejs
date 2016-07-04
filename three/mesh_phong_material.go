@@ -11,7 +11,7 @@ import (
 // MeshPhongMaterial represents a material for shiny surfaces, evaluated per pixel.
 //
 // http://threejs.org/docs/index.html#Reference/Materials/MeshPhongMaterial
-type MeshPhongMaterial struct{ p *js.Object }
+type MeshPhongMaterial struct{ *Material }
 
 // JSObject returns the underlying *js.Object.
 func (m *MeshPhongMaterial) JSObject() *js.Object { return m.p }
@@ -19,12 +19,17 @@ func (m *MeshPhongMaterial) JSObject() *js.Object { return m.p }
 // MeshPhongMaterial returns a MeshPhongMaterial JavaScript class.
 func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 	p := t.ctx.Get("MeshPhongMaterial")
-	return &MeshPhongMaterial{p: p}
+	return meshPhongMaterial(p)
 }
 
-// NewMeshPhongMaterial returns a new MeshPhongMaterial object.
+// meshPhongMaterial returns a wrapped MeshPhongMaterial JavaScript class.
+func meshPhongMaterial(p *js.Object) *MeshPhongMaterial {
+	return &MeshPhongMaterial{material(p)}
+}
+
+// MeshPhongMaterialOpts is a map with one or more properties defining
+// the material's appearance:
 //
-// parameters is an object with one or more of the material's properties defining its appearance:
 //     color — geometry color in hexadecimal. Default is 0xffffff.
 //     map — Set texture map. Default is null
 //     lightMap — Set light map. Default is null.
@@ -45,9 +50,12 @@ func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 //     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
 //     skinning — Define whether the material uses skinning. Default is false.
 //     morphTargets — Define whether the material uses morphTargets. Default is false.
-func (t *Three) NewMeshPhongMaterial(parameters map[string]interface{}) *MeshPhongMaterial {
+type MeshPhongMaterialOpts map[string]interface{}
+
+// NewMeshPhongMaterial returns a new MeshPhongMaterial object.
+func (t *Three) NewMeshPhongMaterial(parameters MeshPhongMaterialOpts) *MeshPhongMaterial {
 	p := t.ctx.Get("MeshPhongMaterial").New(parameters)
-	return &MeshPhongMaterial{p: p}
+	return meshPhongMaterial(p)
 }
 
 // Copy TODO description.

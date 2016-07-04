@@ -9,7 +9,7 @@ import (
 )
 
 // Group represents a group of objects.
-type Group struct{ p *js.Object }
+type Group struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (g *Group) JSObject() *js.Object { return g.p }
@@ -17,11 +17,16 @@ func (g *Group) JSObject() *js.Object { return g.p }
 // Group returns a Group JavaScript class.
 func (t *Three) Group() *Group {
 	p := t.ctx.Get("Group")
-	return &Group{p: p}
+	return group(p)
+}
+
+// group returns a wrapped Group JavaScript class.
+func group(p *js.Object) *Group {
+	return &Group{object3D(p)}
 }
 
 // NewGroup returns a new Group object.
 func (t *Three) NewGroup() *Group {
 	p := t.ctx.Get("Group").New()
-	return &Group{p: p}
+	return group(p)
 }

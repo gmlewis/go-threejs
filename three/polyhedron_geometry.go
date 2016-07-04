@@ -11,7 +11,7 @@ import (
 // PolyhedronGeometry represents a solid with flat faces.
 //
 // http://threejs.org/docs/index.html#Reference/Extras.Geometries/PolyhedronGeometry
-type PolyhedronGeometry struct{ p *js.Object }
+type PolyhedronGeometry struct{ *Geometry }
 
 // JSObject returns the underlying *js.Object.
 func (p *PolyhedronGeometry) JSObject() *js.Object { return p.p }
@@ -19,7 +19,12 @@ func (p *PolyhedronGeometry) JSObject() *js.Object { return p.p }
 // PolyhedronGeometry returns a PolyhedronGeometry JavaScript class.
 func (t *Three) PolyhedronGeometry() *PolyhedronGeometry {
 	p := t.ctx.Get("PolyhedronGeometry")
-	return &PolyhedronGeometry{p: p}
+	return polyhedronGeometry(p)
+}
+
+// polyhedronGeometry returns a wrapped PolyhedronGeometry JavaScript class.
+func polyhedronGeometry(p *js.Object) *PolyhedronGeometry {
+	return &PolyhedronGeometry{&Geometry{p: p}}
 }
 
 // NewPolyhedronGeometry returns a new PolyhedronGeometry object.
@@ -30,5 +35,5 @@ func (t *Three) PolyhedronGeometry() *PolyhedronGeometry {
 //     detail — Integer - How many levels to subdivide the geometry. The more detail, the smoother the shape.
 func (t *Three) NewPolyhedronGeometry(vertices []float64, indices []int, radius float64, detail int) *PolyhedronGeometry {
 	p := t.ctx.Get("PolyhedronGeometry").New(vertices, indices, radius, detail)
-	return &PolyhedronGeometry{p: p}
+	return polyhedronGeometry(p)
 }

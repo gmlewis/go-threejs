@@ -23,7 +23,7 @@ func main() {
 	scene = t.NewScene()
 
 	window := js.Global.Get("window")
-	camera = t.NewPerspectiveCamera(75, float64(window.Get("innerWidth").Int())/float64(window.Get("innerHeight").Int()), 1, 10000)
+	camera = t.NewPerspectiveCamera(75, window.Get("innerWidth").Float()/window.Get("innerHeight").Float(), 1, 10000)
 	camera.Position().SetZ(1000)
 
 	geometry := t.NewBoxGeometry(200, 200, 200, nil)

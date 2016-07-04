@@ -23,13 +23,16 @@ func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
 	return &MeshDepthMaterial{p: p}
 }
 
-// NewMeshDepthMaterial returns a new MeshDepthMaterial object.
+// MeshDepthMaterialOpts is a map with one or more properties defining
+// the material's appearance:
 //
-// parameters is an object with one or more properties defining the material's appearance:
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
 //     wireframe -- Render geometry as wireframe. Default is false (i.e. render as smooth shaded).
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
-func (t *Three) NewMeshDepthMaterial(parameters map[string]interface{}) *MeshDepthMaterial {
+type MeshDepthMaterialOpts map[string]interface{}
+
+// NewMeshDepthMaterial returns a new MeshDepthMaterial object.
+func (t *Three) NewMeshDepthMaterial(parameters MeshDepthMaterialOpts) *MeshDepthMaterial {
 	p := t.ctx.Get("MeshDepthMaterial").New(parameters)
 	return &MeshDepthMaterial{p: p}
 }

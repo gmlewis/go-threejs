@@ -27,19 +27,22 @@ func (t *Three) NewSceneUtils() *SceneUtils {
 }
 
 // CreateMultiMaterialObject TODO description.
-func (s *SceneUtils) CreateMultiMaterialObject(geometry, materials float64) *SceneUtils {
-	s.p.Call("createMultiMaterialObject", geometry, materials)
-	return s
+func (s *SceneUtils) CreateMultiMaterialObject(geometry JSObject, materials []JSObject) *Group {
+	array := []*js.Object{}
+	for i := 0; i < len(materials); i++ {
+		array = append(array, materials[i].JSObject())
+	}
+	return group(s.p.Call("createMultiMaterialObject", geometry.JSObject(), array))
 }
 
 // Detach TODO description.
-func (s *SceneUtils) Detach(child, parent, scene float64) *SceneUtils {
+func (s *SceneUtils) Detach(child, parent, scene JSObject) *SceneUtils {
 	s.p.Call("detach", child, parent, scene)
 	return s
 }
 
 // Attach TODO description.
-func (s *SceneUtils) Attach(child, scene, parent float64) *SceneUtils {
+func (s *SceneUtils) Attach(child, scene, parent JSObject) *SceneUtils {
 	s.p.Call("attach", child, scene, parent)
 	return s
 }

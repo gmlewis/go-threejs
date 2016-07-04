@@ -4,9 +4,7 @@
 
 package three
 
-import (
-	"github.com/gopherjs/gopherjs/js"
-)
+import "github.com/gopherjs/gopherjs/js"
 
 // Geometry is a Javascript base class for geometries.
 // A geometry holds all data necessary to describe a 3D model.
@@ -20,13 +18,18 @@ func (g *Geometry) JSObject() *js.Object { return g.p }
 // Geometry returns a Geometry JavaScript class.
 func (t *Three) Geometry() *Geometry {
 	p := t.ctx.Get("Geometry")
+	return geometry(p)
+}
+
+// geometry returns a wrapped Geometry JavaScript class.
+func geometry(p *js.Object) *Geometry {
 	return &Geometry{p: p}
 }
 
 // NewGeometry returns a new Geometry object.
 func (t *Three) NewGeometry() *Geometry {
 	p := t.ctx.Get("Geometry").New()
-	return &Geometry{p: p}
+	return geometry(p)
 }
 
 // ApplyMatrix TODO description.
@@ -177,4 +180,34 @@ func (g *Geometry) Copy(source *Geometry) *Geometry {
 func (g *Geometry) Dispose() *Geometry {
 	g.p.Call("dispose")
 	return g
+}
+
+// Faces returns a slice of the geometry's faces.
+func (g *Geometry) Faces() []*Face3 {
+	var result []*Face3
+	faces := g.p.Get("faces")
+	for i := 0; i < faces.Length(); i++ {
+		result = append(result, face3(faces.Index(i)))
+	}
+	return result
+}
+
+// Vertex returns a vertex at the given index.
+func (g *Geometry) Vertex(index int) *Vector3 {
+	return vector3(g.p.Get("vertices").Index(index))
+}
+
+// VerticesLength returns a the length of the geometry's vertices array.
+func (g *Geometry) VerticesLength() int {
+	return g.p.Get("vertices").Length()
+}
+
+// Vertices returns a slice of the geometry's vertices.
+func (g *Geometry) Vertices() []*Vector3 {
+	var result []*Vector3
+	vertices := g.p.Get("vertices")
+	for i := 0; i < vertices.Length(); i++ {
+		result = append(result, vector3(vertices.Index(i)))
+	}
+	return result
 }

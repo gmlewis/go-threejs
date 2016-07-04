@@ -20,8 +20,12 @@ func (t *Three) MeshStandardMaterial() *MeshStandardMaterial {
 	return &MeshStandardMaterial{p: p}
 }
 
+// MeshStandardMaterialOpts is a map with one or more properties defining
+// the material's appearance.
+type MeshStandardMaterialOpts map[string]interface{}
+
 // NewMeshStandardMaterial returns a new MeshStandardMaterial object.
-func (t *Three) NewMeshStandardMaterial(parameters float64) *MeshStandardMaterial {
+func (t *Three) NewMeshStandardMaterial(parameters MeshStandardMaterialOpts) *MeshStandardMaterial {
 	p := t.ctx.Get("MeshStandardMaterial").New(parameters)
 	return &MeshStandardMaterial{p: p}
 }

@@ -75,6 +75,12 @@ func (p *PerspectiveCamera) Aspect() float64 {
 	return p.p.Get("aspect").Float()
 }
 
+// SetAspect set the aspect property.
+func (p *PerspectiveCamera) SetAspect(value float64) *PerspectiveCamera {
+	p.p.Set("aspect", value)
+	return p
+}
+
 // Near returns the property of the same name.
 func (p *PerspectiveCamera) Near() float64 {
 	return p.p.Get("near").Float()

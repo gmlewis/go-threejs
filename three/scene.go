@@ -9,7 +9,7 @@ import (
 )
 
 // Scene represents a three.js scene.
-type Scene struct{ p *js.Object }
+type Scene struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (s *Scene) JSObject() *js.Object { return s.p }
@@ -17,7 +17,12 @@ func (s *Scene) JSObject() *js.Object { return s.p }
 // Scene returns a Scene JavaScript class.
 func (t *Three) Scene() *Scene {
 	p := t.ctx.Get("Scene")
-	return &Scene{p: p}
+	return scene(p)
+}
+
+// scene returns a wrapped Scene JavaScript class.
+func scene(p *js.Object) *Scene {
+	return &Scene{object3D(p)}
 }
 
 // NewScene returns a new Scene object.
@@ -25,7 +30,7 @@ func (t *Three) Scene() *Scene {
 // http://threejs.org/docs/index.html#Reference/Scenes/Scene
 func (t *Three) NewScene() *Scene {
 	p := t.ctx.Get("Scene").New()
-	return &Scene{p: p}
+	return scene(p)
 }
 
 // Copy TODO description.

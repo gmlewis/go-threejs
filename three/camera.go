@@ -24,7 +24,7 @@ func (t *Three) Camera() *Camera {
 
 // camera returns a wrapped Camera JavaScript class.
 func camera(p *js.Object) *Camera {
-	return &Camera{&Object3D{p: p}}
+	return &Camera{object3D(p)}
 }
 
 // NewCamera returns a new Camera object.
@@ -57,6 +57,12 @@ func (c *Camera) ProjectionMatrix() *Matrix4 {
 	return &Matrix4{p: c.p.Get("projectionMatrix")}
 }
 
+// UpdateProjectionMatrix updates the projectionMatrix.
+func (c *Camera) UpdateProjectionMatrix() *Camera {
+	c.p.Call("updateProjectionMatrix")
+	return c
+}
+
 // SetNear sets the property of the same name.
 // Note that this function was added to make the SpotLight example work.
 func (c *Camera) SetNear(value float64) *Camera {
@@ -76,4 +82,26 @@ func (c *Camera) SetFar(value float64) *Camera {
 func (c *Camera) SetFOV(value float64) *Camera {
 	c.p.Set("fov", value)
 	return c
+}
+
+// GetWorldDirection returns a vector representing the direction in
+// which the camera is looking, in world space.
+func (c *Camera) GetWorldDirection(vector *Vector3) *Vector3 {
+	if vector != nil {
+		return vector3(c.p.Call("getWorldDirection", vector.p))
+	}
+	return vector3(c.p.Call("getWorldDirection"))
+}
+
+// LookAt makes the camera look at the vector position in the global
+// space as long as the parent of this camera is the scene or at
+// position (0,0,0).
+func (c *Camera) LookAt(vector *Vector3) *Camera {
+	c.p.Call("lookAt", vector.p)
+	return c
+}
+
+// Clone returns a clone of camera.
+func (c *Camera) Clone(cam *Camera) *Camera {
+	return camera(c.p.Call("clone", cam))
 }

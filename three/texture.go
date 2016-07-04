@@ -20,14 +20,98 @@ func (t *Three) Texture() *Texture {
 	return &Texture{p: p}
 }
 
+// TextureOpts representions optional arguments for creating a Texture.
+//
+//     mapping - How the image is applied to the object. An object
+//         type of THREE.UVMapping is the default, where the U,V
+//         coordinates are used to apply the map, and a single
+//         texture is expected. The other types are
+//         THREE.CubeReflectionMapping, for cube maps used as a
+//         reflection map; THREE.CubeRefractionMapping, refraction
+//         mapping; and THREE.SphericalReflectionMapping, a spherical
+//         reflection map projection.
+//
+//     wrapS - The default is THREE.ClampToEdgeWrapping, where the
+//         edge is clamped to the outer edge texels. The other two
+//         choices are THREE.RepeatWrapping and
+//         THREE.MirroredRepeatWrapping.
+//
+//     wrapT - The default is THREE.ClampToEdgeWrapping, where the
+//         edge is clamped to the outer edge texels. The other two
+//         choices are THREE.RepeatWrapping and
+//         THREE.MirroredRepeatWrapping. NOTE: tiling of images in
+//         textures only functions if image dimensions are powers of
+//         two (2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, ...)
+//         in terms of pixels. Individual dimensions need not be
+//         equal, but each must be a power of two. This is a
+//         limitation of WebGL, not Three.js.
+//
+//     magFilter - How the texture is sampled when a texel covers
+//         more than one pixel. The default is THREE.LinearFilter,
+//         which takes the four closest texels and bilinearly
+//         interpolates among them. The other option is
+//         THREE.NearestFilter, which uses the value of the closest
+//         texel.
+//
+//     minFilter - How the texture is sampled when a texel covers
+//         less than one pixel. The default is
+//         THREE.LinearMipMapLinearFilter, which uses mipmapping and
+//         a trilinear filter. Other choices are THREE.NearestFilter,
+//         THREE.NearestMipMapNearestFilter,
+//         THREE.NearestMipMapLinearFilter, THREE.LinearFilter, and
+//         THREE.LinearMipMapNearestFilter. These vary whether the
+//         nearest texel or nearest four texels are retrieved on the
+//         nearest mipmap or nearest two mipmaps. Interpolation
+//         occurs among the samples retrieved.
+//
+//     format - The default is THREE.RGBAFormat for the
+//         texture. Other formats are: THREE.AlphaFormat,
+//         THREE.RGBFormat, THREE.LuminanceFormat, and
+//         THREE.LuminanceAlphaFormat. There are also compressed
+//         texture formats, if the S3TC extension is supported:
+//         THREE.RGB_S3TC_DXT1_Format, THREE.RGBA_S3TC_DXT1_Format,
+//         THREE.RGBA_S3TC_DXT3_Format, and
+//         THREE.RGBA_S3TC_DXT5_Format.
+//
+//     type - The default is THREE.UnsignedByteType. Other valid
+//         types (as WebGL allows) are THREE.ByteType,
+//         THREE.ShortType, THREE.UnsignedShortType, THREE.IntType,
+//         THREE.UnsignedIntType, THREE.FloatType,
+//         THREE.UnsignedShort4444Type, THREE.UnsignedShort5551Type,
+//         and THREE.UnsignedShort565Type.
+//
+//     anisotropy - The number of samples taken along the axis
+//         through the pixel that has the highest density of
+//         texels. By default, this value is 1. A higher value gives
+//         a less blurry result than a basic mipmap, at the cost of
+//         more texture samples being used. Use
+//         renderer.getMaxAnisotropy() to find the maximum valid
+//         anisotropy value for the GPU; this value is usually a
+//         power of 2.
+type TextureOpts struct {
+	mapping    float64
+	wrapS      float64
+	wrapT      float64
+	magFilter  float64
+	minFilter  float64
+	format     float64
+	typ        float64
+	anisotropy float64
+}
+
 // NewTexture returns a new Texture object.
-func (t *Three) NewTexture(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *Texture {
-	p := t.ctx.Get("Texture").New(image, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
+func (t *Three) NewTexture(image *js.Object, opts *TextureOpts) *Texture {
+	p := t.ctx.Get("Texture")
+	if opts != nil {
+		p = p.New(image, opts.mapping, opts.wrapS, opts.wrapT, opts.magFilter, opts.minFilter, opts.format, opts.typ, opts.anisotropy)
+	} else {
+		p = p.New(image)
+	}
 	return &Texture{p: p}
 }
 
 // SetNeedsUpdate sets the needsUpdate-component of the Texture.
-func (t *Texture) SetNeedsUpdate(value float64) *Texture {
+func (t *Texture) SetNeedsUpdate(value bool) *Texture {
 	t.p.Set("needsUpdate", value)
 	return t
 }
