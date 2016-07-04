@@ -38,9 +38,3 @@ func (s *Scene) Copy(source *Scene, recursive bool) *Scene {
 	s.p.Call("copy", source.p, recursive)
 	return s
 }
-
-// Add adds an object to a scene.
-func (s *Scene) Add(obj JSObject) *Scene {
-	s.p.Call("add", obj.JSObject())
-	return s
-}

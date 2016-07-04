@@ -128,32 +128,40 @@ func (o *Object3D) LookAt() *Object3D {
 	return o
 }
 
-// Add TODO description.
-func (o *Object3D) Add(object float64) *Object3D {
-	o.p.Call("add", object)
+// Add adds an object as a child to object o.
+func (o *Object3D) Add(obj interface{}) *Object3D {
+	if v, ok := obj.(JSObject); ok {
+		o.p.Call("add", v.JSObject())
+	} else {
+		o.p.Call("add", obj)
+	}
 	return o
 }
 
-// Remove TODO description.
-func (o *Object3D) Remove(object float64) *Object3D {
-	o.p.Call("remove", object)
+// Remove removes a child object.
+func (o *Object3D) Remove(obj interface{}) *Object3D {
+	if v, ok := obj.(JSObject); ok {
+		o.p.Call("remove", v.JSObject())
+	} else {
+		o.p.Call("remove", obj)
+	}
 	return o
 }
 
 // GetObjectByID TODO description.
-func (o *Object3D) GetObjectByID(id float64) *Object3D {
+func (o *Object3D) GetObjectByID(id int) *Object3D {
 	o.p.Call("getObjectById", id)
 	return o
 }
 
 // GetObjectByName TODO description.
-func (o *Object3D) GetObjectByName(name float64) *Object3D {
+func (o *Object3D) GetObjectByName(name string) *Object3D {
 	o.p.Call("getObjectByName", name)
 	return o
 }
 
 // GetObjectByProperty TODO description.
-func (o *Object3D) GetObjectByProperty(name, value float64) *Object3D {
+func (o *Object3D) GetObjectByProperty(name string, value float64) *Object3D {
 	o.p.Call("getObjectByProperty", name, value)
 	return o
 }
@@ -259,6 +267,12 @@ func (o *Object3D) Name() string {
 	return o.p.Get("name").String()
 }
 
+// SetName sets the name property.
+func (o *Object3D) SetName(value string) *Object3D {
+	o.p.Set("name", value)
+	return o
+}
+
 // Type returns the property of the same name.
 func (o *Object3D) Type() string {
 	return o.p.Get("type").String()
@@ -272,9 +286,9 @@ func (o *Object3D) Parent() *Object3D {
 // Children returns a slice of the object's children.
 func (o *Object3D) Children() []*Object3D {
 	var result []*Object3D
-	children := o.p.Get("children").Interface().([]interface{})
-	for i := 0; i < len(children); i++ {
-		result = append(result, object3D(children[i].(*js.Object)))
+	children := o.p.Get("children")
+	for i := 0; i < children.Length(); i++ {
+		result = append(result, object3D(children.Index(i)))
 	}
 	return result
 }

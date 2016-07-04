@@ -99,7 +99,7 @@ func (g *Geometry) ComputeFaceNormals() *Geometry {
 }
 
 // ComputeVertexNormals TODO description.
-func (g *Geometry) ComputeVertexNormals(areaWeighted float64) *Geometry {
+func (g *Geometry) ComputeVertexNormals(areaWeighted bool) *Geometry {
 	g.p.Call("computeVertexNormals", areaWeighted)
 	return g
 }
@@ -210,4 +210,9 @@ func (g *Geometry) Vertices() []*Vector3 {
 		result = append(result, vector3(vertices.Index(i)))
 	}
 	return result
+}
+
+// BoundingBox returns the bounding box of the Geometry.
+func (g *Geometry) BoundingBox() *Box3 {
+	return box3(g.p.Get("boundingBox"))
 }

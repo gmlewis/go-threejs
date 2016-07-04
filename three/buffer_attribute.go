@@ -26,7 +26,7 @@ func (t *Three) BufferAttribute() *BufferAttribute {
 }
 
 // NewBufferAttribute returns a new BufferAttribute object.
-func (t *Three) NewBufferAttribute(array []float64, itemSize int) *BufferAttribute {
+func (t *Three) NewBufferAttribute(array interface{}, itemSize int) *BufferAttribute {
 	p := t.ctx.Get("BufferAttribute").New(array, itemSize)
 	return &BufferAttribute{p: p}
 }

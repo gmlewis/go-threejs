@@ -206,8 +206,8 @@ func (m *Matrix4) MakeRotationZ(theta float64) *Matrix4 {
 }
 
 // MakeRotationAxis TODO description.
-func (m *Matrix4) MakeRotationAxis(axis, angle float64) *Matrix4 {
-	m.p.Call("makeRotationAxis", axis, angle)
+func (m *Matrix4) MakeRotationAxis(axis *Vector3, angle float64) *Matrix4 {
+	m.p.Call("makeRotationAxis", axis.p, angle)
 	return m
 }
 

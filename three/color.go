@@ -17,13 +17,18 @@ func (c *Color) JSObject() *js.Object { return c.p }
 // Color returns a Color JavaScript class.
 func (t *Three) Color() *Color {
 	p := t.ctx.Get("Color")
+	return colorFromJSObject(p)
+}
+
+// colorFromJSObject returns a wrapped Color JavaScript object.
+func colorFromJSObject(p *js.Object) *Color {
 	return &Color{p: p}
 }
 
 // NewColor returns a new Color object.
 func (t *Three) NewColor(color int) *Color {
 	p := t.ctx.Get("Color").New(color)
-	return &Color{p: p}
+	return colorFromJSObject(p)
 }
 
 // Set TODO description.
@@ -179,4 +184,19 @@ func (c *Color) FromArray(array, offset float64) *Color {
 func (c *Color) ToArray(array, offset float64) *Color {
 	c.p.Call("toArray", array, offset)
 	return c
+}
+
+// R returns the r-component of the Color.
+func (c *Color) R() float64 {
+	return c.p.Get("r").Float()
+}
+
+// G returns the g-component of the Color.
+func (c *Color) G() float64 {
+	return c.p.Get("g").Float()
+}
+
+// B returns the b-component of the Color.
+func (c *Color) B() float64 {
+	return c.p.Get("b").Float()
 }

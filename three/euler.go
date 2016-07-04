@@ -94,8 +94,8 @@ func (e *Euler) Copy(euler *Euler) *Euler {
 }
 
 // SetFromRotationMatrix TODO description.
-func (e *Euler) SetFromRotationMatrix(m, order, update float64) *Euler {
-	e.p.Call("setFromRotationMatrix", m, order, update)
+func (e *Euler) SetFromRotationMatrix(m *Matrix4, order string, update bool) *Euler {
+	e.p.Call("setFromRotationMatrix", m.p, order, update)
 	return e
 }
 

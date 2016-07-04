@@ -17,13 +17,18 @@ func (b *Box3) JSObject() *js.Object { return b.p }
 // Box3 returns a Box3 JavaScript class.
 func (t *Three) Box3() *Box3 {
 	p := t.ctx.Get("Box3")
+	return box3(p)
+}
+
+// box3 returns a wrapped Box3 JavaScript class.
+func box3(p *js.Object) *Box3 {
 	return &Box3{p: p}
 }
 
 // NewBox3 returns a new Box3 object.
 func (t *Three) NewBox3(min, max float64) *Box3 {
 	p := t.ctx.Get("Box3").New(min, max)
-	return &Box3{p: p}
+	return box3(p)
 }
 
 // Set TODO description.
@@ -81,9 +86,11 @@ func (b *Box3) IsEmpty() *Box3 {
 }
 
 // Center TODO description.
-func (b *Box3) Center(optionalTarget float64) *Box3 {
-	b.p.Call("center", optionalTarget)
-	return b
+func (b *Box3) Center(optionalTarget *js.Object) *Vector3 {
+	if optionalTarget != nil {
+		return vector3(b.p.Call("center", optionalTarget))
+	}
+	return vector3(b.p.Call("center"))
 }
 
 // Size TODO description.

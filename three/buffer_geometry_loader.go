@@ -21,14 +21,22 @@ func (t *Three) BufferGeometryLoader() *BufferGeometryLoader {
 }
 
 // NewBufferGeometryLoader returns a new BufferGeometryLoader object.
-func (t *Three) NewBufferGeometryLoader(manager float64) *BufferGeometryLoader {
-	p := t.ctx.Get("BufferGeometryLoader").New(manager)
+func (t *Three) NewBufferGeometryLoader() *BufferGeometryLoader {
+	p := t.ctx.Get("BufferGeometryLoader").New()
 	return &BufferGeometryLoader{p: p}
 }
 
 // Load TODO description.
-func (b *BufferGeometryLoader) Load(url, onLoad, onProgress, onError float64) *BufferGeometryLoader {
-	b.p.Call("load", url, onLoad, onProgress, onError)
+func (b *BufferGeometryLoader) Load(url string, onLoad LoadFunc, onProgress, onError interface{}) *BufferGeometryLoader {
+	onLoadWrapper := onLoadWrapperFunc(onLoad)
+	switch {
+	case onProgress != nil && onError != nil:
+		b.p.Call("load", url, onLoadWrapper, onProgress, onError)
+	case onProgress != nil:
+		b.p.Call("load", url, onLoadWrapper, onProgress)
+	default:
+		b.p.Call("load", url, onLoadWrapper)
+	}
 	return b
 }
 
