@@ -100,8 +100,8 @@ func init() {
 	faces2 := geometry2.Faces()
 	faces3 := geometry3.Faces()
 	verts := geometry.Vertices()
-	for i := 0; i < len(faces); i++ {
 
+	for i := 0; i < len(faces); i++ {
 		f := faces[i]
 		f2 := faces2[i]
 		f3 := faces3[i]
@@ -160,9 +160,7 @@ func init() {
 	renderer = t.NewWebGLRenderer(&three.WebGLRendererOpts{Antialias: three.Bool(true)})
 	renderer.SetClearColor(t.NewColor(0xffffff), 1)
 	renderer.SetPixelRatio(window.Get("devicePixelRatio").Float())
-	println("1: setPixelRatio:", window.Get("devicePixelRatio").Float())
-	renderer.SetSize(window.Get("innerWidth").Float(), window.Get("innerHeight").Float(), false)
-	println("1: setSize:", window.Get("innerWidth").Float(), window.Get("innerHeight").Float())
+	renderer.SetSize(window.Get("innerWidth").Float(), window.Get("innerHeight").Float(), true)
 	container.Call("appendChild", renderer.DOMElement())
 
 	stats = js.Global.Get("Stats").New()
@@ -186,7 +184,7 @@ func onWindowResize() {
 	camera.SetAspect(windowX / windowY)
 	camera.UpdateProjectionMatrix()
 
-	renderer.SetSize(windowX, windowY, false)
+	renderer.SetSize(windowX, windowY, true)
 }
 
 func onDocumentMouseMove(event *js.Object) {
@@ -206,9 +204,6 @@ func render() {
 	camera.Position().SetY(camera.Position().Y() + (-mouseY-camera.Position().Y())*0.05)
 
 	camera.LookAt(scene.Position())
-	// p := camera.Position()
-	// s := scene.Position()
-	// println("position:", p.X(), p.Y(), p.Z(), "lookAt:", s.X(), s.Y(), s.Z())
 
 	renderer.Render(scene, camera, nil)
 }
