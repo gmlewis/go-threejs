@@ -26,9 +26,25 @@ func (t *Three) NewBufferGeometryLoader() *BufferGeometryLoader {
 	return &BufferGeometryLoader{p: p}
 }
 
+// BufferGeometryLoadFunc is a callback function called by Load.
+type BufferGeometryLoadFunc func(geometry *BufferGeometry, materials []*Material)
+
+// onBufferGeometryLoadWrapperFunc wraps the geometry and materials to a typed LoadFunc.
+func onBufferGeometryLoadWrapperFunc(onLoad BufferGeometryLoadFunc) func(geometry, materials *js.Object) {
+	return func(geom, materialArray *js.Object) {
+		var materials []*Material
+		if materialArray != nil && materialArray != js.Undefined {
+			for i := 0; i < materialArray.Length(); i++ {
+				materials = append(materials, material(materialArray.Index(i)))
+			}
+		}
+		onLoad(bufferGeometry(geom), materials)
+	}
+}
+
 // Load TODO description.
-func (b *BufferGeometryLoader) Load(url string, onLoad LoadFunc, onProgress, onError interface{}) *BufferGeometryLoader {
-	onLoadWrapper := onLoadWrapperFunc(onLoad)
+func (b *BufferGeometryLoader) Load(url string, onLoad BufferGeometryLoadFunc, onProgress, onError interface{}) *BufferGeometryLoader {
+	onLoadWrapper := onBufferGeometryLoadWrapperFunc(onLoad)
 	switch {
 	case onProgress != nil && onError != nil:
 		b.p.Call("load", url, onLoadWrapper, onProgress, onError)

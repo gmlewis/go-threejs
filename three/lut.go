@@ -77,8 +77,9 @@ func (l *LUT) SetLegendOn(parameters LUTLegendOpts) *Mesh {
 }
 
 // SetLegendOff TODO description.
-func (l *LUT) SetLegendOff() *js.Object {
-	return l.p.Call("setLegendOff")
+func (l *LUT) SetLegendOff() string {
+	l.p.Call("setLegendOff")
+	return ""
 }
 
 // SetLegendLayout TODO description.

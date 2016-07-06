@@ -29,25 +29,25 @@ func (j *JSONLoader) StatusDomElement() float64 {
 	return j.p.Get("statusDomElement").Float()
 }
 
-// LoadFunc is a callback function called by Load.
-type LoadFunc func(geometry *BufferGeometry, materials []*Material)
+// JSONLoadFunc is a callback function called by Load.
+type JSONLoadFunc func(geometry *Geometry, materials []*Material)
 
-// onLoadWrapper wraps the geometry and materials to a typed LoadFunc.
-func onLoadWrapperFunc(onLoad LoadFunc) func(geometry, materials *js.Object) {
-	return func(geom, mater *js.Object) {
+// onJSONLoadWrapperFunc wraps the geometry and materials to a typed LoadFunc.
+func onJSONLoadWrapperFunc(onLoad JSONLoadFunc) func(geometry, materials *js.Object) {
+	return func(geom, materialArray *js.Object) {
 		var materials []*Material
-		if mater != nil && mater != js.Undefined {
-			for i := 0; i < mater.Length(); i++ {
-				materials = append(materials, material(mater.Index(i)))
+		if materialArray != nil && materialArray != js.Undefined {
+			for i := 0; i < materialArray.Length(); i++ {
+				materials = append(materials, material(materialArray.Index(i)))
 			}
 		}
-		onLoad(bufferGeometry(geom), materials)
+		onLoad(geometry(geom), materials)
 	}
 }
 
 // Load TODO description.
-func (j *JSONLoader) Load(url string, onLoad LoadFunc, onProgress, onError interface{}) *JSONLoader {
-	onLoadWrapper := onLoadWrapperFunc(onLoad)
+func (j *JSONLoader) Load(url string, onLoad JSONLoadFunc, onProgress, onError interface{}) *JSONLoader {
+	onLoadWrapper := onJSONLoadWrapperFunc(onLoad)
 	switch {
 	case onProgress != nil && onError != nil:
 		j.p.Call("load", url, onLoadWrapper, onProgress, onError)

@@ -189,7 +189,7 @@ func loadModel(colorMap string, numberOfColors int, legendLayout string) {
 			scene.Add(labels.Get("title"))
 
 			ticks := labels.Get("ticks")
-			for i := 0; i < ticks.Length(); i++ {
+			for i := 0; i < len(js.Keys(ticks)); i++ {
 				scene.Add(ticks.Index(i))
 				scene.Add(labels.Get("lines").Index(i))
 			}
@@ -205,7 +205,6 @@ func cleanScene() {
 		if child.Name() != "camera" &&
 			child.Name() != "ambientLight" &&
 			child.Name() != "directionalLight" {
-			println("Removing from scene: i=", i, "child=", child.JSObject())
 			scene.Remove(child)
 		}
 	}
@@ -227,64 +226,46 @@ func onKeyDown(e *js.Object) bool {
 	switch e.Get("keyCode").Int() {
 	case 65:
 		cleanScene()
-
 		index := 0
 		if i, ok := indexOf(maps, colorMap); ok && i < len(maps)-1 {
 			index = i + 1
 		}
-
 		colorMap = maps[index]
-
 		loadModel(colorMap, numberOfColors, legendLayout)
 	case 83:
 		cleanScene()
-
 		index := 0
 		if i, ok := indexOf(colorNumbers, strconv.Itoa(numberOfColors)); ok && i < len(colorNumbers)-1 {
 			index = i + 1
 		}
-
 		n, err := strconv.Atoi(colorNumbers[index])
 		if err != nil {
 			println(fmt.Sprintf("error parsing number %v: %v", colorNumbers[index], err))
 			n = 512
 		}
 		numberOfColors = n
-
 		loadModel(colorMap, numberOfColors, legendLayout)
 	case 68:
 		if legendLayout == "" {
 			cleanScene()
-
 			legendLayout = "vertical"
-
 			loadModel(colorMap, numberOfColors, legendLayout)
 		} else {
 			cleanScene()
-
-			legendLayout = lut.SetLegendOff().String()
-
+			legendLayout = lut.SetLegendOff()
 			loadModel(colorMap, numberOfColors, legendLayout)
 		}
 	case 70:
 		cleanScene()
-
 		if legendLayout == "" {
 			return false
 		}
-
 		lut.SetLegendOff()
-
 		if legendLayout == "horizontal" {
-
 			legendLayout = "vertical"
-
 		} else {
-
 			legendLayout = "horizontal"
-
 		}
-
 		loadModel(colorMap, numberOfColors, legendLayout)
 	}
 	return true
