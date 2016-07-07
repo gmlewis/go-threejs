@@ -46,7 +46,7 @@ func init() {
 	mapTexture := t.NewTextureLoader().Load("http://threejs.org/examples/textures/UV_Grid_Sm.jpg", nil, nil, nil)
 	mapTexture.SetWrapS(three.RepeatWrapping).SetWrapT(three.RepeatWrapping).SetAnisotropy(16)
 
-	materials := []*three.Material{
+	materials := []three.JSObject{
 		t.NewMeshLambertMaterial(three.MeshLambertMaterialOpts{"map": mapTexture.JSObject()}),
 		t.NewMeshBasicMaterial(three.MeshBasicMaterialOpts{"color": 0xffffff, "wireframe": true, "transparent": true, "opacity": 0.1}),
 	}
