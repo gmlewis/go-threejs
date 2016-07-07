@@ -1,11 +1,12 @@
 #!/bin/bash -e
-DIRS=`find . -name index.html | xargs dirname`
-for i in ${DIRS}
+FILES=`find . -name index.html`
+for i in ${FILES}
 do
-  echo "Building ${i}..."
-  pushd $i
+  DIR=$(dirname $i)
+  echo "Building ${DIR}..."
+  pushd ${DIR}
   gopherjs build
   echo "Opening ${i}..."
-  google-chrome index.html
+  open index.html
   popd
 done
