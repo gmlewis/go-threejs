@@ -21,15 +21,45 @@ func (t *Three) TextureLoader() *TextureLoader {
 }
 
 // NewTextureLoader returns a new TextureLoader object.
-func (t *Three) NewTextureLoader(manager float64) *TextureLoader {
-	p := t.ctx.Get("TextureLoader").New(manager)
+func (t *Three) NewTextureLoader() *TextureLoader {
+	p := t.ctx.Get("TextureLoader").New()
 	return &TextureLoader{p: p}
 }
 
+// TextureLoadFunc is a callback function called by Load.
+type TextureLoadFunc func(geometry *Geometry, materials []*Material)
+
+// onTextureLoadWrapperFunc wraps the geometry and materials to a typed LoadFunc.
+func onTextureLoadWrapperFunc(onLoad TextureLoadFunc) func(geometry, materials *js.Object) {
+	return func(geom, materialArray *js.Object) {
+		var materials []*Material
+		if materialArray != nil && materialArray != js.Undefined {
+			for i := 0; i < materialArray.Length(); i++ {
+				materials = append(materials, material(materialArray.Index(i)))
+			}
+		}
+		onLoad(geometry(geom), materials)
+	}
+}
+
 // Load TODO description.
-func (t *TextureLoader) Load(url, onLoad, onProgress, onError float64) *TextureLoader {
-	t.p.Call("load", url, onLoad, onProgress, onError)
-	return t
+func (t *TextureLoader) Load(url string, onLoad TextureLoadFunc, onProgress, onError interface{}) *Texture {
+	var onLoadWrapper func(geometry, materials *js.Object)
+	if onLoad != nil {
+		onLoadWrapper = onTextureLoadWrapperFunc(onLoad)
+	}
+	var p *js.Object
+	switch {
+	case onLoad != nil && onProgress != nil && onError != nil:
+		p = t.p.Call("load", url, onLoadWrapper, onProgress, onError)
+	case onLoad != nil && onProgress != nil:
+		p = t.p.Call("load", url, onLoadWrapper, onProgress)
+	case onLoad != nil:
+		p = t.p.Call("load", url, onLoadWrapper)
+	default:
+		p = t.p.Call("load", url)
+	}
+	return texture(p)
 }
 
 // SetCrossOrigin TODO description.

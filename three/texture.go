@@ -17,6 +17,11 @@ func (t *Texture) JSObject() *js.Object { return t.p }
 // Texture returns a Texture JavaScript class.
 func (t *Three) Texture() *Texture {
 	p := t.ctx.Get("Texture")
+	return texture(p)
+}
+
+// texture returns a wrapped Texture JavaScript class.
+func texture(p *js.Object) *Texture {
 	return &Texture{p: p}
 }
 
@@ -89,14 +94,14 @@ func (t *Three) Texture() *Texture {
 //         anisotropy value for the GPU; this value is usually a
 //         power of 2.
 type TextureOpts struct {
-	mapping    float64
-	wrapS      float64
-	wrapT      float64
-	magFilter  float64
-	minFilter  float64
-	format     float64
-	typ        float64
-	anisotropy float64
+	mapping    int
+	wrapS      int
+	wrapT      int
+	magFilter  int
+	minFilter  int
+	format     int
+	typ        int
+	anisotropy int
 }
 
 // NewTexture returns a new Texture object.
@@ -107,7 +112,7 @@ func (t *Three) NewTexture(image *js.Object, opts *TextureOpts) *Texture {
 	} else {
 		p = p.New(image)
 	}
-	return &Texture{p: p}
+	return texture(p)
 }
 
 // SetNeedsUpdate sets the needsUpdate-component of the Texture.
@@ -143,5 +148,23 @@ func (t *Texture) Dispose() *Texture {
 // TransformUv TODO description.
 func (t *Texture) TransformUv(uv float64) *Texture {
 	t.p.Call("transformUv", uv)
+	return t
+}
+
+// SetWrapS sets the wrapS-component of the Texture.
+func (t *Texture) SetWrapS(value int) *Texture {
+	t.p.Set("wrapS", value)
+	return t
+}
+
+// SetWrapT sets the wrapT-component of the Texture.
+func (t *Texture) SetWrapT(value int) *Texture {
+	t.p.Set("wrapT", value)
+	return t
+}
+
+// SetAnisotropy sets the anisotropy-component of the Texture.
+func (t *Texture) SetAnisotropy(value int) *Texture {
+	t.p.Set("anisotropy", value)
 	return t
 }
