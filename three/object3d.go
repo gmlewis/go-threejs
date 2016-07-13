@@ -18,17 +18,19 @@ func (o *Object3D) JSObject() *js.Object { return o.p }
 
 // Object3D returns an Object3D JavaScript class.
 func (t *Three) Object3D() *Object3D {
-	return object3D(t.ctx.Get("Object3D"))
+	p := t.ctx.Get("Object3D")
+	return Object3DFromJSObject(p)
 }
 
-// object3D returns a wrapped Object3D JavaScript class.
-func object3D(p *js.Object) *Object3D {
+// Object3DFromJSObject returns a wrapped Object3D JavaScript class.
+func Object3DFromJSObject(p *js.Object) *Object3D {
 	return &Object3D{p: p}
 }
 
 // NewObject3D returns a new Object3D object.
 func (t *Three) NewObject3D() *Object3D {
-	return object3D(t.ctx.Get("Object3D").New())
+	p := t.ctx.Get("Object3D").New()
+	return Object3DFromJSObject(p)
 }
 
 // ApplyMatrix updates the position, rotation and scale with the
@@ -280,7 +282,7 @@ func (o *Object3D) Type() string {
 
 // Parent is the object's parent in the scene graph.
 func (o *Object3D) Parent() *Object3D {
-	return object3D(o.p.Get("parent"))
+	return Object3DFromJSObject(o.p.Get("parent"))
 }
 
 // Children returns a slice of the object's children.
@@ -288,7 +290,7 @@ func (o *Object3D) Children() []*Object3D {
 	var result []*Object3D
 	children := o.p.Get("children")
 	for i := 0; i < children.Length(); i++ {
-		result = append(result, object3D(children.Index(i)))
+		result = append(result, Object3DFromJSObject(children.Index(i)))
 	}
 	return result
 }
@@ -296,43 +298,43 @@ func (o *Object3D) Children() []*Object3D {
 // Up returns the up direction.
 // The default is &Vector(0, 1, 0).
 func (o *Object3D) Up() *Vector3 {
-	return vector3(o.p.Get("up"))
+	return Vector3FromJSObject(o.p.Get("up"))
 }
 
 // Position is the object's local position.
 func (o *Object3D) Position() *Vector3 {
-	return vector3(o.p.Get("position"))
+	return Vector3FromJSObject(o.p.Get("position"))
 }
 
 // Rotation is the object's local rotation (Euler angles), in
 // radians.
 func (o *Object3D) Rotation() *Euler {
-	return euler(o.p.Get("rotation"))
+	return EulerFromJSObject(o.p.Get("rotation"))
 }
 
 // Quaternion returns the property of the same name.
 func (o *Object3D) Quaternion() *Quaternion {
-	return quaternion(o.p.Get("quaternion"))
+	return QuaternionFromJSObject(o.p.Get("quaternion"))
 }
 
 // Scale is the object's local scale.
 func (o *Object3D) Scale() *Vector3 {
-	return vector3(o.p.Get("scale"))
+	return Vector3FromJSObject(o.p.Get("scale"))
 }
 
 // ModelViewMatrix returns the property of the same name.
 func (o *Object3D) ModelViewMatrix() *Matrix4 {
-	return matrix4(o.p.Get("modelViewMatrix"))
+	return Matrix4FromJSObject(o.p.Get("modelViewMatrix"))
 }
 
 // NormalMatrix returns the property of the same name.
 func (o *Object3D) NormalMatrix() *Matrix3 {
-	return matrix3(o.p.Get("normalMatrix"))
+	return Matrix3FromJSObject(o.p.Get("normalMatrix"))
 }
 
 // Matrix is the local transform.
 func (o *Object3D) Matrix() *Matrix4 {
-	return matrix4(o.p.Get("matrix"))
+	return Matrix4FromJSObject(o.p.Get("matrix"))
 }
 
 // SetMatrix sets the matrix property.
@@ -344,7 +346,7 @@ func (o *Object3D) SetMatrix(value *Matrix4) *Object3D {
 // MatrixWorld is the global transform of the object. If the Object3d
 // has no parent, then it's identical to the local transform.
 func (o *Object3D) MatrixWorld() *Matrix4 {
-	return matrix4(o.p.Get("matrixWorld"))
+	return Matrix4FromJSObject(o.p.Get("matrixWorld"))
 }
 
 // SetMatrixWorld sets the matrixWorld property.
@@ -380,7 +382,7 @@ func (o *Object3D) SetMatrixWorldNeedsUpdate(value bool) *Object3D {
 
 // Layers returns the property of the same name.
 func (o *Object3D) Layers() *Layers {
-	return layers(o.p.Get("layers"))
+	return LayersFromJSObject(o.p.Get("layers"))
 }
 
 // SetLayers sets the layers property.

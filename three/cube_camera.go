@@ -18,17 +18,17 @@ func (c *CubeCamera) JSObject() *js.Object { return c.p }
 
 // CubeCamera returns a CubeCamera JavaScript class.
 func (t *Three) CubeCamera() *CubeCamera {
-	return cubeCamera(t.ctx.Get("CubeCamera"))
+	return CubeCameraFromJSObject(t.ctx.Get("CubeCamera"))
 }
 
-// cubeCamera returns a wrapped CubeCamera JavaScript class.
-func cubeCamera(p *js.Object) *CubeCamera {
+// CubeCameraFromJSObject returns a wrapped CubeCamera JavaScript class.
+func CubeCameraFromJSObject(p *js.Object) *CubeCamera {
 	return &CubeCamera{&Object3D{p: p}}
 }
 
 // NewCubeCamera returns a new CubeCamera object.
 func (t *Three) NewCubeCamera(near, far, cubeResolution float64) *CubeCamera {
-	return cubeCamera(t.ctx.Get("CubeCamera").New(near, far, cubeResolution))
+	return CubeCameraFromJSObject(t.ctx.Get("CubeCamera").New(near, far, cubeResolution))
 }
 
 // Type returns the property of the same name.

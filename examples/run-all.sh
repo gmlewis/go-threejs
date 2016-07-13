@@ -1,4 +1,7 @@
 #!/bin/bash -e
+# Start Python server in the background...
+python -m SimpleHTTPServer &
+# Open up each example in the browser...
 FILES=`find . -name index.html`
 for i in ${FILES}
 do
@@ -7,6 +10,6 @@ do
   pushd ${DIR}
   gopherjs build
   echo "Opening ${i}..."
-  open index.html
+  open http://localhost:8000/${i}
   popd
 done

@@ -7,11 +7,14 @@ package main
 
 import (
 	"math"
+	"math/rand"
 	"time"
 
 	"github.com/gmlewis/go-threejs/three"
 	"github.com/gopherjs/gopherjs/js"
 )
+
+const uvImageURL = "UV_Grid_Sm.jpg"
 
 var (
 	container *js.Object
@@ -43,7 +46,8 @@ func init() {
 	light.Position().Set(0, 1, 0)
 	scene.Add(light)
 
-	mapTexture := t.NewTextureLoader().Load("http://threejs.org/examples/textures/UV_Grid_Sm.jpg", nil, nil, nil)
+	loader := t.NewTextureLoader().SetCrossOrigin("")
+	mapTexture := loader.Load(uvImageURL, nil, nil, nil)
 	mapTexture.SetWrapS(three.RepeatWrapping).SetWrapT(three.RepeatWrapping).SetAnisotropy(16)
 
 	materials := []three.JSObject{
@@ -52,53 +56,63 @@ func init() {
 	}
 
 	// tetrahedron
-
-	points := []*three.Vector3{
-		t.NewVector3(100, 0, 0),
-		t.NewVector3(0, 100, 0),
-		t.NewVector3(0, 0, 100),
-		t.NewVector3(0, 0, 0),
+	{
+		points := []*js.Object{
+			t.NewVector3(100, 0, 0).JSObject(),
+			t.NewVector3(0, 100, 0).JSObject(),
+			t.NewVector3(0, 0, 100).JSObject(),
+			t.NewVector3(0, 0, 0).JSObject(),
+		}
+		geom := three.GeometryFromJSObject(t.JSObject().Get("ConvexGeometry").New(points))
+		object := t.SceneUtils().CreateMultiMaterialObject(geom, materials)
+		object.Position().Set(0, 0, 0)
+		scene.Add(object)
 	}
-
-	object := t.SceneUtils().CreateMultiMaterialObject(t.NewConvexGeometry(points), materials)
-	object.Position().Set(0, 0, 0)
-	scene.Add(object)
 
 	// cube
+	{
+		points := []*js.Object{
+			t.NewVector3(50, 50, 50).JSObject(),
+			t.NewVector3(50, 50, -50).JSObject(),
+			t.NewVector3(-50, 50, -50).JSObject(),
+			t.NewVector3(-50, 50, 50).JSObject(),
+			t.NewVector3(50, -50, 50).JSObject(),
+			t.NewVector3(50, -50, -50).JSObject(),
+			t.NewVector3(-50, -50, -50).JSObject(),
+			t.NewVector3(-50, -50, 50).JSObject(),
+		}
 
-	points = []*three.Vector3{
-		t.NewVector3(50, 50, 50),
-		t.NewVector3(50, 50, -50),
-		t.NewVector3(-50, 50, -50),
-		t.NewVector3(-50, 50, 50),
-		t.NewVector3(50, -50, 50),
-		t.NewVector3(50, -50, -50),
-		t.NewVector3(-50, -50, -50),
-		t.NewVector3(-50, -50, 50),
+		geom := three.GeometryFromJSObject(t.JSObject().Get("ConvexGeometry").New(points))
+		object := t.SceneUtils().CreateMultiMaterialObject(geom, materials)
+		object.Position().Set(-200, 0, -200)
+		scene.Add(object)
 	}
-
-	object = t.SceneUtils().CreateMultiMaterialObject(t.NewConvexGeometry(points), materials)
-	object.Position().Set(-200, 0, -200)
-	scene.Add(object)
 
 	// random convex
+	{
+		points := []*js.Object{}
+		for i := 0; i < 30; i++ {
+			points = append(points, randomPointInSphere(50).JSObject())
+		}
 
-	points = []*three.Vector3{}
-	for i := 0; i < 30; i++ {
-		points = append(points, randomPointInSphere(50))
+		geom := three.GeometryFromJSObject(t.JSObject().Get("ConvexGeometry").New(points))
+		object := t.SceneUtils().CreateMultiMaterialObject(geom, materials)
+		object.Position().Set(-200, 0, 200)
+		scene.Add(object)
 	}
 
-	object = t.SceneUtils().CreateMultiMaterialObject(t.NewConvexGeometry(points), materials)
-	object.Position().Set(-200, 0, 200)
-	scene.Add(object)
+	{
+		object := t.NewAxisHelper(50)
+		object.Position().Set(200, 0, -200)
+		scene.Add(object)
+	}
 
-	object = t.NewAxisHelper(50)
-	object.Position().Set(200, 0, -200)
-	scene.Add(object)
-
-	object = t.NewArrowHelper(t.NewVector3(0, 1, 0), t.NewVector3(0, 0, 0), 50)
-	object.Position().Set(200, 0, 400)
-	scene.Add(object)
+	{
+		opts := &three.NewArrowHelperOpts{Length: three.Float64(50)}
+		object := t.NewArrowHelper(t.NewVector3(0, 1, 0), t.NewVector3(0, 0, 0), opts)
+		object.Position().Set(200, 0, 400)
+		scene.Add(object)
+	}
 
 	renderer = t.NewWebGLRenderer(&three.WebGLRendererOpts{Antialias: three.Bool(true)})
 	renderer.SetPixelRatio(window.Get("devicePixelRatio").Float())
@@ -131,9 +145,9 @@ func onWindowResize() {
 func randomPointInSphere(radius float64) *three.Vector3 {
 	t := three.New()
 	return t.NewVector3(
-		(math.Random()-0.5)*2*radius,
-		(math.Random()-0.5)*2*radius,
-		(math.Random()-0.5)*2*radius,
+		(rand.Float64()-0.5)*2*radius,
+		(rand.Float64()-0.5)*2*radius,
+		(rand.Float64()-0.5)*2*radius,
 	)
 }
 
@@ -145,7 +159,8 @@ func animate() {
 }
 
 func render() {
-	timer := float64(time.Now().Nanosecond()) * 1e5
+	now := time.Now().UnixNano()
+	timer := float64(now) / 1e10
 
 	camera.Position().SetX(math.Cos(timer) * 800)
 	camera.Position().SetY(math.Sin(timer) * 800)

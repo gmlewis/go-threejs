@@ -38,10 +38,10 @@ func onJSONLoadWrapperFunc(onLoad JSONLoadFunc) func(geometry, materials *js.Obj
 		var materials []*Material
 		if materialArray != nil && materialArray != js.Undefined {
 			for i := 0; i < materialArray.Length(); i++ {
-				materials = append(materials, material(materialArray.Index(i)))
+				materials = append(materials, MaterialFromJSObject(materialArray.Index(i)))
 			}
 		}
-		onLoad(geometry(geom), materials)
+		onLoad(GeometryFromJSObject(geom), materials)
 	}
 }
 

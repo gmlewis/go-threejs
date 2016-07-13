@@ -17,11 +17,11 @@ func (t *Texture) JSObject() *js.Object { return t.p }
 // Texture returns a Texture JavaScript class.
 func (t *Three) Texture() *Texture {
 	p := t.ctx.Get("Texture")
-	return texture(p)
+	return TextureFromJSObject(p)
 }
 
-// texture returns a wrapped Texture JavaScript class.
-func texture(p *js.Object) *Texture {
+// TextureFromJSObject returns a wrapped Texture JavaScript class.
+func TextureFromJSObject(p *js.Object) *Texture {
 	return &Texture{p: p}
 }
 
@@ -112,7 +112,7 @@ func (t *Three) NewTexture(image *js.Object, opts *TextureOpts) *Texture {
 	} else {
 		p = p.New(image)
 	}
-	return texture(p)
+	return TextureFromJSObject(p)
 }
 
 // SetNeedsUpdate sets the needsUpdate-component of the Texture.

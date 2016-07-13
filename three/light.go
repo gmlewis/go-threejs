@@ -18,17 +18,17 @@ func (l *Light) JSObject() *js.Object { return l.p }
 
 // Light returns a Light JavaScript class.
 func (t *Three) Light() *Light {
-	return light(t.ctx.Get("Light"))
+	return LightFromJSObject(t.ctx.Get("Light"))
 }
 
-// light returns a wrapped Light JavaScript class.
-func light(p *js.Object) *Light {
+// LightFromJSObject returns a wrapped Light JavaScript class.
+func LightFromJSObject(p *js.Object) *Light {
 	return &Light{&Object3D{p: p}}
 }
 
 // NewLight returns a new Light object.
 func (t *Three) NewLight(color, intensity float64) *Light {
-	return light(t.ctx.Get("Light").New(color, intensity))
+	return LightFromJSObject(t.ctx.Get("Light").New(color, intensity))
 }
 
 // Copy TODO description.

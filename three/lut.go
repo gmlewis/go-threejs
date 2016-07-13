@@ -59,7 +59,7 @@ func (l *LUT) GetColor(alpha float64) *Color {
 	if p == nil || p == js.Undefined {
 		return nil
 	}
-	return colorFromJSObject(p)
+	return ColorFromJSObject(p)
 }
 
 // AddColorMap TODO description.
@@ -73,7 +73,7 @@ type LUTLegendOpts map[string]interface{}
 
 // SetLegendOn TODO description.
 func (l *LUT) SetLegendOn(parameters LUTLegendOpts) *Mesh {
-	return mesh(l.p.Call("setLegendOn", parameters))
+	return MeshFromJSObject(l.p.Call("setLegendOn", parameters))
 }
 
 // SetLegendOff TODO description.

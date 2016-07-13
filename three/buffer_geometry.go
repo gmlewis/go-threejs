@@ -28,18 +28,18 @@ func (b *BufferGeometry) JSObject() *js.Object { return b.p }
 // BufferGeometry returns a BufferGeometry JavaScript class.
 func (t *Three) BufferGeometry() *BufferGeometry {
 	p := t.ctx.Get("BufferGeometry")
-	return bufferGeometry(p)
+	return BufferGeometryFromJSObject(p)
 }
 
-// bufferGeometry returns a wrapped Geometry JavaScript class.
-func bufferGeometry(p *js.Object) *BufferGeometry {
+// BufferGeometryFromJSObject returns a wrapped Geometry JavaScript class.
+func BufferGeometryFromJSObject(p *js.Object) *BufferGeometry {
 	return &BufferGeometry{p: p}
 }
 
 // NewBufferGeometry returns a new BufferGeometry object.
 func (t *Three) NewBufferGeometry() *BufferGeometry {
 	p := t.ctx.Get("BufferGeometry").New()
-	return bufferGeometry(p)
+	return BufferGeometryFromJSObject(p)
 }
 
 // GetIndex TODO description.
@@ -265,7 +265,7 @@ func (b *BufferGeometry) Groups() *js.Object {
 
 // BoundingBox returns the property of the same name.
 func (b *BufferGeometry) BoundingBox() *Box3 {
-	return box3(b.p.Get("boundingBox"))
+	return Box3FromJSObject(b.p.Get("boundingBox"))
 }
 
 // BoundingSphere returns the property of the same name.

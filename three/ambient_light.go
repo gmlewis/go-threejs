@@ -19,15 +19,15 @@ func (a *AmbientLight) JSObject() *js.Object { return a.p }
 
 // AmbientLight returns an AmbientLight JavaScript class.
 func (t *Three) AmbientLight() *AmbientLight {
-	return ambientLight(t.ctx.Get("AmbientLight"))
+	return AmbientLightFromJSObject(t.ctx.Get("AmbientLight"))
 }
 
-// ambientLight returns a wrapped AmbientLight JavaScript class.
-func ambientLight(p *js.Object) *AmbientLight {
+// AmbientLightFromJSObject returns a wrapped AmbientLight JavaScript class.
+func AmbientLightFromJSObject(p *js.Object) *AmbientLight {
 	return &AmbientLight{&Light{&Object3D{p}}}
 }
 
 // NewAmbientLight returns a new AmbientLight object.
 func (t *Three) NewAmbientLight(color int, intensity float64) *AmbientLight {
-	return ambientLight(t.ctx.Get("AmbientLight").New(color, intensity))
+	return AmbientLightFromJSObject(t.ctx.Get("AmbientLight").New(color, intensity))
 }

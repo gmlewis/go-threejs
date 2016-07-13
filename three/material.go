@@ -17,18 +17,18 @@ func (m *Material) JSObject() *js.Object { return m.p }
 // Material returns a Material JavaScript class.
 func (t *Three) Material() *Material {
 	p := t.ctx.Get("Material")
-	return material(p)
+	return MaterialFromJSObject(p)
 }
 
-// material returns a wrapped Material JavaScript class.
-func material(p *js.Object) *Material {
+// MaterialFromJSObject returns a wrapped Material JavaScript class.
+func MaterialFromJSObject(p *js.Object) *Material {
 	return &Material{p: p}
 }
 
 // NewMaterial returns a new Material object.
 func (t *Three) NewMaterial() *Material {
 	p := t.ctx.Get("Material").New()
-	return material(p)
+	return MaterialFromJSObject(p)
 }
 
 // NeedsUpdate returns the needsUpdate-component of the Material.

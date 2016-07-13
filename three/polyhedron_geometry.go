@@ -19,11 +19,11 @@ func (p *PolyhedronGeometry) JSObject() *js.Object { return p.p }
 // PolyhedronGeometry returns a PolyhedronGeometry JavaScript class.
 func (t *Three) PolyhedronGeometry() *PolyhedronGeometry {
 	p := t.ctx.Get("PolyhedronGeometry")
-	return polyhedronGeometry(p)
+	return PolyhedronGeometryFromJSObject(p)
 }
 
-// polyhedronGeometry returns a wrapped PolyhedronGeometry JavaScript class.
-func polyhedronGeometry(p *js.Object) *PolyhedronGeometry {
+// PolyhedronGeometryFromJSObject returns a wrapped PolyhedronGeometry JavaScript class.
+func PolyhedronGeometryFromJSObject(p *js.Object) *PolyhedronGeometry {
 	return &PolyhedronGeometry{&Geometry{p: p}}
 }
 
@@ -35,5 +35,5 @@ func polyhedronGeometry(p *js.Object) *PolyhedronGeometry {
 //     detail — Integer - How many levels to subdivide the geometry. The more detail, the smoother the shape.
 func (t *Three) NewPolyhedronGeometry(vertices []float64, indices []int, radius float64, detail int) *PolyhedronGeometry {
 	p := t.ctx.Get("PolyhedronGeometry").New(vertices, indices, radius, detail)
-	return polyhedronGeometry(p)
+	return PolyhedronGeometryFromJSObject(p)
 }

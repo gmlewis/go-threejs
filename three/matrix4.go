@@ -17,18 +17,18 @@ func (m *Matrix4) JSObject() *js.Object { return m.p }
 // Matrix4 returns a Matrix4 JavaScript class.
 func (t *Three) Matrix4() *Matrix4 {
 	p := t.ctx.Get("Matrix4")
-	return matrix4(p)
+	return Matrix4FromJSObject(p)
 }
 
-// matrix4 returns a wrapped Matrix4 JavaScript class.
-func matrix4(p *js.Object) *Matrix4 {
+// Matrix4FromJSObject returns a wrapped Matrix4 JavaScript class.
+func Matrix4FromJSObject(p *js.Object) *Matrix4 {
 	return &Matrix4{p: p}
 }
 
 // NewMatrix4 returns a new Matrix4 object.
 func (t *Three) NewMatrix4() *Matrix4 {
 	p := t.ctx.Get("Matrix4").New()
-	return matrix4(p)
+	return Matrix4FromJSObject(p)
 }
 
 // Set TODO description.

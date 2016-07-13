@@ -274,14 +274,14 @@ func (m *MOUSE) Value(target float64) *MOUSE {
 	return m
 }
 
-// Bool is a helper routine that allocates a new bool value
-// to store v and returns a pointer to it.
+// Bool is a helper routine that returns a *bool.
 func Bool(v bool) *bool { return &v }
 
-// Int is a helper routine that allocates a new int value
-// to store v and returns a pointer to it.
+// Int is a helper routine that returns a *int.
 func Int(v int) *int { return &v }
 
-// String is a helper routine that allocates a new string value
-// to store v and returns a pointer to it.
+// String is a helper routine that returns a *string.
 func String(v string) *string { return &v }
+
+// Float64 is a helper routine that returns a *float64.
+func Float64(v float64) *float64 { return &v }

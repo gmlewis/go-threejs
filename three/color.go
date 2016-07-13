@@ -17,18 +17,18 @@ func (c *Color) JSObject() *js.Object { return c.p }
 // Color returns a Color JavaScript class.
 func (t *Three) Color() *Color {
 	p := t.ctx.Get("Color")
-	return colorFromJSObject(p)
+	return ColorFromJSObject(p)
 }
 
-// colorFromJSObject returns a wrapped Color JavaScript object.
-func colorFromJSObject(p *js.Object) *Color {
+// ColorFromJSObject returns a wrapped Color JavaScript object.
+func ColorFromJSObject(p *js.Object) *Color {
 	return &Color{p: p}
 }
 
 // NewColor returns a new Color object.
 func (t *Three) NewColor(color int) *Color {
 	p := t.ctx.Get("Color").New(color)
-	return colorFromJSObject(p)
+	return ColorFromJSObject(p)
 }
 
 // Set TODO description.

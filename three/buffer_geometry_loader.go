@@ -35,10 +35,10 @@ func onBufferGeometryLoadWrapperFunc(onLoad BufferGeometryLoadFunc) func(geometr
 		var materials []*Material
 		if materialArray != nil && materialArray != js.Undefined {
 			for i := 0; i < materialArray.Length(); i++ {
-				materials = append(materials, material(materialArray.Index(i)))
+				materials = append(materials, MaterialFromJSObject(materialArray.Index(i)))
 			}
 		}
-		onLoad(bufferGeometry(geom), materials)
+		onLoad(BufferGeometryFromJSObject(geom), materials)
 	}
 }
 

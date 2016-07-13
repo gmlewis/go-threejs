@@ -20,8 +20,19 @@ func (t *Three) BoxBufferGeometry() *BoxBufferGeometry {
 	return &BoxBufferGeometry{p: p}
 }
 
+// NewBoxBufferGeometryOpts represents optional arguments that can be
+// passed to NewBoxBufferGeometry.
+type NewBoxBufferGeometryOpts struct {
+	widthSegments, heightSegments, depthSegments int // all default to 1
+}
+
 // NewBoxBufferGeometry returns a new BoxBufferGeometry object.
-func (t *Three) NewBoxBufferGeometry(width, height, depth, widthSegments, heightSegments, depthSegments float64) *BoxBufferGeometry {
-	p := t.ctx.Get("BoxBufferGeometry").New(width, height, depth, widthSegments, heightSegments, depthSegments)
+func (t *Three) NewBoxBufferGeometry(width, height, depth int, opts *NewBoxBufferGeometryOpts) *BoxBufferGeometry {
+	var p *js.Object
+	if opts != nil {
+		p = t.ctx.Get("BoxBufferGeometry").New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
+	} else {
+		p = t.ctx.Get("BoxBufferGeometry").New(width, height, depth)
+	}
 	return &BoxBufferGeometry{p: p}
 }

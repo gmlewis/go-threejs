@@ -19,11 +19,11 @@ func (s *SkinnedMesh) JSObject() *js.Object { return s.p }
 
 // SkinnedMesh returns a SkinnedMesh JavaScript class.
 func (t *Three) SkinnedMesh() *SkinnedMesh {
-	return skinnedMesh(t.ctx.Get("SkinnedMesh"))
+	return SkinnedMeshFromJSObject(t.ctx.Get("SkinnedMesh"))
 }
 
-// skinnedMesh returns a wrapped SkinnedMesh JavaScript class.
-func skinnedMesh(p *js.Object) *SkinnedMesh {
+// SkinnedMeshFromJSObject returns a wrapped SkinnedMesh JavaScript class.
+func SkinnedMeshFromJSObject(p *js.Object) *SkinnedMesh {
 	return &SkinnedMesh{&Mesh{&Object3D{p: p}}}
 }
 
@@ -33,7 +33,7 @@ func skinnedMesh(p *js.Object) *SkinnedMesh {
 //     material — An instance of Material (optional).
 //     useVertexTexture -- Defines whether a vertex texture can be used (optional).
 func (t *Three) NewSkinnedMesh(geometry, material *js.Object, useVertexTexture bool) *SkinnedMesh {
-	return skinnedMesh(t.ctx.Get("SkinnedMesh").New(geometry, material, useVertexTexture))
+	return SkinnedMeshFromJSObject(t.ctx.Get("SkinnedMesh").New(geometry, material, useVertexTexture))
 }
 
 // Bind TODO description.

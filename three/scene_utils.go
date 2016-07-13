@@ -32,7 +32,7 @@ func (s *SceneUtils) CreateMultiMaterialObject(geometry JSObject, materials []JS
 	for i := 0; i < len(materials); i++ {
 		array = append(array, materials[i].JSObject())
 	}
-	return group(s.p.Call("createMultiMaterialObject", geometry.JSObject(), array))
+	return GroupFromJSObject(s.p.Call("createMultiMaterialObject", geometry.JSObject(), array))
 }
 
 // Detach TODO description.

@@ -19,18 +19,18 @@ func (f *Face3) JSObject() *js.Object { return f.p }
 // Face3 returns a Face3 JavaScript class.
 func (t *Three) Face3() *Face3 {
 	p := t.ctx.Get("Face3")
-	return face3(p)
+	return Face3FromJSObject(p)
 }
 
-// face3 returns a wrapped Face3 JavaScript class.
-func face3(p *js.Object) *Face3 {
+// Face3FromJSObject returns a wrapped Face3 JavaScript class.
+func Face3FromJSObject(p *js.Object) *Face3 {
 	return &Face3{p: p}
 }
 
 // NewFace3 returns a new Face3 object.
 func (t *Three) NewFace3(a, b, c float64, normal *Vector3, color *Color, materialIndex int) *Face3 {
 	p := t.ctx.Get("Face3").New(a, b, c, normal, color, materialIndex)
-	return face3(p)
+	return Face3FromJSObject(p)
 }
 
 // Clone TODO description.

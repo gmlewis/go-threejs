@@ -17,16 +17,16 @@ func (g *Group) JSObject() *js.Object { return g.p }
 // Group returns a Group JavaScript class.
 func (t *Three) Group() *Group {
 	p := t.ctx.Get("Group")
-	return group(p)
+	return GroupFromJSObject(p)
 }
 
-// group returns a wrapped Group JavaScript class.
-func group(p *js.Object) *Group {
-	return &Group{object3D(p)}
+// GroupFromJSObject returns a wrapped Group JavaScript class.
+func GroupFromJSObject(p *js.Object) *Group {
+	return &Group{Object3DFromJSObject(p)}
 }
 
 // NewGroup returns a new Group object.
 func (t *Three) NewGroup() *Group {
 	p := t.ctx.Get("Group").New()
-	return group(p)
+	return GroupFromJSObject(p)
 }

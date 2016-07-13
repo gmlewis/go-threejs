@@ -19,12 +19,12 @@ func (m *MeshPhongMaterial) JSObject() *js.Object { return m.p }
 // MeshPhongMaterial returns a MeshPhongMaterial JavaScript class.
 func (t *Three) MeshPhongMaterial() *MeshPhongMaterial {
 	p := t.ctx.Get("MeshPhongMaterial")
-	return meshPhongMaterial(p)
+	return MeshPhongMaterialFromJSObject(p)
 }
 
-// meshPhongMaterial returns a wrapped MeshPhongMaterial JavaScript class.
-func meshPhongMaterial(p *js.Object) *MeshPhongMaterial {
-	return &MeshPhongMaterial{material(p)}
+// MeshPhongMaterialFromJSObject returns a wrapped MeshPhongMaterial JavaScript class.
+func MeshPhongMaterialFromJSObject(p *js.Object) *MeshPhongMaterial {
+	return &MeshPhongMaterial{MaterialFromJSObject(p)}
 }
 
 // MeshPhongMaterialOpts is a map with one or more properties defining
@@ -55,7 +55,7 @@ type MeshPhongMaterialOpts map[string]interface{}
 // NewMeshPhongMaterial returns a new MeshPhongMaterial object.
 func (t *Three) NewMeshPhongMaterial(parameters MeshPhongMaterialOpts) *MeshPhongMaterial {
 	p := t.ctx.Get("MeshPhongMaterial").New(parameters)
-	return meshPhongMaterial(p)
+	return MeshPhongMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

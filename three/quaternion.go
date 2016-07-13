@@ -17,18 +17,18 @@ func (q *Quaternion) JSObject() *js.Object { return q.p }
 // Quaternion returns a Quaternion JavaScript class.
 func (t *Three) Quaternion() *Quaternion {
 	p := t.ctx.Get("Quaternion")
-	return quaternion(p)
+	return QuaternionFromJSObject(p)
 }
 
-// quaternion returns a wrapped Quaternion JavaScript class.
-func quaternion(p *js.Object) *Quaternion {
+// QuaternionFromJSObject returns a wrapped Quaternion JavaScript class.
+func QuaternionFromJSObject(p *js.Object) *Quaternion {
 	return &Quaternion{p: p}
 }
 
 // NewQuaternion returns a new Quaternion object.
 func (t *Three) NewQuaternion(x, y, z, w float64) *Quaternion {
 	p := t.ctx.Get("Quaternion").New(x, y, z, w)
-	return quaternion(p)
+	return QuaternionFromJSObject(p)
 }
 
 // X returns the x-component of the Quaternion.

@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Euler represents an euler.
+// Euler represents an Euler (x,y,z) angle.
 type Euler struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -17,18 +17,18 @@ func (e *Euler) JSObject() *js.Object { return e.p }
 // Euler returns an Euler JavaScript class.
 func (t *Three) Euler() *Euler {
 	p := t.ctx.Get("Euler")
-	return euler(p)
+	return EulerFromJSObject(p)
 }
 
-// euler returns a wrapped Euler JavaScript class.
-func euler(p *js.Object) *Euler {
+// EulerFromJSObject returns a wrapped Euler JavaScript class.
+func EulerFromJSObject(p *js.Object) *Euler {
 	return &Euler{p: p}
 }
 
 // NewEuler returns a new Euler object.
 func (t *Three) NewEuler(x, y, z, order float64) *Euler {
 	p := t.ctx.Get("Euler").New(x, y, z, order)
-	return euler(p)
+	return EulerFromJSObject(p)
 }
 
 // X returns the x-component of the Euler.

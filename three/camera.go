@@ -19,12 +19,13 @@ func (c *Camera) JSObject() *js.Object { return c.p }
 
 // Camera returns a Camera JavaScript class.
 func (t *Three) Camera() *Camera {
-	return camera(t.ctx.Get("Camera"))
+	p := t.ctx.Get("Camera")
+	return CameraFromJSObject(p)
 }
 
-// camera returns a wrapped Camera JavaScript class.
-func camera(p *js.Object) *Camera {
-	return &Camera{object3D(p)}
+// CameraFromJSObject returns a wrapped Camera JavaScript class.
+func CameraFromJSObject(p *js.Object) *Camera {
+	return &Camera{Object3DFromJSObject(p)}
 }
 
 // NewCamera returns a new Camera object.
@@ -32,7 +33,8 @@ func camera(p *js.Object) *Camera {
 // This constructor sets the following properties to the correct
 // type: matrixWorldInverse and projectionMatrix.
 func (t *Three) NewCamera() *Camera {
-	return camera(t.ctx.Get("Camera").New())
+	p := t.ctx.Get("Camera").New()
+	return CameraFromJSObject(p)
 }
 
 // Copy TODO description.
@@ -88,9 +90,9 @@ func (c *Camera) SetFOV(value float64) *Camera {
 // which the camera is looking, in world space.
 func (c *Camera) GetWorldDirection(vector *Vector3) *Vector3 {
 	if vector != nil {
-		return vector3(c.p.Call("getWorldDirection", vector.p))
+		return Vector3FromJSObject(c.p.Call("getWorldDirection", vector.p))
 	}
-	return vector3(c.p.Call("getWorldDirection"))
+	return Vector3FromJSObject(c.p.Call("getWorldDirection"))
 }
 
 // LookAt makes the camera look at the vector position in the global
@@ -103,5 +105,5 @@ func (c *Camera) LookAt(vector *Vector3) *Camera {
 
 // Clone returns a clone of camera.
 func (c *Camera) Clone(cam *Camera) *Camera {
-	return camera(c.p.Call("clone", cam))
+	return CameraFromJSObject(c.p.Call("clone", cam))
 }

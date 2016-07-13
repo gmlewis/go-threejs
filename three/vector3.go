@@ -17,18 +17,18 @@ func (v *Vector3) JSObject() *js.Object { return v.p }
 // Vector3 returns a Vector3 JavaScript class.
 func (t *Three) Vector3() *Vector3 {
 	p := t.ctx.Get("Vector3")
-	return vector3(p)
+	return Vector3FromJSObject(p)
 }
 
-// vector3 returns a wrapped Vector3 JavaScript class.
-func vector3(p *js.Object) *Vector3 {
+// Vector3FromJSObject returns a wrapped Vector3 JavaScript class.
+func Vector3FromJSObject(p *js.Object) *Vector3 {
 	return &Vector3{p: p}
 }
 
 // NewVector3 returns a new Vector3 object.
 func (t *Three) NewVector3(x, y, z float64) *Vector3 {
 	p := t.ctx.Get("Vector3").New(x, y, z)
-	return vector3(p)
+	return Vector3FromJSObject(p)
 }
 
 // Set sets the vector values.

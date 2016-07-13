@@ -19,12 +19,12 @@ func (i *IcosahedronGeometry) JSObject() *js.Object { return i.p }
 // IcosahedronGeometry returns an IcosahedronGeometry JavaScript class.
 func (t *Three) IcosahedronGeometry() *IcosahedronGeometry {
 	p := t.ctx.Get("IcosahedronGeometry")
-	return icosahedronGeometry(p)
+	return IcosahedronGeometryFromJSObject(p)
 }
 
-// icosahedronGeometry returns a wrapped IcosahedronGeometry JavaScript class.
-func icosahedronGeometry(p *js.Object) *IcosahedronGeometry {
-	return &IcosahedronGeometry{polyhedronGeometry(p)}
+// IcosahedronGeometryFromJSObject returns a wrapped IcosahedronGeometry JavaScript class.
+func IcosahedronGeometryFromJSObject(p *js.Object) *IcosahedronGeometry {
+	return &IcosahedronGeometry{PolyhedronGeometryFromJSObject(p)}
 }
 
 // NewIcosahedronGeometry returns a new IcosahedronGeometry object.
@@ -35,5 +35,5 @@ func icosahedronGeometry(p *js.Object) *IcosahedronGeometry {
 //         than 1, it's effectively a sphere.
 func (t *Three) NewIcosahedronGeometry(radius, detail float64) *IcosahedronGeometry {
 	p := t.ctx.Get("IcosahedronGeometry").New(radius, detail)
-	return icosahedronGeometry(p)
+	return IcosahedronGeometryFromJSObject(p)
 }

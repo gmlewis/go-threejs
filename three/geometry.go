@@ -18,18 +18,18 @@ func (g *Geometry) JSObject() *js.Object { return g.p }
 // Geometry returns a Geometry JavaScript class.
 func (t *Three) Geometry() *Geometry {
 	p := t.ctx.Get("Geometry")
-	return geometry(p)
+	return GeometryFromJSObject(p)
 }
 
-// geometry returns a wrapped Geometry JavaScript class.
-func geometry(p *js.Object) *Geometry {
+// GeometryFromJSObject returns a wrapped Geometry JavaScript class.
+func GeometryFromJSObject(p *js.Object) *Geometry {
 	return &Geometry{p: p}
 }
 
 // NewGeometry returns a new Geometry object.
 func (t *Three) NewGeometry() *Geometry {
 	p := t.ctx.Get("Geometry").New()
-	return geometry(p)
+	return GeometryFromJSObject(p)
 }
 
 // ApplyMatrix TODO description.
@@ -187,14 +187,14 @@ func (g *Geometry) Faces() []*Face3 {
 	var result []*Face3
 	faces := g.p.Get("faces")
 	for i := 0; i < faces.Length(); i++ {
-		result = append(result, face3(faces.Index(i)))
+		result = append(result, Face3FromJSObject(faces.Index(i)))
 	}
 	return result
 }
 
 // Vertex returns a vertex at the given index.
 func (g *Geometry) Vertex(index int) *Vector3 {
-	return vector3(g.p.Get("vertices").Index(index))
+	return Vector3FromJSObject(g.p.Get("vertices").Index(index))
 }
 
 // VerticesLength returns a the length of the geometry's vertices array.
@@ -207,12 +207,12 @@ func (g *Geometry) Vertices() []*Vector3 {
 	var result []*Vector3
 	vertices := g.p.Get("vertices")
 	for i := 0; i < vertices.Length(); i++ {
-		result = append(result, vector3(vertices.Index(i)))
+		result = append(result, Vector3FromJSObject(vertices.Index(i)))
 	}
 	return result
 }
 
 // BoundingBox returns the bounding box of the Geometry.
 func (g *Geometry) BoundingBox() *Box3 {
-	return box3(g.p.Get("boundingBox"))
+	return Box3FromJSObject(g.p.Get("boundingBox"))
 }

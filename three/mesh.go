@@ -18,11 +18,11 @@ func (m *Mesh) JSObject() *js.Object { return m.p }
 
 // Mesh returns a Mesh JavaScript class.
 func (t *Three) Mesh() *Mesh {
-	return mesh(t.ctx.Get("Mesh"))
+	return MeshFromJSObject(t.ctx.Get("Mesh"))
 }
 
-// mesh returns a wrapped Mesh JavaScript class.
-func mesh(p *js.Object) *Mesh {
+// MeshFromJSObject returns a wrapped Mesh JavaScript class.
+func MeshFromJSObject(p *js.Object) *Mesh {
 	return &Mesh{&Object3D{p: p}}
 }
 
@@ -31,7 +31,7 @@ func mesh(p *js.Object) *Mesh {
 //     geometry — an instance of geometry.
 //     material — an instance of material (optional).
 func (t *Three) NewMesh(geometry, material JSObject) *Mesh {
-	return mesh(t.ctx.Get("Mesh").New(geometry.JSObject(), material.JSObject()))
+	return MeshFromJSObject(t.ctx.Get("Mesh").New(geometry.JSObject(), material.JSObject()))
 }
 
 // SetDrawMode TODO description.

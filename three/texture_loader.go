@@ -35,10 +35,10 @@ func onTextureLoadWrapperFunc(onLoad TextureLoadFunc) func(geometry, materials *
 		var materials []*Material
 		if materialArray != nil && materialArray != js.Undefined {
 			for i := 0; i < materialArray.Length(); i++ {
-				materials = append(materials, material(materialArray.Index(i)))
+				materials = append(materials, MaterialFromJSObject(materialArray.Index(i)))
 			}
 		}
-		onLoad(geometry(geom), materials)
+		onLoad(GeometryFromJSObject(geom), materials)
 	}
 }
 
@@ -59,11 +59,11 @@ func (t *TextureLoader) Load(url string, onLoad TextureLoadFunc, onProgress, onE
 	default:
 		p = t.p.Call("load", url)
 	}
-	return texture(p)
+	return TextureFromJSObject(p)
 }
 
 // SetCrossOrigin TODO description.
-func (t *TextureLoader) SetCrossOrigin(value float64) *TextureLoader {
+func (t *TextureLoader) SetCrossOrigin(value string) *TextureLoader {
 	t.p.Call("setCrossOrigin", value)
 	return t
 }

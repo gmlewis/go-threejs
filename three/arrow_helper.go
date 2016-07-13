@@ -9,7 +9,7 @@ import (
 )
 
 // ArrowHelper represents an arrowhelper.
-type ArrowHelper struct{ p *js.Object }
+type ArrowHelper struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (a *ArrowHelper) JSObject() *js.Object { return a.p }
@@ -17,13 +17,47 @@ func (a *ArrowHelper) JSObject() *js.Object { return a.p }
 // ArrowHelper returns an ArrowHelper JavaScript class.
 func (t *Three) ArrowHelper() *ArrowHelper {
 	p := t.ctx.Get("ArrowHelper")
-	return &ArrowHelper{p: p}
+	return ArrowHelperFromJSObject(p)
+}
+
+// ArrowHelperFromJSObject returns a wrapped ArrowHelper JavaScript class.
+func ArrowHelperFromJSObject(p *js.Object) *ArrowHelper {
+	return &ArrowHelper{Object3DFromJSObject(p)}
+}
+
+// NewArrowHelperOpts represents optional arguments that can be passed to
+// NewArrowHelper.
+type NewArrowHelperOpts struct {
+	Length     *float64
+	Color      *Color
+	HeadLength *float64
+	HeadWidth  *float64
 }
 
 // NewArrowHelper returns a new ArrowHelper object.
-func (t *Three) NewArrowHelper() *ArrowHelper {
-	p := t.ctx.Get("ArrowHelper").New()
-	return &ArrowHelper{p: p}
+func (t *Three) NewArrowHelper(dir, origin *Vector3, opts *NewArrowHelperOpts) *ArrowHelper {
+	var (
+		length     interface{} = js.Undefined
+		color      interface{} = js.Undefined
+		headLength interface{} = js.Undefined
+		headWidth  interface{} = js.Undefined
+	)
+	if opts != nil {
+		if opts.Length != nil {
+			length = *opts.Length
+		}
+		if opts.Color != nil {
+			color = opts.Color.JSObject()
+		}
+		if opts.HeadLength != nil {
+			headLength = *opts.HeadLength
+		}
+		if opts.HeadWidth != nil {
+			headWidth = *opts.HeadWidth
+		}
+	}
+	p := t.ctx.Get("ArrowHelper").New(dir.JSObject(), origin.JSObject(), length, color, headLength, headWidth)
+	return ArrowHelperFromJSObject(p)
 }
 
 // SetLength TODO description.

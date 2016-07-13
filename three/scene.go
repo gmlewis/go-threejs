@@ -17,12 +17,12 @@ func (s *Scene) JSObject() *js.Object { return s.p }
 // Scene returns a Scene JavaScript class.
 func (t *Three) Scene() *Scene {
 	p := t.ctx.Get("Scene")
-	return scene(p)
+	return SceneFromJSObject(p)
 }
 
-// scene returns a wrapped Scene JavaScript class.
-func scene(p *js.Object) *Scene {
-	return &Scene{object3D(p)}
+// SceneFromJSObject returns a wrapped Scene JavaScript class.
+func SceneFromJSObject(p *js.Object) *Scene {
+	return &Scene{Object3DFromJSObject(p)}
 }
 
 // NewScene returns a new Scene object.
@@ -30,7 +30,7 @@ func scene(p *js.Object) *Scene {
 // http://threejs.org/docs/index.html#Reference/Scenes/Scene
 func (t *Three) NewScene() *Scene {
 	p := t.ctx.Get("Scene").New()
-	return scene(p)
+	return SceneFromJSObject(p)
 }
 
 // Copy TODO description.
