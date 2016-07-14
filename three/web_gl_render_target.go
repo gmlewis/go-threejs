@@ -17,13 +17,18 @@ func (w *WebGLRenderTarget) JSObject() *js.Object { return w.p }
 // WebGLRenderTarget returns a WebGLRenderTarget JavaScript class.
 func (t *Three) WebGLRenderTarget() *WebGLRenderTarget {
 	p := t.ctx.Get("WebGLRenderTarget")
+	return WebGLRenderTargetFromJSObject(p)
+}
+
+// WebGLRenderTargetFromJSObject returns a wrapped WebGLRenderTarget JavaScript class.
+func WebGLRenderTargetFromJSObject(p *js.Object) *WebGLRenderTarget {
 	return &WebGLRenderTarget{p: p}
 }
 
 // NewWebGLRenderTarget returns a new WebGLRenderTarget object.
 func (t *Three) NewWebGLRenderTarget(width, height, options float64) *WebGLRenderTarget {
 	p := t.ctx.Get("WebGLRenderTarget").New(width, height, options)
-	return &WebGLRenderTarget{p: p}
+	return WebGLRenderTargetFromJSObject(p)
 }
 
 // SetSize TODO description.

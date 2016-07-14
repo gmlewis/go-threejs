@@ -17,13 +17,18 @@ func (i *InterleavedBufferAttribute) JSObject() *js.Object { return i.p }
 // InterleavedBufferAttribute returns an InterleavedBufferAttribute JavaScript class.
 func (t *Three) InterleavedBufferAttribute() *InterleavedBufferAttribute {
 	p := t.ctx.Get("InterleavedBufferAttribute")
+	return InterleavedBufferAttributeFromJSObject(p)
+}
+
+// InterleavedBufferAttributeFromJSObject returns a wrapped InterleavedBufferAttribute JavaScript class.
+func InterleavedBufferAttributeFromJSObject(p *js.Object) *InterleavedBufferAttribute {
 	return &InterleavedBufferAttribute{p: p}
 }
 
 // NewInterleavedBufferAttribute returns a new InterleavedBufferAttribute object.
 func (t *Three) NewInterleavedBufferAttribute(interleavedBuffer, itemSize, offset float64) *InterleavedBufferAttribute {
 	p := t.ctx.Get("InterleavedBufferAttribute").New(interleavedBuffer, itemSize, offset)
-	return &InterleavedBufferAttribute{p: p}
+	return InterleavedBufferAttributeFromJSObject(p)
 }
 
 // Length returns the length-component of the InterleavedBufferAttribute.

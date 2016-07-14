@@ -17,11 +17,16 @@ func (e *EdgesGeometry) JSObject() *js.Object { return e.p }
 // EdgesGeometry returns an EdgesGeometry JavaScript class.
 func (t *Three) EdgesGeometry() *EdgesGeometry {
 	p := t.ctx.Get("EdgesGeometry")
+	return EdgesGeometryFromJSObject(p)
+}
+
+// EdgesGeometryFromJSObject returns a wrapped EdgesGeometry JavaScript class.
+func EdgesGeometryFromJSObject(p *js.Object) *EdgesGeometry {
 	return &EdgesGeometry{p: p}
 }
 
 // NewEdgesGeometry returns a new EdgesGeometry object.
 func (t *Three) NewEdgesGeometry(geometry, thresholdAngle float64) *EdgesGeometry {
 	p := t.ctx.Get("EdgesGeometry").New(geometry, thresholdAngle)
-	return &EdgesGeometry{p: p}
+	return EdgesGeometryFromJSObject(p)
 }

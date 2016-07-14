@@ -17,11 +17,16 @@ func (w *WebGLState) JSObject() *js.Object { return w.p }
 // WebGLState returns a WebGLState JavaScript class.
 func (t *Three) WebGLState() *WebGLState {
 	p := t.ctx.Get("WebGLState")
+	return WebGLStateFromJSObject(p)
+}
+
+// WebGLStateFromJSObject returns a wrapped WebGLState JavaScript class.
+func WebGLStateFromJSObject(p *js.Object) *WebGLState {
 	return &WebGLState{p: p}
 }
 
 // NewWebGLState returns a new WebGLState object.
 func (t *Three) NewWebGLState(gl, extensions, paramThreeToGL float64) *WebGLState {
 	p := t.ctx.Get("WebGLState").New(gl, extensions, paramThreeToGL)
-	return &WebGLState{p: p}
+	return WebGLStateFromJSObject(p)
 }

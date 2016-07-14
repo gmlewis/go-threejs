@@ -17,11 +17,16 @@ func (s *SphereBufferGeometry) JSObject() *js.Object { return s.p }
 // SphereBufferGeometry returns a SphereBufferGeometry JavaScript class.
 func (t *Three) SphereBufferGeometry() *SphereBufferGeometry {
 	p := t.ctx.Get("SphereBufferGeometry")
+	return SphereBufferGeometryFromJSObject(p)
+}
+
+// SphereBufferGeometryFromJSObject returns a wrapped SphereBufferGeometry JavaScript class.
+func SphereBufferGeometryFromJSObject(p *js.Object) *SphereBufferGeometry {
 	return &SphereBufferGeometry{p: p}
 }
 
 // NewSphereBufferGeometry returns a new SphereBufferGeometry object.
 func (t *Three) NewSphereBufferGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength float64) *SphereBufferGeometry {
 	p := t.ctx.Get("SphereBufferGeometry").New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
-	return &SphereBufferGeometry{p: p}
+	return SphereBufferGeometryFromJSObject(p)
 }

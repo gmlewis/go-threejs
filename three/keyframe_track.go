@@ -17,13 +17,18 @@ func (k *KeyframeTrack) JSObject() *js.Object { return k.p }
 // KeyframeTrack returns a KeyframeTrack JavaScript class.
 func (t *Three) KeyframeTrack() *KeyframeTrack {
 	p := t.ctx.Get("KeyframeTrack")
+	return KeyframeTrackFromJSObject(p)
+}
+
+// KeyframeTrackFromJSObject returns a wrapped KeyframeTrack JavaScript class.
+func KeyframeTrackFromJSObject(p *js.Object) *KeyframeTrack {
 	return &KeyframeTrack{p: p}
 }
 
 // NewKeyframeTrack returns a new KeyframeTrack object.
 func (t *Three) NewKeyframeTrack(name, times, values, interpolation float64) *KeyframeTrack {
 	p := t.ctx.Get("KeyframeTrack").New(name, times, values, interpolation)
-	return &KeyframeTrack{p: p}
+	return KeyframeTrackFromJSObject(p)
 }
 
 // InterpolantFactoryMethodDiscrete TODO description.

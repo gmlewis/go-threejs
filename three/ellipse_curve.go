@@ -17,13 +17,18 @@ func (e *EllipseCurve) JSObject() *js.Object { return e.p }
 // EllipseCurve returns an EllipseCurve JavaScript class.
 func (t *Three) EllipseCurve() *EllipseCurve {
 	p := t.ctx.Get("EllipseCurve")
+	return EllipseCurveFromJSObject(p)
+}
+
+// EllipseCurveFromJSObject returns a wrapped EllipseCurve JavaScript class.
+func EllipseCurveFromJSObject(p *js.Object) *EllipseCurve {
 	return &EllipseCurve{p: p}
 }
 
 // NewEllipseCurve returns a new EllipseCurve object.
 func (t *Three) NewEllipseCurve(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
 	p := t.ctx.Get("EllipseCurve").New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
-	return &EllipseCurve{p: p}
+	return EllipseCurveFromJSObject(p)
 }
 
 // GetPoint TODO description.

@@ -19,6 +19,11 @@ func (s *Skeleton) JSObject() *js.Object { return s.p }
 // Skeleton returns a Skeleton JavaScript class.
 func (t *Three) Skeleton() *Skeleton {
 	p := t.ctx.Get("Skeleton")
+	return SkeletonFromJSObject(p)
+}
+
+// SkeletonFromJSObject returns a wrapped Skeleton JavaScript class.
+func SkeletonFromJSObject(p *js.Object) *Skeleton {
 	return &Skeleton{p: p}
 }
 
@@ -29,5 +34,5 @@ func (t *Three) Skeleton() *Skeleton {
 //     useVertexTexture — (optional) Whether or not to use a vertex texture in the shader.
 func (t *Three) NewSkeleton(bones, boneInverses []*js.Object, useVertexTexture bool) *Skeleton {
 	p := t.ctx.Get("Skeleton").New(bones, boneInverses, useVertexTexture)
-	return &Skeleton{p: p}
+	return SkeletonFromJSObject(p)
 }

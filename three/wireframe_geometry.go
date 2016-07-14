@@ -17,11 +17,16 @@ func (w *WireframeGeometry) JSObject() *js.Object { return w.p }
 // WireframeGeometry returns a WireframeGeometry JavaScript class.
 func (t *Three) WireframeGeometry() *WireframeGeometry {
 	p := t.ctx.Get("WireframeGeometry")
+	return WireframeGeometryFromJSObject(p)
+}
+
+// WireframeGeometryFromJSObject returns a wrapped WireframeGeometry JavaScript class.
+func WireframeGeometryFromJSObject(p *js.Object) *WireframeGeometry {
 	return &WireframeGeometry{p: p}
 }
 
 // NewWireframeGeometry returns a new WireframeGeometry object.
 func (t *Three) NewWireframeGeometry(geometry float64) *WireframeGeometry {
 	p := t.ctx.Get("WireframeGeometry").New(geometry)
-	return &WireframeGeometry{p: p}
+	return WireframeGeometryFromJSObject(p)
 }

@@ -19,11 +19,16 @@ func (f *Fog) JSObject() *js.Object { return f.p }
 // Fog returns a Fog JavaScript class.
 func (t *Three) Fog() *Fog {
 	p := t.ctx.Get("Fog")
+	return FogFromJSObject(p)
+}
+
+// FogFromJSObject returns a wrapped Fog JavaScript class.
+func FogFromJSObject(p *js.Object) *Fog {
 	return &Fog{p: p}
 }
 
 // NewFog returns a new Fog object.
 func (t *Three) NewFog(color, near, far float64) *Fog {
 	p := t.ctx.Get("Fog").New(color, near, far)
-	return &Fog{p: p}
+	return FogFromJSObject(p)
 }

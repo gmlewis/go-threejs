@@ -19,6 +19,11 @@ func (t *TextGeometry) JSObject() *js.Object { return t.p }
 // TextGeometry returns a TextGeometry JavaScript class.
 func (t *Three) TextGeometry() *TextGeometry {
 	p := t.ctx.Get("TextGeometry")
+	return TextGeometryFromJSObject(p)
+}
+
+// TextGeometryFromJSObject returns a wrapped TextGeometry JavaScript class.
+func TextGeometryFromJSObject(p *js.Object) *TextGeometry {
 	return &TextGeometry{p: p}
 }
 
@@ -28,5 +33,5 @@ func (t *Three) TextGeometry() *TextGeometry {
 //     parameters — Object that can contains the following parameters.  TODO.
 func (t *Three) NewTextGeometry(text string, parameters map[string]interface{}) *TextGeometry {
 	p := t.ctx.Get("TextGeometry").New(text, parameters)
-	return &TextGeometry{p: p}
+	return TextGeometryFromJSObject(p)
 }

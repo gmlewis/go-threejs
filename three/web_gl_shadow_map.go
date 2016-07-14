@@ -17,11 +17,16 @@ func (w *WebGLShadowMap) JSObject() *js.Object { return w.p }
 // WebGLShadowMap returns a WebGLShadowMap JavaScript class.
 func (t *Three) WebGLShadowMap() *WebGLShadowMap {
 	p := t.ctx.Get("WebGLShadowMap")
+	return WebGLShadowMapFromJSObject(p)
+}
+
+// WebGLShadowMapFromJSObject returns a wrapped WebGLShadowMap JavaScript class.
+func WebGLShadowMapFromJSObject(p *js.Object) *WebGLShadowMap {
 	return &WebGLShadowMap{p: p}
 }
 
 // NewWebGLShadowMap returns a new WebGLShadowMap object.
 func (t *Three) NewWebGLShadowMap(_renderer, _lights, _objects float64) *WebGLShadowMap {
 	p := t.ctx.Get("WebGLShadowMap").New(_renderer, _lights, _objects)
-	return &WebGLShadowMap{p: p}
+	return WebGLShadowMapFromJSObject(p)
 }

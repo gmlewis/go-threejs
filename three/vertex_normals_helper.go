@@ -17,11 +17,16 @@ func (v *VertexNormalsHelper) JSObject() *js.Object { return v.p }
 // VertexNormalsHelper returns a VertexNormalsHelper JavaScript class.
 func (t *Three) VertexNormalsHelper() *VertexNormalsHelper {
 	p := t.ctx.Get("VertexNormalsHelper")
+	return VertexNormalsHelperFromJSObject(p)
+}
+
+// VertexNormalsHelperFromJSObject returns a wrapped VertexNormalsHelper JavaScript class.
+func VertexNormalsHelperFromJSObject(p *js.Object) *VertexNormalsHelper {
 	return &VertexNormalsHelper{p: p}
 }
 
 // NewVertexNormalsHelper returns a new VertexNormalsHelper object.
 func (t *Three) NewVertexNormalsHelper(object, size, hex, linewidth float64) *VertexNormalsHelper {
 	p := t.ctx.Get("VertexNormalsHelper").New(object, size, hex, linewidth)
-	return &VertexNormalsHelper{p: p}
+	return VertexNormalsHelperFromJSObject(p)
 }

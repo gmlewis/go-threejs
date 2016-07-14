@@ -17,13 +17,18 @@ func (v *Vector2) JSObject() *js.Object { return v.p }
 // Vector2 returns a Vector2 JavaScript class.
 func (t *Three) Vector2() *Vector2 {
 	p := t.ctx.Get("Vector2")
+	return Vector2FromJSObject(p)
+}
+
+// Vector2FromJSObject returns a wrapped Vector2 JavaScript class.
+func Vector2FromJSObject(p *js.Object) *Vector2 {
 	return &Vector2{p: p}
 }
 
 // NewVector2 returns a new Vector2 object.
 func (t *Three) NewVector2(x, y float64) *Vector2 {
 	p := t.ctx.Get("Vector2").New(x, y)
-	return &Vector2{p: p}
+	return Vector2FromJSObject(p)
 }
 
 // Width returns the width-component of the Vector2.

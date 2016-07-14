@@ -19,6 +19,11 @@ func (l *LineDashedMaterial) JSObject() *js.Object { return l.p }
 // LineDashedMaterial returns a LineDashedMaterial JavaScript class.
 func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 	p := t.ctx.Get("LineDashedMaterial")
+	return LineDashedMaterialFromJSObject(p)
+}
+
+// LineDashedMaterialFromJSObject returns a wrapped LineDashedMaterial JavaScript class.
+func LineDashedMaterialFromJSObject(p *js.Object) *LineDashedMaterial {
 	return &LineDashedMaterial{p: p}
 }
 
@@ -34,7 +39,7 @@ func (t *Three) LineDashedMaterial() *LineDashedMaterial {
 //     fog — Define whether the material color is affected by global fog settings. Default is false.
 func (t *Three) NewLineDashedMaterial(parameters map[string]interface{}) *LineDashedMaterial {
 	p := t.ctx.Get("LineDashedMaterial").New(parameters)
-	return &LineDashedMaterial{p: p}
+	return LineDashedMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

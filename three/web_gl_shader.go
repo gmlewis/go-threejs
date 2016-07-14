@@ -17,11 +17,16 @@ func (w *WebGLShader) JSObject() *js.Object { return w.p }
 // WebGLShader returns a WebGLShader JavaScript class.
 func (t *Three) WebGLShader() *WebGLShader {
 	p := t.ctx.Get("WebGLShader")
+	return WebGLShaderFromJSObject(p)
+}
+
+// WebGLShaderFromJSObject returns a wrapped WebGLShader JavaScript class.
+func WebGLShaderFromJSObject(p *js.Object) *WebGLShader {
 	return &WebGLShader{p: p}
 }
 
 // NewWebGLShader returns a new WebGLShader object.
 func (t *Three) NewWebGLShader() *WebGLShader {
 	p := t.ctx.Get("WebGLShader").New()
-	return &WebGLShader{p: p}
+	return WebGLShaderFromJSObject(p)
 }

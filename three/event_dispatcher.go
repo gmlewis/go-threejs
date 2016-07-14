@@ -19,13 +19,18 @@ func (e *EventDispatcher) JSObject() *js.Object { return e.p }
 // EventDispatcher returns an EventDispatcher JavaScript class.
 func (t *Three) EventDispatcher() *EventDispatcher {
 	p := t.ctx.Get("EventDispatcher")
+	return EventDispatcherFromJSObject(p)
+}
+
+// EventDispatcherFromJSObject returns a wrapped EventDispatcher JavaScript class.
+func EventDispatcherFromJSObject(p *js.Object) *EventDispatcher {
 	return &EventDispatcher{p: p}
 }
 
 // NewEventDispatcher returns a new EventDispatcher object.
 func (t *Three) NewEventDispatcher() *EventDispatcher {
 	p := t.ctx.Get("EventDispatcher").New()
-	return &EventDispatcher{p: p}
+	return EventDispatcherFromJSObject(p)
 }
 
 // Apply TODO description.

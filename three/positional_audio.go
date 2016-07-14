@@ -17,13 +17,18 @@ func (p *PositionalAudio) JSObject() *js.Object { return p.p }
 // PositionalAudio returns a PositionalAudio JavaScript class.
 func (t *Three) PositionalAudio() *PositionalAudio {
 	p := t.ctx.Get("PositionalAudio")
+	return PositionalAudioFromJSObject(p)
+}
+
+// PositionalAudioFromJSObject returns a wrapped PositionalAudio JavaScript class.
+func PositionalAudioFromJSObject(p *js.Object) *PositionalAudio {
 	return &PositionalAudio{p: p}
 }
 
 // NewPositionalAudio returns a new PositionalAudio object.
 func (t *Three) NewPositionalAudio(listener float64) *PositionalAudio {
 	p := t.ctx.Get("PositionalAudio").New(listener)
-	return &PositionalAudio{p: p}
+	return PositionalAudioFromJSObject(p)
 }
 
 // SetRefDistance TODO description.

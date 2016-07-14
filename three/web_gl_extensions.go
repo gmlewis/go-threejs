@@ -17,11 +17,16 @@ func (w *WebGLExtensions) JSObject() *js.Object { return w.p }
 // WebGLExtensions returns a WebGLExtensions JavaScript class.
 func (t *Three) WebGLExtensions() *WebGLExtensions {
 	p := t.ctx.Get("WebGLExtensions")
+	return WebGLExtensionsFromJSObject(p)
+}
+
+// WebGLExtensionsFromJSObject returns a wrapped WebGLExtensions JavaScript class.
+func WebGLExtensionsFromJSObject(p *js.Object) *WebGLExtensions {
 	return &WebGLExtensions{p: p}
 }
 
 // NewWebGLExtensions returns a new WebGLExtensions object.
 func (t *Three) NewWebGLExtensions(gl float64) *WebGLExtensions {
 	p := t.ctx.Get("WebGLExtensions").New(gl)
-	return &WebGLExtensions{p: p}
+	return WebGLExtensionsFromJSObject(p)
 }

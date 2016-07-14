@@ -17,13 +17,18 @@ func (t *TextureLoader) JSObject() *js.Object { return t.p }
 // TextureLoader returns a TextureLoader JavaScript class.
 func (t *Three) TextureLoader() *TextureLoader {
 	p := t.ctx.Get("TextureLoader")
+	return TextureLoaderFromJSObject(p)
+}
+
+// TextureLoaderFromJSObject returns a wrapped TextureLoader JavaScript class.
+func TextureLoaderFromJSObject(p *js.Object) *TextureLoader {
 	return &TextureLoader{p: p}
 }
 
 // NewTextureLoader returns a new TextureLoader object.
 func (t *Three) NewTextureLoader() *TextureLoader {
 	p := t.ctx.Get("TextureLoader").New()
-	return &TextureLoader{p: p}
+	return TextureLoaderFromJSObject(p)
 }
 
 // TextureLoadFunc is a callback function called by Load.

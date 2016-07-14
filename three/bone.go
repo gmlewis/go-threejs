@@ -19,13 +19,18 @@ func (b *Bone) JSObject() *js.Object { return b.p }
 // Bone returns a Bone JavaScript class.
 func (t *Three) Bone() *Bone {
 	p := t.ctx.Get("Bone")
+	return BoneFromJSObject(p)
+}
+
+// BoneFromJSObject returns a wrapped Bone JavaScript class.
+func BoneFromJSObject(p *js.Object) *Bone {
 	return &Bone{p: p}
 }
 
 // NewBone returns a new Bone object.
 func (t *Three) NewBone(skin float64) *Bone {
 	p := t.ctx.Get("Bone").New(skin)
-	return &Bone{p: p}
+	return BoneFromJSObject(p)
 }
 
 // Copy TODO description.

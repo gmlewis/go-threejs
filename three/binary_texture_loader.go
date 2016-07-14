@@ -17,13 +17,18 @@ func (b *BinaryTextureLoader) JSObject() *js.Object { return b.p }
 // BinaryTextureLoader returns a BinaryTextureLoader JavaScript class.
 func (t *Three) BinaryTextureLoader() *BinaryTextureLoader {
 	p := t.ctx.Get("BinaryTextureLoader")
+	return BinaryTextureLoaderFromJSObject(p)
+}
+
+// BinaryTextureLoaderFromJSObject returns a wrapped BinaryTextureLoader JavaScript class.
+func BinaryTextureLoaderFromJSObject(p *js.Object) *BinaryTextureLoader {
 	return &BinaryTextureLoader{p: p}
 }
 
 // NewBinaryTextureLoader returns a new BinaryTextureLoader object.
 func (t *Three) NewBinaryTextureLoader() *BinaryTextureLoader {
 	p := t.ctx.Get("BinaryTextureLoader").New()
-	return &BinaryTextureLoader{p: p}
+	return BinaryTextureLoaderFromJSObject(p)
 }
 
 // Load TODO description.

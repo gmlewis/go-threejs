@@ -17,13 +17,18 @@ func (b *BufferGeometryLoader) JSObject() *js.Object { return b.p }
 // BufferGeometryLoader returns a BufferGeometryLoader JavaScript class.
 func (t *Three) BufferGeometryLoader() *BufferGeometryLoader {
 	p := t.ctx.Get("BufferGeometryLoader")
+	return BufferGeometryLoaderFromJSObject(p)
+}
+
+// BufferGeometryLoaderFromJSObject returns a wrapped BufferGeometryLoader JavaScript class.
+func BufferGeometryLoaderFromJSObject(p *js.Object) *BufferGeometryLoader {
 	return &BufferGeometryLoader{p: p}
 }
 
 // NewBufferGeometryLoader returns a new BufferGeometryLoader object.
 func (t *Three) NewBufferGeometryLoader() *BufferGeometryLoader {
 	p := t.ctx.Get("BufferGeometryLoader").New()
-	return &BufferGeometryLoader{p: p}
+	return BufferGeometryLoaderFromJSObject(p)
 }
 
 // BufferGeometryLoadFunc is a callback function called by Load.

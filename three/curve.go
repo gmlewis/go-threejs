@@ -17,13 +17,18 @@ func (c *Curve) JSObject() *js.Object { return c.p }
 // Curve returns a Curve JavaScript class.
 func (t *Three) Curve() *Curve {
 	p := t.ctx.Get("Curve")
+	return CurveFromJSObject(p)
+}
+
+// CurveFromJSObject returns a wrapped Curve JavaScript class.
+func CurveFromJSObject(p *js.Object) *Curve {
 	return &Curve{p: p}
 }
 
 // NewCurve returns a new Curve object.
 func (t *Three) NewCurve() *Curve {
 	p := t.ctx.Get("Curve").New()
-	return &Curve{p: p}
+	return CurveFromJSObject(p)
 }
 
 // GetPoint TODO description.

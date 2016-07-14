@@ -17,11 +17,16 @@ func (s *Spline) JSObject() *js.Object { return s.p }
 // Spline returns a Spline JavaScript class.
 func (t *Three) Spline() *Spline {
 	p := t.ctx.Get("Spline")
+	return SplineFromJSObject(p)
+}
+
+// SplineFromJSObject returns a wrapped Spline JavaScript class.
+func SplineFromJSObject(p *js.Object) *Spline {
 	return &Spline{p: p}
 }
 
 // NewSpline returns a new Spline object.
 func (t *Three) NewSpline(points float64) *Spline {
 	p := t.ctx.Get("Spline").New(points)
-	return &Spline{p: p}
+	return SplineFromJSObject(p)
 }

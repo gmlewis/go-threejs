@@ -17,11 +17,16 @@ func (w *WebGLCapabilities) JSObject() *js.Object { return w.p }
 // WebGLCapabilities returns a WebGLCapabilities JavaScript class.
 func (t *Three) WebGLCapabilities() *WebGLCapabilities {
 	p := t.ctx.Get("WebGLCapabilities")
+	return WebGLCapabilitiesFromJSObject(p)
+}
+
+// WebGLCapabilitiesFromJSObject returns a wrapped WebGLCapabilities JavaScript class.
+func WebGLCapabilitiesFromJSObject(p *js.Object) *WebGLCapabilities {
 	return &WebGLCapabilities{p: p}
 }
 
 // NewWebGLCapabilities returns a new WebGLCapabilities object.
 func (t *Three) NewWebGLCapabilities(gl, extensions, parameters float64) *WebGLCapabilities {
 	p := t.ctx.Get("WebGLCapabilities").New(gl, extensions, parameters)
-	return &WebGLCapabilities{p: p}
+	return WebGLCapabilitiesFromJSObject(p)
 }

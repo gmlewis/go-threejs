@@ -19,6 +19,11 @@ func (o *OctahedronGeometry) JSObject() *js.Object { return o.p }
 // OctahedronGeometry returns an OctahedronGeometry JavaScript class.
 func (t *Three) OctahedronGeometry() *OctahedronGeometry {
 	p := t.ctx.Get("OctahedronGeometry")
+	return OctahedronGeometryFromJSObject(p)
+}
+
+// OctahedronGeometryFromJSObject returns a wrapped OctahedronGeometry JavaScript class.
+func OctahedronGeometryFromJSObject(p *js.Object) *OctahedronGeometry {
 	return &OctahedronGeometry{p: p}
 }
 
@@ -30,5 +35,5 @@ func (t *Three) OctahedronGeometry() *OctahedronGeometry {
 //         than 1, it's effectively a sphere.
 func (t *Three) NewOctahedronGeometry(radius, detail float64) *OctahedronGeometry {
 	p := t.ctx.Get("OctahedronGeometry").New(radius, detail)
-	return &OctahedronGeometry{p: p}
+	return OctahedronGeometryFromJSObject(p)
 }

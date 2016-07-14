@@ -17,11 +17,16 @@ func (r *RingBufferGeometry) JSObject() *js.Object { return r.p }
 // RingBufferGeometry returns a RingBufferGeometry JavaScript class.
 func (t *Three) RingBufferGeometry() *RingBufferGeometry {
 	p := t.ctx.Get("RingBufferGeometry")
+	return RingBufferGeometryFromJSObject(p)
+}
+
+// RingBufferGeometryFromJSObject returns a wrapped RingBufferGeometry JavaScript class.
+func RingBufferGeometryFromJSObject(p *js.Object) *RingBufferGeometry {
 	return &RingBufferGeometry{p: p}
 }
 
 // NewRingBufferGeometry returns a new RingBufferGeometry object.
 func (t *Three) NewRingBufferGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength float64) *RingBufferGeometry {
 	p := t.ctx.Get("RingBufferGeometry").New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
-	return &RingBufferGeometry{p: p}
+	return RingBufferGeometryFromJSObject(p)
 }

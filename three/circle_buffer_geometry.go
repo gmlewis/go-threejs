@@ -17,11 +17,16 @@ func (c *CircleBufferGeometry) JSObject() *js.Object { return c.p }
 // CircleBufferGeometry returns a CircleBufferGeometry JavaScript class.
 func (t *Three) CircleBufferGeometry() *CircleBufferGeometry {
 	p := t.ctx.Get("CircleBufferGeometry")
+	return CircleBufferGeometryFromJSObject(p)
+}
+
+// CircleBufferGeometryFromJSObject returns a wrapped CircleBufferGeometry JavaScript class.
+func CircleBufferGeometryFromJSObject(p *js.Object) *CircleBufferGeometry {
 	return &CircleBufferGeometry{p: p}
 }
 
 // NewCircleBufferGeometry returns a new CircleBufferGeometry object.
 func (t *Three) NewCircleBufferGeometry(radius, segments, thetaStart, thetaLength float64) *CircleBufferGeometry {
 	p := t.ctx.Get("CircleBufferGeometry").New(radius, segments, thetaStart, thetaLength)
-	return &CircleBufferGeometry{p: p}
+	return CircleBufferGeometryFromJSObject(p)
 }

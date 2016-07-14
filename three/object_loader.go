@@ -17,13 +17,18 @@ func (o *ObjectLoader) JSObject() *js.Object { return o.p }
 // ObjectLoader returns an ObjectLoader JavaScript class.
 func (t *Three) ObjectLoader() *ObjectLoader {
 	p := t.ctx.Get("ObjectLoader")
+	return ObjectLoaderFromJSObject(p)
+}
+
+// ObjectLoaderFromJSObject returns a wrapped ObjectLoader JavaScript class.
+func ObjectLoaderFromJSObject(p *js.Object) *ObjectLoader {
 	return &ObjectLoader{p: p}
 }
 
 // NewObjectLoader returns a new ObjectLoader object.
 func (t *Three) NewObjectLoader(manager float64) *ObjectLoader {
 	p := t.ctx.Get("ObjectLoader").New(manager)
-	return &ObjectLoader{p: p}
+	return ObjectLoaderFromJSObject(p)
 }
 
 // Load TODO description.

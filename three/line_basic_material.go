@@ -19,6 +19,11 @@ func (l *LineBasicMaterial) JSObject() *js.Object { return l.p }
 // LineBasicMaterial returns a LineBasicMaterial JavaScript class.
 func (t *Three) LineBasicMaterial() *LineBasicMaterial {
 	p := t.ctx.Get("LineBasicMaterial")
+	return LineBasicMaterialFromJSObject(p)
+}
+
+// LineBasicMaterialFromJSObject returns a wrapped LineBasicMaterial JavaScript class.
+func LineBasicMaterialFromJSObject(p *js.Object) *LineBasicMaterial {
 	return &LineBasicMaterial{p: p}
 }
 
@@ -33,7 +38,7 @@ func (t *Three) LineBasicMaterial() *LineBasicMaterial {
 //     fog — Define whether the material color is affected by global fog settings. Default is false.
 func (t *Three) NewLineBasicMaterial(parameters map[string]interface{}) *LineBasicMaterial {
 	p := t.ctx.Get("LineBasicMaterial").New(parameters)
-	return &LineBasicMaterial{p: p}
+	return LineBasicMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

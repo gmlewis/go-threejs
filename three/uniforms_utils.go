@@ -17,13 +17,18 @@ func (u *UniformsUtils) JSObject() *js.Object { return u.p }
 // UniformsUtils returns an UniformsUtils JavaScript class.
 func (t *Three) UniformsUtils() *UniformsUtils {
 	p := t.ctx.Get("UniformsUtils")
+	return UniformsUtilsFromJSObject(p)
+}
+
+// UniformsUtilsFromJSObject returns a wrapped UniformsUtils JavaScript class.
+func UniformsUtilsFromJSObject(p *js.Object) *UniformsUtils {
 	return &UniformsUtils{p: p}
 }
 
 // NewUniformsUtils returns a new UniformsUtils object.
 func (t *Three) NewUniformsUtils() *UniformsUtils {
 	p := t.ctx.Get("UniformsUtils").New()
-	return &UniformsUtils{p: p}
+	return UniformsUtilsFromJSObject(p)
 }
 
 // Merge TODO description.

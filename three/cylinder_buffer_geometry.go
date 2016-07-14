@@ -17,11 +17,16 @@ func (c *CylinderBufferGeometry) JSObject() *js.Object { return c.p }
 // CylinderBufferGeometry returns a CylinderBufferGeometry JavaScript class.
 func (t *Three) CylinderBufferGeometry() *CylinderBufferGeometry {
 	p := t.ctx.Get("CylinderBufferGeometry")
+	return CylinderBufferGeometryFromJSObject(p)
+}
+
+// CylinderBufferGeometryFromJSObject returns a wrapped CylinderBufferGeometry JavaScript class.
+func CylinderBufferGeometryFromJSObject(p *js.Object) *CylinderBufferGeometry {
 	return &CylinderBufferGeometry{p: p}
 }
 
 // NewCylinderBufferGeometry returns a new CylinderBufferGeometry object.
 func (t *Three) NewCylinderBufferGeometry(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength float64) *CylinderBufferGeometry {
 	p := t.ctx.Get("CylinderBufferGeometry").New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
-	return &CylinderBufferGeometry{p: p}
+	return CylinderBufferGeometryFromJSObject(p)
 }

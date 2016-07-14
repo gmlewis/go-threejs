@@ -17,11 +17,16 @@ func (w *WebGLProperties) JSObject() *js.Object { return w.p }
 // WebGLProperties returns a WebGLProperties JavaScript class.
 func (t *Three) WebGLProperties() *WebGLProperties {
 	p := t.ctx.Get("WebGLProperties")
+	return WebGLPropertiesFromJSObject(p)
+}
+
+// WebGLPropertiesFromJSObject returns a wrapped WebGLProperties JavaScript class.
+func WebGLPropertiesFromJSObject(p *js.Object) *WebGLProperties {
 	return &WebGLProperties{p: p}
 }
 
 // NewWebGLProperties returns a new WebGLProperties object.
 func (t *Three) NewWebGLProperties() *WebGLProperties {
 	p := t.ctx.Get("WebGLProperties").New()
-	return &WebGLProperties{p: p}
+	return WebGLPropertiesFromJSObject(p)
 }

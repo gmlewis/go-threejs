@@ -17,13 +17,18 @@ func (c *CompressedTextureLoader) JSObject() *js.Object { return c.p }
 // CompressedTextureLoader returns a CompressedTextureLoader JavaScript class.
 func (t *Three) CompressedTextureLoader() *CompressedTextureLoader {
 	p := t.ctx.Get("CompressedTextureLoader")
+	return CompressedTextureLoaderFromJSObject(p)
+}
+
+// CompressedTextureLoaderFromJSObject returns a wrapped CompressedTextureLoader JavaScript class.
+func CompressedTextureLoaderFromJSObject(p *js.Object) *CompressedTextureLoader {
 	return &CompressedTextureLoader{p: p}
 }
 
 // NewCompressedTextureLoader returns a new CompressedTextureLoader object.
 func (t *Three) NewCompressedTextureLoader(manager float64) *CompressedTextureLoader {
 	p := t.ctx.Get("CompressedTextureLoader").New(manager)
-	return &CompressedTextureLoader{p: p}
+	return CompressedTextureLoaderFromJSObject(p)
 }
 
 // Load TODO description.

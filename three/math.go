@@ -17,13 +17,18 @@ func (m *Math) JSObject() *js.Object { return m.p }
 // Math returns a Math JavaScript class.
 func (t *Three) Math() *Math {
 	p := t.ctx.Get("Math")
+	return MathFromJSObject(p)
+}
+
+// MathFromJSObject returns a wrapped Math JavaScript class.
+func MathFromJSObject(p *js.Object) *Math {
 	return &Math{p: p}
 }
 
 // NewMath returns a new Math object.
 func (t *Three) NewMath() *Math {
 	p := t.ctx.Get("Math").New()
-	return &Math{p: p}
+	return MathFromJSObject(p)
 }
 
 // GenerateUUID TODO description.

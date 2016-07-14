@@ -19,6 +19,11 @@ func (l *LensFlare) JSObject() *js.Object { return l.p }
 // LensFlare returns a LensFlare JavaScript class.
 func (t *Three) LensFlare() *LensFlare {
 	p := t.ctx.Get("LensFlare")
+	return LensFlareFromJSObject(p)
+}
+
+// LensFlareFromJSObject returns a wrapped LensFlare JavaScript class.
+func LensFlareFromJSObject(p *js.Object) *LensFlare {
 	return &LensFlare{p: p}
 }
 
@@ -31,7 +36,7 @@ func (t *Three) LensFlare() *LensFlare {
 //     color -- The color of the lens flare
 func (t *Three) NewLensFlare(texture *js.Object, size, distance float64, blending, color int) *LensFlare {
 	p := t.ctx.Get("LensFlare").New(texture, size, distance, blending, color)
-	return &LensFlare{p: p}
+	return LensFlareFromJSObject(p)
 }
 
 // Add TODO description.

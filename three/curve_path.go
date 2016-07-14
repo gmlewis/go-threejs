@@ -17,13 +17,18 @@ func (c *CurvePath) JSObject() *js.Object { return c.p }
 // CurvePath returns a CurvePath JavaScript class.
 func (t *Three) CurvePath() *CurvePath {
 	p := t.ctx.Get("CurvePath")
+	return CurvePathFromJSObject(p)
+}
+
+// CurvePathFromJSObject returns a wrapped CurvePath JavaScript class.
+func CurvePathFromJSObject(p *js.Object) *CurvePath {
 	return &CurvePath{p: p}
 }
 
 // NewCurvePath returns a new CurvePath object.
 func (t *Three) NewCurvePath() *CurvePath {
 	p := t.ctx.Get("CurvePath").New()
-	return &CurvePath{p: p}
+	return CurvePathFromJSObject(p)
 }
 
 // Add TODO description.

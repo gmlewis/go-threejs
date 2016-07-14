@@ -17,11 +17,16 @@ func (w *WebGLLights) JSObject() *js.Object { return w.p }
 // WebGLLights returns a WebGLLights JavaScript class.
 func (t *Three) WebGLLights() *WebGLLights {
 	p := t.ctx.Get("WebGLLights")
+	return WebGLLightsFromJSObject(p)
+}
+
+// WebGLLightsFromJSObject returns a wrapped WebGLLights JavaScript class.
+func WebGLLightsFromJSObject(p *js.Object) *WebGLLights {
 	return &WebGLLights{p: p}
 }
 
 // NewWebGLLights returns a new WebGLLights object.
 func (t *Three) NewWebGLLights() *WebGLLights {
 	p := t.ctx.Get("WebGLLights").New()
-	return &WebGLLights{p: p}
+	return WebGLLightsFromJSObject(p)
 }

@@ -17,11 +17,16 @@ func (a *ArcCurve) JSObject() *js.Object { return a.p }
 // ArcCurve returns an ArcCurve JavaScript class.
 func (t *Three) ArcCurve() *ArcCurve {
 	p := t.ctx.Get("ArcCurve")
+	return ArcCurveFromJSObject(p)
+}
+
+// ArcCurveFromJSObject returns a wrapped ArcCurve JavaScript class.
+func ArcCurveFromJSObject(p *js.Object) *ArcCurve {
 	return &ArcCurve{p: p}
 }
 
 // NewArcCurve returns a new ArcCurve object.
 func (t *Three) NewArcCurve(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise float64) *ArcCurve {
 	p := t.ctx.Get("ArcCurve").New(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise)
-	return &ArcCurve{p: p}
+	return ArcCurveFromJSObject(p)
 }

@@ -17,13 +17,18 @@ func (a *Audio) JSObject() *js.Object { return a.p }
 // Audio returns an Audio JavaScript class.
 func (t *Three) Audio() *Audio {
 	p := t.ctx.Get("Audio")
+	return AudioFromJSObject(p)
+}
+
+// AudioFromJSObject returns a wrapped Audio JavaScript class.
+func AudioFromJSObject(p *js.Object) *Audio {
 	return &Audio{p: p}
 }
 
 // NewAudio returns a new Audio object.
 func (t *Three) NewAudio(listener float64) *Audio {
 	p := t.ctx.Get("Audio").New(listener)
-	return &Audio{p: p}
+	return AudioFromJSObject(p)
 }
 
 // Load TODO description.

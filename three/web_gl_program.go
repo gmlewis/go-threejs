@@ -17,13 +17,18 @@ func (w *WebGLProgram) JSObject() *js.Object { return w.p }
 // WebGLProgram returns a WebGLProgram JavaScript class.
 func (t *Three) WebGLProgram() *WebGLProgram {
 	p := t.ctx.Get("WebGLProgram")
+	return WebGLProgramFromJSObject(p)
+}
+
+// WebGLProgramFromJSObject returns a wrapped WebGLProgram JavaScript class.
+func WebGLProgramFromJSObject(p *js.Object) *WebGLProgram {
 	return &WebGLProgram{p: p}
 }
 
 // NewWebGLProgram returns a new WebGLProgram object.
 func (t *Three) NewWebGLProgram() *WebGLProgram {
 	p := t.ctx.Get("WebGLProgram").New()
-	return &WebGLProgram{p: p}
+	return WebGLProgramFromJSObject(p)
 }
 
 // Get TODO description.

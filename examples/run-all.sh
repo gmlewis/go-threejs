@@ -1,6 +1,6 @@
 #!/bin/bash -e
 # Start Python server in the background...
-python -m SimpleHTTPServer &
+ps ux | grep SimpleHTTPServer | grep python || python -m SimpleHTTPServer &
 # Open up each example in the browser...
 FILES=`find . -name index.html`
 for i in ${FILES}

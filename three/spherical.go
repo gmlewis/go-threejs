@@ -17,13 +17,18 @@ func (s *Spherical) JSObject() *js.Object { return s.p }
 // Spherical returns a Spherical JavaScript class.
 func (t *Three) Spherical() *Spherical {
 	p := t.ctx.Get("Spherical")
+	return SphericalFromJSObject(p)
+}
+
+// SphericalFromJSObject returns a wrapped Spherical JavaScript class.
+func SphericalFromJSObject(p *js.Object) *Spherical {
 	return &Spherical{p: p}
 }
 
 // NewSpherical returns a new Spherical object.
 func (t *Three) NewSpherical(radius, phi, theta float64) *Spherical {
 	p := t.ctx.Get("Spherical").New(radius, phi, theta)
-	return &Spherical{p: p}
+	return SphericalFromJSObject(p)
 }
 
 // Set TODO description.

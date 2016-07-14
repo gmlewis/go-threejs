@@ -17,11 +17,16 @@ func (t *TorusKnotBufferGeometry) JSObject() *js.Object { return t.p }
 // TorusKnotBufferGeometry returns a TorusKnotBufferGeometry JavaScript class.
 func (t *Three) TorusKnotBufferGeometry() *TorusKnotBufferGeometry {
 	p := t.ctx.Get("TorusKnotBufferGeometry")
+	return TorusKnotBufferGeometryFromJSObject(p)
+}
+
+// TorusKnotBufferGeometryFromJSObject returns a wrapped TorusKnotBufferGeometry JavaScript class.
+func TorusKnotBufferGeometryFromJSObject(p *js.Object) *TorusKnotBufferGeometry {
 	return &TorusKnotBufferGeometry{p: p}
 }
 
 // NewTorusKnotBufferGeometry returns a new TorusKnotBufferGeometry object.
 func (t *Three) NewTorusKnotBufferGeometry(radius, tube, tubularSegments, radialSegments, p, q float64) *TorusKnotBufferGeometry {
 	s := t.ctx.Get("TorusKnotBufferGeometry").New(radius, tube, tubularSegments, radialSegments, p, q)
-	return &TorusKnotBufferGeometry{p: s}
+	return TorusKnotBufferGeometryFromJSObject(s)
 }

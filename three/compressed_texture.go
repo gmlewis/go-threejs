@@ -17,11 +17,16 @@ func (c *CompressedTexture) JSObject() *js.Object { return c.p }
 // CompressedTexture returns a CompressedTexture JavaScript class.
 func (t *Three) CompressedTexture() *CompressedTexture {
 	p := t.ctx.Get("CompressedTexture")
+	return CompressedTextureFromJSObject(p)
+}
+
+// CompressedTextureFromJSObject returns a wrapped CompressedTexture JavaScript class.
+func CompressedTextureFromJSObject(p *js.Object) *CompressedTexture {
 	return &CompressedTexture{p: p}
 }
 
 // NewCompressedTexture returns a new CompressedTexture object.
 func (t *Three) NewCompressedTexture(mipmaps, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *CompressedTexture {
 	p := t.ctx.Get("CompressedTexture").New(mipmaps, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
-	return &CompressedTexture{p: p}
+	return CompressedTextureFromJSObject(p)
 }

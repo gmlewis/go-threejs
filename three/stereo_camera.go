@@ -17,13 +17,18 @@ func (s *StereoCamera) JSObject() *js.Object { return s.p }
 // StereoCamera returns a StereoCamera JavaScript class.
 func (t *Three) StereoCamera() *StereoCamera {
 	p := t.ctx.Get("StereoCamera")
+	return StereoCameraFromJSObject(p)
+}
+
+// StereoCameraFromJSObject returns a wrapped StereoCamera JavaScript class.
+func StereoCameraFromJSObject(p *js.Object) *StereoCamera {
 	return &StereoCamera{p: p}
 }
 
 // NewStereoCamera returns a new StereoCamera object.
 func (t *Three) NewStereoCamera() *StereoCamera {
 	p := t.ctx.Get("StereoCamera").New()
-	return &StereoCamera{p: p}
+	return StereoCameraFromJSObject(p)
 }
 
 // Type returns the property of the same name.

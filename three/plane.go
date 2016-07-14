@@ -17,13 +17,18 @@ func (p *Plane) JSObject() *js.Object { return p.p }
 // Plane returns a Plane JavaScript class.
 func (t *Three) Plane() *Plane {
 	p := t.ctx.Get("Plane")
+	return PlaneFromJSObject(p)
+}
+
+// PlaneFromJSObject returns a wrapped Plane JavaScript class.
+func PlaneFromJSObject(p *js.Object) *Plane {
 	return &Plane{p: p}
 }
 
 // NewPlane returns a new Plane object.
 func (t *Three) NewPlane(normal, constant float64) *Plane {
 	p := t.ctx.Get("Plane").New(normal, constant)
-	return &Plane{p: p}
+	return PlaneFromJSObject(p)
 }
 
 // Set TODO description.

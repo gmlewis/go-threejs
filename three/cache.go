@@ -17,13 +17,18 @@ func (c *Cache) JSObject() *js.Object { return c.p }
 // Cache returns a Cache JavaScript class.
 func (t *Three) Cache() *Cache {
 	p := t.ctx.Get("Cache")
+	return CacheFromJSObject(p)
+}
+
+// CacheFromJSObject returns a wrapped Cache JavaScript class.
+func CacheFromJSObject(p *js.Object) *Cache {
 	return &Cache{p: p}
 }
 
 // NewCache returns a new Cache object.
 func (t *Three) NewCache() *Cache {
 	p := t.ctx.Get("Cache").New()
-	return &Cache{p: p}
+	return CacheFromJSObject(p)
 }
 
 // Add TODO description.

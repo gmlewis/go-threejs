@@ -17,13 +17,18 @@ func (i *InstancedBufferGeometry) JSObject() *js.Object { return i.p }
 // InstancedBufferGeometry returns an InstancedBufferGeometry JavaScript class.
 func (t *Three) InstancedBufferGeometry() *InstancedBufferGeometry {
 	p := t.ctx.Get("InstancedBufferGeometry")
+	return InstancedBufferGeometryFromJSObject(p)
+}
+
+// InstancedBufferGeometryFromJSObject returns a wrapped InstancedBufferGeometry JavaScript class.
+func InstancedBufferGeometryFromJSObject(p *js.Object) *InstancedBufferGeometry {
 	return &InstancedBufferGeometry{p: p}
 }
 
 // NewInstancedBufferGeometry returns a new InstancedBufferGeometry object.
 func (t *Three) NewInstancedBufferGeometry() *InstancedBufferGeometry {
 	p := t.ctx.Get("InstancedBufferGeometry").New()
-	return &InstancedBufferGeometry{p: p}
+	return InstancedBufferGeometryFromJSObject(p)
 }
 
 // AddGroup TODO description.

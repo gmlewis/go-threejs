@@ -17,13 +17,18 @@ func (l *Loader) JSObject() *js.Object { return l.p }
 // Loader returns a Loader JavaScript class.
 func (t *Three) Loader() *Loader {
 	p := t.ctx.Get("Loader")
+	return LoaderFromJSObject(p)
+}
+
+// LoaderFromJSObject returns a wrapped Loader JavaScript class.
+func LoaderFromJSObject(p *js.Object) *Loader {
 	return &Loader{p: p}
 }
 
 // NewLoader returns a new Loader object.
 func (t *Three) NewLoader() *Loader {
 	p := t.ctx.Get("Loader").New()
-	return &Loader{p: p}
+	return LoaderFromJSObject(p)
 }
 
 // ExtractURLBase TODO description.

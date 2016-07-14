@@ -19,7 +19,7 @@ func (m *MeshBasicMaterial) JSObject() *js.Object { return m.p }
 // MeshBasicMaterial returns a MeshBasicMaterial JavaScript class.
 func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
 	p := t.ctx.Get("MeshBasicMaterial")
-	return &MeshBasicMaterial{p: p}
+	return MeshBasicMaterialFromJSObject(p)
 }
 
 // MeshBasicMaterialOpts is a map with one or more properties defining the
@@ -45,10 +45,15 @@ func (t *Three) MeshBasicMaterial() *MeshBasicMaterial {
 //         Default is false.
 type MeshBasicMaterialOpts map[string]interface{}
 
+// MeshBasicMaterialFromJSObject returns a wrapped MeshBasicMaterial JavaScript class.
+func MeshBasicMaterialFromJSObject(p *js.Object) *MeshBasicMaterial {
+	return &MeshBasicMaterial{p: p}
+}
+
 // NewMeshBasicMaterial returns a new MeshBasicMaterial object.
 func (t *Three) NewMeshBasicMaterial(parameters MeshBasicMaterialOpts) *MeshBasicMaterial {
 	p := t.ctx.Get("MeshBasicMaterial").New(parameters)
-	return &MeshBasicMaterial{p: p}
+	return MeshBasicMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

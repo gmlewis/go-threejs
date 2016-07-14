@@ -19,13 +19,18 @@ func (l *LightShadow) JSObject() *js.Object { return l.p }
 // LightShadow returns a LightShadow JavaScript class.
 func (t *Three) LightShadow() *LightShadow {
 	p := t.ctx.Get("LightShadow")
+	return LightShadowFromJSObject(p)
+}
+
+// LightShadowFromJSObject returns a wrapped LightShadow JavaScript class.
+func LightShadowFromJSObject(p *js.Object) *LightShadow {
 	return &LightShadow{p: p}
 }
 
 // NewLightShadow returns a new LightShadow object.
 func (t *Three) NewLightShadow(camera *Camera) *LightShadow {
 	p := t.ctx.Get("LightShadow").New(camera.JSObject())
-	return &LightShadow{p: p}
+	return LightShadowFromJSObject(p)
 }
 
 // Copy TODO description.

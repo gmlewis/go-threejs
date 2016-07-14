@@ -17,13 +17,18 @@ func (a *AnimationMixer) JSObject() *js.Object { return a.p }
 // AnimationMixer returns an AnimationMixer JavaScript class.
 func (t *Three) AnimationMixer() *AnimationMixer {
 	p := t.ctx.Get("AnimationMixer")
+	return AnimationMixerFromJSObject(p)
+}
+
+// AnimationMixerFromJSObject returns a wrapped AnimationMixer JavaScript class.
+func AnimationMixerFromJSObject(p *js.Object) *AnimationMixer {
 	return &AnimationMixer{p: p}
 }
 
 // NewAnimationMixer returns a new AnimationMixer object.
 func (t *Three) NewAnimationMixer(root float64) *AnimationMixer {
 	p := t.ctx.Get("AnimationMixer").New(root)
-	return &AnimationMixer{p: p}
+	return AnimationMixerFromJSObject(p)
 }
 
 // Total returns the total-component of the AnimationMixer.

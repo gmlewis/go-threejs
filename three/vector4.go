@@ -17,13 +17,18 @@ func (v *Vector4) JSObject() *js.Object { return v.p }
 // Vector4 returns a Vector4 JavaScript class.
 func (t *Three) Vector4() *Vector4 {
 	p := t.ctx.Get("Vector4")
+	return Vector4FromJSObject(p)
+}
+
+// Vector4FromJSObject returns a wrapped Vector4 JavaScript class.
+func Vector4FromJSObject(p *js.Object) *Vector4 {
 	return &Vector4{p: p}
 }
 
 // NewVector4 returns a new Vector4 object.
 func (t *Three) NewVector4(x, y, z, w float64) *Vector4 {
 	p := t.ctx.Get("Vector4").New(x, y, z, w)
-	return &Vector4{p: p}
+	return Vector4FromJSObject(p)
 }
 
 // Set TODO description.

@@ -17,13 +17,18 @@ func (l *LinearInterpolant) JSObject() *js.Object { return l.p }
 // LinearInterpolant returns a LinearInterpolant JavaScript class.
 func (t *Three) LinearInterpolant() *LinearInterpolant {
 	p := t.ctx.Get("LinearInterpolant")
+	return LinearInterpolantFromJSObject(p)
+}
+
+// LinearInterpolantFromJSObject returns a wrapped LinearInterpolant JavaScript class.
+func LinearInterpolantFromJSObject(p *js.Object) *LinearInterpolant {
 	return &LinearInterpolant{p: p}
 }
 
 // NewLinearInterpolant returns a new LinearInterpolant object.
 func (t *Three) NewLinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *LinearInterpolant {
 	p := t.ctx.Get("LinearInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
-	return &LinearInterpolant{p: p}
+	return LinearInterpolantFromJSObject(p)
 }
 
 // Interpolate TODO description.

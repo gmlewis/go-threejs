@@ -17,13 +17,18 @@ func (c *CubeTexture) JSObject() *js.Object { return c.p }
 // CubeTexture returns a CubeTexture JavaScript class.
 func (t *Three) CubeTexture() *CubeTexture {
 	p := t.ctx.Get("CubeTexture")
+	return CubeTextureFromJSObject(p)
+}
+
+// CubeTextureFromJSObject returns a wrapped CubeTexture JavaScript class.
+func CubeTextureFromJSObject(p *js.Object) *CubeTexture {
 	return &CubeTexture{p: p}
 }
 
 // NewCubeTexture returns a new CubeTexture object.
 func (t *Three) NewCubeTexture(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CubeTexture {
 	p := t.ctx.Get("CubeTexture").New(images, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
-	return &CubeTexture{p: p}
+	return CubeTextureFromJSObject(p)
 }
 
 // Get TODO description.

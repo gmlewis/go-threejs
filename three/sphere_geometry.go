@@ -19,6 +19,11 @@ func (s *SphereGeometry) JSObject() *js.Object { return s.p }
 // SphereGeometry returns a SphereGeometry JavaScript class.
 func (t *Three) SphereGeometry() *SphereGeometry {
 	p := t.ctx.Get("SphereGeometry")
+	return SphereGeometryFromJSObject(p)
+}
+
+// SphereGeometryFromJSObject returns a wrapped SphereGeometry JavaScript class.
+func SphereGeometryFromJSObject(p *js.Object) *SphereGeometry {
 	return &SphereGeometry{p: p}
 }
 
@@ -33,5 +38,5 @@ func (t *Three) SphereGeometry() *SphereGeometry {
 //     thetaLength — specify vertical sweep angle size. Default is Math.PI.
 func (t *Three) NewSphereGeometry(radius float64, widthSegments, heightSegments int, phiStart, phiLength, thetaStart, thetaLength float64) *SphereGeometry {
 	p := t.ctx.Get("SphereGeometry").New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
-	return &SphereGeometry{p: p}
+	return SphereGeometryFromJSObject(p)
 }

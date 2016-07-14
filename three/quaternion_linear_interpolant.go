@@ -17,13 +17,18 @@ func (q *QuaternionLinearInterpolant) JSObject() *js.Object { return q.p }
 // QuaternionLinearInterpolant returns a QuaternionLinearInterpolant JavaScript class.
 func (t *Three) QuaternionLinearInterpolant() *QuaternionLinearInterpolant {
 	p := t.ctx.Get("QuaternionLinearInterpolant")
+	return QuaternionLinearInterpolantFromJSObject(p)
+}
+
+// QuaternionLinearInterpolantFromJSObject returns a wrapped QuaternionLinearInterpolant JavaScript class.
+func QuaternionLinearInterpolantFromJSObject(p *js.Object) *QuaternionLinearInterpolant {
 	return &QuaternionLinearInterpolant{p: p}
 }
 
 // NewQuaternionLinearInterpolant returns a new QuaternionLinearInterpolant object.
 func (t *Three) NewQuaternionLinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *QuaternionLinearInterpolant {
 	p := t.ctx.Get("QuaternionLinearInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
-	return &QuaternionLinearInterpolant{p: p}
+	return QuaternionLinearInterpolantFromJSObject(p)
 }
 
 // Interpolate TODO description.

@@ -17,13 +17,18 @@ func (s *ShaderMaterial) JSObject() *js.Object { return s.p }
 // ShaderMaterial returns a ShaderMaterial JavaScript class.
 func (t *Three) ShaderMaterial() *ShaderMaterial {
 	p := t.ctx.Get("ShaderMaterial")
+	return ShaderMaterialFromJSObject(p)
+}
+
+// ShaderMaterialFromJSObject returns a wrapped ShaderMaterial JavaScript class.
+func ShaderMaterialFromJSObject(p *js.Object) *ShaderMaterial {
 	return &ShaderMaterial{p: p}
 }
 
 // NewShaderMaterial returns a new ShaderMaterial object.
 func (t *Three) NewShaderMaterial(parameters float64) *ShaderMaterial {
 	p := t.ctx.Get("ShaderMaterial").New(parameters)
-	return &ShaderMaterial{p: p}
+	return ShaderMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

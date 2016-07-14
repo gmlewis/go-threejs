@@ -17,13 +17,18 @@ func (l *LineCurve) JSObject() *js.Object { return l.p }
 // LineCurve returns a LineCurve JavaScript class.
 func (t *Three) LineCurve() *LineCurve {
 	p := t.ctx.Get("LineCurve")
+	return LineCurveFromJSObject(p)
+}
+
+// LineCurveFromJSObject returns a wrapped LineCurve JavaScript class.
+func LineCurveFromJSObject(p *js.Object) *LineCurve {
 	return &LineCurve{p: p}
 }
 
 // NewLineCurve returns a new LineCurve object.
 func (t *Three) NewLineCurve(v1, v2 float64) *LineCurve {
 	p := t.ctx.Get("LineCurve").New(v1, v2)
-	return &LineCurve{p: p}
+	return LineCurveFromJSObject(p)
 }
 
 // GetPoint TODO description.

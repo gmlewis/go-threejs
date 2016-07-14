@@ -17,13 +17,18 @@ func (q *QuaternionKeyframeTrack) JSObject() *js.Object { return q.p }
 // QuaternionKeyframeTrack returns a QuaternionKeyframeTrack JavaScript class.
 func (t *Three) QuaternionKeyframeTrack() *QuaternionKeyframeTrack {
 	p := t.ctx.Get("QuaternionKeyframeTrack")
+	return QuaternionKeyframeTrackFromJSObject(p)
+}
+
+// QuaternionKeyframeTrackFromJSObject returns a wrapped QuaternionKeyframeTrack JavaScript class.
+func QuaternionKeyframeTrackFromJSObject(p *js.Object) *QuaternionKeyframeTrack {
 	return &QuaternionKeyframeTrack{p: p}
 }
 
 // NewQuaternionKeyframeTrack returns a new QuaternionKeyframeTrack object.
 func (t *Three) NewQuaternionKeyframeTrack(name, times, values, interpolation float64) *QuaternionKeyframeTrack {
 	p := t.ctx.Get("QuaternionKeyframeTrack").New(name, times, values, interpolation)
-	return &QuaternionKeyframeTrack{p: p}
+	return QuaternionKeyframeTrackFromJSObject(p)
 }
 
 // InterpolantFactoryMethodLinear TODO description.

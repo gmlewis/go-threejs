@@ -20,13 +20,18 @@ func (r *Raycaster) JSObject() *js.Object { return r.p }
 // Raycaster returns a Raycaster JavaScript class.
 func (t *Three) Raycaster() *Raycaster {
 	p := t.ctx.Get("Raycaster")
+	return RaycasterFromJSObject(p)
+}
+
+// RaycasterFromJSObject returns a wrapped Raycaster JavaScript class.
+func RaycasterFromJSObject(p *js.Object) *Raycaster {
 	return &Raycaster{p: p}
 }
 
 // NewRaycaster returns a new Raycaster object.
 func (t *Three) NewRaycaster(origin, direction, near, far float64) *Raycaster {
 	p := t.ctx.Get("Raycaster").New(origin, direction, near, far)
-	return &Raycaster{p: p}
+	return RaycasterFromJSObject(p)
 }
 
 // Get TODO description.

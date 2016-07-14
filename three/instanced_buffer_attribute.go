@@ -17,13 +17,18 @@ func (i *InstancedBufferAttribute) JSObject() *js.Object { return i.p }
 // InstancedBufferAttribute returns an InstancedBufferAttribute JavaScript class.
 func (t *Three) InstancedBufferAttribute() *InstancedBufferAttribute {
 	p := t.ctx.Get("InstancedBufferAttribute")
+	return InstancedBufferAttributeFromJSObject(p)
+}
+
+// InstancedBufferAttributeFromJSObject returns a wrapped InstancedBufferAttribute JavaScript class.
+func InstancedBufferAttributeFromJSObject(p *js.Object) *InstancedBufferAttribute {
 	return &InstancedBufferAttribute{p: p}
 }
 
 // NewInstancedBufferAttribute returns a new InstancedBufferAttribute object.
 func (t *Three) NewInstancedBufferAttribute(array, itemSize, meshPerAttribute float64) *InstancedBufferAttribute {
 	p := t.ctx.Get("InstancedBufferAttribute").New(array, itemSize, meshPerAttribute)
-	return &InstancedBufferAttribute{p: p}
+	return InstancedBufferAttributeFromJSObject(p)
 }
 
 // Copy TODO description.

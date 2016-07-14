@@ -17,13 +17,18 @@ func (p *PropertyBinding) JSObject() *js.Object { return p.p }
 // PropertyBinding returns a PropertyBinding JavaScript class.
 func (t *Three) PropertyBinding() *PropertyBinding {
 	p := t.ctx.Get("PropertyBinding")
+	return PropertyBindingFromJSObject(p)
+}
+
+// PropertyBindingFromJSObject returns a wrapped PropertyBinding JavaScript class.
+func PropertyBindingFromJSObject(p *js.Object) *PropertyBinding {
 	return &PropertyBinding{p: p}
 }
 
 // NewPropertyBinding returns a new PropertyBinding object.
 func (t *Three) NewPropertyBinding(rootNode, path, parsedPath float64) *PropertyBinding {
 	p := t.ctx.Get("PropertyBinding").New(rootNode, path, parsedPath)
-	return &PropertyBinding{p: p}
+	return PropertyBindingFromJSObject(p)
 }
 
 // Bind TODO description.

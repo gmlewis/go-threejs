@@ -19,11 +19,16 @@ func (f *FogExp2) JSObject() *js.Object { return f.p }
 // FogExp2 returns a FogExp2 JavaScript class.
 func (t *Three) FogExp2() *FogExp2 {
 	p := t.ctx.Get("FogExp2")
+	return FogExp2FromJSObject(p)
+}
+
+// FogExp2FromJSObject returns a wrapped FogExp2 JavaScript class.
+func FogExp2FromJSObject(p *js.Object) *FogExp2 {
 	return &FogExp2{p: p}
 }
 
 // NewFogExp2 returns a new FogExp2 object.
 func (t *Three) NewFogExp2(color, density float64) *FogExp2 {
 	p := t.ctx.Get("FogExp2").New(color, density)
-	return &FogExp2{p: p}
+	return FogExp2FromJSObject(p)
 }

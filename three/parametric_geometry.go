@@ -19,6 +19,11 @@ func (p *ParametricGeometry) JSObject() *js.Object { return p.p }
 // ParametricGeometry returns a ParametricGeometry JavaScript class.
 func (t *Three) ParametricGeometry() *ParametricGeometry {
 	p := t.ctx.Get("ParametricGeometry")
+	return ParametricGeometryFromJSObject(p)
+}
+
+// ParametricGeometryFromJSObject returns a wrapped ParametricGeometry JavaScript class.
+func ParametricGeometryFromJSObject(p *js.Object) *ParametricGeometry {
 	return &ParametricGeometry{p: p}
 }
 
@@ -28,5 +33,6 @@ func (t *Three) ParametricGeometry() *ParametricGeometry {
 //     slices — The count of slices to use for the parametric function
 //     stacks — The count of stacks to use for the parametric function
 func (t *Three) NewParametricGeometry(fn func(u, v float64) *js.Object, slices, stacks int) *ParametricGeometry {
-	return &ParametricGeometry{p: t.ctx.Get("ParametricGeometry").New(fn, slices, stacks)}
+	p := t.ctx.Get("ParametricGeometry").New(fn, slices, stacks)
+	return ParametricGeometryFromJSObject(p)
 }

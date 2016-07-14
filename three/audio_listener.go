@@ -17,13 +17,18 @@ func (a *AudioListener) JSObject() *js.Object { return a.p }
 // AudioListener returns an AudioListener JavaScript class.
 func (t *Three) AudioListener() *AudioListener {
 	p := t.ctx.Get("AudioListener")
+	return AudioListenerFromJSObject(p)
+}
+
+// AudioListenerFromJSObject returns a wrapped AudioListener JavaScript class.
+func AudioListenerFromJSObject(p *js.Object) *AudioListener {
 	return &AudioListener{p: p}
 }
 
 // NewAudioListener returns a new AudioListener object.
 func (t *Three) NewAudioListener() *AudioListener {
 	p := t.ctx.Get("AudioListener").New()
-	return &AudioListener{p: p}
+	return AudioListenerFromJSObject(p)
 }
 
 // RemoveFilter TODO description.

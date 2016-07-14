@@ -19,6 +19,11 @@ func (s *Sprite) JSObject() *js.Object { return s.p }
 // Sprite returns a Sprite JavaScript class.
 func (t *Three) Sprite() *Sprite {
 	p := t.ctx.Get("Sprite")
+	return SpriteFromJSObject(p)
+}
+
+// SpriteFromJSObject returns a wrapped Sprite JavaScript class.
+func SpriteFromJSObject(p *js.Object) *Sprite {
 	return &Sprite{p: p}
 }
 
@@ -27,5 +32,5 @@ func (t *Three) Sprite() *Sprite {
 //     material — An instance of Material (optional).
 func (t *Three) NewSprite(material *js.Object) *Sprite {
 	p := t.ctx.Get("Sprite").New(material)
-	return &Sprite{p: p}
+	return SpriteFromJSObject(p)
 }

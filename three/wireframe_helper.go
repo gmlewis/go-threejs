@@ -17,11 +17,16 @@ func (w *WireframeHelper) JSObject() *js.Object { return w.p }
 // WireframeHelper returns a WireframeHelper JavaScript class.
 func (t *Three) WireframeHelper() *WireframeHelper {
 	p := t.ctx.Get("WireframeHelper")
+	return WireframeHelperFromJSObject(p)
+}
+
+// WireframeHelperFromJSObject returns a wrapped WireframeHelper JavaScript class.
+func WireframeHelperFromJSObject(p *js.Object) *WireframeHelper {
 	return &WireframeHelper{p: p}
 }
 
 // NewWireframeHelper returns a new WireframeHelper object.
 func (t *Three) NewWireframeHelper(object, hex float64) *WireframeHelper {
 	p := t.ctx.Get("WireframeHelper").New(object, hex)
-	return &WireframeHelper{p: p}
+	return WireframeHelperFromJSObject(p)
 }

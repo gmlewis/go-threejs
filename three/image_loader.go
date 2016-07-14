@@ -17,13 +17,18 @@ func (i *ImageLoader) JSObject() *js.Object { return i.p }
 // ImageLoader returns an ImageLoader JavaScript class.
 func (t *Three) ImageLoader() *ImageLoader {
 	p := t.ctx.Get("ImageLoader")
+	return ImageLoaderFromJSObject(p)
+}
+
+// ImageLoaderFromJSObject returns a wrapped ImageLoader JavaScript class.
+func ImageLoaderFromJSObject(p *js.Object) *ImageLoader {
 	return &ImageLoader{p: p}
 }
 
 // NewImageLoader returns a new ImageLoader object.
 func (t *Three) NewImageLoader(manager float64) *ImageLoader {
 	p := t.ctx.Get("ImageLoader").New(manager)
-	return &ImageLoader{p: p}
+	return ImageLoaderFromJSObject(p)
 }
 
 // Load TODO description.

@@ -17,13 +17,18 @@ func (s *ShapeGeometry) JSObject() *js.Object { return s.p }
 // ShapeGeometry returns a ShapeGeometry JavaScript class.
 func (t *Three) ShapeGeometry() *ShapeGeometry {
 	p := t.ctx.Get("ShapeGeometry")
+	return ShapeGeometryFromJSObject(p)
+}
+
+// ShapeGeometryFromJSObject returns a wrapped ShapeGeometry JavaScript class.
+func ShapeGeometryFromJSObject(p *js.Object) *ShapeGeometry {
 	return &ShapeGeometry{p: p}
 }
 
 // NewShapeGeometry returns a new ShapeGeometry object.
 func (t *Three) NewShapeGeometry(shapes, options float64) *ShapeGeometry {
 	p := t.ctx.Get("ShapeGeometry").New(shapes, options)
-	return &ShapeGeometry{p: p}
+	return ShapeGeometryFromJSObject(p)
 }
 
 // AddShapeList TODO description.

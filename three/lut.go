@@ -11,10 +11,15 @@ import (
 // LUT represents a lookup table.
 type LUT struct{ p *js.Object }
 
+// LUTFromJSObject returns a wrapped LUT JavaScript class.
+func LUTFromJSObject(p *js.Object) *LUT {
+	return &LUT{p: p}
+}
+
 // NewLUT returns a new LUT object.
 func (t *Three) NewLUT(colormap string, numberofcolors int) *LUT {
 	p := t.ctx.Get("Lut").New(colormap, numberofcolors)
-	return &LUT{p: p}
+	return LUTFromJSObject(p)
 }
 
 // Set TODO description.

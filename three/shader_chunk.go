@@ -17,11 +17,16 @@ func (s *ShaderChunk) JSObject() *js.Object { return s.p }
 // ShaderChunk returns a ShaderChunk JavaScript class.
 func (t *Three) ShaderChunk() *ShaderChunk {
 	p := t.ctx.Get("ShaderChunk")
+	return ShaderChunkFromJSObject(p)
+}
+
+// ShaderChunkFromJSObject returns a wrapped ShaderChunk JavaScript class.
+func ShaderChunkFromJSObject(p *js.Object) *ShaderChunk {
 	return &ShaderChunk{p: p}
 }
 
 // NewShaderChunk returns a new ShaderChunk object.
 func (t *Three) NewShaderChunk() *ShaderChunk {
 	p := t.ctx.Get("ShaderChunk").New()
-	return &ShaderChunk{p: p}
+	return ShaderChunkFromJSObject(p)
 }

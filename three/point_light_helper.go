@@ -17,11 +17,16 @@ func (p *PointLightHelper) JSObject() *js.Object { return p.p }
 // PointLightHelper returns a PointLightHelper JavaScript class.
 func (t *Three) PointLightHelper() *PointLightHelper {
 	p := t.ctx.Get("PointLightHelper")
+	return PointLightHelperFromJSObject(p)
+}
+
+// PointLightHelperFromJSObject returns a wrapped PointLightHelper JavaScript class.
+func PointLightHelperFromJSObject(p *js.Object) *PointLightHelper {
 	return &PointLightHelper{p: p}
 }
 
 // NewPointLightHelper returns a new PointLightHelper object.
 func (t *Three) NewPointLightHelper(light, sphereSize float64) *PointLightHelper {
 	p := t.ctx.Get("PointLightHelper").New(light, sphereSize)
-	return &PointLightHelper{p: p}
+	return PointLightHelperFromJSObject(p)
 }

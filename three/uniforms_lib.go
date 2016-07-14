@@ -17,11 +17,16 @@ func (u *UniformsLib) JSObject() *js.Object { return u.p }
 // UniformsLib returns an UniformsLib JavaScript class.
 func (t *Three) UniformsLib() *UniformsLib {
 	p := t.ctx.Get("UniformsLib")
+	return UniformsLibFromJSObject(p)
+}
+
+// UniformsLibFromJSObject returns a wrapped UniformsLib JavaScript class.
+func UniformsLibFromJSObject(p *js.Object) *UniformsLib {
 	return &UniformsLib{p: p}
 }
 
 // NewUniformsLib returns a new UniformsLib object.
 func (t *Three) NewUniformsLib() *UniformsLib {
 	p := t.ctx.Get("UniformsLib").New()
-	return &UniformsLib{p: p}
+	return UniformsLibFromJSObject(p)
 }

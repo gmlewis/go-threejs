@@ -17,12 +17,18 @@ func (p *Path) JSObject() *js.Object { return p.p }
 // Path returns a Path JavaScript class.
 func (t *Three) Path() *Path {
 	p := t.ctx.Get("Path")
+	return PathFromJSObject(p)
+}
+
+// PathFromJSObject returns a wrapped Path JavaScript class.
+func PathFromJSObject(p *js.Object) *Path {
 	return &Path{p: p}
 }
 
 // NewPath returns a new Path object.
 func (t *Three) NewPath(points float64) *Path {
-	return &Path{p: t.ctx.Get("Path").New(points)}
+	p := t.ctx.Get("Path").New(points)
+	return PathFromJSObject(p)
 }
 
 // FromPoints TODO description.

@@ -17,11 +17,16 @@ func (l *LatheBufferGeometry) JSObject() *js.Object { return l.p }
 // LatheBufferGeometry returns a LatheBufferGeometry JavaScript class.
 func (t *Three) LatheBufferGeometry() *LatheBufferGeometry {
 	p := t.ctx.Get("LatheBufferGeometry")
+	return LatheBufferGeometryFromJSObject(p)
+}
+
+// LatheBufferGeometryFromJSObject returns a wrapped LatheBufferGeometry JavaScript class.
+func LatheBufferGeometryFromJSObject(p *js.Object) *LatheBufferGeometry {
 	return &LatheBufferGeometry{p: p}
 }
 
 // NewLatheBufferGeometry returns a new LatheBufferGeometry object.
 func (t *Three) NewLatheBufferGeometry(points, segments, phiStart, phiLength float64) *LatheBufferGeometry {
 	p := t.ctx.Get("LatheBufferGeometry").New(points, segments, phiStart, phiLength)
-	return &LatheBufferGeometry{p: p}
+	return LatheBufferGeometryFromJSObject(p)
 }

@@ -17,11 +17,16 @@ func (c *CameraHelper) JSObject() *js.Object { return c.p }
 // CameraHelper returns a CameraHelper JavaScript class.
 func (t *Three) CameraHelper() *CameraHelper {
 	p := t.ctx.Get("CameraHelper")
+	return CameraHelperFromJSObject(p)
+}
+
+// CameraHelperFromJSObject returns a wrapped CameraHelper JavaScript class.
+func CameraHelperFromJSObject(p *js.Object) *CameraHelper {
 	return &CameraHelper{p: p}
 }
 
 // NewCameraHelper returns a new CameraHelper object.
 func (t *Three) NewCameraHelper(camera float64) *CameraHelper {
 	p := t.ctx.Get("CameraHelper").New(camera)
-	return &CameraHelper{p: p}
+	return CameraHelperFromJSObject(p)
 }

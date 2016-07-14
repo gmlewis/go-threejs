@@ -17,13 +17,18 @@ func (e *ExtrudeGeometry) JSObject() *js.Object { return e.p }
 // ExtrudeGeometry returns an ExtrudeGeometry JavaScript class.
 func (t *Three) ExtrudeGeometry() *ExtrudeGeometry {
 	p := t.ctx.Get("ExtrudeGeometry")
+	return ExtrudeGeometryFromJSObject(p)
+}
+
+// ExtrudeGeometryFromJSObject returns a wrapped ExtrudeGeometry JavaScript class.
+func ExtrudeGeometryFromJSObject(p *js.Object) *ExtrudeGeometry {
 	return &ExtrudeGeometry{p: p}
 }
 
 // NewExtrudeGeometry returns a new ExtrudeGeometry object.
 func (t *Three) NewExtrudeGeometry(shapes, options float64) *ExtrudeGeometry {
 	p := t.ctx.Get("ExtrudeGeometry").New(shapes, options)
-	return &ExtrudeGeometry{p: p}
+	return ExtrudeGeometryFromJSObject(p)
 }
 
 // GenerateTopUV TODO description.

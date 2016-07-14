@@ -15,13 +15,18 @@ func (j *JSONLoader) JSObject() *js.Object { return j.p }
 // JSONLoader returns a JSONLoader JavaScript class.
 func (t *Three) JSONLoader() *JSONLoader {
 	p := t.ctx.Get("JSONLoader")
+	return JSONLoaderFromJSObject(p)
+}
+
+// JSONLoaderFromJSObject returns a wrapped JSONLoader JavaScript class.
+func JSONLoaderFromJSObject(p *js.Object) *JSONLoader {
 	return &JSONLoader{p: p}
 }
 
 // NewJSONLoader returns a new JSONLoader object.
 func (t *Three) NewJSONLoader() *JSONLoader {
 	p := t.ctx.Get("JSONLoader").New()
-	return &JSONLoader{p: p}
+	return JSONLoaderFromJSObject(p)
 }
 
 // StatusDomElement returns the statusDomElement-component of the JSONLoader.

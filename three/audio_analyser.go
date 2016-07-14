@@ -17,13 +17,18 @@ func (a *AudioAnalyser) JSObject() *js.Object { return a.p }
 // AudioAnalyser returns an AudioAnalyser JavaScript class.
 func (t *Three) AudioAnalyser() *AudioAnalyser {
 	p := t.ctx.Get("AudioAnalyser")
+	return AudioAnalyserFromJSObject(p)
+}
+
+// AudioAnalyserFromJSObject returns a wrapped AudioAnalyser JavaScript class.
+func AudioAnalyserFromJSObject(p *js.Object) *AudioAnalyser {
 	return &AudioAnalyser{p: p}
 }
 
 // NewAudioAnalyser returns a new AudioAnalyser object.
 func (t *Three) NewAudioAnalyser(audio, fftSize float64) *AudioAnalyser {
 	p := t.ctx.Get("AudioAnalyser").New(audio, fftSize)
-	return &AudioAnalyser{p: p}
+	return AudioAnalyserFromJSObject(p)
 }
 
 // GetData TODO description.

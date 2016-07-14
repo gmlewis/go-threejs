@@ -17,13 +17,18 @@ func (m *MorphBlendMesh) JSObject() *js.Object { return m.p }
 // MorphBlendMesh returns a MorphBlendMesh JavaScript class.
 func (t *Three) MorphBlendMesh() *MorphBlendMesh {
 	p := t.ctx.Get("MorphBlendMesh")
+	return MorphBlendMeshFromJSObject(p)
+}
+
+// MorphBlendMeshFromJSObject returns a wrapped MorphBlendMesh JavaScript class.
+func MorphBlendMeshFromJSObject(p *js.Object) *MorphBlendMesh {
 	return &MorphBlendMesh{p: p}
 }
 
 // NewMorphBlendMesh returns a new MorphBlendMesh object.
 func (t *Three) NewMorphBlendMesh(geometry, material float64) *MorphBlendMesh {
 	p := t.ctx.Get("MorphBlendMesh").New(geometry, material)
-	return &MorphBlendMesh{p: p}
+	return MorphBlendMeshFromJSObject(p)
 }
 
 // CreateAnimation TODO description.

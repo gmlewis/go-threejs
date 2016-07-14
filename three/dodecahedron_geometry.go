@@ -19,6 +19,11 @@ func (d *DodecahedronGeometry) JSObject() *js.Object { return d.p }
 // DodecahedronGeometry returns a DodecahedronGeometry JavaScript class.
 func (t *Three) DodecahedronGeometry() *DodecahedronGeometry {
 	p := t.ctx.Get("DodecahedronGeometry")
+	return DodecahedronGeometryFromJSObject(p)
+}
+
+// DodecahedronGeometryFromJSObject returns a wrapped DodecahedronGeometry JavaScript class.
+func DodecahedronGeometryFromJSObject(p *js.Object) *DodecahedronGeometry {
 	return &DodecahedronGeometry{p: p}
 }
 
@@ -29,5 +34,5 @@ func (t *Three) DodecahedronGeometry() *DodecahedronGeometry {
 //         vertices making it no longer a dodecahedron.
 func (t *Three) NewDodecahedronGeometry(radius, detail float64) *DodecahedronGeometry {
 	p := t.ctx.Get("DodecahedronGeometry").New(radius, detail)
-	return &DodecahedronGeometry{p: p}
+	return DodecahedronGeometryFromJSObject(p)
 }

@@ -17,13 +17,18 @@ func (f *Font) JSObject() *js.Object { return f.p }
 // Font returns a Font JavaScript class.
 func (t *Three) Font() *Font {
 	p := t.ctx.Get("Font")
+	return FontFromJSObject(p)
+}
+
+// FontFromJSObject returns a wrapped Font JavaScript class.
+func FontFromJSObject(p *js.Object) *Font {
 	return &Font{p: p}
 }
 
 // NewFont returns a new Font object.
 func (t *Three) NewFont(data float64) *Font {
 	p := t.ctx.Get("Font").New(data)
-	return &Font{p: p}
+	return FontFromJSObject(p)
 }
 
 // GenerateShapes TODO description.

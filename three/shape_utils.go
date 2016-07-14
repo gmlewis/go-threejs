@@ -17,13 +17,18 @@ func (s *ShapeUtils) JSObject() *js.Object { return s.p }
 // ShapeUtils returns a ShapeUtils JavaScript class.
 func (t *Three) ShapeUtils() *ShapeUtils {
 	p := t.ctx.Get("ShapeUtils")
+	return ShapeUtilsFromJSObject(p)
+}
+
+// ShapeUtilsFromJSObject returns a wrapped ShapeUtils JavaScript class.
+func ShapeUtilsFromJSObject(p *js.Object) *ShapeUtils {
 	return &ShapeUtils{p: p}
 }
 
 // NewShapeUtils returns a new ShapeUtils object.
 func (t *Three) NewShapeUtils() *ShapeUtils {
 	p := t.ctx.Get("ShapeUtils").New()
-	return &ShapeUtils{p: p}
+	return ShapeUtilsFromJSObject(p)
 }
 
 // Area TODO description.

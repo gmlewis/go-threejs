@@ -17,11 +17,16 @@ func (w *WebGLObjects) JSObject() *js.Object { return w.p }
 // WebGLObjects returns a WebGLObjects JavaScript class.
 func (t *Three) WebGLObjects() *WebGLObjects {
 	p := t.ctx.Get("WebGLObjects")
+	return WebGLObjectsFromJSObject(p)
+}
+
+// WebGLObjectsFromJSObject returns a wrapped WebGLObjects JavaScript class.
+func WebGLObjectsFromJSObject(p *js.Object) *WebGLObjects {
 	return &WebGLObjects{p: p}
 }
 
 // NewWebGLObjects returns a new WebGLObjects object.
 func (t *Three) NewWebGLObjects(gl, properties, info float64) *WebGLObjects {
 	p := t.ctx.Get("WebGLObjects").New(gl, properties, info)
-	return &WebGLObjects{p: p}
+	return WebGLObjectsFromJSObject(p)
 }

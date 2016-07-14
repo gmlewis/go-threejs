@@ -17,11 +17,16 @@ func (c *ClosedSplineCurve3) JSObject() *js.Object { return c.p }
 // ClosedSplineCurve3 returns a ClosedSplineCurve3 JavaScript class.
 func (t *Three) ClosedSplineCurve3() *ClosedSplineCurve3 {
 	p := t.ctx.Get("ClosedSplineCurve3")
+	return ClosedSplineCurve3FromJSObject(p)
+}
+
+// ClosedSplineCurve3FromJSObject returns a wrapped ClosedSplineCurve3 JavaScript class.
+func ClosedSplineCurve3FromJSObject(p *js.Object) *ClosedSplineCurve3 {
 	return &ClosedSplineCurve3{p: p}
 }
 
 // NewClosedSplineCurve3 returns a new ClosedSplineCurve3 object.
 func (t *Three) NewClosedSplineCurve3(points float64) *ClosedSplineCurve3 {
 	p := t.ctx.Get("ClosedSplineCurve3").New(points)
-	return &ClosedSplineCurve3{p: p}
+	return ClosedSplineCurve3FromJSObject(p)
 }

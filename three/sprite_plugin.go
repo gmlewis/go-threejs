@@ -17,11 +17,16 @@ func (s *SpritePlugin) JSObject() *js.Object { return s.p }
 // SpritePlugin returns a SpritePlugin JavaScript class.
 func (t *Three) SpritePlugin() *SpritePlugin {
 	p := t.ctx.Get("SpritePlugin")
+	return SpritePluginFromJSObject(p)
+}
+
+// SpritePluginFromJSObject returns a wrapped SpritePlugin JavaScript class.
+func SpritePluginFromJSObject(p *js.Object) *SpritePlugin {
 	return &SpritePlugin{p: p}
 }
 
 // NewSpritePlugin returns a new SpritePlugin object.
 func (t *Three) NewSpritePlugin(renderer, sprites float64) *SpritePlugin {
 	p := t.ctx.Get("SpritePlugin").New(renderer, sprites)
-	return &SpritePlugin{p: p}
+	return SpritePluginFromJSObject(p)
 }

@@ -17,13 +17,18 @@ func (f *FontLoader) JSObject() *js.Object { return f.p }
 // FontLoader returns a FontLoader JavaScript class.
 func (t *Three) FontLoader() *FontLoader {
 	p := t.ctx.Get("FontLoader")
+	return FontLoaderFromJSObject(p)
+}
+
+// FontLoaderFromJSObject returns a wrapped FontLoader JavaScript class.
+func FontLoaderFromJSObject(p *js.Object) *FontLoader {
 	return &FontLoader{p: p}
 }
 
 // NewFontLoader returns a new FontLoader object.
 func (t *Three) NewFontLoader(manager float64) *FontLoader {
 	p := t.ctx.Get("FontLoader").New(manager)
-	return &FontLoader{p: p}
+	return FontLoaderFromJSObject(p)
 }
 
 // Load TODO description.

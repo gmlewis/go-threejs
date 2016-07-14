@@ -19,7 +19,7 @@ func (m *MeshNormalMaterial) JSObject() *js.Object { return m.p }
 // MeshNormalMaterial returns a MeshNormalMaterial JavaScript class.
 func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
 	p := t.ctx.Get("MeshNormalMaterial")
-	return &MeshNormalMaterial{p: p}
+	return MeshNormalMaterialFromJSObject(p)
 }
 
 // MeshNormalMaterialOpts is a map with one or more properties defining
@@ -30,10 +30,15 @@ func (t *Three) MeshNormalMaterial() *MeshNormalMaterial {
 //     morphTargets -- Define whether the material uses morphTargets. Default is false.
 type MeshNormalMaterialOpts map[string]interface{}
 
+// MeshNormalMaterialFromJSObject returns a wrapped MeshNormalMaterial JavaScript class.
+func MeshNormalMaterialFromJSObject(p *js.Object) *MeshNormalMaterial {
+	return &MeshNormalMaterial{p: p}
+}
+
 // NewMeshNormalMaterial returns a new MeshNormalMaterial object.
 func (t *Three) NewMeshNormalMaterial(parameters MeshNormalMaterialOpts) *MeshNormalMaterial {
 	p := t.ctx.Get("MeshNormalMaterial").New(parameters)
-	return &MeshNormalMaterial{p: p}
+	return MeshNormalMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

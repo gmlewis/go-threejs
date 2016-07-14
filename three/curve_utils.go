@@ -17,13 +17,18 @@ func (c *CurveUtils) JSObject() *js.Object { return c.p }
 // CurveUtils returns a CurveUtils JavaScript class.
 func (t *Three) CurveUtils() *CurveUtils {
 	p := t.ctx.Get("CurveUtils")
+	return CurveUtilsFromJSObject(p)
+}
+
+// CurveUtilsFromJSObject returns a wrapped CurveUtils JavaScript class.
+func CurveUtilsFromJSObject(p *js.Object) *CurveUtils {
 	return &CurveUtils{p: p}
 }
 
 // NewCurveUtils returns a new CurveUtils object.
 func (t *Three) NewCurveUtils() *CurveUtils {
 	p := t.ctx.Get("CurveUtils").New()
-	return &CurveUtils{p: p}
+	return CurveUtilsFromJSObject(p)
 }
 
 // TangentQuadraticBezier TODO description.

@@ -17,13 +17,18 @@ func (t *Triangle) JSObject() *js.Object { return t.p }
 // Triangle returns a Triangle JavaScript class.
 func (t *Three) Triangle() *Triangle {
 	p := t.ctx.Get("Triangle")
+	return TriangleFromJSObject(p)
+}
+
+// TriangleFromJSObject returns a wrapped Triangle JavaScript class.
+func TriangleFromJSObject(p *js.Object) *Triangle {
 	return &Triangle{p: p}
 }
 
 // NewTriangle returns a new Triangle object.
 func (t *Three) NewTriangle(a, b, c float64) *Triangle {
 	p := t.ctx.Get("Triangle").New(a, b, c)
-	return &Triangle{p: p}
+	return TriangleFromJSObject(p)
 }
 
 // Set TODO description.

@@ -17,6 +17,11 @@ func (b *BoxBufferGeometry) JSObject() *js.Object { return b.p }
 // BoxBufferGeometry returns a BoxBufferGeometry JavaScript class.
 func (t *Three) BoxBufferGeometry() *BoxBufferGeometry {
 	p := t.ctx.Get("BoxBufferGeometry")
+	return BoxBufferGeometryFromJSObject(p)
+}
+
+// BoxBufferGeometryFromJSObject returns a wrapped BoxBufferGeometry JavaScript class.
+func BoxBufferGeometryFromJSObject(p *js.Object) *BoxBufferGeometry {
 	return &BoxBufferGeometry{p: p}
 }
 
@@ -34,5 +39,5 @@ func (t *Three) NewBoxBufferGeometry(width, height, depth int, opts *NewBoxBuffe
 	} else {
 		p = t.ctx.Get("BoxBufferGeometry").New(width, height, depth)
 	}
-	return &BoxBufferGeometry{p: p}
+	return BoxBufferGeometryFromJSObject(p)
 }

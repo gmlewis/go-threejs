@@ -17,13 +17,18 @@ func (b *Box2) JSObject() *js.Object { return b.p }
 // Box2 returns a Box2 JavaScript class.
 func (t *Three) Box2() *Box2 {
 	p := t.ctx.Get("Box2")
+	return Box2FromJSObject(p)
+}
+
+// Box2FromJSObject returns a wrapped Box2 JavaScript class.
+func Box2FromJSObject(p *js.Object) *Box2 {
 	return &Box2{p: p}
 }
 
 // NewBox2 returns a new Box2 object.
 func (t *Three) NewBox2(min, max float64) *Box2 {
 	p := t.ctx.Get("Box2").New(min, max)
-	return &Box2{p: p}
+	return Box2FromJSObject(p)
 }
 
 // Set TODO description.

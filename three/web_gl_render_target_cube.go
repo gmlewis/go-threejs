@@ -17,11 +17,16 @@ func (w *WebGLRenderTargetCube) JSObject() *js.Object { return w.p }
 // WebGLRenderTargetCube returns a WebGLRenderTargetCube JavaScript class.
 func (t *Three) WebGLRenderTargetCube() *WebGLRenderTargetCube {
 	p := t.ctx.Get("WebGLRenderTargetCube")
+	return WebGLRenderTargetCubeFromJSObject(p)
+}
+
+// WebGLRenderTargetCubeFromJSObject returns a wrapped WebGLRenderTargetCube JavaScript class.
+func WebGLRenderTargetCubeFromJSObject(p *js.Object) *WebGLRenderTargetCube {
 	return &WebGLRenderTargetCube{p: p}
 }
 
 // NewWebGLRenderTargetCube returns a new WebGLRenderTargetCube object.
 func (t *Three) NewWebGLRenderTargetCube(width, height, options float64) *WebGLRenderTargetCube {
 	p := t.ctx.Get("WebGLRenderTargetCube").New(width, height, options)
-	return &WebGLRenderTargetCube{p: p}
+	return WebGLRenderTargetCubeFromJSObject(p)
 }

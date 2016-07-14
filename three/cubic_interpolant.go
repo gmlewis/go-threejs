@@ -17,13 +17,18 @@ func (c *CubicInterpolant) JSObject() *js.Object { return c.p }
 // CubicInterpolant returns a CubicInterpolant JavaScript class.
 func (t *Three) CubicInterpolant() *CubicInterpolant {
 	p := t.ctx.Get("CubicInterpolant")
+	return CubicInterpolantFromJSObject(p)
+}
+
+// CubicInterpolantFromJSObject returns a wrapped CubicInterpolant JavaScript class.
+func CubicInterpolantFromJSObject(p *js.Object) *CubicInterpolant {
 	return &CubicInterpolant{p: p}
 }
 
 // NewCubicInterpolant returns a new CubicInterpolant object.
 func (t *Three) NewCubicInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *CubicInterpolant {
 	p := t.ctx.Get("CubicInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
-	return &CubicInterpolant{p: p}
+	return CubicInterpolantFromJSObject(p)
 }
 
 // IntervalChanged TODO description.

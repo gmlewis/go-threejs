@@ -17,11 +17,16 @@ func (i *ImmediateRenderObject) JSObject() *js.Object { return i.p }
 // ImmediateRenderObject returns an ImmediateRenderObject JavaScript class.
 func (t *Three) ImmediateRenderObject() *ImmediateRenderObject {
 	p := t.ctx.Get("ImmediateRenderObject")
+	return ImmediateRenderObjectFromJSObject(p)
+}
+
+// ImmediateRenderObjectFromJSObject returns a wrapped ImmediateRenderObject JavaScript class.
+func ImmediateRenderObjectFromJSObject(p *js.Object) *ImmediateRenderObject {
 	return &ImmediateRenderObject{p: p}
 }
 
 // NewImmediateRenderObject returns a new ImmediateRenderObject object.
 func (t *Three) NewImmediateRenderObject(material float64) *ImmediateRenderObject {
 	p := t.ctx.Get("ImmediateRenderObject").New(material)
-	return &ImmediateRenderObject{p: p}
+	return ImmediateRenderObjectFromJSObject(p)
 }

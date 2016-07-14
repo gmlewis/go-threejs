@@ -17,13 +17,18 @@ func (m *MaterialLoader) JSObject() *js.Object { return m.p }
 // MaterialLoader returns a MaterialLoader JavaScript class.
 func (t *Three) MaterialLoader() *MaterialLoader {
 	p := t.ctx.Get("MaterialLoader")
+	return MaterialLoaderFromJSObject(p)
+}
+
+// MaterialLoaderFromJSObject returns a wrapped MaterialLoader JavaScript class.
+func MaterialLoaderFromJSObject(p *js.Object) *MaterialLoader {
 	return &MaterialLoader{p: p}
 }
 
 // NewMaterialLoader returns a new MaterialLoader object.
 func (t *Three) NewMaterialLoader(manager float64) *MaterialLoader {
 	p := t.ctx.Get("MaterialLoader").New(manager)
-	return &MaterialLoader{p: p}
+	return MaterialLoaderFromJSObject(p)
 }
 
 // Load TODO description.

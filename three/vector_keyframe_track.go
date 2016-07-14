@@ -17,11 +17,16 @@ func (v *VectorKeyframeTrack) JSObject() *js.Object { return v.p }
 // VectorKeyframeTrack returns a VectorKeyframeTrack JavaScript class.
 func (t *Three) VectorKeyframeTrack() *VectorKeyframeTrack {
 	p := t.ctx.Get("VectorKeyframeTrack")
+	return VectorKeyframeTrackFromJSObject(p)
+}
+
+// VectorKeyframeTrackFromJSObject returns a wrapped VectorKeyframeTrack JavaScript class.
+func VectorKeyframeTrackFromJSObject(p *js.Object) *VectorKeyframeTrack {
 	return &VectorKeyframeTrack{p: p}
 }
 
 // NewVectorKeyframeTrack returns a new VectorKeyframeTrack object.
 func (t *Three) NewVectorKeyframeTrack(name, times, values, interpolation float64) *VectorKeyframeTrack {
 	p := t.ctx.Get("VectorKeyframeTrack").New(name, times, values, interpolation)
-	return &VectorKeyframeTrack{p: p}
+	return VectorKeyframeTrackFromJSObject(p)
 }

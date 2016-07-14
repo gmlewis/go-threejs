@@ -17,13 +17,18 @@ func (r *Ray) JSObject() *js.Object { return r.p }
 // Ray returns a Ray JavaScript class.
 func (t *Three) Ray() *Ray {
 	p := t.ctx.Get("Ray")
+	return RayFromJSObject(p)
+}
+
+// RayFromJSObject returns a wrapped Ray JavaScript class.
+func RayFromJSObject(p *js.Object) *Ray {
 	return &Ray{p: p}
 }
 
 // NewRay returns a new Ray object.
 func (t *Three) NewRay(origin, direction float64) *Ray {
 	p := t.ctx.Get("Ray").New(origin, direction)
-	return &Ray{p: p}
+	return RayFromJSObject(p)
 }
 
 // Set TODO description.

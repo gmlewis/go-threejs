@@ -19,6 +19,11 @@ func (s *SpriteMaterial) JSObject() *js.Object { return s.p }
 // SpriteMaterial returns a SpriteMaterial JavaScript class.
 func (t *Three) SpriteMaterial() *SpriteMaterial {
 	p := t.ctx.Get("SpriteMaterial")
+	return SpriteMaterialFromJSObject(p)
+}
+
+// SpriteMaterialFromJSObject returns a wrapped SpriteMaterial JavaScript class.
+func SpriteMaterialFromJSObject(p *js.Object) *SpriteMaterial {
 	return &SpriteMaterial{p: p}
 }
 
@@ -31,7 +36,7 @@ func (t *Three) SpriteMaterial() *SpriteMaterial {
 //     fog - whether or not to use the scene fog
 func (t *Three) NewSpriteMaterial(parameters map[string]interface{}) *SpriteMaterial {
 	p := t.ctx.Get("SpriteMaterial").New(parameters)
-	return &SpriteMaterial{p: p}
+	return SpriteMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

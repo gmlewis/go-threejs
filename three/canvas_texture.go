@@ -17,11 +17,16 @@ func (c *CanvasTexture) JSObject() *js.Object { return c.p }
 // CanvasTexture returns a CanvasTexture JavaScript class.
 func (t *Three) CanvasTexture() *CanvasTexture {
 	p := t.ctx.Get("CanvasTexture")
+	return CanvasTextureFromJSObject(p)
+}
+
+// CanvasTextureFromJSObject returns a wrapped CanvasTexture JavaScript class.
+func CanvasTextureFromJSObject(p *js.Object) *CanvasTexture {
 	return &CanvasTexture{p: p}
 }
 
 // NewCanvasTexture returns a new CanvasTexture object.
 func (t *Three) NewCanvasTexture(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *CanvasTexture {
 	p := t.ctx.Get("CanvasTexture").New(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
-	return &CanvasTexture{p: p}
+	return CanvasTextureFromJSObject(p)
 }

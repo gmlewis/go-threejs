@@ -17,11 +17,16 @@ func (d *DataTexture) JSObject() *js.Object { return d.p }
 // DataTexture returns a DataTexture JavaScript class.
 func (t *Three) DataTexture() *DataTexture {
 	p := t.ctx.Get("DataTexture")
+	return DataTextureFromJSObject(p)
+}
+
+// DataTextureFromJSObject returns a wrapped DataTexture JavaScript class.
+func DataTextureFromJSObject(p *js.Object) *DataTexture {
 	return &DataTexture{p: p}
 }
 
 // NewDataTexture returns a new DataTexture object.
 func (t *Three) NewDataTexture(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy float64) *DataTexture {
 	p := t.ctx.Get("DataTexture").New(data, width, height, format, typ, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy)
-	return &DataTexture{p: p}
+	return DataTextureFromJSObject(p)
 }

@@ -19,13 +19,18 @@ func (l *LOD) JSObject() *js.Object { return l.p }
 // LOD returns a LOD JavaScript class.
 func (t *Three) LOD() *LOD {
 	p := t.ctx.Get("LOD")
+	return LODFromJSObject(p)
+}
+
+// LODFromJSObject returns a wrapped LOD JavaScript class.
+func LODFromJSObject(p *js.Object) *LOD {
 	return &LOD{p: p}
 }
 
 // NewLOD returns a new LOD object.
 func (t *Three) NewLOD() *LOD {
 	p := t.ctx.Get("LOD").New()
-	return &LOD{p: p}
+	return LODFromJSObject(p)
 }
 
 // Get TODO description.

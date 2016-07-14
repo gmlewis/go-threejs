@@ -15,6 +15,11 @@ func (m *MultiMaterial) JSObject() *js.Object { return m.p }
 // MultiMaterial returns a MultiMaterial JavaScript class.
 func (t *Three) MultiMaterial() *MultiMaterial {
 	p := t.ctx.Get("MultiMaterial")
+	return MultiMaterialFromJSObject(p)
+}
+
+// MultiMaterialFromJSObject returns a wrapped MultiMaterial JavaScript class.
+func MultiMaterialFromJSObject(p *js.Object) *MultiMaterial {
 	return &MultiMaterial{p: p}
 }
 
@@ -25,7 +30,7 @@ func (t *Three) NewMultiMaterial(materials []*Material) *MultiMaterial {
 		m = append(m, materials[i].JSObject())
 	}
 	p := t.ctx.Get("MultiMaterial").New(m)
-	return &MultiMaterial{p: p}
+	return MultiMaterialFromJSObject(p)
 }
 
 // ToJSON TODO description.

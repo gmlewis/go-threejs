@@ -17,13 +17,18 @@ func (s *SkeletonHelper) JSObject() *js.Object { return s.p }
 // SkeletonHelper returns a SkeletonHelper JavaScript class.
 func (t *Three) SkeletonHelper() *SkeletonHelper {
 	p := t.ctx.Get("SkeletonHelper")
+	return SkeletonHelperFromJSObject(p)
+}
+
+// SkeletonHelperFromJSObject returns a wrapped SkeletonHelper JavaScript class.
+func SkeletonHelperFromJSObject(p *js.Object) *SkeletonHelper {
 	return &SkeletonHelper{p: p}
 }
 
 // NewSkeletonHelper returns a new SkeletonHelper object.
 func (t *Three) NewSkeletonHelper(object float64) *SkeletonHelper {
 	p := t.ctx.Get("SkeletonHelper").New(object)
-	return &SkeletonHelper{p: p}
+	return SkeletonHelperFromJSObject(p)
 }
 
 // GetBoneList TODO description.

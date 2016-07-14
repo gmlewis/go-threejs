@@ -17,13 +17,18 @@ func (a *AnimationObjectGroup) JSObject() *js.Object { return a.p }
 // AnimationObjectGroup returns an AnimationObjectGroup JavaScript class.
 func (t *Three) AnimationObjectGroup() *AnimationObjectGroup {
 	p := t.ctx.Get("AnimationObjectGroup")
+	return AnimationObjectGroupFromJSObject(p)
+}
+
+// AnimationObjectGroupFromJSObject returns a wrapped AnimationObjectGroup JavaScript class.
+func AnimationObjectGroupFromJSObject(p *js.Object) *AnimationObjectGroup {
 	return &AnimationObjectGroup{p: p}
 }
 
 // NewAnimationObjectGroup returns a new AnimationObjectGroup object.
 func (t *Three) NewAnimationObjectGroup(varArgs JSObject) *AnimationObjectGroup {
 	p := t.ctx.Get("AnimationObjectGroup").New(varArgs.JSObject())
-	return &AnimationObjectGroup{p: p}
+	return AnimationObjectGroupFromJSObject(p)
 }
 
 // Total returns the total-component of the AnimationObjectGroup.

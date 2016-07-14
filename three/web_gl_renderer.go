@@ -17,7 +17,7 @@ func (w *WebGLRenderer) JSObject() *js.Object { return w.p }
 // WebGLRenderer returns a WebGLRenderer JavaScript class.
 func (t *Three) WebGLRenderer() *WebGLRenderer {
 	p := t.ctx.Get("WebGLRenderer")
-	return &WebGLRenderer{p: p}
+	return WebGLRendererFromJSObject(p)
 }
 
 // WebGLRendererOpts provides optional parameters to WebGLRenderer.
@@ -32,6 +32,11 @@ type WebGLRendererOpts struct {
 	PreserveDrawingBuffer  *bool   `json:"preserveDrawingBuffer,omitempty"` // default is false.
 	Depth                  *bool   `json:"depth,omitempty"`                 // default is true.
 	LogarithmicDepthBuffer *bool   `json:"logatihmicDepthBuffer,omitempty"` // default is false.
+}
+
+// WebGLRendererFromJSObject returns a wrapped WebGLRenderer JavaScript class.
+func WebGLRendererFromJSObject(p *js.Object) *WebGLRenderer {
+	return &WebGLRenderer{p: p}
 }
 
 // NewWebGLRenderer returns a new WebGLRenderer object.
@@ -64,7 +69,7 @@ func (t *Three) NewWebGLRenderer(opts *WebGLRendererOpts) *WebGLRenderer {
 		}
 	}
 	p := t.ctx.Get("WebGLRenderer").New(params)
-	return &WebGLRenderer{p: p}
+	return WebGLRendererFromJSObject(p)
 }
 
 // DOMElement returns the DOM element associated with this renderer.

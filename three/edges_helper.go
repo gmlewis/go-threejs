@@ -17,11 +17,16 @@ func (e *EdgesHelper) JSObject() *js.Object { return e.p }
 // EdgesHelper returns an EdgesHelper JavaScript class.
 func (t *Three) EdgesHelper() *EdgesHelper {
 	p := t.ctx.Get("EdgesHelper")
+	return EdgesHelperFromJSObject(p)
+}
+
+// EdgesHelperFromJSObject returns a wrapped EdgesHelper JavaScript class.
+func EdgesHelperFromJSObject(p *js.Object) *EdgesHelper {
 	return &EdgesHelper{p: p}
 }
 
 // NewEdgesHelper returns a new EdgesHelper object.
 func (t *Three) NewEdgesHelper(object, hex, thresholdAngle float64) *EdgesHelper {
 	p := t.ctx.Get("EdgesHelper").New(object, hex, thresholdAngle)
-	return &EdgesHelper{p: p}
+	return EdgesHelperFromJSObject(p)
 }

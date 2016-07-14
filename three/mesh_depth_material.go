@@ -20,7 +20,7 @@ func (m *MeshDepthMaterial) JSObject() *js.Object { return m.p }
 // MeshDepthMaterial returns a MeshDepthMaterial JavaScript class.
 func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
 	p := t.ctx.Get("MeshDepthMaterial")
-	return &MeshDepthMaterial{p: p}
+	return MeshDepthMaterialFromJSObject(p)
 }
 
 // MeshDepthMaterialOpts is a map with one or more properties defining
@@ -31,10 +31,15 @@ func (t *Three) MeshDepthMaterial() *MeshDepthMaterial {
 //     wireframeLinewidth -- Controls wireframe thickness. Default is 1.
 type MeshDepthMaterialOpts map[string]interface{}
 
+// MeshDepthMaterialFromJSObject returns a wrapped MeshDepthMaterial JavaScript class.
+func MeshDepthMaterialFromJSObject(p *js.Object) *MeshDepthMaterial {
+	return &MeshDepthMaterial{p: p}
+}
+
 // NewMeshDepthMaterial returns a new MeshDepthMaterial object.
 func (t *Three) NewMeshDepthMaterial(parameters MeshDepthMaterialOpts) *MeshDepthMaterial {
 	p := t.ctx.Get("MeshDepthMaterial").New(parameters)
-	return &MeshDepthMaterial{p: p}
+	return MeshDepthMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

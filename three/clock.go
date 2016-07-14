@@ -17,13 +17,18 @@ func (c *Clock) JSObject() *js.Object { return c.p }
 // Clock returns a Clock JavaScript class.
 func (t *Three) Clock() *Clock {
 	p := t.ctx.Get("Clock")
+	return ClockFromJSObject(p)
+}
+
+// ClockFromJSObject returns a wrapped Clock JavaScript class.
+func ClockFromJSObject(p *js.Object) *Clock {
 	return &Clock{p: p}
 }
 
 // NewClock returns a new Clock object.
 func (t *Three) NewClock(autoStart bool) *Clock {
 	p := t.ctx.Get("Clock").New(autoStart)
-	return &Clock{p: p}
+	return ClockFromJSObject(p)
 }
 
 // Start TODO description.

@@ -17,13 +17,18 @@ func (d *DirectGeometry) JSObject() *js.Object { return d.p }
 // DirectGeometry returns a DirectGeometry JavaScript class.
 func (t *Three) DirectGeometry() *DirectGeometry {
 	p := t.ctx.Get("DirectGeometry")
+	return DirectGeometryFromJSObject(p)
+}
+
+// DirectGeometryFromJSObject returns a wrapped DirectGeometry JavaScript class.
+func DirectGeometryFromJSObject(p *js.Object) *DirectGeometry {
 	return &DirectGeometry{p: p}
 }
 
 // NewDirectGeometry returns a new DirectGeometry object.
 func (t *Three) NewDirectGeometry() *DirectGeometry {
 	p := t.ctx.Get("DirectGeometry").New()
-	return &DirectGeometry{p: p}
+	return DirectGeometryFromJSObject(p)
 }
 
 // ComputeFaceNormals TODO description.

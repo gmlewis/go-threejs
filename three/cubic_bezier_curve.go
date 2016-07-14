@@ -17,13 +17,18 @@ func (c *CubicBezierCurve) JSObject() *js.Object { return c.p }
 // CubicBezierCurve returns a CubicBezierCurve JavaScript class.
 func (t *Three) CubicBezierCurve() *CubicBezierCurve {
 	p := t.ctx.Get("CubicBezierCurve")
+	return CubicBezierCurveFromJSObject(p)
+}
+
+// CubicBezierCurveFromJSObject returns a wrapped CubicBezierCurve JavaScript class.
+func CubicBezierCurveFromJSObject(p *js.Object) *CubicBezierCurve {
 	return &CubicBezierCurve{p: p}
 }
 
 // NewCubicBezierCurve returns a new CubicBezierCurve object.
 func (t *Three) NewCubicBezierCurve(v0, v1, v2, v3 float64) *CubicBezierCurve {
 	p := t.ctx.Get("CubicBezierCurve").New(v0, v1, v2, v3)
-	return &CubicBezierCurve{p: p}
+	return CubicBezierCurveFromJSObject(p)
 }
 
 // GetPoint TODO description.

@@ -19,7 +19,7 @@ func (m *MeshLambertMaterial) JSObject() *js.Object { return m.p }
 // MeshLambertMaterial returns a MeshLambertMaterial JavaScript class.
 func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 	p := t.ctx.Get("MeshLambertMaterial")
-	return &MeshLambertMaterial{p: p}
+	return MeshLambertMaterialFromJSObject(p)
 }
 
 // MeshLambertMaterialOpts is a map with one or more properties defining
@@ -47,10 +47,15 @@ func (t *Three) MeshLambertMaterial() *MeshLambertMaterial {
 //         Default is false.
 type MeshLambertMaterialOpts map[string]interface{}
 
+// MeshLambertMaterialFromJSObject returns a wrapped MeshLambertMaterial JavaScript class.
+func MeshLambertMaterialFromJSObject(p *js.Object) *MeshLambertMaterial {
+	return &MeshLambertMaterial{p: p}
+}
+
 // NewMeshLambertMaterial returns a new MeshLambertMaterial object.
 func (t *Three) NewMeshLambertMaterial(parameters MeshLambertMaterialOpts) *MeshLambertMaterial {
 	p := t.ctx.Get("MeshLambertMaterial").New(parameters)
-	return &MeshLambertMaterial{p: p}
+	return MeshLambertMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

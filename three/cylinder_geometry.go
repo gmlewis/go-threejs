@@ -19,6 +19,11 @@ func (c *CylinderGeometry) JSObject() *js.Object { return c.p }
 // CylinderGeometry returns a CylinderGeometry JavaScript class.
 func (t *Three) CylinderGeometry() *CylinderGeometry {
 	p := t.ctx.Get("CylinderGeometry")
+	return CylinderGeometryFromJSObject(p)
+}
+
+// CylinderGeometryFromJSObject returns a wrapped CylinderGeometry JavaScript class.
+func CylinderGeometryFromJSObject(p *js.Object) *CylinderGeometry {
 	return &CylinderGeometry{p: p}
 }
 
@@ -36,5 +41,5 @@ func (t *Three) CylinderGeometry() *CylinderGeometry {
 //         The default is 2*Pi, which makes for a complete cylinder.
 func (t *Three) NewCylinderGeometry(radiusTop, radiusBottom, height float64, radialSegments, heightSegments int, openEnded bool, thetaStart, thetaLength float64) *CylinderGeometry {
 	p := t.ctx.Get("CylinderGeometry").New(radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength)
-	return &CylinderGeometry{p: p}
+	return CylinderGeometryFromJSObject(p)
 }

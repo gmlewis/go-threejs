@@ -19,6 +19,11 @@ func (r *RingGeometry) JSObject() *js.Object { return r.p }
 // RingGeometry returns a RingGeometry JavaScript class.
 func (t *Three) RingGeometry() *RingGeometry {
 	p := t.ctx.Get("RingGeometry")
+	return RingGeometryFromJSObject(p)
+}
+
+// RingGeometryFromJSObject returns a wrapped RingGeometry JavaScript class.
+func RingGeometryFromJSObject(p *js.Object) *RingGeometry {
 	return &RingGeometry{p: p}
 }
 
@@ -33,5 +38,5 @@ func (t *Three) RingGeometry() *RingGeometry {
 //     thetaLength — Central angle. Default is Math.PI * 2.
 func (t *Three) NewRingGeometry(innerRadius, outerRadius float64, thetaSegments, phiSegments int, thetaStart, thetaLength float64) *RingGeometry {
 	p := t.ctx.Get("RingGeometry").New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
-	return &RingGeometry{p: p}
+	return RingGeometryFromJSObject(p)
 }

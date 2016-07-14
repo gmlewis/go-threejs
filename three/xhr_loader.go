@@ -17,13 +17,18 @@ func (x *XHRLoader) JSObject() *js.Object { return x.p }
 // XHRLoader returns a XHRLoader JavaScript class.
 func (t *Three) XHRLoader() *XHRLoader {
 	p := t.ctx.Get("XHRLoader")
+	return XHRLoaderFromJSObject(p)
+}
+
+// XHRLoaderFromJSObject returns a wrapped XHRLoader JavaScript class.
+func XHRLoaderFromJSObject(p *js.Object) *XHRLoader {
 	return &XHRLoader{p: p}
 }
 
 // NewXHRLoader returns a new XHRLoader object.
 func (t *Three) NewXHRLoader(manager float64) *XHRLoader {
 	p := t.ctx.Get("XHRLoader").New(manager)
-	return &XHRLoader{p: p}
+	return XHRLoaderFromJSObject(p)
 }
 
 // Load TODO description.

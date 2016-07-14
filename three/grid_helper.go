@@ -17,13 +17,18 @@ func (g *GridHelper) JSObject() *js.Object { return g.p }
 // GridHelper returns a GridHelper JavaScript class.
 func (t *Three) GridHelper() *GridHelper {
 	p := t.ctx.Get("GridHelper")
+	return GridHelperFromJSObject(p)
+}
+
+// GridHelperFromJSObject returns a wrapped GridHelper JavaScript class.
+func GridHelperFromJSObject(p *js.Object) *GridHelper {
 	return &GridHelper{p: p}
 }
 
 // NewGridHelper returns a new GridHelper object.
 func (t *Three) NewGridHelper(size, step float64) *GridHelper {
 	p := t.ctx.Get("GridHelper").New(size, step)
-	return &GridHelper{p: p}
+	return GridHelperFromJSObject(p)
 }
 
 // SetColors TODO description.

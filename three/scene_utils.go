@@ -17,13 +17,18 @@ func (s *SceneUtils) JSObject() *js.Object { return s.p }
 // SceneUtils returns a SceneUtils JavaScript class.
 func (t *Three) SceneUtils() *SceneUtils {
 	p := t.ctx.Get("SceneUtils")
+	return SceneUtilsFromJSObject(p)
+}
+
+// SceneUtilsFromJSObject returns a wrapped SceneUtils JavaScript class.
+func SceneUtilsFromJSObject(p *js.Object) *SceneUtils {
 	return &SceneUtils{p: p}
 }
 
 // NewSceneUtils returns a new SceneUtils object.
 func (t *Three) NewSceneUtils() *SceneUtils {
 	p := t.ctx.Get("SceneUtils").New()
-	return &SceneUtils{p: p}
+	return SceneUtilsFromJSObject(p)
 }
 
 // CreateMultiMaterialObject TODO description.

@@ -17,13 +17,18 @@ func (s *SplineCurve) JSObject() *js.Object { return s.p }
 // SplineCurve returns a SplineCurve JavaScript class.
 func (t *Three) SplineCurve() *SplineCurve {
 	p := t.ctx.Get("SplineCurve")
+	return SplineCurveFromJSObject(p)
+}
+
+// SplineCurveFromJSObject returns a wrapped SplineCurve JavaScript class.
+func SplineCurveFromJSObject(p *js.Object) *SplineCurve {
 	return &SplineCurve{p: p}
 }
 
 // NewSplineCurve returns a new SplineCurve object.
 func (t *Three) NewSplineCurve(points /* array of Vector2 */ float64) *SplineCurve {
 	p := t.ctx.Get("SplineCurve").New(points /* array of Vector2 */)
-	return &SplineCurve{p: p}
+	return SplineCurveFromJSObject(p)
 }
 
 // GetPoint TODO description.

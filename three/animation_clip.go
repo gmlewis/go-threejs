@@ -17,13 +17,18 @@ func (a *AnimationClip) JSObject() *js.Object { return a.p }
 // AnimationClip returns an AnimationClip JavaScript class.
 func (t *Three) AnimationClip() *AnimationClip {
 	p := t.ctx.Get("AnimationClip")
+	return AnimationClipFromJSObject(p)
+}
+
+// AnimationClipFromJSObject returns a wrapped AnimationClip JavaScript class.
+func AnimationClipFromJSObject(p *js.Object) *AnimationClip {
 	return &AnimationClip{p: p}
 }
 
 // NewAnimationClip returns a new AnimationClip object.
 func (t *Three) NewAnimationClip(name, duration, tracks float64) *AnimationClip {
 	p := t.ctx.Get("AnimationClip").New(name, duration, tracks)
-	return &AnimationClip{p: p}
+	return AnimationClipFromJSObject(p)
 }
 
 // ResetDuration TODO description.

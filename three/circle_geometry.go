@@ -19,6 +19,11 @@ func (c *CircleGeometry) JSObject() *js.Object { return c.p }
 // CircleGeometry returns a CircleGeometry JavaScript class.
 func (t *Three) CircleGeometry() *CircleGeometry {
 	p := t.ctx.Get("CircleGeometry")
+	return CircleGeometryFromJSObject(p)
+}
+
+// CircleGeometryFromJSObject returns a wrapped CircleGeometry JavaScript class.
+func CircleGeometryFromJSObject(p *js.Object) *CircleGeometry {
 	return &CircleGeometry{p: p}
 }
 
@@ -31,5 +36,5 @@ func (t *Three) CircleGeometry() *CircleGeometry {
 //         The default is 2*Pi, which makes for a complete circle.
 func (t *Three) NewCircleGeometry(radius float64, segments int, thetaStart, thetaLength float64) *CircleGeometry {
 	p := t.ctx.Get("CircleGeometry").New(radius, segments, thetaStart, thetaLength)
-	return &CircleGeometry{p: p}
+	return CircleGeometryFromJSObject(p)
 }

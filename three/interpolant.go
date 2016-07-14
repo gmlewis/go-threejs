@@ -17,13 +17,18 @@ func (i *Interpolant) JSObject() *js.Object { return i.p }
 // Interpolant returns an Interpolant JavaScript class.
 func (t *Three) Interpolant() *Interpolant {
 	p := t.ctx.Get("Interpolant")
+	return InterpolantFromJSObject(p)
+}
+
+// InterpolantFromJSObject returns a wrapped Interpolant JavaScript class.
+func InterpolantFromJSObject(p *js.Object) *Interpolant {
 	return &Interpolant{p: p}
 }
 
 // NewInterpolant returns a new Interpolant object.
 func (t *Three) NewInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *Interpolant {
 	p := t.ctx.Get("Interpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
-	return &Interpolant{p: p}
+	return InterpolantFromJSObject(p)
 }
 
 // Evaluate TODO description.

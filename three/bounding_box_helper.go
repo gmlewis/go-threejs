@@ -17,11 +17,16 @@ func (b *BoundingBoxHelper) JSObject() *js.Object { return b.p }
 // BoundingBoxHelper returns a BoundingBoxHelper JavaScript class.
 func (t *Three) BoundingBoxHelper() *BoundingBoxHelper {
 	p := t.ctx.Get("BoundingBoxHelper")
+	return BoundingBoxHelperFromJSObject(p)
+}
+
+// BoundingBoxHelperFromJSObject returns a wrapped BoundingBoxHelper JavaScript class.
+func BoundingBoxHelperFromJSObject(p *js.Object) *BoundingBoxHelper {
 	return &BoundingBoxHelper{p: p}
 }
 
 // NewBoundingBoxHelper returns a new BoundingBoxHelper object.
 func (t *Three) NewBoundingBoxHelper(object, hex float64) *BoundingBoxHelper {
 	p := t.ctx.Get("BoundingBoxHelper").New(object, hex)
-	return &BoundingBoxHelper{p: p}
+	return BoundingBoxHelperFromJSObject(p)
 }

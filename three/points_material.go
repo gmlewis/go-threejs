@@ -19,6 +19,11 @@ func (p *PointsMaterial) JSObject() *js.Object { return p.p }
 // PointsMaterial returns a PointsMaterial JavaScript class.
 func (t *Three) PointsMaterial() *PointsMaterial {
 	p := t.ctx.Get("PointsMaterial")
+	return PointsMaterialFromJSObject(p)
+}
+
+// PointsMaterialFromJSObject returns a wrapped PointsMaterial JavaScript class.
+func PointsMaterialFromJSObject(p *js.Object) *PointsMaterial {
 	return &PointsMaterial{p: p}
 }
 
@@ -33,7 +38,7 @@ func (t *Three) PointsMaterial() *PointsMaterial {
 //     fog — Define whether the material color is affected by global fog settings. Default is true.
 func (t *Three) NewPointsMaterial(parameters map[string]interface{}) *PointsMaterial {
 	p := t.ctx.Get("PointsMaterial").New(parameters)
-	return &PointsMaterial{p: p}
+	return PointsMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

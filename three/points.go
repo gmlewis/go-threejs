@@ -19,6 +19,11 @@ func (p *Points) JSObject() *js.Object { return p.p }
 // Points returns a Points JavaScript class.
 func (t *Three) Points() *Points {
 	p := t.ctx.Get("Points")
+	return PointsFromJSObject(p)
+}
+
+// PointsFromJSObject returns a wrapped Points JavaScript class.
+func PointsFromJSObject(p *js.Object) *Points {
 	return &Points{p: p}
 }
 
@@ -28,5 +33,5 @@ func (t *Three) Points() *Points {
 //     material — an instance of material (optional).
 func (t *Three) NewPoints(geometry, material *js.Object) *Points {
 	p := t.ctx.Get("Points").New(geometry, material)
-	return &Points{p: p}
+	return PointsFromJSObject(p)
 }

@@ -17,13 +17,18 @@ func (i *InterleavedBuffer) JSObject() *js.Object { return i.p }
 // InterleavedBuffer returns an InterleavedBuffer JavaScript class.
 func (t *Three) InterleavedBuffer() *InterleavedBuffer {
 	p := t.ctx.Get("InterleavedBuffer")
+	return InterleavedBufferFromJSObject(p)
+}
+
+// InterleavedBufferFromJSObject returns a wrapped InterleavedBuffer JavaScript class.
+func InterleavedBufferFromJSObject(p *js.Object) *InterleavedBuffer {
 	return &InterleavedBuffer{p: p}
 }
 
 // NewInterleavedBuffer returns a new InterleavedBuffer object.
 func (t *Three) NewInterleavedBuffer(array, stride float64) *InterleavedBuffer {
 	p := t.ctx.Get("InterleavedBuffer").New(array, stride)
-	return &InterleavedBuffer{p: p}
+	return InterleavedBufferFromJSObject(p)
 }
 
 // Length returns the length-component of the InterleavedBuffer.

@@ -17,13 +17,18 @@ func (u *Uniform) JSObject() *js.Object { return u.p }
 // Uniform returns an Uniform JavaScript class.
 func (t *Three) Uniform() *Uniform {
 	p := t.ctx.Get("Uniform")
+	return UniformFromJSObject(p)
+}
+
+// UniformFromJSObject returns a wrapped Uniform JavaScript class.
+func UniformFromJSObject(p *js.Object) *Uniform {
 	return &Uniform{p: p}
 }
 
 // NewUniform returns a new Uniform object.
 func (t *Three) NewUniform(typ, value float64) *Uniform {
 	p := t.ctx.Get("Uniform").New(typ, value)
-	return &Uniform{p: p}
+	return UniformFromJSObject(p)
 }
 
 // OnUpdate TODO description.

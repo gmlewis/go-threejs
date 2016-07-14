@@ -19,6 +19,11 @@ func (t *TorusGeometry) JSObject() *js.Object { return t.p }
 // TorusGeometry returns a TorusGeometry JavaScript class.
 func (t *Three) TorusGeometry() *TorusGeometry {
 	p := t.ctx.Get("TorusGeometry")
+	return TorusGeometryFromJSObject(p)
+}
+
+// TorusGeometryFromJSObject returns a wrapped TorusGeometry JavaScript class.
+func TorusGeometryFromJSObject(p *js.Object) *TorusGeometry {
 	return &TorusGeometry{p: p}
 }
 
@@ -31,5 +36,5 @@ func (t *Three) TorusGeometry() *TorusGeometry {
 //     arc — Central angle. Default is Math.PI * 2.
 func (t *Three) NewTorusGeometry(radius, tube float64, radialSegments, tubularSegments int, arc float64) *TorusGeometry {
 	p := t.ctx.Get("TorusGeometry").New(radius, tube, radialSegments, tubularSegments, arc)
-	return &TorusGeometry{p: p}
+	return TorusGeometryFromJSObject(p)
 }

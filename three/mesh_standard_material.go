@@ -17,17 +17,22 @@ func (m *MeshStandardMaterial) JSObject() *js.Object { return m.p }
 // MeshStandardMaterial returns a MeshStandardMaterial JavaScript class.
 func (t *Three) MeshStandardMaterial() *MeshStandardMaterial {
 	p := t.ctx.Get("MeshStandardMaterial")
-	return &MeshStandardMaterial{p: p}
+	return MeshStandardMaterialFromJSObject(p)
 }
 
 // MeshStandardMaterialOpts is a map with one or more properties defining
 // the material's appearance.
 type MeshStandardMaterialOpts map[string]interface{}
 
+// MeshStandardMaterialFromJSObject returns a wrapped MeshStandardMaterial JavaScript class.
+func MeshStandardMaterialFromJSObject(p *js.Object) *MeshStandardMaterial {
+	return &MeshStandardMaterial{p: p}
+}
+
 // NewMeshStandardMaterial returns a new MeshStandardMaterial object.
 func (t *Three) NewMeshStandardMaterial(parameters MeshStandardMaterialOpts) *MeshStandardMaterial {
 	p := t.ctx.Get("MeshStandardMaterial").New(parameters)
-	return &MeshStandardMaterial{p: p}
+	return MeshStandardMaterialFromJSObject(p)
 }
 
 // Copy TODO description.

@@ -19,6 +19,11 @@ func (l *LatheGeometry) JSObject() *js.Object { return l.p }
 // LatheGeometry returns a LatheGeometry JavaScript class.
 func (t *Three) LatheGeometry() *LatheGeometry {
 	p := t.ctx.Get("LatheGeometry")
+	return LatheGeometryFromJSObject(p)
+}
+
+// LatheGeometryFromJSObject returns a wrapped LatheGeometry JavaScript class.
+func LatheGeometryFromJSObject(p *js.Object) *LatheGeometry {
 	return &LatheGeometry{p: p}
 }
 
@@ -31,5 +36,5 @@ func (t *Three) LatheGeometry() *LatheGeometry {
 //         closed lathe, less than 2PI is a portion. Default is 2*PI
 func (t *Three) NewLatheGeometry(points []*js.Object, segments int, phiStart, phiLength float64) *LatheGeometry {
 	p := t.ctx.Get("LatheGeometry").New(points, segments, phiStart, phiLength)
-	return &LatheGeometry{p: p}
+	return LatheGeometryFromJSObject(p)
 }

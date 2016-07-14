@@ -17,13 +17,18 @@ func (a *AnimationUtils) JSObject() *js.Object { return a.p }
 // AnimationUtils returns an AnimationUtils JavaScript class.
 func (t *Three) AnimationUtils() *AnimationUtils {
 	p := t.ctx.Get("AnimationUtils")
+	return AnimationUtilsFromJSObject(p)
+}
+
+// AnimationUtilsFromJSObject returns a wrapped AnimationUtils JavaScript class.
+func AnimationUtilsFromJSObject(p *js.Object) *AnimationUtils {
 	return &AnimationUtils{p: p}
 }
 
 // NewAnimationUtils returns a new AnimationUtils object.
 func (t *Three) NewAnimationUtils() *AnimationUtils {
 	p := t.ctx.Get("AnimationUtils").New()
-	return &AnimationUtils{p: p}
+	return AnimationUtilsFromJSObject(p)
 }
 
 // ArraySlice TODO description.

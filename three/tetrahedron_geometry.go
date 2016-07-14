@@ -19,6 +19,11 @@ func (t *TetrahedronGeometry) JSObject() *js.Object { return t.p }
 // TetrahedronGeometry returns a TetrahedronGeometry JavaScript class.
 func (t *Three) TetrahedronGeometry() *TetrahedronGeometry {
 	p := t.ctx.Get("TetrahedronGeometry")
+	return TetrahedronGeometryFromJSObject(p)
+}
+
+// TetrahedronGeometryFromJSObject returns a wrapped TetrahedronGeometry JavaScript class.
+func TetrahedronGeometryFromJSObject(p *js.Object) *TetrahedronGeometry {
 	return &TetrahedronGeometry{p: p}
 }
 
@@ -28,5 +33,5 @@ func (t *Three) TetrahedronGeometry() *TetrahedronGeometry {
 //     detail — Default is 0. Setting this to a value greater than 0 adds vertices making it no longer a tetrahedron.
 func (t *Three) NewTetrahedronGeometry(radius, detail float64) *TetrahedronGeometry {
 	p := t.ctx.Get("TetrahedronGeometry").New(radius, detail)
-	return &TetrahedronGeometry{p: p}
+	return TetrahedronGeometryFromJSObject(p)
 }

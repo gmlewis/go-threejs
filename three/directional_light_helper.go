@@ -17,11 +17,16 @@ func (d *DirectionalLightHelper) JSObject() *js.Object { return d.p }
 // DirectionalLightHelper returns a DirectionalLightHelper JavaScript class.
 func (t *Three) DirectionalLightHelper() *DirectionalLightHelper {
 	p := t.ctx.Get("DirectionalLightHelper")
+	return DirectionalLightHelperFromJSObject(p)
+}
+
+// DirectionalLightHelperFromJSObject returns a wrapped DirectionalLightHelper JavaScript class.
+func DirectionalLightHelperFromJSObject(p *js.Object) *DirectionalLightHelper {
 	return &DirectionalLightHelper{p: p}
 }
 
 // NewDirectionalLightHelper returns a new DirectionalLightHelper object.
 func (t *Three) NewDirectionalLightHelper(light, size float64) *DirectionalLightHelper {
 	p := t.ctx.Get("DirectionalLightHelper").New(light, size)
-	return &DirectionalLightHelper{p: p}
+	return DirectionalLightHelperFromJSObject(p)
 }

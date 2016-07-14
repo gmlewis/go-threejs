@@ -17,11 +17,16 @@ func (s *StringKeyframeTrack) JSObject() *js.Object { return s.p }
 // StringKeyframeTrack returns a StringKeyframeTrack JavaScript class.
 func (t *Three) StringKeyframeTrack() *StringKeyframeTrack {
 	p := t.ctx.Get("StringKeyframeTrack")
+	return StringKeyframeTrackFromJSObject(p)
+}
+
+// StringKeyframeTrackFromJSObject returns a wrapped StringKeyframeTrack JavaScript class.
+func StringKeyframeTrackFromJSObject(p *js.Object) *StringKeyframeTrack {
 	return &StringKeyframeTrack{p: p}
 }
 
 // NewStringKeyframeTrack returns a new StringKeyframeTrack object.
 func (t *Three) NewStringKeyframeTrack(name, times, values, interpolation float64) *StringKeyframeTrack {
 	p := t.ctx.Get("StringKeyframeTrack").New(name, times, values, interpolation)
-	return &StringKeyframeTrack{p: p}
+	return StringKeyframeTrackFromJSObject(p)
 }

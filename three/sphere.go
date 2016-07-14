@@ -17,13 +17,18 @@ func (s *Sphere) JSObject() *js.Object { return s.p }
 // Sphere returns a Sphere JavaScript class.
 func (t *Three) Sphere() *Sphere {
 	p := t.ctx.Get("Sphere")
+	return SphereFromJSObject(p)
+}
+
+// SphereFromJSObject returns a wrapped Sphere JavaScript class.
+func SphereFromJSObject(p *js.Object) *Sphere {
 	return &Sphere{p: p}
 }
 
 // NewSphere returns a new Sphere object.
 func (t *Three) NewSphere(center, radius float64) *Sphere {
 	p := t.ctx.Get("Sphere").New(center, radius)
-	return &Sphere{p: p}
+	return SphereFromJSObject(p)
 }
 
 // Set TODO description.

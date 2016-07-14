@@ -17,13 +17,18 @@ func (s *Shape) JSObject() *js.Object { return s.p }
 // Shape returns a Shape JavaScript class.
 func (t *Three) Shape() *Shape {
 	p := t.ctx.Get("Shape")
+	return ShapeFromJSObject(p)
+}
+
+// ShapeFromJSObject returns a wrapped Shape JavaScript class.
+func ShapeFromJSObject(p *js.Object) *Shape {
 	return &Shape{p: p}
 }
 
 // NewShape returns a new Shape object.
 func (t *Three) NewShape() *Shape {
 	p := t.ctx.Get("Shape").New()
-	return &Shape{p: p}
+	return ShapeFromJSObject(p)
 }
 
 // Extrude TODO description.

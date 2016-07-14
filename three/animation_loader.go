@@ -17,13 +17,18 @@ func (a *AnimationLoader) JSObject() *js.Object { return a.p }
 // AnimationLoader returns an AnimationLoader JavaScript class.
 func (t *Three) AnimationLoader() *AnimationLoader {
 	p := t.ctx.Get("AnimationLoader")
+	return AnimationLoaderFromJSObject(p)
+}
+
+// AnimationLoaderFromJSObject returns a wrapped AnimationLoader JavaScript class.
+func AnimationLoaderFromJSObject(p *js.Object) *AnimationLoader {
 	return &AnimationLoader{p: p}
 }
 
 // NewAnimationLoader returns a new AnimationLoader object.
 func (t *Three) NewAnimationLoader(manager float64) *AnimationLoader {
 	p := t.ctx.Get("AnimationLoader").New(manager)
-	return &AnimationLoader{p: p}
+	return AnimationLoaderFromJSObject(p)
 }
 
 // Load TODO description.

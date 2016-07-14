@@ -17,11 +17,16 @@ func (s *ShaderLib) JSObject() *js.Object { return s.p }
 // ShaderLib returns a ShaderLib JavaScript class.
 func (t *Three) ShaderLib() *ShaderLib {
 	p := t.ctx.Get("ShaderLib")
+	return ShaderLibFromJSObject(p)
+}
+
+// ShaderLibFromJSObject returns a wrapped ShaderLib JavaScript class.
+func ShaderLibFromJSObject(p *js.Object) *ShaderLib {
 	return &ShaderLib{p: p}
 }
 
 // NewShaderLib returns a new ShaderLib object.
 func (t *Three) NewShaderLib() *ShaderLib {
 	p := t.ctx.Get("ShaderLib").New()
-	return &ShaderLib{p: p}
+	return ShaderLibFromJSObject(p)
 }

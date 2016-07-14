@@ -22,13 +22,18 @@ func (b *BufferAttribute) JSObject() *js.Object { return b.p }
 // BufferAttribute returns a BufferAttribute JavaScript class.
 func (t *Three) BufferAttribute() *BufferAttribute {
 	p := t.ctx.Get("BufferAttribute")
+	return BufferAttributeFromJSObject(p)
+}
+
+// BufferAttributeFromJSObject returns a wrapped BufferAttribute JavaScript class.
+func BufferAttributeFromJSObject(p *js.Object) *BufferAttribute {
 	return &BufferAttribute{p: p}
 }
 
 // NewBufferAttribute returns a new BufferAttribute object.
 func (t *Three) NewBufferAttribute(array interface{}, itemSize int) *BufferAttribute {
 	p := t.ctx.Get("BufferAttribute").New(array, itemSize)
-	return &BufferAttribute{p: p}
+	return BufferAttributeFromJSObject(p)
 }
 
 // Int8Attribute represents an int8attribute.

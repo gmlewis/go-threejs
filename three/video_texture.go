@@ -17,11 +17,16 @@ func (v *VideoTexture) JSObject() *js.Object { return v.p }
 // VideoTexture returns a VideoTexture JavaScript class.
 func (t *Three) VideoTexture() *VideoTexture {
 	p := t.ctx.Get("VideoTexture")
+	return VideoTextureFromJSObject(p)
+}
+
+// VideoTextureFromJSObject returns a wrapped VideoTexture JavaScript class.
+func VideoTextureFromJSObject(p *js.Object) *VideoTexture {
 	return &VideoTexture{p: p}
 }
 
 // NewVideoTexture returns a new VideoTexture object.
 func (t *Three) NewVideoTexture(video, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy float64) *VideoTexture {
 	p := t.ctx.Get("VideoTexture").New(video, mapping, wrapS, wrapT, magFilter, minFilter, format, typ, anisotropy)
-	return &VideoTexture{p: p}
+	return VideoTextureFromJSObject(p)
 }

@@ -17,13 +17,18 @@ func (l *Line3) JSObject() *js.Object { return l.p }
 // Line3 returns a Line3 JavaScript class.
 func (t *Three) Line3() *Line3 {
 	p := t.ctx.Get("Line3")
+	return Line3FromJSObject(p)
+}
+
+// Line3FromJSObject returns a wrapped Line3 JavaScript class.
+func Line3FromJSObject(p *js.Object) *Line3 {
 	return &Line3{p: p}
 }
 
 // NewLine3 returns a new Line3 object.
 func (t *Three) NewLine3(start, end float64) *Line3 {
 	p := t.ctx.Get("Line3").New(start, end)
-	return &Line3{p: p}
+	return Line3FromJSObject(p)
 }
 
 // Set TODO description.

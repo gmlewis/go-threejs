@@ -17,13 +17,18 @@ func (d *DiscreteInterpolant) JSObject() *js.Object { return d.p }
 // DiscreteInterpolant returns a DiscreteInterpolant JavaScript class.
 func (t *Three) DiscreteInterpolant() *DiscreteInterpolant {
 	p := t.ctx.Get("DiscreteInterpolant")
+	return DiscreteInterpolantFromJSObject(p)
+}
+
+// DiscreteInterpolantFromJSObject returns a wrapped DiscreteInterpolant JavaScript class.
+func DiscreteInterpolantFromJSObject(p *js.Object) *DiscreteInterpolant {
 	return &DiscreteInterpolant{p: p}
 }
 
 // NewDiscreteInterpolant returns a new DiscreteInterpolant object.
 func (t *Three) NewDiscreteInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer float64) *DiscreteInterpolant {
 	p := t.ctx.Get("DiscreteInterpolant").New(parameterPositions, sampleValues, sampleSize, resultBuffer)
-	return &DiscreteInterpolant{p: p}
+	return DiscreteInterpolantFromJSObject(p)
 }
 
 // Interpolate TODO description.

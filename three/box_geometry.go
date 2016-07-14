@@ -19,6 +19,11 @@ func (b *BoxGeometry) JSObject() *js.Object { return b.p }
 // BoxGeometry returns a BoxGeometry JavaScript class.
 func (t *Three) BoxGeometry() *BoxGeometry {
 	p := t.ctx.Get("BoxGeometry")
+	return BoxGeometryFromJSObject(p)
+}
+
+// BoxGeometryFromJSObject returns a wrapped BoxGeometry JavaScript class.
+func BoxGeometryFromJSObject(p *js.Object) *BoxGeometry {
 	return &BoxGeometry{p: p}
 }
 
@@ -41,5 +46,5 @@ func (t *Three) NewBoxGeometry(width, height, depth float64, opts *BoxGeometryOp
 	} else {
 		p = p.New(width, height, depth)
 	}
-	return &BoxGeometry{p: p}
+	return BoxGeometryFromJSObject(p)
 }
