@@ -9,7 +9,7 @@ import (
 )
 
 // BoundingBoxHelper represents a boundingboxhelper.
-type BoundingBoxHelper struct{ p *js.Object }
+type BoundingBoxHelper struct{ *Mesh }
 
 // JSObject returns the underlying *js.Object.
 func (b *BoundingBoxHelper) JSObject() *js.Object { return b.p }
@@ -22,11 +22,17 @@ func (t *Three) BoundingBoxHelper() *BoundingBoxHelper {
 
 // BoundingBoxHelperFromJSObject returns a wrapped BoundingBoxHelper JavaScript class.
 func BoundingBoxHelperFromJSObject(p *js.Object) *BoundingBoxHelper {
-	return &BoundingBoxHelper{p: p}
+	return &BoundingBoxHelper{MeshFromJSObject(p)}
 }
 
 // NewBoundingBoxHelper returns a new BoundingBoxHelper object.
-func (t *Three) NewBoundingBoxHelper(object, hex float64) *BoundingBoxHelper {
-	p := t.ctx.Get("BoundingBoxHelper").New(object, hex)
+func (t *Three) NewBoundingBoxHelper(object JSObject, hex int) *BoundingBoxHelper {
+	p := t.ctx.Get("BoundingBoxHelper").New(object.JSObject(), hex)
 	return BoundingBoxHelperFromJSObject(p)
+}
+
+// Update updates the BoundingBoxHelper based on the object property.
+func (b *BoundingBoxHelper) Update() *BoundingBoxHelper {
+	b.p.Call("update")
+	return b
 }

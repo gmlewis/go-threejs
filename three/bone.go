@@ -9,9 +9,11 @@ import (
 )
 
 // Bone represents a bone which is part of a skeleton.
+// The skeleton in turn is used by the SkinnedMesh.
+// Bones are almost identical to a blank Object3D.
 //
 // http://threejs.org/docs/index.html#Reference/Objects/Bone
-type Bone struct{ p *js.Object }
+type Bone struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (b *Bone) JSObject() *js.Object { return b.p }
@@ -24,7 +26,7 @@ func (t *Three) Bone() *Bone {
 
 // BoneFromJSObject returns a wrapped Bone JavaScript class.
 func BoneFromJSObject(p *js.Object) *Bone {
-	return &Bone{p: p}
+	return &Bone{Object3DFromJSObject(p)}
 }
 
 // NewBone returns a new Bone object.
