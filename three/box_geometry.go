@@ -11,7 +11,7 @@ import (
 // BoxGeometry represents a quadrilateral geometry primitive.
 //
 // http://threejs.org/docs/index.html#Reference/Extras.Geometries/BoxGeometry
-type BoxGeometry struct{ p *js.Object }
+type BoxGeometry struct{ *Geometry }
 
 // JSObject returns the underlying *js.Object.
 func (b *BoxGeometry) JSObject() *js.Object { return b.p }
@@ -24,7 +24,7 @@ func (t *Three) BoxGeometry() *BoxGeometry {
 
 // BoxGeometryFromJSObject returns a wrapped BoxGeometry JavaScript class.
 func BoxGeometryFromJSObject(p *js.Object) *BoxGeometry {
-	return &BoxGeometry{p: p}
+	return &BoxGeometry{GeometryFromJSObject(p)}
 }
 
 // BoxGeometryOpts represents options passed to the BoxGeometry constructor.
