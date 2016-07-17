@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// CompressedTexture represents a compressedtexture.
+// CompressedTexture represents a texture based on data in compressed form.
+//
+// http://threejs.org/docs/index.html#Reference/Textures/CompressedTexture
 type CompressedTexture struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

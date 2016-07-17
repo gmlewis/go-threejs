@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// CubeTexture represents a cubetexture.
-type CubeTexture struct{ p *js.Object }
+// CubeTexture represents a cube texture made up of six images.
+//
+// http://threejs.org/docs/index.html#Reference/Textures/CubeTexture
+type CubeTexture struct{ *Texture }
 
 // JSObject returns the underlying *js.Object.
 func (c *CubeTexture) JSObject() *js.Object { return c.p }
@@ -22,7 +24,7 @@ func (t *Three) CubeTexture() *CubeTexture {
 
 // CubeTextureFromJSObject returns a wrapped CubeTexture JavaScript class.
 func CubeTextureFromJSObject(p *js.Object) *CubeTexture {
-	return &CubeTexture{p: p}
+	return &CubeTexture{TextureFromJSObject(p)}
 }
 
 // NewCubeTexture returns a new CubeTexture object.
