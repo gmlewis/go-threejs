@@ -9,6 +9,8 @@ import (
 )
 
 // ArrowHelper represents a 3D arrow object.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Helpers/ArrowHelper
 type ArrowHelper struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.

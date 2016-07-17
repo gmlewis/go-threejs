@@ -11,6 +11,8 @@ import (
 // CameraHelper is an Object3D which helps visualizing what
 // a camera contains in its frustum.
 // It visualizes the frustum with a Line geometry.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Helpers/CameraHelper
 type CameraHelper struct{ *Line }
 
 // JSObject returns the underlying *js.Object.

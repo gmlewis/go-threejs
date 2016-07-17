@@ -9,6 +9,8 @@ import (
 )
 
 // BoxBufferGeometry represents a BufferGeometry port of BoxGeometry.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Geometries/BoxBufferGeometry
 type BoxBufferGeometry struct{ *BufferGeometry }
 
 // JSObject returns the underlying *js.Object.

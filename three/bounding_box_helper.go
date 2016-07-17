@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// BoundingBoxHelper represents a boundingboxhelper.
+// BoundingBoxHelper is a helper object to show the
+// world-axis-aligned bounding box for an object.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Helpers/BoundingBoxHelper
 type BoundingBoxHelper struct{ *Mesh }
 
 // JSObject returns the underlying *js.Object.

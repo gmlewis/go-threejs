@@ -9,6 +9,8 @@ import (
 )
 
 // ArcCurve represents an arc curve which is an EllipseCurve.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Curves/ArcCurve
 type ArcCurve struct{ *EllipseCurve }
 
 // JSObject returns the underlying *js.Object.

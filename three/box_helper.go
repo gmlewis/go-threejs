@@ -10,6 +10,8 @@ import (
 
 // BoxHelper represents an object to show a wireframe box
 // (with no face diagonals) around an object.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Helpers/BoxHelper
 type BoxHelper struct{ *Line }
 
 // JSObject returns the underlying *js.Object.

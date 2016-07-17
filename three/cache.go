@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Cache represents a cache.
+// Cache represents a simple cache used internally by XHRLoader.
+//
+// http://threejs.org/docs/index.html#Reference/Loaders/Cache
 type Cache struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

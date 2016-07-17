@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// BufferGeometryLoader represents a buffergeometryloader.
+// BufferGeometryLoader is a loader for loading a BufferGeometry.
+//
+// http://threejs.org/docs/index.html#Reference/Loaders/BufferGeometryLoader
 type BufferGeometryLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

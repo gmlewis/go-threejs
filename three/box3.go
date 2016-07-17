@@ -9,6 +9,8 @@ import (
 )
 
 // Box3 represents a bounding box in 3D space.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Box3
 type Box3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

@@ -8,7 +8,11 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// AxisHelper represents an axishelper.
+// AxisHelper is an axis object to visualize the 3 axes
+// in a simple way. The X axis is red. The Y axis is green.
+// The Z axis is blue.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Helpers/AxisHelper
 type AxisHelper struct{ *LineSegments }
 
 // JSObject returns the underlying *js.Object.
