@@ -40,7 +40,7 @@ type CircleBufferGeometryOpts struct {
 //
 //     radius — Radius of the circle, default = 50.
 //     segments — Number of segments (triangles), minimum = 3, default = 8.
-func (t *Three) NewCircleBufferGeometry(radius, segments float64, opts *CircleBufferGeometryOpts) *CircleBufferGeometry {
+func (t *Three) NewCircleBufferGeometry(radius float64, segments int, opts *CircleBufferGeometryOpts) *CircleBufferGeometry {
 	var p *js.Object
 	if opts != nil {
 		p = t.ctx.Get("CircleBufferGeometry").New(radius, segments, opts.thetaStart, opts.thetaLength)
