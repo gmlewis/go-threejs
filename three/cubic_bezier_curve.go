@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// CubicBezierCurve represents a cubicbeziercurve.
-type CubicBezierCurve struct{ p *js.Object }
+// CubicBezierCurve represents a smooth 2D cubic bezier curve.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Curves/CubicBezierCurve
+type CubicBezierCurve struct{ *Curve }
 
 // JSObject returns the underlying *js.Object.
 func (c *CubicBezierCurve) JSObject() *js.Object { return c.p }
@@ -22,12 +24,12 @@ func (t *Three) CubicBezierCurve() *CubicBezierCurve {
 
 // CubicBezierCurveFromJSObject returns a wrapped CubicBezierCurve JavaScript class.
 func CubicBezierCurveFromJSObject(p *js.Object) *CubicBezierCurve {
-	return &CubicBezierCurve{p: p}
+	return &CubicBezierCurve{CurveFromJSObject(p)}
 }
 
 // NewCubicBezierCurve returns a new CubicBezierCurve object.
-func (t *Three) NewCubicBezierCurve(v0, v1, v2, v3 float64) *CubicBezierCurve {
-	p := t.ctx.Get("CubicBezierCurve").New(v0, v1, v2, v3)
+func (t *Three) NewCubicBezierCurve(v0, v1, v2, v3 *Vector3) *CubicBezierCurve {
+	p := t.ctx.Get("CubicBezierCurve").New(v0.p, v1.p, v2.p, v3.p)
 	return CubicBezierCurveFromJSObject(p)
 }
 

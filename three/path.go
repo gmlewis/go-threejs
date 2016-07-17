@@ -9,7 +9,7 @@ import (
 )
 
 // Path represents a path.
-type Path struct{ p *js.Object }
+type Path struct{ *CurvePath }
 
 // JSObject returns the underlying *js.Object.
 func (p *Path) JSObject() *js.Object { return p.p }
@@ -22,17 +22,17 @@ func (t *Three) Path() *Path {
 
 // PathFromJSObject returns a wrapped Path JavaScript class.
 func PathFromJSObject(p *js.Object) *Path {
-	return &Path{p: p}
+	return &Path{CurvePathFromJSObject(p)}
 }
 
 // NewPath returns a new Path object.
-func (t *Three) NewPath(points float64) *Path {
+func (t *Three) NewPath(points *js.Object) *Path {
 	p := t.ctx.Get("Path").New(points)
 	return PathFromJSObject(p)
 }
 
 // FromPoints TODO description.
-func (p *Path) FromPoints(vectors float64) *Path {
+func (p *Path) FromPoints(vectors *js.Object) *Path {
 	p.p.Call("fromPoints", vectors)
 	return p
 }

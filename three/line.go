@@ -31,7 +31,7 @@ func LineFromJSObject(p *js.Object) *Line {
 //
 //     geometry — Vertices representing the line segment(s).
 //     material — Material for the line. Default is LineBasicMaterial.
-func (t *Three) NewLine(geometry []*js.Object, material *js.Object, mode float64) *Line {
-	p := t.ctx.Get("Line").New(geometry, material, mode)
+func (t *Three) NewLine(geometry *js.Object, material *js.Object) *Line {
+	p := t.ctx.Get("Line").New(geometry, material)
 	return LineFromJSObject(p)
 }

@@ -66,3 +66,8 @@ func (c *CurvePath) CreateGeometry(points float64) *CurvePath {
 	c.p.Call("createGeometry", points)
 	return c
 }
+
+// Points returns the property of the same name.
+func (c *CurvePath) Points() *js.Object {
+	return c.p.Get("points")
+}
