@@ -51,7 +51,10 @@ func onBufferGeometryLoadWrapperFunc(onLoad BufferGeometryLoadFunc) func(geometr
 
 // Load TODO description.
 func (b *BufferGeometryLoader) Load(url string, onLoad BufferGeometryLoadFunc, onProgress, onError interface{}) *BufferGeometryLoader {
-	onLoadWrapper := onBufferGeometryLoadWrapperFunc(onLoad)
+	var onLoadWrapper func(geometry, materials *js.Object)
+	if onLoad != nil {
+		onLoadWrapper = onBufferGeometryLoadWrapperFunc(onLoad)
+	}
 	switch {
 	case onProgress != nil && onError != nil:
 		b.p.Call("load", url, onLoadWrapper, onProgress, onError)

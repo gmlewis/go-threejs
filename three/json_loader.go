@@ -52,7 +52,10 @@ func onJSONLoadWrapperFunc(onLoad JSONLoadFunc) func(geometry, materials *js.Obj
 
 // Load TODO description.
 func (j *JSONLoader) Load(url string, onLoad JSONLoadFunc, onProgress, onError interface{}) *JSONLoader {
-	onLoadWrapper := onJSONLoadWrapperFunc(onLoad)
+	var onLoadWrapper func(geometry, materials *js.Object)
+	if onLoad != nil {
+		onLoadWrapper = onJSONLoadWrapperFunc(onLoad)
+	}
 	switch {
 	case onProgress != nil && onError != nil:
 		j.p.Call("load", url, onLoadWrapper, onProgress, onError)
