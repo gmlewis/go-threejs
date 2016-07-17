@@ -8,8 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// BoxHelper represents a boxhelper.
-type BoxHelper struct{ p *js.Object }
+// BoxHelper represents an object to show a wireframe box
+// (with no face diagonals) around an object.
+type BoxHelper struct{ *Line }
 
 // JSObject returns the underlying *js.Object.
 func (b *BoxHelper) JSObject() *js.Object { return b.p }
@@ -22,11 +23,17 @@ func (t *Three) BoxHelper() *BoxHelper {
 
 // BoxHelperFromJSObject returns a wrapped BoxHelper JavaScript class.
 func BoxHelperFromJSObject(p *js.Object) *BoxHelper {
-	return &BoxHelper{p: p}
+	return &BoxHelper{LineFromJSObject(p)}
 }
 
 // NewBoxHelper returns a new BoxHelper object.
-func (t *Three) NewBoxHelper(object float64) *BoxHelper {
-	p := t.ctx.Get("BoxHelper").New(object)
+func (t *Three) NewBoxHelper(object JSObject) *BoxHelper {
+	p := t.ctx.Get("BoxHelper").New(object.JSObject())
 	return BoxHelperFromJSObject(p)
+}
+
+// Update updates the BoxHelper based on the object property.
+func (b *BoxHelper) Update() *BoxHelper {
+	b.p.Call("update")
+	return b
 }
