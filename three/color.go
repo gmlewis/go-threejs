@@ -9,6 +9,8 @@ import (
 )
 
 // Color represents a color.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Color
 type Color struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,8 +28,8 @@ func ColorFromJSObject(p *js.Object) *Color {
 }
 
 // NewColor returns a new Color object.
-func (t *Three) NewColor(color int) *Color {
-	p := t.ctx.Get("Color").New(color)
+func (t *Three) NewColor(color ...interface{}) *Color {
+	p := t.ctx.Get("Color").New(color...)
 	return ColorFromJSObject(p)
 }
 
@@ -44,7 +46,7 @@ func (c *Color) SetScalar(scalar float64) *Color {
 }
 
 // SetHex TODO description.
-func (c *Color) SetHex(hex float64) *Color {
+func (c *Color) SetHex(hex int) *Color {
 	c.p.Call("setHex", hex)
 	return c
 }
