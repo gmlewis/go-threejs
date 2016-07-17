@@ -29,7 +29,7 @@ func init() {
 
 	scene = t.NewScene()
 
-	texture := t.NewTextureLoader().Load("crate.gif", nil, nil, nil)
+	texture := t.NewTextureLoader().Load("http://threejs.org/examples/textures/crate.gif", nil, nil, nil)
 
 	geometry := t.NewBoxBufferGeometry(200, 200, 200, nil)
 	material := t.NewMeshBasicMaterial(three.MeshBasicMaterialOpts{"map": texture.JSObject()})

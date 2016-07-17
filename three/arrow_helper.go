@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// ArrowHelper represents an arrowhelper.
+// ArrowHelper represents a 3D arrow object.
 type ArrowHelper struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.

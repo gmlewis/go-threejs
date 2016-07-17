@@ -8,8 +8,8 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// ArcCurve represents an arccurve.
-type ArcCurve struct{ p *js.Object }
+// ArcCurve represents an arc curve which is an EllipseCurve.
+type ArcCurve struct{ *EllipseCurve }
 
 // JSObject returns the underlying *js.Object.
 func (a *ArcCurve) JSObject() *js.Object { return a.p }
@@ -22,7 +22,7 @@ func (t *Three) ArcCurve() *ArcCurve {
 
 // ArcCurveFromJSObject returns a wrapped ArcCurve JavaScript class.
 func ArcCurveFromJSObject(p *js.Object) *ArcCurve {
-	return &ArcCurve{p: p}
+	return &ArcCurve{EllipseCurveFromJSObject(p)}
 }
 
 // NewArcCurve returns a new ArcCurve object.

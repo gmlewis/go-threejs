@@ -14,7 +14,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-const uvImageURL = "UV_Grid_Sm.jpg"
+const uvImageURL = "http://threejs.org/examples/textures/UV_Grid_Sm.jpg"
 
 var (
 	container *js.Object
@@ -46,7 +46,7 @@ func init() {
 	light.Position().Set(0, 1, 0)
 	scene.Add(light)
 
-	loader := t.NewTextureLoader().SetCrossOrigin("")
+	loader := t.NewTextureLoader()
 	mapTexture := loader.Load(uvImageURL, nil, nil, nil)
 	mapTexture.SetWrapS(three.RepeatWrapping).SetWrapT(three.RepeatWrapping).SetAnisotropy(16)
 
