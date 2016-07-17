@@ -212,6 +212,12 @@ func (g *Geometry) Vertices() []*Vector3 {
 	return result
 }
 
+// SetVertices sets the geometry's vertices.
+func (g *Geometry) SetVertices(pts *js.Object) *Geometry {
+	g.p.Set("vertices", pts)
+	return g
+}
+
 // BoundingBox returns the bounding box of the Geometry.
 func (g *Geometry) BoundingBox() *Box3 {
 	return Box3FromJSObject(g.p.Get("boundingBox"))

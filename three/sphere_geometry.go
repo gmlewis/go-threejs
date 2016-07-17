@@ -27,13 +27,13 @@ func SphereGeometryFromJSObject(p *js.Object) *SphereGeometry {
 	return &SphereGeometry{p: p}
 }
 
-// NewSphereGeometryOpts represents options for constructing a SphereGeometry.
+// SphereGeometryOpts represents options for constructing a SphereGeometry.
 //
 //     phiStart — specify horizontal starting angle. Default is 0.
 //     phiLength — specify horizontal sweep angle size. Default is Math.PI * 2.
 //     thetaStart — specify vertical starting angle. Default is 0.
 //     thetaLength — specify vertical sweep angle size. Default is Math.PI.
-type NewSphereGeometryOpts struct {
+type SphereGeometryOpts struct {
 	phiStart    float64
 	phiLength   float64
 	thetaStart  float64
@@ -45,7 +45,7 @@ type NewSphereGeometryOpts struct {
 //     radius — sphere radius. Default is 50.
 //     widthSegments — number of horizontal segments. Minimum value is 3, and the default is 8.
 //     heightSegments — number of vertical segments. Minimum value is 2, and the default is 6.
-func (t *Three) NewSphereGeometry(radius float64, widthSegments, heightSegments int, opts *NewSphereGeometryOpts) *SphereGeometry {
+func (t *Three) NewSphereGeometry(radius float64, widthSegments, heightSegments int, opts *SphereGeometryOpts) *SphereGeometry {
 	var p *js.Object
 	if opts != nil {
 		p = t.ctx.Get("SphereGeometry").New(radius, widthSegments, heightSegments, opts.phiStart, opts.phiLength, opts.thetaStart, opts.thetaLength)

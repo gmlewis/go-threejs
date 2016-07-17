@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// CameraHelper represents a camerahelper.
-type CameraHelper struct{ p *js.Object }
+// CameraHelper is an Object3D which helps visualizing what
+// a camera contains in its frustum.
+// It visualizes the frustum with a Line geometry.
+type CameraHelper struct{ *Line }
 
 // JSObject returns the underlying *js.Object.
 func (c *CameraHelper) JSObject() *js.Object { return c.p }
@@ -22,7 +24,7 @@ func (t *Three) CameraHelper() *CameraHelper {
 
 // CameraHelperFromJSObject returns a wrapped CameraHelper JavaScript class.
 func CameraHelperFromJSObject(p *js.Object) *CameraHelper {
-	return &CameraHelper{p: p}
+	return &CameraHelper{LineFromJSObject(p)}
 }
 
 // NewCameraHelper returns a new CameraHelper object.

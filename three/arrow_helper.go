@@ -25,9 +25,9 @@ func ArrowHelperFromJSObject(p *js.Object) *ArrowHelper {
 	return &ArrowHelper{Object3DFromJSObject(p)}
 }
 
-// NewArrowHelperOpts represents optional arguments that can be passed to
+// ArrowHelperOpts represents optional arguments that can be passed to
 // NewArrowHelper.
-type NewArrowHelperOpts struct {
+type ArrowHelperOpts struct {
 	Length     *float64
 	Color      *Color
 	HeadLength *float64
@@ -35,7 +35,7 @@ type NewArrowHelperOpts struct {
 }
 
 // NewArrowHelper returns a new ArrowHelper object.
-func (t *Three) NewArrowHelper(dir, origin *Vector3, opts *NewArrowHelperOpts) *ArrowHelper {
+func (t *Three) NewArrowHelper(dir, origin *Vector3, opts *ArrowHelperOpts) *ArrowHelper {
 	var (
 		length     interface{} = js.Undefined
 		color      interface{} = js.Undefined

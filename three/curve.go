@@ -32,27 +32,23 @@ func (t *Three) NewCurve() *Curve {
 }
 
 // GetPoint TODO description.
-func (c *Curve) GetPoint(t float64) *Curve {
-	c.p.Call("getPoint", t)
-	return c
+func (c *Curve) GetPoint(t int) *js.Object {
+	return c.p.Call("getPoint", t)
 }
 
 // GetPointAt TODO description.
-func (c *Curve) GetPointAt(u float64) *Curve {
-	c.p.Call("getPointAt", u)
-	return c
+func (c *Curve) GetPointAt(u int) *js.Object {
+	return c.p.Call("getPointAt", u)
 }
 
 // GetPoints TODO description.
-func (c *Curve) GetPoints(divisions float64) *Curve {
-	c.p.Call("getPoints", divisions)
-	return c
+func (c *Curve) GetPoints(divisions int) *js.Object {
+	return c.p.Call("getPoints", divisions)
 }
 
 // GetSpacedPoints TODO description.
-func (c *Curve) GetSpacedPoints(divisions float64) *Curve {
-	c.p.Call("getSpacedPoints", divisions)
-	return c
+func (c *Curve) GetSpacedPoints(divisions int) *js.Object {
+	return c.p.Call("getSpacedPoints", divisions)
 }
 
 // GetLength TODO description.
