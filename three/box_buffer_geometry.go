@@ -8,8 +8,8 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// BoxBufferGeometry represents a boxbuffergeometry.
-type BoxBufferGeometry struct{ p *js.Object }
+// BoxBufferGeometry represents a BufferGeometry port of BoxGeometry.
+type BoxBufferGeometry struct{ *BufferGeometry }
 
 // JSObject returns the underlying *js.Object.
 func (b *BoxBufferGeometry) JSObject() *js.Object { return b.p }
@@ -22,7 +22,7 @@ func (t *Three) BoxBufferGeometry() *BoxBufferGeometry {
 
 // BoxBufferGeometryFromJSObject returns a wrapped BoxBufferGeometry JavaScript class.
 func BoxBufferGeometryFromJSObject(p *js.Object) *BoxBufferGeometry {
-	return &BoxBufferGeometry{p: p}
+	return &BoxBufferGeometry{BufferGeometryFromJSObject(p)}
 }
 
 // NewBoxBufferGeometryOpts represents optional arguments that can be

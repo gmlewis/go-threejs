@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Box3 represents a three-dimensional box object.
+// Box3 represents a bounding box in 3D space.
 type Box3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

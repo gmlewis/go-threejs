@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Box2 represents a box2.
+// Box2 represents a bounding box in 2D space.
 type Box2 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
