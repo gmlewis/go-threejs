@@ -8,7 +8,11 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// FaceNormalsHelper represents a facenormalshelper.
+// FaceNormalsHelper renders arrows to visualize an object's
+// face normals. Requires that the object's geometry be an
+// instance of Geometry (does not work with BufferGeometry),
+// and that face normals have been specified on all faces or
+// calculated with ComputeFaceNormals.
 type FaceNormalsHelper struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,7 +30,12 @@ func FaceNormalsHelperFromJSObject(p *js.Object) *FaceNormalsHelper {
 }
 
 // NewFaceNormalsHelper returns a new FaceNormalsHelper object.
-func (t *Three) NewFaceNormalsHelper(object, size, hex, linewidth float64) *FaceNormalsHelper {
-	p := t.ctx.Get("FaceNormalsHelper").New(object, size, hex, linewidth)
+//
+//     object -- object for which to render face normals
+//     size -- size (length) of the arrows
+//     color -- color of the arrows
+//     linewidth -- width of the arrow lines
+func (t *Three) NewFaceNormalsHelper(object JSObject, size float64, hex int, linewidth float64) *FaceNormalsHelper {
+	p := t.ctx.Get("FaceNormalsHelper").New(object.JSObject(), size, hex, linewidth)
 	return FaceNormalsHelperFromJSObject(p)
 }

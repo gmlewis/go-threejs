@@ -9,6 +9,8 @@ import (
 )
 
 // Vector3 represents a three-dimensional vector.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Vector3
 type Vector3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -160,9 +162,10 @@ func (v *Vector3) MultiplyVectors(a, b *Vector3) *Vector3 {
 	return v
 }
 
-// ApplyEuler TODO description.
-func (v *Vector3) ApplyEuler() *Vector3 {
-	v.p.Call("applyEuler")
+// ApplyEuler applies euler transform to this vector by converting
+// the Euler object to a Quaternion and applying.
+func (v *Vector3) ApplyEuler(euler *Euler) *Vector3 {
+	v.p.Call("applyEuler", euler.p)
 	return v
 }
 

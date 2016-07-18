@@ -28,6 +28,13 @@ func Face3FromJSObject(p *js.Object) *Face3 {
 }
 
 // NewFace3 returns a new Face3 object.
+//
+//     a — Vertex A index.
+//     b — Vertex B index.
+//     c — Vertex C index.
+//     normal — Face normal or array of vertex normals.
+//     color — Face color or array of vertex colors.
+//     materialIndex — Material index.
 func (t *Three) NewFace3(a, b, c float64, normal *Vector3, color *Color, materialIndex int) *Face3 {
 	p := t.ctx.Get("Face3").New(a, b, c, normal, color, materialIndex)
 	return Face3FromJSObject(p)
