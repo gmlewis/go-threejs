@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Curve represents a curve.
+// Curve represents a a curve object that contains methods
+// for interpolation. For an array of Curves see CurvePath.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Core/Curve
 type Curve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

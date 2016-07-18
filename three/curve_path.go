@@ -8,8 +8,11 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// CurvePath represents a curvepath.
-type CurvePath struct{ p *js.Object }
+// CurvePath represents an array of connected curves,
+// but retains the API of a curve.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Core/CurvePath
+type CurvePath struct{ *Curve }
 
 // JSObject returns the underlying *js.Object.
 func (c *CurvePath) JSObject() *js.Object { return c.p }
@@ -22,7 +25,7 @@ func (t *Three) CurvePath() *CurvePath {
 
 // CurvePathFromJSObject returns a wrapped CurvePath JavaScript class.
 func CurvePathFromJSObject(p *js.Object) *CurvePath {
-	return &CurvePath{p: p}
+	return &CurvePath{CurveFromJSObject(p)}
 }
 
 // NewCurvePath returns a new CurvePath object.
