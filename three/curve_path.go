@@ -53,24 +53,19 @@ func (c *CurvePath) GetTangent(t float64) *CurvePath {
 }
 
 // CreatePointsGeometry TODO description.
-func (c *CurvePath) CreatePointsGeometry(divisions float64) *CurvePath {
-	c.p.Call("createPointsGeometry", divisions)
-	return c
+func (c *CurvePath) CreatePointsGeometry(divisions float64) *Geometry {
+	p := c.p.Call("createPointsGeometry", divisions)
+	return GeometryFromJSObject(p)
 }
 
 // CreateSpacedPointsGeometry TODO description.
-func (c *CurvePath) CreateSpacedPointsGeometry(divisions float64) *CurvePath {
-	c.p.Call("createSpacedPointsGeometry", divisions)
-	return c
+func (c *CurvePath) CreateSpacedPointsGeometry(divisions float64) *Geometry {
+	p := c.p.Call("createSpacedPointsGeometry", divisions)
+	return GeometryFromJSObject(p)
 }
 
 // CreateGeometry TODO description.
-func (c *CurvePath) CreateGeometry(points float64) *CurvePath {
-	c.p.Call("createGeometry", points)
-	return c
-}
-
-// Points returns the property of the same name.
-func (c *CurvePath) Points() *js.Object {
-	return c.p.Get("points")
+func (c *CurvePath) CreateGeometry(points JSObject) *Geometry {
+	p := c.p.Call("createGeometry", points.JSObject())
+	return GeometryFromJSObject(p)
 }

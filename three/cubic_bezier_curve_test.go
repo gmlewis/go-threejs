@@ -26,6 +26,6 @@ func ExampleCubicBezierCurve() {
 	material := t.NewLineBasicMaterial(opts)
 
 	// Create the final Object3D to add to the scene
-	curveObject := t.NewLine(geometry.Points(), material.JSObject())
+	curveObject := t.NewLine(geometry, material)
 	scene.Add(curveObject)
 }

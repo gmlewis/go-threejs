@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// EllipseCurve represents an ellipsecurve.
-type EllipseCurve struct{ p *js.Object }
+// EllipseCurve represents a 2D curve in the shape of an ellipse.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Curves/EllipseCurve
+type EllipseCurve struct{ *Curve }
 
 // JSObject returns the underlying *js.Object.
 func (e *EllipseCurve) JSObject() *js.Object { return e.p }
@@ -22,12 +24,36 @@ func (t *Three) EllipseCurve() *EllipseCurve {
 
 // EllipseCurveFromJSObject returns a wrapped EllipseCurve JavaScript class.
 func EllipseCurveFromJSObject(p *js.Object) *EllipseCurve {
-	return &EllipseCurve{p: p}
+	return &EllipseCurve{CurveFromJSObject(p)}
+}
+
+// EllipseCurveOpts represents options passed to the EllipseCurve constructor.
+//     StartAngle – The start angle of the curve in radians starting from the middle right side
+//     EndAngle – The end angle of the curve in radians starting from the middle right side
+//     Clockwise – Whether the ellipse is clockwise
+//     Rotation – The rotation angle of the ellipse in radians, counterclockwise from the positive X axis (optional)
+//
+//     Note: When going clockwise it's best to set the start angle to (Math.PI * 2) and then work towards lower numbers.
+type EllipseCurveOpts struct {
+	StartAngle float64
+	EndAngle   float64
+	Clockwise  bool
+	Rotation   float64
 }
 
 // NewEllipseCurve returns a new EllipseCurve object.
-func (t *Three) NewEllipseCurve(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation float64) *EllipseCurve {
-	p := t.ctx.Get("EllipseCurve").New(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation)
+//
+//     aX – The X center of the ellipse
+//     aY – The Y center of the ellipse
+//     xRadius – The radius of the ellipse in the x direction
+//     yRadius – The radius of the ellipse in the y direction
+func (t *Three) NewEllipseCurve(aX, aY, xRadius, yRadius float64, opts *EllipseCurveOpts) *EllipseCurve {
+	var p *js.Object
+	if opts != nil {
+		p = t.ctx.Get("EllipseCurve").New(aX, aY, xRadius, yRadius, opts.StartAngle, opts.EndAngle, opts.Clockwise, opts.Rotation)
+	} else {
+		p = t.ctx.Get("EllipseCurve").New(aX, aY, xRadius, yRadius)
+	}
 	return EllipseCurveFromJSObject(p)
 }
 
