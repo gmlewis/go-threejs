@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// DirectionalLightHelper represents a directionallighthelper.
-type DirectionalLightHelper struct{ p *js.Object }
+// DirectionalLightHelper visualizes a DirectionalLight's effect on the scene.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Helpers/DirectionalLightHelper
+type DirectionalLightHelper struct{ *Object3D }
 
 // JSObject returns the underlying *js.Object.
 func (d *DirectionalLightHelper) JSObject() *js.Object { return d.p }
@@ -22,7 +24,7 @@ func (t *Three) DirectionalLightHelper() *DirectionalLightHelper {
 
 // DirectionalLightHelperFromJSObject returns a wrapped DirectionalLightHelper JavaScript class.
 func DirectionalLightHelperFromJSObject(p *js.Object) *DirectionalLightHelper {
-	return &DirectionalLightHelper{p: p}
+	return &DirectionalLightHelper{Object3DFromJSObject(p)}
 }
 
 // NewDirectionalLightHelper returns a new DirectionalLightHelper object.

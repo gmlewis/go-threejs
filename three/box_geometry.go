@@ -29,9 +29,9 @@ func BoxGeometryFromJSObject(p *js.Object) *BoxGeometry {
 
 // BoxGeometryOpts represents options passed to the BoxGeometry constructor.
 type BoxGeometryOpts struct {
-	widthSegments  int // Number of segmented faces along the width of the sides. Default is 1.
-	heightSegments int // Number of segmented faces along the height of the sides. Default is 1.
-	depthSegments  int // Number of segmented faces along the depth of the sides. Default is 1.
+	WidthSegments  int // Number of segmented faces along the width of the sides. Default is 1.
+	HeightSegments int // Number of segmented faces along the height of the sides. Default is 1.
+	DepthSegments  int // Number of segmented faces along the depth of the sides. Default is 1.
 }
 
 // NewBoxGeometry returns a new BoxGeometry object.
@@ -42,7 +42,7 @@ type BoxGeometryOpts struct {
 func (t *Three) NewBoxGeometry(width, height, depth float64, opts *BoxGeometryOpts) *BoxGeometry {
 	p := t.ctx.Get("BoxGeometry")
 	if opts != nil {
-		p = p.New(width, height, depth, opts.widthSegments, opts.heightSegments, opts.depthSegments)
+		p = p.New(width, height, depth, opts.WidthSegments, opts.HeightSegments, opts.DepthSegments)
 	} else {
 		p = p.New(width, height, depth)
 	}

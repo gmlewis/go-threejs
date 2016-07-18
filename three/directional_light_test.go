@@ -12,6 +12,7 @@ func ExampleDirectionalLight() {
 	t := three.New()
 	scene := t.NewScene()
 
+	// White directional light at half intensity shining from the top.
 	light := t.NewDirectionalLight(0xffffff, 0.5)
 	light.Position().Set(0, 1, 0)
 	scene.Add(light)

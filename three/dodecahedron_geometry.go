@@ -11,7 +11,7 @@ import (
 // DodecahedronGeometry represents a dodecagedron.
 //
 // http://threejs.org/docs/index.html#Reference/Extras.Geometries/DodecahedronGeometry
-type DodecahedronGeometry struct{ p *js.Object }
+type DodecahedronGeometry struct{ *PolyhedronGeometry }
 
 // JSObject returns the underlying *js.Object.
 func (d *DodecahedronGeometry) JSObject() *js.Object { return d.p }
@@ -24,7 +24,7 @@ func (t *Three) DodecahedronGeometry() *DodecahedronGeometry {
 
 // DodecahedronGeometryFromJSObject returns a wrapped DodecahedronGeometry JavaScript class.
 func DodecahedronGeometryFromJSObject(p *js.Object) *DodecahedronGeometry {
-	return &DodecahedronGeometry{p: p}
+	return &DodecahedronGeometry{PolyhedronGeometryFromJSObject(p)}
 }
 
 // NewDodecahedronGeometry returns a new DodecahedronGeometry object.

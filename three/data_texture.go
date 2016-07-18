@@ -8,8 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// DataTexture represents a datatexture.
-type DataTexture struct{ p *js.Object }
+// DataTexture represents a a texture directly from raw data, width and height.
+//
+// http://threejs.org/docs/index.html#Reference/Textures/DataTexture
+type DataTexture struct{ *Texture }
 
 // JSObject returns the underlying *js.Object.
 func (d *DataTexture) JSObject() *js.Object { return d.p }
@@ -22,7 +24,7 @@ func (t *Three) DataTexture() *DataTexture {
 
 // DataTextureFromJSObject returns a wrapped DataTexture JavaScript class.
 func DataTextureFromJSObject(p *js.Object) *DataTexture {
-	return &DataTexture{p: p}
+	return &DataTexture{TextureFromJSObject(p)}
 }
 
 // NewDataTexture returns a new DataTexture object.
