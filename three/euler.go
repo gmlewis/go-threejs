@@ -9,6 +9,11 @@ import (
 )
 
 // Euler represents an Euler (x,y,z) angle.
+// Euler angles describe a rotation transformation by rotating
+// an object on its various axes in specified amounts per axis,
+// and a specified axis order.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Euler
 type Euler struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,7 +31,12 @@ func EulerFromJSObject(p *js.Object) *Euler {
 }
 
 // NewEuler returns a new Euler object.
-func (t *Three) NewEuler(x, y, z, order float64) *Euler {
+//
+//     x -- Float the angle of the x axis in radians
+//     y -- Float the angle of the y axis in radians
+//     z -- Float the angle of the z axis in radians
+//     order -- String A string representing the order that the rotations are applied, defaults to 'XYZ' (must be upper case).
+func (t *Three) NewEuler(x, y, z float64, order string) *Euler {
 	p := t.ctx.Get("Euler").New(x, y, z, order)
 	return EulerFromJSObject(p)
 }
