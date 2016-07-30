@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Triangle represents a triangle.
+// Triangle is a geometric triangle as defined by three vectors.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Triangle
 type Triangle struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,67 +28,92 @@ func (t *Three) NewTriangle(a, b, c float64) *Triangle {
 	return &Triangle{p: p}
 }
 
-// Set TODO description.
+// Set sets the triangle's vectors to the passed vectors.
+//
+//     a -- Vector3
+//     b -- Vector3
+//     c -- Vector3
 func (t *Triangle) Set(a, b, c float64) *Triangle {
 	t.p.Call("set", a, b, c)
 	return t
 }
 
-// SetFromPointsAndIndices TODO description.
+// SetFromPointsAndIndices sets the triangle's vectors to the vectors in the array.
+//
+//     points -- Array of Vector3s
+//     i0 -- Integer index
+//     i1 -- Integer index
+//     i2 -- Integer index
 func (t *Triangle) SetFromPointsAndIndices(points, i0, i1, i2 float64) *Triangle {
 	t.p.Call("setFromPointsAndIndices", points, i0, i1, i2)
 	return t
 }
 
-// Clone TODO description.
+// Clone returns a new copy of this triangle.
 func (t *Triangle) Clone() *Triangle {
 	t.p.Call("clone")
 	return t
 }
 
-// Copy TODO description.
+// Copy copies the values of the vertices of the passed triangle to this triangle.
+//
+//     triangle -- Triangle
 func (t *Triangle) Copy(triangle *Triangle) *Triangle {
 	t.p.Call("copy", triangle.p)
 	return t
 }
 
-// Area TODO description.
+// Area returns the area of the triangle.
 func (t *Triangle) Area() *Triangle {
 	t.p.Call("area")
 	return t
 }
 
-// Midpoint TODO description.
+// Midpoint returns the midpoint of the triangle. Optionally sets a target vector.
+//
+//     optionalTarget -- Optional Vector3 target to set the result.
 func (t *Triangle) Midpoint(optionalTarget float64) *Triangle {
 	t.p.Call("midpoint", optionalTarget)
 	return t
 }
 
-// Normal TODO description.
+// Normal returns the calculated normal of the triangle.
+//
+//     optionalTarget -- Optional Vector3 target to set the result.
 func (t *Triangle) Normal(optionalTarget float64) *Triangle {
 	t.p.Call("normal", optionalTarget)
 	return t
 }
 
-// Plane TODO description.
+// Plane returns a plane based on the triangle. Optionally sets a target plane.
+//
+//     optionalTarget -- Optional Plane target to set the result.
 func (t *Triangle) Plane(optionalTarget float64) *Triangle {
 	t.p.Call("plane", optionalTarget)
 	return t
 }
 
-// BarycoordFromPoint TODO description.
+// BarycoordFromPoint returns a barycentric coordinate from the given vector.
+//
+//     point -- Vector3
+//     optionalTarget -- Optional Vector3 target to set the result.
+// http://commons.wikimedia.org/wiki/File:Barycentric_coordinates_1.png (An image of barycentric coordinates)
 func (t *Triangle) BarycoordFromPoint(point, optionalTarget float64) *Triangle {
 	t.p.Call("barycoordFromPoint", point, optionalTarget)
 	return t
 }
 
-// ContainsPoint TODO description.
+// ContainsPoint checks to see if the passed vector is within the triangle.
+//
+//     point -- Vector3
 func (t *Triangle) ContainsPoint(point float64) *Triangle {
 	t.p.Call("containsPoint", point)
 	return t
 }
 
-// Equals TODO description.
+// Equals checks to see if two triangles are equal (share the same vectors).
+//
+//     triangle -- Triangle
 func (t *Triangle) Equals(triangle float64) *Triangle {
 	t.p.Call("equals", triangle)
 	return t

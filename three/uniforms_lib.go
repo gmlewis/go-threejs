@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// UniformsLib represents an uniformslib.
+// UniformsLib is a library for shared webgl shaders.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.Shaders/UniformsLib
 type UniformsLib struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

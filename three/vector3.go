@@ -9,6 +9,8 @@ import (
 )
 
 // Vector3 represents a three-dimensional vector.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Vector3
 type Vector3 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

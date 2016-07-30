@@ -8,7 +8,8 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Scene represents a three.js scene.
+// Scene represents a three.js scene. Scenes allow you to set up what and where is to be
+// rendered by three.js. This is where you place objects, lights and cameras.
 type Scene struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

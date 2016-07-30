@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// ShaderMaterial represents a shadermaterial.
+// ShaderMaterial is material rendered with custom shaders.
+//
+// http://threejs.org/docs/index.html#Reference/Materials/ShaderMaterial
 type ShaderMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -21,6 +23,16 @@ func (t *Three) ShaderMaterial() *ShaderMaterial {
 }
 
 // NewShaderMaterial returns a new ShaderMaterial object.
+//
+//     parameters -- An object containing various parameters setting up shaders and their uniforms.
+//
+//     shading — Define shading type. Default is THREE.SmoothShading.
+//     fog — Define whether the material color is affected by global fog settings. Default is true.
+//     wireframe — render geometry as wireframe. Default is false.
+//     wireframeLinewidth — Line thickness. Default is 1.
+//     vertexColors — Define how the vertices gets colored. Default is THREE.NoColors.
+//     skinning — Define whether the material uses skinning. Default is false.
+//     morphTargets — Define whether the material uses morphTargets. Default is false.
 func (t *Three) NewShaderMaterial(parameters float64) *ShaderMaterial {
 	p := t.ctx.Get("ShaderMaterial").New(parameters)
 	return &ShaderMaterial{p: p}

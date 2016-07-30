@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Vector2 represents a vector2.
+// Vector2 represents a two-dimensional vector.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Vector2
 type Vector2 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

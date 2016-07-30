@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// RawShaderMaterial represents a rawshadermaterial.
+// RawShaderMaterial works just like ShaderMaterial, except that definitions of built-in uniforms
+// and attributes are not automatically prepended to the GLSL shader code.
+//
+// http://threejs.org/docs/index.html#Reference/Materials/RawShaderMaterial
 type RawShaderMaterial struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

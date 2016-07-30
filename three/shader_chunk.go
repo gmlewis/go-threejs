@@ -9,6 +9,8 @@ import (
 )
 
 // ShaderChunk represents a shaderchunk.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.Shaders/ShaderChunk
 type ShaderChunk struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

@@ -9,6 +9,8 @@ import (
 )
 
 // TorusBufferGeometry represents a torusbuffergeometry.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Geometries/TorusBufferGeometry
 type TorusBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -21,6 +23,12 @@ func (t *Three) TorusBufferGeometry() *TorusBufferGeometry {
 }
 
 // NewTorusBufferGeometry returns a new TorusBufferGeometry object.
+//
+//     radius — Default is 100.
+//     tube — Diameter of the tube. Default is 40.
+//     radialSegments — Default is 8
+//     tubularSegments — Default is 6.
+//     arc — Central angle. Default is Math.PI * 2.
 func (t *Three) NewTorusBufferGeometry(radius, tube, radialSegments, tubularSegments, arc float64) *TorusBufferGeometry {
 	p := t.ctx.Get("TorusBufferGeometry").New(radius, tube, radialSegments, tubularSegments, arc)
 	return &TorusBufferGeometry{p: p}

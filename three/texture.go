@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Texture represents a texture.
+// Texture creates a texture to apply to a surface or as a reflection or refraction map.
+//
+// http://threejs.org/docs/index.html#Reference/Textures/Texture
 type Texture struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -32,7 +34,7 @@ func (t *Texture) SetNeedsUpdate(value float64) *Texture {
 	return t
 }
 
-// Clone TODO description.
+// Clone makes a copy of texture. Note this is not a "deep copy", the image is shared.
 func (t *Texture) Clone() *Texture {
 	t.p.Call("clone")
 	return t
@@ -50,7 +52,7 @@ func (t *Texture) ToJSON(meta float64) *Texture {
 	return t
 }
 
-// Dispose TODO description.
+// Dispose calls EventDispatcher.dispatchEvent with a 'dispose' event type.
 func (t *Texture) Dispose() *Texture {
 	t.p.Call("dispose")
 	return t

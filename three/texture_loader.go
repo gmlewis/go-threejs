@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// TextureLoader represents a textureloader.
+// TextureLoader is a class for loading a texture.
 type TextureLoader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -20,13 +20,20 @@ func (t *Three) TextureLoader() *TextureLoader {
 	return &TextureLoader{p: p}
 }
 
-// NewTextureLoader returns a new TextureLoader object.
+// NewTextureLoader creates a new TextureLoader object.
+//
+//     manager — The loadingManager for the loader to use. Default is THREE.DefaultLoadingManager.
 func (t *Three) NewTextureLoader(manager float64) *TextureLoader {
 	p := t.ctx.Get("TextureLoader").New(manager)
 	return &TextureLoader{p: p}
 }
 
-// Load TODO description.
+// Load begins loading from url and passes the loaded texture to onLoad.
+//
+//     url — required
+//     onLoad — Will be called when load completes. The argument will be the loaded texture.
+//     onProgress — Will be called while load progresses. The argument will be the XmlHttpRequest instance, that contain .total and .loaded bytes.
+//     onError — Will be called when load errors.
 func (t *TextureLoader) Load(url, onLoad, onProgress, onError float64) *TextureLoader {
 	t.p.Call("load", url, onLoad, onProgress, onError)
 	return t

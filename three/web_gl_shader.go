@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// WebGLShader represents a webglshader.
+// WebGLShader is a lower level function to compile either a vertex or fragment shader.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.WebGL/WebGLShader
 type WebGLShader struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -25,3 +27,5 @@ func (t *Three) NewWebGLShader() *WebGLShader {
 	p := t.ctx.Get("WebGLShader").New()
 	return &WebGLShader{p: p}
 }
+
+// TODO Objects
