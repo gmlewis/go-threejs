@@ -119,15 +119,15 @@ func (b *Box2) ContainsPoint(point float64) *Box2 {
 }
 
 // ContainsBox returns true if this box includes the entirety of box. If this and box overlap exactly,
+// this function also returns true.
 //
 //     box to test for inclusion.
-this function also returns true.
 func (b *Box2) ContainsBox(box float64) *Box2 {
 	b.p.Call("containsBox", box)
 	return b
 }
 
-// GetParameter returns a point as a proportion of this box's width and height.    
+// GetParameter returns a point as a proportion of this box's width and height.
 func (b *Box2) GetParameter(point, optionalTarget *Vector2) *Box2 {
 	b.p.Call("getParameter", point, optionalTarget)
 	return b

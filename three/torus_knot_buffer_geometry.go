@@ -30,7 +30,6 @@ func (t *Three) TorusKnotBufferGeometry() *TorusKnotBufferGeometry {
 //     radialSegments — Default is 8.
 //     p — This value determines, how many times the geometry winds around its axis of rotational symmetry. Default is 2.
 //     q — This value determines, how many times the geometry winds around a circle in the interior of the torus. Default is 3.
-
 func (t *Three) NewTorusKnotBufferGeometry(radius, tube, tubularSegments, radialSegments, p, q float64) *TorusKnotBufferGeometry {
 	s := t.ctx.Get("TorusKnotBufferGeometry").New(radius, tube, tubularSegments, radialSegments, p, q)
 	return &TorusKnotBufferGeometry{p: s}
