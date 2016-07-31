@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// UniformsUtils represents an uniformsutils.
+// UniformsUtils support the merging and cloning of uniform variables.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.Shaders/UniformsUtils
 type UniformsUtils struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

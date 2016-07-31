@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// SpritePlugin represents a spriteplugin.
+// SpritePlugin allows Sprites to be rendered in the WebglRenderer. This plugin is automatically
+// loaded in the Webglrenderer.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.WebGL.Plugins/SpritePlugin
 type SpritePlugin struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -25,8 +28,14 @@ func SpritePluginFromJSObject(p *js.Object) *SpritePlugin {
 	return &SpritePlugin{p: p}
 }
 
-// NewSpritePlugin returns a new SpritePlugin object.
+// NewSpritePlugin creates a new SpritePlugin object.
 func (t *Three) NewSpritePlugin(renderer, sprites float64) *SpritePlugin {
 	p := t.ctx.Get("SpritePlugin").New(renderer, sprites)
 	return SpritePluginFromJSObject(p)
 }
+
+// TODO:
+//Render renders the sprites defined in the scene. This gets automatically called as post-render function
+//to draw the lensflares.
+//     scene -- The scene to render.
+//     camera -- The camera to render.

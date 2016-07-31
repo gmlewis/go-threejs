@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// RingBufferGeometry represents a ringbuffergeometry.
+// RingBufferGeometry is the BufferGeometry port of RingGeometry.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Geometries/RingBufferGeometry
 type RingBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,6 +28,13 @@ func RingBufferGeometryFromJSObject(p *js.Object) *RingBufferGeometry {
 }
 
 // NewRingBufferGeometry returns a new RingBufferGeometry object.
+//
+//     innerRadius — Default is 0, but it doesn't work right when innerRadius is set to 0.
+//     outerRadius — Default is 50.
+//     thetaSegments — Number of segments. A higher number means the ring will be more round. Minimum is 3. Default is 8.
+//     phiSegments — Minimum is 1. Default is 8.
+//     thetaStart — Starting angle. Default is 0.
+//     thetaLength — Central angle. Default is Math.PI * 2.
 func (t *Three) NewRingBufferGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength float64) *RingBufferGeometry {
 	p := t.ctx.Get("RingBufferGeometry").New(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
 	return RingBufferGeometryFromJSObject(p)

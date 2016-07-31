@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// TubeGeometry represents a tubegeometry.
+// TubeGeometry creates a tube that extrudes along a three-dimensional curve.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Geometries/TubeGeometry
 type TubeGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,7 +28,20 @@ func TubeGeometryFromJSObject(p *js.Object) *TubeGeometry {
 }
 
 // NewTubeGeometry returns a new TubeGeometry object.
+//
+//     path — Curve - A path that inherits from the Curve base class
+//     segments — Integer - The number of segments that make up the tube, default is 64
+//     radius — Float - The radius of the tube, default is 1
+//     radiusSegments — Integer - The number of segments that make up the cross-section, default is 8
+//     closed — Boolean Is the tube open or closed, default is false
 func (t *Three) NewTubeGeometry(path, segments, radius, radialSegments, closed, taper float64) *TubeGeometry {
 	p := t.ctx.Get("TubeGeometry").New(path, segments, radius, radialSegments, closed, taper)
 	return TubeGeometryFromJSObject(p)
 }
+
+/* TODO:
+Parameters is an object with all of the parameters that were used to generate the geometry.
+Tangents is an array of Vector3 tangents.
+Normals is an array of Vector3 normals.
+Binormals is an array of Vector3 binormals.
+*/

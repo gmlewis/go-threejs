@@ -8,7 +8,8 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// TorusKnotGeometry represents a torus knot.
+// TorusKnotGeometry creates a torus knot, the particular shape of which is defined
+// by a pair of coprime integers, p and q. If p and q are not coprime, the result will be a torus link.
 //
 // http://threejs.org/docs/index.html#Reference/Extras.Geometries/TorusKnotGeometry
 type TorusKnotGeometry struct{ p *js.Object }

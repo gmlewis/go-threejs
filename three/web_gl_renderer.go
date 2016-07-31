@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// WebGLRenderer represents a webglrenderer.
+// WebGLRenderer displays your beautifully crafted scenes using WebGL, if your device supports it.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers/WebGLRenderer
 type WebGLRenderer struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -77,12 +79,12 @@ func (w *WebGLRenderer) DOMElement() *js.Object {
 	return w.p.Get("domElement")
 }
 
-// GetContext TODO description.
+// GetContext returns the WebGL context.
 func (w *WebGLRenderer) GetContext() *js.Object {
 	return w.p.Call("getContext")
 }
 
-// GetContextAttributes TODO description.
+// GetContextAttributes returns an object that describes the attributes set on the WebGL context when it was created.
 func (w *WebGLRenderer) GetContextAttributes() *js.Object {
 	return w.p.Call("getContextAttributes")
 }
@@ -93,70 +95,76 @@ func (w *WebGLRenderer) ForceContextLoss() *WebGLRenderer {
 	return w
 }
 
-// GetMaxAnisotropy TODO description.
+// GetMaxAnisotropy returns the anisotropy level of the textures.
 func (w *WebGLRenderer) GetMaxAnisotropy() float64 {
 	return w.p.Call("getMaxAnisotropy").Float()
 }
 
-// GetPrecision TODO description.
+// GetPrecision gets the precision used by the shaders. It returns "highp","mediump" or "lowp".
 func (w *WebGLRenderer) GetPrecision() float64 {
 	return w.p.Call("getPrecision").Float()
 }
 
-// GetPixelRatio TODO description.
+// GetPixelRatio returns current device pixel ratio used.
 func (w *WebGLRenderer) GetPixelRatio() float64 {
 	return w.p.Call("getPixelRatio").Float()
 }
 
-// SetPixelRatio TODO description.
+// SetPixelRatio sets device pixel ratio. This is usually used for HiDPI device to prevent blurring output canvas.
 func (w *WebGLRenderer) SetPixelRatio(value float64) *WebGLRenderer {
 	w.p.Call("setPixelRatio", value)
 	return w
 }
 
-// GetSize TODO description.
+// GetSize returns an object containing the width and height of the renderer's output canvas, in pixels.
 func (w *WebGLRenderer) GetSize() (width, height float64) {
 	result := w.p.Call("getSize")
 	return result.Get("width").Float(), result.Get("height").Float()
 }
 
-// SetSize TODO description.
+// SetSize resizes the output canvas to (width, height) with device pixel ratio taken into account, and
+// also sets the viewport to fit that size, starting in (0, 0). Setting updateStyle to true adds explicit
+// pixel units to the output canvas style.
 func (w *WebGLRenderer) SetSize(width, height float64, updateStyle bool) *WebGLRenderer {
 	w.p.Call("setSize", width, height, updateStyle)
 	return w
 }
 
-// SetViewport TODO description.
+// SetViewport sets the viewport to render from (x, y) to (x + width, y + height).
 func (w *WebGLRenderer) SetViewport(x, y, width, height float64) *WebGLRenderer {
 	w.p.Call("setViewport", x, y, width, height)
 	return w
 }
 
-// SetScissor TODO description.
+// SetScissor Sets the scissor area from (x, y) to (x + width, y + height).
+// NOTE: The point (x, y) is the lower left corner of the area to be set for both of these methods.
+// The area is defined from left to right in width but bottom to top in height. The sense of the
+// vertical definition is opposite to the fill direction of an HTML canvas element.
 func (w *WebGLRenderer) SetScissor(x, y, width, height float64) *WebGLRenderer {
 	w.p.Call("setScissor", x, y, width, height)
 	return w
 }
 
-// SetScissorTest TODO description.
+// SetScissorTest Enable or disable the scissor test. When this is enabled, only the pixels within the
+// defined scissor area will be affected by further renderer actions.
 func (w *WebGLRenderer) SetScissorTest(value bool) *WebGLRenderer {
 	w.p.Call("setScissorTest", value)
 	return w
 }
 
-// GetClearColor TODO description.
+// GetClearColor returns a THREE.Color instance with the current clear color.
 func (w *WebGLRenderer) GetClearColor() *Color {
 	p := w.p.Call("getClearColor")
 	return &Color{p: p}
 }
 
-// SetClearColor TODO description.
+// SetClearColor sets the clear color and opacity.
 func (w *WebGLRenderer) SetClearColor(color *Color, alpha float64) *WebGLRenderer {
 	w.p.Call("setClearColor", color.p, alpha)
 	return w
 }
 
-// GetClearAlpha TODO description.
+// GetClearAlpha returns a float with the current clear alpha. Ranges from 0 to 1.
 func (w *WebGLRenderer) GetClearAlpha() float64 {
 	return w.p.Call("getClearAlpha").Float()
 }
@@ -167,7 +175,8 @@ func (w *WebGLRenderer) SetClearAlpha(alpha float64) *WebGLRenderer {
 	return w
 }
 
-// Clear TODO description.
+// Clear Tells the renderer to clear its color, depth or stencil drawing buffer(s). This method initializes
+// the color buffer to the current clear color value. Arguments default to true.
 func (w *WebGLRenderer) Clear(color, depth, stencil bool) *WebGLRenderer {
 	w.p.Call("clear", color, depth, stencil)
 	return w
@@ -191,7 +200,13 @@ func (w *WebGLRenderer) ClearStencil() *WebGLRenderer {
 	return w
 }
 
-// ClearTarget TODO description.
+// ClearTarget clears a rendertarget. To do this, it activates the rendertarget.
+//
+//     renderTarget -- The renderTarget that needs to be cleared.
+//     color -- If set, then the color gets cleared.
+//     depth -- If set, then the depth gets cleared.
+//     stencil -- If set, then the stencil gets cleared.
+//     This method clears a rendertarget. To do this, it activates the rendertarget
 func (w *WebGLRenderer) ClearTarget(renderTarget JSObject, color, depth, stencil bool) *WebGLRenderer {
 	w.p.Call("clearStencil", renderTarget.JSObject(), color, depth, stencil)
 	return w
@@ -203,13 +218,17 @@ func (w *WebGLRenderer) ResetGLState() *WebGLRenderer {
 	return w
 }
 
-// RenderBufferImmediate TODO description.
+// RenderBufferImmediate renders an immediate buffer. Gets called by renderImmediateObject.
+//
+//     object — an instance of Object3D
+//     program — an instance of shaderProgram
+//     shading — an instance of Material
 func (w *WebGLRenderer) RenderBufferImmediate(object, program, material JSObject) *WebGLRenderer {
 	w.p.Call("renderBufferImmediate", object.JSObject(), program.JSObject(), material.JSObject())
 	return w
 }
 
-// RenderBufferDirect TODO description.
+// RenderBufferDirect renders a buffer geometry group using the camera and with the correct material.
 func (w *WebGLRenderer) RenderBufferDirect(camera, fog, geometry, material, object, group JSObject) *WebGLRenderer {
 	w.p.Call("renderBufferDirect", camera.JSObject(), fog.JSObject(), geometry.JSObject(), material.JSObject(), object.JSObject(), group.JSObject())
 	return w
@@ -221,7 +240,10 @@ type RenderOpts struct {
 	forceClear   bool
 }
 
-// Render TODO description.
+// Render Render a scene using a camera. The render is done to the renderTarget (if specified) or to the canvas
+// as usual. If forceClear is true, the depth, stencil and color buffers will be cleared before rendering even
+// if the renderer's autoClear property is false. Even with forceClear set to true you can prevent certain
+// buffers being cleared by setting either the .autoClearColor, .autoClearStencil or .autoClearDepth properties to false.
 func (w *WebGLRenderer) Render(scene, camera JSObject, opts *RenderOpts) *WebGLRenderer {
 	if opts != nil {
 		w.p.Call("render", scene.JSObject(), camera.JSObject(), opts.renderTarget.JSObject(), opts.forceClear)
@@ -231,13 +253,21 @@ func (w *WebGLRenderer) Render(scene, camera JSObject, opts *RenderOpts) *WebGLR
 	return w
 }
 
-// SetFaceCulling TODO description.
+// SetFaceCulling is used for setting the gl frontFace, cullFace states in the GPU, thus enabling/disabling
+// face culling when rendering. If cullFace is false, culling will be disabled.
+//
+//     cullFace —- "back", "front", "front_and_back", or false.
+//     frontFace —- "ccw" or "cw
 func (w *WebGLRenderer) SetFaceCulling(cullFace, frontFaceDirection int) *WebGLRenderer {
 	w.p.Call("setFaceCulling", cullFace, frontFaceDirection)
 	return w
 }
 
-// SetTexture TODO description.
+// SetTexture sets the correct texture to the correct slot for the wegl shader. The slot number can be found
+// as a value of the uniform of the sampler.
+//
+//     texture -- The texture that needs to be set.
+//     slot -- The number indicating which slot should be used by the texture.
 func (w *WebGLRenderer) SetTexture(texture, slot JSObject) *WebGLRenderer {
 	w.p.Call("setTexture", texture.JSObject(), slot.JSObject())
 	return w
@@ -248,14 +278,26 @@ func (w *WebGLRenderer) GetCurrentRenderTarget() *js.Object {
 	return w.p.Call("getCurrentRenderTarget")
 }
 
-// SetRenderTarget TODO description.
+// SetRenderTarget sets the active rendertarget. If the parameter is omitted the canvas is set as the active rendertarget.
+//
+//     renderTarget -- The renderTarget that needs to be activated (optional).
 func (w *WebGLRenderer) SetRenderTarget(renderTarget JSObject) *WebGLRenderer {
 	w.p.Call("setRenderTarget", renderTarget.JSObject())
 	return w
 }
 
-// ReadRenderTargetPixels TODO description.
+// ReadRenderTargetPixels reads the pixel data from the renderTarget into the buffer you pass in. Buffer should be a
+// Javascript Uint8Array instantiated with new Uint8Array( renderTargetWidth * renderTargetWidth * 4 ) to account for
+// size and color information. This is a wrapper around gl.readPixels.
 func (w *WebGLRenderer) ReadRenderTargetPixels(renderTarget JSObject, x, y, width, height int, buffer JSObject) *WebGLRenderer {
 	w.p.Call("readRenderTargetPixels", renderTarget.JSObject(), x, y, width, height, buffer.JSObject())
 	return w
 }
+
+// TODO: ForceContextLoss, SetClearAlpha, ClearColor, ClearDepth, ClearStencil, ResetGLState, GetCurrentRenderTarget
+//
+// SetClearColor example:
+// // Creates a renderer with red background
+//    var renderer = new THREE.WebGLRenderer();
+//    renderer.setSize( 200, 100 );
+//    renderer.setClearColor( 0xff0000 );

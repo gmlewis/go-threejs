@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// SplineCurve represents a splinecurve.
+// SplineCurve creates a smooth 2d spline curve from a series of points.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Curves/SplineCurve
 type SplineCurve struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

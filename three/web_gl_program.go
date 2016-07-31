@@ -8,7 +8,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// WebGLProgram represents a webglprogram.
+// WebGLProgram represents a webglprogram. Constructor for the GLSL program sent to vertex
+// and fragment shaders, including default uniforms and attributes.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.WebGL/WebGLProgram
 type WebGLProgram struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -36,3 +39,14 @@ func (w *WebGLProgram) Get() *WebGLProgram {
 	w.p.Call("get")
 	return w
 }
+
+/* TODO:
+Id
+Code
+UsedTimes
+Program
+VertexShader
+FragmentShader
+GetUniforms returns a name-value mapping of all active uniform locations.
+GetAttributes returns a name-value mapping of all active vertex attribute locations.
+*/

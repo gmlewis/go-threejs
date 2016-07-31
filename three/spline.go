@@ -9,6 +9,8 @@ import (
 )
 
 // Spline represents a spline.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Spline
 type Spline struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

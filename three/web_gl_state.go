@@ -9,6 +9,8 @@ import (
 )
 
 // WebGLState represents a webglstate.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.WebGL/WebGLState
 type WebGLState struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -30,3 +32,5 @@ func (t *Three) NewWebGLState(gl, extensions, paramThreeToGL float64) *WebGLStat
 	p := t.ctx.Get("WebGLState").New(gl, extensions, paramThreeToGL)
 	return WebGLStateFromJSObject(p)
 }
+
+// TODO: setDepthTest, setDepthWrite, setBlending, enable, disable

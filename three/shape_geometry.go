@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// ShapeGeometry represents a shapegeometry.
+// ShapeGeometry creates a one-sided polygonal geometry from one or more path shapes. Similar to ExtrudeGeometry.
+//
+// http://threejs.org/docs/index.html#Reference/Extras.Geometries/ShapeGeometry
 type ShapeGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -31,13 +33,19 @@ func (t *Three) NewShapeGeometry(shapes, options float64) *ShapeGeometry {
 	return ShapeGeometryFromJSObject(p)
 }
 
-// AddShapeList TODO description.
+// AddShapeList adds a list of shapes to the geometry.
+//
+//     shapes — Array of shapes
+//     options — See options in constructor
 func (s *ShapeGeometry) AddShapeList(shapes, options float64) *ShapeGeometry {
 	s.p.Call("addShapeList", shapes, options)
 	return s
 }
 
-// AddShape TODO description.
+// AddShape adds a single shape to the geometry
+//
+//     shape — Shape
+//     options — See options in constructor
 func (s *ShapeGeometry) AddShape(shape, options float64) *ShapeGeometry {
 	s.p.Call("addShape", shape, options)
 	return s

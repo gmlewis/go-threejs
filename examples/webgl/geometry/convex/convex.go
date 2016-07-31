@@ -108,7 +108,7 @@ func init() {
 	}
 
 	{
-		opts := &three.NewArrowHelperOpts{Length: three.Float64(50)}
+		opts := &three.ArrowHelperOpts{Length: three.Float64(50)}
 		object := t.NewArrowHelper(t.NewVector3(0, 1, 0), t.NewVector3(0, 0, 0), opts)
 		object.Position().Set(200, 0, 400)
 		scene.Add(object)

@@ -9,6 +9,8 @@ import (
 )
 
 // ShaderLib represents a shaderlib.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers.Shaders/ShaderLib
 type ShaderLib struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.

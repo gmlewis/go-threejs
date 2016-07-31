@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// WebGLRenderTargetCube represents a webglrendertargetcube.
+// WebGLRenderTargetCube represents a webglrendertargetcube. CubeCamera uses this as its WebGLRenderTarget.
+//
+// http://threejs.org/docs/index.html#Reference/Renderers/WebGLRenderTargetCube
 type WebGLRenderTargetCube struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,7 +28,13 @@ func WebGLRenderTargetCubeFromJSObject(p *js.Object) *WebGLRenderTargetCube {
 }
 
 // NewWebGLRenderTargetCube returns a new WebGLRenderTargetCube object.
+//
+//     width -- The width of the renderTarget.
+//     height -- The height of the renderTarget.
+//     options -- The options sets the properties of the render target.
 func (t *Three) NewWebGLRenderTargetCube(width, height, options float64) *WebGLRenderTargetCube {
 	p := t.ctx.Get("WebGLRenderTargetCube").New(width, height, options)
 	return WebGLRenderTargetCubeFromJSObject(p)
 }
+
+// TODO: ActiveCubeFace

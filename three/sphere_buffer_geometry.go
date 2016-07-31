@@ -8,7 +8,7 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// SphereBufferGeometry represents a spherebuffergeometry.
+// SphereBufferGeometry is the BufferGeometry port of SphereGeometry.
 type SphereBufferGeometry struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,6 +26,14 @@ func SphereBufferGeometryFromJSObject(p *js.Object) *SphereBufferGeometry {
 }
 
 // NewSphereBufferGeometry returns a new SphereBufferGeometry object.
+//
+//     radius — sphere radius. Default is 50.
+//     widthSegments — number of horizontal segments. Minimum value is 3, and the default is 8.
+//     heightSegments — number of vertical segments. Minimum value is 2, and the default is 6.
+//     phiStart — specify horizontal starting angle. Default is 0.
+//     phiLength — specify horizontal sweep angle size. Default is Math.PI * 2.
+//     thetaStart — specify vertical starting angle. Default is 0.
+//     thetaLength — specify vertical sweep angle size. Default is Math.PI.
 func (t *Three) NewSphereBufferGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength float64) *SphereBufferGeometry {
 	p := t.ctx.Get("SphereBufferGeometry").New(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
 	return SphereBufferGeometryFromJSObject(p)

@@ -8,7 +8,9 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 )
 
-// Vector4 represents a vector4.
+// Vector4 represents a 4D vector.
+//
+// http://threejs.org/docs/index.html#Reference/Math/Vector4
 type Vector4 struct{ p *js.Object }
 
 // JSObject returns the underlying *js.Object.
@@ -26,12 +28,17 @@ func Vector4FromJSObject(p *js.Object) *Vector4 {
 }
 
 // NewVector4 returns a new Vector4 object.
+//
+//     x -- Float
+//     y -- Float
+//     z -- Float
+//     w -- Float
 func (t *Three) NewVector4(x, y, z, w float64) *Vector4 {
 	p := t.ctx.Get("Vector4").New(x, y, z, w)
 	return Vector4FromJSObject(p)
 }
 
-// Set TODO description.
+// Set sets value of this vector.
 func (v *Vector4) Set(x, y, z, w float64) *Vector4 {
 	v.p.Call("set", x, y, z, w)
 	return v
@@ -43,79 +50,102 @@ func (v *Vector4) SetScalar(scalar float64) *Vector4 {
 	return v
 }
 
-// SetX TODO description.
+// SetX sets the x component of the vector.
+//
+//     x -- Float
 func (v *Vector4) SetX(x float64) *Vector4 {
 	v.p.Call("setX", x)
 	return v
 }
 
-// SetY TODO description.
+// SetY sets the y component of the vector.
+//
+//     y -- Float
 func (v *Vector4) SetY(y float64) *Vector4 {
 	v.p.Call("setY", y)
 	return v
 }
 
-// SetZ TODO description.
+// SetZ sets the z component of the vector.
+//
+//     z -- Float
 func (v *Vector4) SetZ(z float64) *Vector4 {
 	v.p.Call("setZ", z)
 	return v
 }
 
-// SetW TODO description.
+// SetW sets the w component of the vector.
+//
+//     w -- Float
 func (v *Vector4) SetW(w float64) *Vector4 {
 	v.p.Call("setW", w)
 	return v
 }
 
-// SetComponent TODO description.
+// SetComponent sets the value of the vector component	x, y, or z by an index.
+//
+//     index -- Integer 0 - 3
+//         Index 0: x
+//         Index 1: y
+//         Index 2: z
+//         Index 3: w
+//     value -- Float
 func (v *Vector4) SetComponent(index, value float64) *Vector4 {
 	v.p.Call("setComponent", index, value)
 	return v
 }
 
-// GetComponent TODO description.
+// GetComponent returns the value of the vector component x, y, or z by an index.
+//
+//     index -- Integer 0, 1, 2, or 3
+//         Index 0: x
+//         Index 1: y
+//         Index 2: z
+//         Index 3: w
 func (v *Vector4) GetComponent(index float64) *Vector4 {
 	v.p.Call("getComponent", index)
 	return v
 }
 
-// Clone TODO description.
+// Clone clones this vector.
 func (v *Vector4) Clone() *Vector4 {
 	v.p.Call("clone")
 	return v
 }
 
-// Copy TODO description.
+// Copy copies value of v to this vector.
 func (v *Vector4) Copy(src *Vector4) *Vector4 {
 	v.p.Call("copy", src.p)
 	return v
 }
 
-// Add TODO description.
+// Add adds v to this vector.
 func (v *Vector4) Add(src *Vector4) *Vector4 {
 	v.p.Call("add", src.p)
 	return v
 }
 
-// AddScalar TODO description.
+// AddScalar adds a scalar value to all of the vector's components.
+//
+//     s -- Float
 func (v *Vector4) AddScalar(s float64) *Vector4 {
 	v.p.Call("addScalar", s)
 	return v
 }
 
-// AddVectors TODO description.
+// AddVectors sets this vector to a + b.
 func (v *Vector4) AddVectors(a, b *Vector4) *Vector4 {
 	v.p.Call("addVectors", a.p, b.p)
 	return v
 }
 
-// AddScaledVector TODO description.
+// AddScaledVector adds the multiple of v and s to this vector
 func (v *Vector4) AddScaledVector(src *Vector4, s float64) *Vector4 {
 	v.p.Call("addScaledVector", src.p, s)
 	return v
 }
 
-// Sub TODO description.
+// Sub subtracts v from this vector.
 func (v *Vector4) Sub(src *Vector4) *Vector4 {
 	v.p.Call("sub", src.p)
 	return v
@@ -127,157 +157,193 @@ func (v *Vector4) SubScalar(s float64) *Vector4 {
 	return v
 }
 
-// SubVectors TODO description.
+// SubVectors sets this vector to a - b.
 func (v *Vector4) SubVectors(a, b *Vector4) *Vector4 {
 	v.p.Call("subVectors", a.p, b.p)
 	return v
 }
 
-// MultiplyScalar TODO description.
+// MultiplyScalar multiplies this vector by scalar s.
 func (v *Vector4) MultiplyScalar(scalar float64) *Vector4 {
 	v.p.Call("multiplyScalar", scalar)
 	return v
 }
 
-// ApplyMatrix4 TODO description.
+// ApplyMatrix4 transforms the vector by the matrix.
+//
+//     m -- Matrix4
 func (v *Vector4) ApplyMatrix4(m *Matrix4) *Vector4 {
 	v.p.Call("applyMatrix4", m.p)
 	return v
 }
 
-// DivideScalar TODO description.
+// DivideScalar Divides this vector by scalar s.
+// Set vector to ( 0, 0, 0 ) if s == 0.
 func (v *Vector4) DivideScalar(scalar float64) *Vector4 {
 	v.p.Call("divideScalar", scalar)
 	return v
 }
 
-// SetAxisAngleFromQuaternion TODO description.
+// SetAxisAngleFromQuaternion sets this Vector4 to the computed axis-angle representation of the rotation
+// defined by Quaternion q. The axis is stored in components (x, y, z) of the vector, and the rotation
+// in radians is stored in component w.
+//
+//     q -- Quaternion
 func (v *Vector4) SetAxisAngleFromQuaternion(q *Quaternion) *Vector4 {
 	v.p.Call("setAxisAngleFromQuaternion", q.p)
 	return v
 }
 
-// SetAxisAngleFromRotationMatrix TODO description.
+// SetAxisAngleFromRotationMatrix Sets this Vector4 to the computed axis-angle representation of the rotation
+// defined by Matrix4 m. Assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled). The axis is
+// stored in components (x, y, z) of the vector, and the rotation in radians is stored in component w.
+//
+//     m -- Matrix4
 func (v *Vector4) SetAxisAngleFromRotationMatrix(m *Matrix4) *Vector4 {
 	v.p.Call("setAxisAngleFromRotationMatrix", m.p)
 	return v
 }
 
-// Min TODO description.
+// Min replaces the corresponing vector v value if this vector's x, y, z, or w value is greater than vector v's
+// x, y, z, or w value.
+//
+//     v -- Vector4
 func (v *Vector4) Min(src *Vector4) *Vector4 {
 	v.p.Call("min", src.p)
 	return v
 }
 
-// Max TODO description.
+// Max replaces the corresponing vector v value if this vector's x, y, z, or w value is less than vector v's
+// x, y, z, or w value.
+//
+//     v -- Vector4
 func (v *Vector4) Max(src *Vector4) *Vector4 {
 	v.p.Call("max", src.p)
 	return v
 }
 
-// Clamp TODO description.
+// Clamp replaces the corresponing vector value if this vector's x, y, z, or w value is greater than the max vector's
+// x, y, z, or w value and replaces the corresponing vector value if this vector's x, y, z, or w value is less than
+// the min vector's x, y, z, or w value.
+//
+//     min -- Vector4
+//     max -- Vector4
 func (v *Vector4) Clamp(min, max *Vector4) *Vector4 {
 	v.p.Call("clamp", min.p, max.p)
 	return v
 }
 
-// ClampScalar TODO description.
+// ClampScalar vector's x, y, z or w values are replaced by the max value if they are greater than the max value and
+// if this vector's x, y, z or w values are less than the min value, they are replaced by the min value.
+//
+//     min -- Float the minimum value the components will be clamped to
+//     max -- Float the maximum value the components will be clamped to
 func (v *Vector4) ClampScalar() *Vector4 {
 	v.p.Call("clampScalar")
 	return v
 }
 
-// Floor TODO description.
+// Floor components are rounded downwards (towards negative infinity) to an integer value.
 func (v *Vector4) Floor() *Vector4 {
 	v.p.Call("floor")
 	return v
 }
 
-// Ceil TODO description.
+// Ceil components are rounded upwards (towards positive infinity) to an integer value.
 func (v *Vector4) Ceil() *Vector4 {
 	v.p.Call("ceil")
 	return v
 }
 
-// Round TODO description.
+// Round components are rounded towards the nearest integer value.
 func (v *Vector4) Round() *Vector4 {
 	v.p.Call("round")
 	return v
 }
 
-// RoundToZero TODO description.
+// RoundToZero components are rounded towards zero (up if negative, down if positive) to an integer value.
 func (v *Vector4) RoundToZero() *Vector4 {
 	v.p.Call("roundToZero")
 	return v
 }
 
-// Negate TODO description.
+// Negate inverts this vector.
 func (v *Vector4) Negate() *Vector4 {
 	v.p.Call("negate")
 	return v
 }
 
-// Dot TODO description.
+// Dot computes dot product of this vector and v.
 func (v *Vector4) Dot(src *Vector4) *Vector4 {
 	v.p.Call("dot", src.p)
 	return v
 }
 
-// LengthSq TODO description.
+// LengthSq computes squared length of this vector.
 func (v *Vector4) LengthSq() *Vector4 {
 	v.p.Call("lengthSq")
 	return v
 }
 
-// Length TODO description.
+// Length computes length of this vector.
 func (v *Vector4) Length() *Vector4 {
 	v.p.Call("length")
 	return v
 }
 
-// LengthManhattan TODO description.
+// LengthManhattan computes Manhattan length of this vector.
+//
+// http://en.wikipedia.org/wiki/Taxicab_geometry
 func (v *Vector4) LengthManhattan() *Vector4 {
 	v.p.Call("lengthManhattan")
 	return v
 }
 
-// Normalize TODO description.
+// Normalize normalizes this vector.
 func (v *Vector4) Normalize() *Vector4 {
 	v.p.Call("normalize")
 	return v
 }
 
-// SetLength TODO description.
+// SetLength normalizes this vector and multiplies it by l.
 func (v *Vector4) SetLength(length float64) *Vector4 {
 	v.p.Call("setLength", length)
 	return v
 }
 
-// Lerp TODO description.
+// Lerp linearly interpolate between this vector and v with alpha factor.
 func (v *Vector4) Lerp(src *Vector4, alpha float64) *Vector4 {
 	v.p.Call("lerp", src.p, alpha)
 	return v
 }
 
-// LerpVectors TODO description.
+// LerpVectors sets this vector to be the vector linearly interpolated between v1 and v2 with alpha factor.
 func (v *Vector4) LerpVectors(v1, v2 *Vector4, alpha float64) *Vector4 {
 	v.p.Call("lerpVectors", v1.p, v2.p, alpha)
 	return v
 }
 
-// Equals TODO description.
+// Equals checks to see if this vector matches vector v.
+//
+//     v -- Vector4
 func (v *Vector4) Equals(src *Vector4) bool {
 	return v.p.Call("equals", src.p).Bool()
 }
 
-// FromArray TODO description.
+// FromArray sets the vector's components based on an array formatted like [x, y, z, w].
+//
+//     array -- The source array in the form [x, y, z, w].
+//     offset -- An optional offset into the array.
 func (v *Vector4) FromArray(array []float64, offset int) *Vector4 {
 	v.p.Call("fromArray", array, offset)
 	return v
 }
 
 /* TODO
-// ToArray TODO description.
+// ToArray returns an array in the format [x, y, z, w].
+//
+//     array -- An optional array to store the vector.
+//     offset -- An optional offset into the array.
 func (v *Vector4) ToArray(array, offset float64) *Vector4 {
 	v.p.Call("toArray", array, offset)
 	return v
@@ -289,3 +355,5 @@ func (v *Vector4) FromAttribute(attribute, index, offset float64) *Vector4 {
 	v.p.Call("fromAttribute", attribute, index, offset)
 	return v
 }
+
+// TODO: Check Min, Max, and Clamp

@@ -27,7 +27,10 @@ func AmbientLightFromJSObject(p *js.Object) *AmbientLight {
 	return &AmbientLight{&Light{&Object3D{p}}}
 }
 
-// NewAmbientLight returns a new AmbientLight object.
+// NewAmbientLight creates an Ambientlight with a color and intensity.
+//
+//     color — Numeric value of the RGB component of the color.
+//     intensity -- Numeric value of the light's strength/intensity.
 func (t *Three) NewAmbientLight(color int, intensity float64) *AmbientLight {
 	return AmbientLightFromJSObject(t.ctx.Get("AmbientLight").New(color, intensity))
 }
