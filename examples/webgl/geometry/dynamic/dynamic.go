@@ -5,109 +5,131 @@
 // See: http://threejs.org/examples/#webgl_geometry_dynamic
 package main
 
-/*
-if ( ! Detector.webgl ) {
+import (
+	"math"
 
-	Detector.addGetWebGLMessage()
-	document.getElementById( 'container' ).innerHTML = ""
+	"github.com/gmlewis/go-threejs/three"
+	"github.com/gopherjs/gopherjs/js"
+)
 
-}
+const (
+	waterURL = "http://threejs.org/examples/textures/water.jpg"
+)
 
-var container, stats
+var (
+	container *js.Object
+	stats     *js.Object
 
-var camera, controls, scene, renderer
+	camera   *three.PerspectiveCamera
+	controls *three.FirstPersonControls
+	scene    *three.Scene
+	renderer *three.WebGLRenderer
 
-var mesh, texture, geometry, material
+	mesh     *three.Mesh
+	texture  *three.Texture
+	geometry *three.PlaneGeometry
+	material *three.Material
 
-var worldWidth = 128, worldDepth = 128,
-worldHalfWidth = worldWidth / 2, worldHalfDepth = worldDepth / 2
+	worldWidth, worldDepth         = 128, 128
+	worldHalfWidth, worldHalfDepth = worldWidth / 2, worldDepth / 2
 
-var clock = new THREE.Clock()
+	document = js.Global.Get("document")
+	window   = js.Global.Get("window")
+)
 
-init()
-animate()
+func init() {
+	t := three.New()
 
-function init() {
-	container = document.getElementById( 'container' )
+	clock = t.NewClock(true)
 
-	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 20000 )
-	camera.position.y = 200
+	// if ( ! Detector.webgl ) {
+	//     Detector.addGetWebGLMessage()
+	//     document.getElementById( 'container' ).innerHTML = ""
+	// }
 
-	controls = new THREE.FirstPersonControls( camera )
+	container = document.Call("getElementById", "container")
 
-	controls.movementSpeed = 500
-	controls.lookSpeed = 0.1
+	camera = t.NewPerspectiveCamera(60, window.Get("innerWidth").Float()/window.Get("innerHeight").Float(), 1, 20000)
+	camera.Position().SetY(200)
 
-	scene = new THREE.Scene()
-	scene.fog = new THREE.FogExp2( 0xaaccff, 0.0007 )
+	controls = t.NewFirstPersonControls(camera)
 
-	geometry = new THREE.PlaneGeometry( 20000, 20000, worldWidth - 1, worldDepth - 1 )
-	geometry.rotateX( - Math.PI / 2 )
+	controls.SetMovementSpeed(500)
+	controls.SetLookSpeed(0.1)
 
-	for ( var i = 0, l = geometry.vertices.length; i < l; i ++ ) {
-		geometry.vertices[ i ].y = 35 * Math.sin( i / 2 )
+	scene = t.NewScene()
+	scene.SetFog(t.NewFogExp2(xaaccff, 0.0007))
+
+	geometry = t.NewPlaneGeometry(20000, 20000, worldWidth-1, worldDepth-1)
+	geometry.SetRotateX(math.Pi / 2)
+
+	for i, n := 0, len(geometry.Vertices()); i < n; i++ {
+		geometry.Vertices(i).SetY(35 * math.Sin(float64(i)/2))
 	}
 
-	var texture = new THREE.TextureLoader().load( "http://threejs.org/examples/textures/water.jpg" )
-	texture.wrapS = texture.wrapT = THREE.RepeatWrapping
-	texture.repeat.set( 5, 5 )
+	texture = t.NewTextureLoader().Load(waterURL)
+	texture.SetWrapS(three.RepeatWrapping)
+	texture.SetWrapT(three.RepeatWrapping)
+	texture.Repeat().Set(5, 5)
 
-	material = new THREE.MeshBasicMaterial( { color: 0x0044ff, map: texture } )
-
-	mesh = new THREE.Mesh( geometry, material )
-	scene.add( mesh )
-
-	renderer = new THREE.WebGLRenderer()
-	renderer.setClearColor( 0xaaccff )
-	renderer.setPixelRatio( window.devicePixelRatio )
-	renderer.setSize( window.innerWidth, window.innerHeight )
-
-	container.innerHTML = ""
-
-	container.appendChild( renderer.domElement )
-
-	stats = new Stats()
-	stats.domElement.style.position = 'absolute'
-	stats.domElement.style.top = '0px'
-	container.appendChild( stats.domElement )
-
-	window.addEventListener( 'resize', onWindowResize, false )
-}
-
-function onWindowResize() {
-	camera.aspect = window.innerWidth / window.innerHeight
-	camera.updateProjectionMatrix()
-
-	renderer.setSize( window.innerWidth, window.innerHeight )
-
-	controls.handleResize()
-}
-
-function animate() {
-	requestAnimationFrame( animate )
-
-	render()
-	stats.update()
-
-}
-
-function render() {
-	var delta = clock.getDelta(),
-		time = clock.getElapsedTime() * 10
-
-	for ( var i = 0, l = geometry.vertices.length; i < l; i ++ ) {
-
-		geometry.vertices[ i ].y = 35 * Math.sin( i / 5 + ( time + i ) / 7 )
-
+	opts := three.MeshBasicMaterialOpts{
+		"color": 0x0044ff,
+		"map":   texture.JSObject(),
 	}
+	material = t.NewMeshBasicMaterial(opts)
 
-	mesh.geometry.verticesNeedUpdate = true
+	mesh = t.NewMesh(geometry, material)
+	scene.Add(mesh)
 
-	controls.update( delta )
-	renderer.render( scene, camera )
+	renderer = t.NewWebGLRenderer(nil)
+	renderer.SetClearColor(0xaaccff)
+	renderer.SetPixelRatio(window.Get("devicePixelRatio").Float())
+	renderer.SetSize(window.Get("innerWidth").Float(), window.Get("innerHeight").Float(), true)
+
+	container.Set("innerHTML", "")
+
+	container.Call("appendChild", renderer.DOMElement.JSObject())
+
+	stats = js.Global.Get("Stats").New()
+	style := stats.Get("domElement").Get("style")
+	style.Set("position", "absolute")
+	style.Set("top", "0px")
+	container.Call("appendChild", stats.Get("domElement"))
+
+	window.Call("addEventListener", "resize", onWindowResize, false)
+
 }
-
-*/
 
 func main() {
+	animate()
+}
+
+func onWindowResize() {
+	windowX := window.Get("innerWidth").Float()
+	windowY := window.Get("innerHeight").Float()
+
+	camera.SetAspect(windowX / windowY)
+	camera.UpdateProjectionMatrix()
+
+	renderer.SetSize(windowX, windowY, true)
+
+	controls.HandleResize()
+}
+
+func animate() {
+	js.Global.Call("requestAnimationFrame", animate)
+
+	render()
+	stats.Call("update")
+}
+
+func render() {
+	delta := clock.GetDelta()
+	time := clock.GetElapsedTime() * 10
+
+	for i, n := 0, len(geometry.Vertices()); i < n; i++ {
+		geometry.Vertices(i).SetY(35 * math.Sin(i/5+(time+i)/7))
+	}
+
+	renderer.Render(scene, camera, nil)
 }
