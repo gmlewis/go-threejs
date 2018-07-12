@@ -10,6 +10,8 @@ Thingiverse.
 I have not used it in a couple years, but wanted to make it available
 in case anyone wishes to take it to the next level.
 
+This is not an official Google product.
+
 ----------------------------------------------------------------------
 
 Enjoy!
