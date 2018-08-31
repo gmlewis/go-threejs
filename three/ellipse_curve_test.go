@@ -17,7 +17,7 @@ package three_test
 import (
 	"math"
 
-	"github.com/gmlewis/go-threejs/three"
+	"github.com/gmlewis/go-threejs/v2/three"
 )
 
 func ExampleEllipseCurve() {

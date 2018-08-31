@@ -16,7 +16,7 @@
 package main
 
 import (
-	"github.com/gmlewis/go-threejs/three"
+	"github.com/gmlewis/go-threejs/v2/three"
 	"github.com/gopherjs/gopherjs/js"
 )
 

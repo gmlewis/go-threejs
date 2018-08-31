@@ -15,7 +15,7 @@
 package three_test
 
 import (
-	"github.com/gmlewis/go-threejs/three"
+	"github.com/gmlewis/go-threejs/v2/three"
 )
 
 func ExampleRaycaster() {

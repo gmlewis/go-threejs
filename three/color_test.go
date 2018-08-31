@@ -14,7 +14,7 @@
 
 package three_test
 
-import "github.com/gmlewis/go-threejs/three"
+import "github.com/gmlewis/go-threejs/v2/three"
 
 func ExampleColor() {
 	t := three.New()
